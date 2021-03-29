@@ -49,3 +49,5 @@ utils.map('n', '<C-h>', '<ESC>:%s/')
 
 
 utils.map('n', '<C-o>', ':Telescope find_files<CR>')
+utils.map('n', '<Leader>v', ':vsplit<CR>')
+utils.map('n', '<Leader>h', ':sv<CR>')
