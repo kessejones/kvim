@@ -3,14 +3,15 @@ local gl = require('galaxyline')
 local sections = gl.section
 local condition = require('galaxyline.condition')
 
-gl.short_line_list = {'NvimTree', 'vista', 'dbui', 'packer'}
+gl.short_line_list = { 'NvimTree', 'vista', 'dbui', 'packer' }
 
 sections.left[1] = {
     ViMode = {
         provider = function()
             return ' '
         end,
-        hightlight = {'#FF0000', '#00FF00'}
+        separator_highlight = { 'NONE', '#2a2b35' },
+        hightlight = { '#000000', '#2a2b35' }
     }
 }
 
@@ -21,8 +22,8 @@ sections.left[2] = {
         end,
         condition = condition.check_git_workspace,
         separator = ' ',
-        separator_highlight = {'NONE', '#0000FF'},
-        highlight = {'#FF00FF', '#00FFFF'}
+        separator_highlight = { 'NONE', '#2a2b35' },
+        highlight = { '#f7768e', '#2a2b35' }
     }
 }
 
@@ -31,17 +32,28 @@ sections.left[3] = {
         provider = 'GitBranch',
         condition = condition.check_git_workspace,
         separator = ' ',
-        separator_highlight = {'None', '#00FFFF'},
-        highlight = {'#00FFFF', '#FFFFFF'}
+        separator_highlight = { 'NONE', '#2a2b35' },
+        highlight = { '#f7768e', '#2a2b35' }
     }
 }
+
+-- sections.left[4] = {
+--     Empty = {
+--         provider = function()
+--             return ' '
+--         end,
+--         highlight_separator = { 'NONE', '#1a1b26' }
+--     }
+-- }
 
 sections.right[5] = {
     FileType = {
         provider = function()
-            return vim.bo.filetype:upper()
+            return ' '..vim.bo.filetype:upper()..' '
         end,
-        separator = ' '
+        separator = ' ',
+        highlight_separator = { 'NONE', '#2a2b35' },
+        highlight = { '#f7768e', '#2a2b35'}
     }
 }
 
@@ -53,10 +65,20 @@ sections.right[6] = {
             local current_column = vim.fn.col('.')
             local total_columns = vim.fn.col('$')
 
-            return ' '..current_line.. '-'..total_lines..':'..current_column..'-'..total_columns
+            return ' '..current_line..'-'..total_lines..':'..current_column..'-'..total_columns
         end,
         separator = ' ',
-        separator_highlight = { 'NONE', '#00FFFF' },
-        highlight = { '#FF0000', '#00FFFF' }
+        separator_highlight = { 'NONE', '#1a1b26' },
+        highlight = { '#f7768e', '#2a2b35' }
+    }
+}
+
+sections.right[7] = {
+    Endbar = {
+        provider = function()
+            return ' '
+        end,
+        separator_highlight = { 'NONE', '#2a2b35' },
+        highlight = { '#f7768e', '#2a2b35' }
     }
 }
