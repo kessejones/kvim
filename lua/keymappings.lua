@@ -34,13 +34,18 @@ utils.map('n', '<C-S-d>', '<ESC>yyp')
 utils.map('v', '<C-S-d>', '<ESC>yyp')
 
 -- Set uppercase
-utils.map('n', '<C-k>u', '<ESC>viwUi')
-utils.map('n', '<C-k>u', 'viwUi<ESC>')
-utils.map('v', '<C-k>u', '<ESC>viwUi')
-utils.map('v', '<C-k>u', 'viwUi<ESC>')
+utils.map('n', '<C-k-u>', '<ESC>viwUi')
+utils.map('n', '<C-k-u>', 'viwUi<ESC>')
+utils.map('v', '<C-k-u>', '<ESC>viwUi')
+utils.map('v', '<C-k-u>', 'viwUi<ESC>')
 
 -- Set lowercase
 utils.map('n', '<C-k>l', '<ESC>viwu')
 utils.map('n', '<C-k>l', 'viwu<ESC>')
 utils.map('v', '<C-k>l', '<ESC>viwu')
 utils.map('v', '<C-k>l', 'viwu<ESC>')
+
+utils.map('n', '<C-h>', '<ESC>:%s/')
+
+
+utils.map('n', '<C-o>', ':Telescope find_files<CR>')

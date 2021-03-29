@@ -19,3 +19,4 @@ utils.opt('w', 'number', true)
 utils.opt('w', 'wrap', true)
 utils.opt('w', 'cursorline', true)
 
+utils.opt('o', 'inccommand', 'split')

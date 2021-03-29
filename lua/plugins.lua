@@ -13,7 +13,10 @@ return require('packer').startup(function()
 
     -- use 'preservim/nerdtree'
     use 'ghifarit53/tokyonight-vim'
-    use 'nvim-telescope/telescope.nvim'
+    use {
+        'nvim-telescope/telescope.nvim',
+        requires = {{ 'nvim-lua/popup.nvim' }, {'nvim-lua/plenary.nvim' }}
+    }
     
     use 'mhinz/vim-startify'
     -- use 'glepnir/dashboard-nvim'
@@ -25,6 +28,7 @@ return require('packer').startup(function()
     
     use 'prabirshrestha/vim-lsp'
     use 'mattn/vim-lsp-settings'
+    -- use 'nvim-lua/completion-nvim'
     use 'prabirshrestha/asyncomplete.vim'
     use 'prabirshrestha/asyncomplete-lsp.vim'
     use 'Shougo/deoplete.nvim'
@@ -38,4 +42,5 @@ return require('packer').startup(function()
     use 'dbeecham/ctrlp-commandpalette.vim'
 
     use 'glepnir/galaxyline.nvim'
+    use 'mhinz/vim-signify'
 end)
