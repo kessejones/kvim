@@ -51,8 +51,9 @@ sections.right[6] = {
             local current_line = vim.fn.line('.')
             local total_lines = vim.fn.line('$')
             local current_column = vim.fn.col('.')
+            local total_columns = vim.fn.col('$')
 
-            return ' '..current_line.. '-'..total_lines..':'..current_column
+            return ' '..current_line.. '-'..total_lines..':'..current_column..'-'..total_columns
         end,
         separator = ' ',
         separator_highlight = { 'NONE', '#00FFFF' },
