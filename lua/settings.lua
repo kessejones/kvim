@@ -5,6 +5,7 @@ local indent = 4
 
 cmd 'syntax enable'
 cmd 'filetype plugin indent on'
+cmd 'au! TabClosed * :tablast'
 
 utils.opt('g', 'showtabline', 2)
 utils.opt('g', 'mouse', 'a')
@@ -20,3 +21,4 @@ utils.opt('w', 'wrap', true)
 utils.opt('w', 'cursorline', true)
 
 utils.opt('o', 'inccommand', 'split')
+
