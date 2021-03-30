@@ -17,7 +17,7 @@ return require('packer').startup(function()
         'nvim-telescope/telescope.nvim',
         requires = {{ 'nvim-lua/popup.nvim' }, {'nvim-lua/plenary.nvim' }}
     }
-    
+
     use 'mhinz/vim-startify'
     -- use 'glepnir/dashboard-nvim'
     
@@ -43,4 +43,7 @@ return require('packer').startup(function()
 
     use 'glepnir/galaxyline.nvim'
     use 'mhinz/vim-signify'
+
+    use 'jwalton512/vim-blade'
+
 end)
