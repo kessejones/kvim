@@ -1,5 +1,0 @@
-
-
-vim.g['NERDTreeMinimalUI'] = true
-
-

@@ -5,7 +5,8 @@ local indent = 4
 
 cmd 'syntax enable'
 cmd 'filetype plugin indent on'
-cmd 'au! TabClosed * :tablast'
+
+vim.cmd 'au! TabClosed * :tablast'
 
 utils.opt('g', 'showtabline', 2)
 utils.opt('g', 'mouse', 'a')

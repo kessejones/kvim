@@ -2,7 +2,7 @@ local utils = require('utils')
 local tree_cb = require('nvim-tree.config').nvim_tree_callback
 
 vim.g.nvim_tree_hide_dotfiles = false
-vim.g.nvim_tree_tab_open = true
+vim.g.nvim_tree_tab_open = false
 vim.g.nvim_tree_auto_open = true
 vim.g.nvim_tree_auto_ignore_ft = 'startify'
 vim.g.nvim_tree_follow = true
