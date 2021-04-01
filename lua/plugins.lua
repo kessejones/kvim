@@ -36,4 +36,6 @@ return require('packer').startup(function()
     use 'mhinz/vim-signify'
     use 'jwalton512/vim-blade'
     use 'jiangmiao/auto-pairs'
+
+    use { 'nvim-treesitter/nvim-treesitter', run = {':TSUpdate'} }
 end)
