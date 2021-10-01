@@ -25,8 +25,11 @@ return require('packer').startup(function()
     use 'Shougo/deoplete.nvim'
     use 'Yggdroot/indentLine'
 
-    use 'kyazdani42/nvim-web-devicons'
-    use 'kyazdani42/nvim-tree.lua'
+    use {
+        'kyazdani42/nvim-tree.lua',
+        requires = 'kyazdani42/nvim-web-devicons',
+        config = function() require'nvim-tree'.setup {} end
+    }
 
     use 'kien/ctrlp.vim'
     use 'dbeecham/ctrlp-commandpalette.vim'
