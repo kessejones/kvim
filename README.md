@@ -1,7 +1,7 @@
 # KVIM
 
 ## Requisitos
-NVIM 0.5 (https://github.com/neovim/neovim/releases/tag/nightly)
+NVIM 0.5 (https://github.com/neovim/neovim/releases/tag/v0.5.1)
 
 ## Instalação
 Execute o comando
