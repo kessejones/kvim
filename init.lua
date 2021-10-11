@@ -6,7 +6,8 @@ local plugins = require'kvim.plugins'
 local plugin_loader = require'kvim.plugin-loader'
 
 boostrap:init()
-plugin_loader:load({ plugins, kvim.plugins })
+
+plugin_loader:load(plugins)
 
 core.init()
 keymappings:init()

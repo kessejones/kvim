@@ -1,7 +1,9 @@
-local plugin_loader = {}
+local M = {
+    packer = nil
+}
 local fn = vim.fn
 
-function plugin_loader:init(opts)
+function M:init(opts)
     opts = opts or {}
 
     local compile_path = '~/.config/nvim/plugins/packer_compiled.lua'
@@ -23,20 +25,18 @@ function plugin_loader:init(opts)
         compile_path = compile_path
     }
 
-    self.packer = packer
+    M.packer = packer
 
-    return self
+    return M
 end
 
-function plugin_loader:load(settings)
-   return self.packer.startup(function(use)
-       for _, plugins in ipairs(settings) do
-            for _, plugin in ipairs(plugins) do
-                use(plugin)
-            end
+function M:load(list)
+   return M.packer.startup(function(use)
+        for _, plugin in pairs(list) do
+            use(plugin)
         end
    end)
 end
 
-return plugin_loader
+return M 
 
