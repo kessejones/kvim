@@ -1,6 +1,13 @@
-require('settings')
-require('plugins')
-require('keymappings')
+local boostrap = require('kvim.bootstrap')
+local core = require'kvim.core'
+local config = require'kvim.config'
+local keymappings = require('kvim.keymappings')
+local plugins = require'kvim.plugins'
+local plugin_loader = require'kvim.plugin-loader'
 
-require('config')
+boostrap:init()
+plugin_loader:load({ plugins, kvim.plugins })
+
+core.init()
+keymappings:init()
 

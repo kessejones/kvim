@@ -1,5 +1,7 @@
 local utils = require('utils')
 
+local M = {  }
+
 local kvim_header = {
     '██╗  ██╗  ██╗   ██╗██╗███╗   ███╗',
     '██║ ██╔╝  ██║   ██║██║████╗ ████║',
@@ -22,13 +24,16 @@ local kvim_lists = {
     }
 }
 
-vim.g.startify_custom_header = utils.center(kvim_header)
-vim.g.startify_custom_footer = utils.center(kvim_footer)
-vim.g.startify_lists = kvim_lists
-vim.g.startify_enable_special = false
-vim.g.startify_session_dir = '~/.config/nvim/session'
-vim.g.startify_session_autoload = true
-vim.g.webdevicons_enable_startify = true
 
+function M:init()
+   vim.g.startify_custom_header = utils.center(kvim_header)
+   vim.g.startify_custom_footer = utils.center(kvim_footer)
+   vim.g.startify_lists = kvim_lists
+   vim.g.startify_enable_special = false
+   vim.g.startify_session_dir = '~/.config/nvim/session'
+   vim.g.startify_session_autoload = true
+   vim.g.webdevicons_enable_startify = true
+end
 
--- vim.cmd 'au! TabNewEntered * Startify'
+return M
+
