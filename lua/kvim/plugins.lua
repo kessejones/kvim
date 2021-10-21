@@ -2,7 +2,8 @@
 return {
     { "wbthomason/packer.nvim" },
 
-    { "ghifarit53/tokyonight-vim" },
+    -- { "ghifarit53/tokyonight-vim" },
+    { 'iCyMind/NeoSolarized' },
     { "mhinz/vim-startify" },
     
     { "liuchengxu/vim-clap" },

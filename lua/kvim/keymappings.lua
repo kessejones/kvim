@@ -1,6 +1,5 @@
 local M = {  }
 
-
 local generic_opts = {
     noremap = true, silent = true,
 }
@@ -15,6 +14,7 @@ local mode_adapter = {
 local default_mappings = {
     insert_mode = {
         ["<C-c>"] = "<ESC>",
+        ["<C-s>"] = "<ESC>:w<CR>",
     },
     normal_mode = {
         ["<Space>"] = "<NOP>",

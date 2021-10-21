@@ -1,5 +1,6 @@
 local M = {
-    packer = nil
+    packer = nil,
+    packer_bootstrap = nil
 }
 local fn = vim.fn
 
@@ -11,8 +12,7 @@ function M:init(opts)
     local root_path = fn.stdpath('data')..'/site/pack'
 
     if fn.empty(fn.glob(install_path)) > 0 then
-        fn.system({ 'git', 'clone', 'https://github.com/wbthomason/packer.nvim', install_path })
-        vim.cmd 'packadd packer.nvim'
+        M.packer_bootstrap = fn.system({ 'git', 'clone', 'https://github.com/wbthomason/packer.nvim', install_path })
     end
 
     local packer_ok, packer = pcall(require, 'packer')
@@ -31,11 +31,22 @@ function M:init(opts)
 end
 
 function M:load(list)
-   return M.packer.startup(function(use)
+   return M.packer.startup({function(use)
         for _, plugin in pairs(list) do
             use(plugin)
         end
-   end)
+        if M.packer_bootstrap then
+            M.packer.sync()
+        end
+    end,
+    config = {
+        display = {
+            open_fn = function()
+                return require('packer.util').float({ border = 'single' })
+            end
+        }
+    }
+   })
 end
 
 return M 
