@@ -2,11 +2,15 @@ local M = {  }
 local settings = require('kvim.config.settings')
 
 function M:init()
-    local scheme_name = "NeoSolarized"
-    if M:scheme_exists(scheme_name) then 
+    vim.g.tokyonight_style = "night"
+    vim.g.tokyonight_enable_italic = true
+
+    local scheme_name = "tokyonight"
+    if not vim.fn.has('mac') then
         settings:set("termguicolors", true)
-        settings:cmd("colorscheme", scheme_name)
     end
+
+    settings:cmd("colorscheme", scheme_name)
 end
 
 function M:scheme_exists(scheme)
