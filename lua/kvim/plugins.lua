@@ -2,6 +2,7 @@
 return {
     { "wbthomason/packer.nvim" },
 
+    { "joshdick/onedark.vim" },
     { "ghifarit53/tokyonight-vim" },
     { "mhinz/vim-startify" },
     
