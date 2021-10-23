@@ -97,6 +97,10 @@ end
 function M:init()
     vim.g.mapleader = ' '
     M:load(default_mappings)
+
+    -- may be remove this 
+    vim.cmd("au VimEnter * silent! !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'")
+    vim.cmd("au VimLeave * silent! !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Caps_Lock'")
 end
 
 return M
