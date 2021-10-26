@@ -28,4 +28,6 @@ return {
     { "jiangmiao/auto-pairs" },
 
     { "nvim-treesitter/nvim-treesitter", run = {":TSUpdate"} }, 
+    { "prettier/vim-prettier", run = { "yarn install"}},
+    { "sbdchd/neoformat" },
 }

@@ -6,8 +6,11 @@ function M:init()
             enable = true
         },
         indent = {
-            enable = true
-        }
+            enable = false,
+        },
+        rainbow = {
+            enable = true,
+        },
     }
 end
 

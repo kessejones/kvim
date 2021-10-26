@@ -7,6 +7,7 @@ local modules = {
     "kvim.core.identline",
     "kvim.core.commentary",
     "kvim.core.treesitter",
+    "kvim.core.prittier",
 }
 
 function M:init()

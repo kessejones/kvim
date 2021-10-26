@@ -31,7 +31,7 @@ local default_mappings = {
 
         -- Altenate shortcut to save
         ["<C-s>"] = ":w<CR>",
-        ["<C-w>"] = ":x!<CR>",
+        -- ["<C-w>"] = ":x!<CR>",
         ["<C-q>"] = ":q<CR>",
         ["<C-c>"] = "<ESC>",
 
