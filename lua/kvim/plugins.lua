@@ -5,7 +5,6 @@ return {
     { "joshdick/onedark.vim" },
     { "ghifarit53/tokyonight-vim" },
     { "mhinz/vim-startify" },
-    
     { "liuchengxu/vim-clap" },
     { "tpope/vim-commentary" },
     { "prabirshrestha/vim-lsp" },
@@ -17,6 +16,9 @@ return {
     {
         "kyazdani42/nvim-tree.lua",
         requires = "kyazdani42/nvim-web-devicons",
+        config = function()
+            require'kvim.core.nvimtree':init()
+        end
     },
 
     { "kien/ctrlp.vim" },
