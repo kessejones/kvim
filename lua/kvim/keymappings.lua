@@ -31,7 +31,6 @@ local default_mappings = {
 
         -- Altenate shortcut to save
         ["<C-s>"] = ":w<CR>",
-        -- ["<C-w>"] = ":x!<CR>",
         ["<C-q>"] = ":q<CR>",
         ["<C-c>"] = "<ESC>",
 
@@ -62,6 +61,7 @@ local default_mappings = {
         
         ['<Leader>v'] = ":vsplit<CR>",
         ['<Leader>h'] = ":sv<CR>",
+        ['<Leader>m'] = ":MaximizerToggle<CR>"
     },
     visual_mode = {
         ["<S-u>"] = "<ESC>viwUi",
@@ -98,9 +98,13 @@ function M:init()
     vim.g.mapleader = ' '
     M:load(default_mappings)
 
+    vim.cmd[[inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"]]
+    vim.cmd[[inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"]]
+    vim.cmd[[inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"]]
+
     -- may be remove this 
-    vim.cmd("au VimEnter * silent! !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'")
-    vim.cmd("au VimLeave * silent! !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Caps_Lock'")
+    -- vim.cmd("au VimEnter * silent! !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'")
+    -- vim.cmd("au VimLeave * silent! !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Caps_Lock'")
 end
 
 return M

@@ -21,7 +21,7 @@ function M:init()
     sections.left[2] = {
         GitIcon = {
             provider = function()
-                return ''
+                return ''
             end,
             condition = condition.check_git_workspace,
             separator = ' ',

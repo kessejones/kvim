@@ -1,6 +1,8 @@
 
 return {
     { "wbthomason/packer.nvim" },
+   
+    { "elixir-editors/vim-elixir" },
 
     { "joshdick/onedark.vim" },
     { "ghifarit53/tokyonight-vim" },
@@ -32,4 +34,8 @@ return {
     { "nvim-treesitter/nvim-treesitter", run = {":TSUpdate"} }, 
     { "prettier/vim-prettier", run = { "yarn install"}},
     { "sbdchd/neoformat" },
+
+    { 'szw/vim-maximizer' },
+    { 'tpope/vim-surround' },
+    { 'terryma/vim-multiple-cursors' },
 }

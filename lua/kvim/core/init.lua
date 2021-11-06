@@ -8,6 +8,7 @@ local modules = {
     "kvim.core.commentary",
     "kvim.core.treesitter",
     "kvim.core.prittier",
+    "kvim.core.lsp",
 }
 
 function M:init()

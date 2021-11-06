@@ -1,6 +1,10 @@
 local M = {  }
 
 local default_settings = {
+    ai = true,
+    si = true,
+    lazyredraw = true,
+    smarttab = true,
     backup = false,
     clipboard = 'unnamedplus',
     hlsearch = true,
@@ -25,7 +29,7 @@ local default_settings = {
     scrolloff = 5,
     sidescrolloff = 5,
     guifont = "monospace:h17",
-    cursorline = true
+    cursorline = true,
 }
 
 function M:set(key, value)
