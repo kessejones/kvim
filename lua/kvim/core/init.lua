@@ -9,6 +9,7 @@ local modules = {
     "kvim.core.treesitter",
     "kvim.core.prittier",
     "kvim.core.lsp",
+    "kvim.core.ctrlp",
 }
 
 function M:init()

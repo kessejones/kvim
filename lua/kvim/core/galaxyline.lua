@@ -1,5 +1,4 @@
 local gl = require('galaxyline')
-
 local M = {  }
 
 function M:init()

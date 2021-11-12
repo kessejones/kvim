@@ -6,7 +6,7 @@ function M:init()
             -- enable = true
         },
         indent = {
-            enable = false,
+            enable = true,
         },
         rainbow = {
             enable = true,
