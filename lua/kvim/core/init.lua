@@ -10,6 +10,7 @@ local modules = {
     "kvim.core.prittier",
     "kvim.core.lsp",
     "kvim.core.ctrlp",
+    "kvim.core.phpcsfixer",
 }
 
 function M:init()

@@ -35,4 +35,6 @@ return {
     { 'szw/vim-maximizer' },
     { 'tpope/vim-surround' },
     { 'terryma/vim-multiple-cursors' },
+
+    { "stephpy/vim-php-cs-fixer" },
 }
