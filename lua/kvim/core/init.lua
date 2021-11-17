@@ -11,6 +11,7 @@ local modules = {
     "kvim.core.lsp",
     "kvim.core.ctrlp",
     "kvim.core.phpcsfixer",
+    "kvim.core.gitinfo",
 }
 
 function M:init()
