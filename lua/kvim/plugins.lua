@@ -1,6 +1,8 @@
 
 return {
     { "wbthomason/packer.nvim" },
+
+    { 'kessejones/git-blame-line.nvim' },
    
     { "elixir-editors/vim-elixir" },
 
