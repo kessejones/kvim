@@ -3,7 +3,7 @@ local M = {  }
 local modules = {
     "kvim.core.nvimtree",
     "kvim.core.startify",
-    "kvim.core.galaxyline",
+    -- "kvim.core.galaxyline",
     "kvim.core.identline",
     "kvim.core.commentary",
     "kvim.core.treesitter",

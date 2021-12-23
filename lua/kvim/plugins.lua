@@ -3,6 +3,7 @@ return {
     { "wbthomason/packer.nvim" },
 
     { 'kessejones/git-blame-line.nvim' },
+    { 'rebelot/kanagawa.nvim' },
    
     { "elixir-editors/vim-elixir" },
 
@@ -25,7 +26,7 @@ return {
 
     { "kien/ctrlp.vim" },
 
-    { "glepnir/galaxyline.nvim" },
+    -- { "glepnir/galaxyline.nvim" },
     { "mhinz/vim-signify" },
     { "jwalton512/vim-blade" },
     -- { "jiangmiao/auto-pairs" },
