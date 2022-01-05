@@ -5,19 +5,22 @@ function M:init()
     require('kanagawa').setup({
         undercurl = true,           -- enable undercurls
         commentStyle = "italic",
-        functionStyle = "NONE",
+        functionStyle = "italic",
         keywordStyle = "italic",
-        statementStyle = "bold",
+        statementStyle = "italic",
         typeStyle = "NONE",
         variablebuiltinStyle = "italic",
         specialReturn = true,       -- special highlight for the return keyword
         specialException = true,    -- special highlight for exception handling keywords 
-        transparent = false,        -- do not set background color
+        transparent = true,        -- do not set background color
         colors = {},
         overrides = {},
     })
 
     local scheme_name = "kanagawa"
+    if not M:scheme_exists(scheme_name) then
+        return
+    end
     -- settings:set("termguicolors", true)
     -- vim.g.onedark_terminal_italics = 2
     settings:cmd("colorscheme", scheme_name)
