@@ -29,7 +29,6 @@ local default_settings = {
     scrolloff = 5,
     sidescrolloff = 5,
     guifont = "monospace:h17",
-    cursorline = true,
     wildmenu = true,
     incsearch = true,
 }

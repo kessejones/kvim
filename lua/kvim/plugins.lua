@@ -5,6 +5,7 @@ return {
     { 'kessejones/git-blame-line.nvim' },
    
     { "elixir-editors/vim-elixir" },
+    { 'mg979/vim-visual-multi' },
 
     { "joshdick/onedark.vim" },
     { "ghifarit53/tokyonight-vim" },
