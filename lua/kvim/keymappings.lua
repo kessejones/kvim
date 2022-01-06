@@ -44,12 +44,14 @@ local default_mappings = {
         -- ["<S-d>"] = "<ESC>yyp",
 
         -- Set uppercase
-        ["<S-u>"] = "<ESC>viwUi",
-        ["<S-u>"] = "viwUi<ESC>",
+        -- ["<S-u>"] = "<ESC>viwUi",
+        -- ["<S-u>"] = "viwUi<ESC>",
 
         -- Set lowercase
-        ["<S-l>"] = "<ESC>viwu",
-        ["<S-l>"] = "viwu<ESC>",
+        -- ["<S-l>"] = "<ESC>viwu",
+        -- ["<S-l>"] = "viwu<ESC>",
+        ['<S-l>'] = ':bn<CR>',
+        ['<S-h>'] = ':bp<CR>',
 
         ["<C-h>"] = "<ESC>:%s/",
         ["<Leader>v"] = ":vsplit<CR>",
@@ -71,6 +73,8 @@ local default_mappings = {
         ["<"] = "<gv",
         [">"] = ">gv",
         ["<C-c>"] = "<ESC>",
+        ['<C-j>'] = ":m '>+1<CR>gv=gv",
+        ['<C-k>'] = ":m '<-2<CR>gv=gv",
     },
     visual_block_mode = {
         ["<C-c>"] = "<ESC>",
