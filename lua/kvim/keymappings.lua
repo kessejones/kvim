@@ -15,6 +15,7 @@ local default_mappings = {
     insert_mode = {
         ["<C-c>"] = "<ESC>",
         ["<C-s>"] = "<ESC>:w<CR>",
+        ["jk"] = "<ESC>",
     },
     normal_mode = {
         ["<Space>"] = "<NOP>",
@@ -58,8 +59,6 @@ local default_mappings = {
         ["<Leader>h"] = ":sv<CR>",
 
         ["<ESC>"] = ":noh<CR>",
-
-        ["<C-s>"] = ":w<CR>",
         
         ['<Leader>v'] = ":vsplit<CR>",
         ['<Leader>h'] = ":sv<CR>",
