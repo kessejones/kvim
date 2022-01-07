@@ -86,7 +86,7 @@ function M:init()
 
     keymappings:load {
         normal_mode = {
-            ["<C-b>"] = ":NvimTreeToggle<CR>"
+            ["<C-g>"] = ":NvimTreeToggle<CR>"
         }
     }
 end
