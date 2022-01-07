@@ -25,8 +25,10 @@ return {
     },
 
     { "kien/ctrlp.vim" },
-
-    { "glepnir/galaxyline.nvim" },
+    { 
+        "nvim-lualine/lualine.nvim", 
+        requires = { 'kyazdani42/nvim-web-devicons', opt = true }, 
+    },
     { "mhinz/vim-signify" },
     { "jwalton512/vim-blade" },
     { "jiangmiao/auto-pairs" },

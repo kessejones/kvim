@@ -3,7 +3,6 @@ local M = {  }
 local modules = {
     "kvim.core.nvimtree",
     "kvim.core.startify",
-    "kvim.core.galaxyline",
     "kvim.core.identline",
     "kvim.core.commentary",
     "kvim.core.treesitter",
@@ -12,6 +11,7 @@ local modules = {
     "kvim.core.ctrlp",
     "kvim.core.phpcsfixer",
     "kvim.core.git-blame-line",
+    "kvim.core.lualine",
 }
 
 function M:init()
