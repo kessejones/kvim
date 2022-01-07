@@ -9,7 +9,6 @@ return {
     { 'mg979/vim-visual-multi' },
     { 'tpope/vim-fugitive' },
 
-    { "ghifarit53/tokyonight-vim" },
     { "mhinz/vim-startify" },
     { "tpope/vim-commentary" },
     { "prabirshrestha/vim-lsp" },
