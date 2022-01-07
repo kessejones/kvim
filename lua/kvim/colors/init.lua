@@ -2,21 +2,6 @@ local M = {  }
 local settings = require('kvim.config.settings')
 
 function M:init()
-    require('kanagawa').setup({
-        undercurl = true,
-        commentStyle = "italic",
-        functionStyle = "italic",
-        keywordStyle = "italic",
-        statementStyle = "italic",
-        typeStyle = "NONE",
-        variablebuiltinStyle = "italic",
-        specialReturn = true,
-        specialException = true,
-        transparent = false,
-        colors = {},
-        overrides = {},
-    })
-
     local scheme_name = "kanagawa"
 
     if vim.fn.has('termguicolors') then
@@ -24,7 +9,22 @@ function M:init()
     end
 
     if M:scheme_exists(scheme_name) then
-        settings:cmd("colorscheme", scheme_name)
+        require('kanagawa').setup({
+            undercurl = true,
+            commentstyle = "italic",
+            functionstyle = "italic",
+            keywordstyle = "italic",
+            statementstyle = "italic",
+            typestyle = "none",
+            variablebuiltinStyle = "italic",
+            specialReturn = true,
+            specialException = true,
+            transparent = false,
+            colors = {},
+            overrides = {},
+        })
+
+       settings:cmd("colorscheme", scheme_name)
     end
 end
 
