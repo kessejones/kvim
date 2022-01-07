@@ -1,11 +1,11 @@
 
 return {
     { "wbthomason/packer.nvim" },
-
     { 'kessejones/git-blame-line.nvim' },
-   
+
     { "elixir-editors/vim-elixir" },
     { 'mg979/vim-visual-multi' },
+    { 'tpope/vim-fugitive' },
 
     { "joshdick/onedark.vim" },
     { "ghifarit53/tokyonight-vim" },
@@ -29,7 +29,7 @@ return {
     { "glepnir/galaxyline.nvim" },
     { "mhinz/vim-signify" },
     { "jwalton512/vim-blade" },
-    -- { "jiangmiao/auto-pairs" },
+    { "jiangmiao/auto-pairs" },
 
     { "nvim-treesitter/nvim-treesitter", run = {":TSUpdate"} }, 
     { "prettier/vim-prettier", run = { "yarn install"}},

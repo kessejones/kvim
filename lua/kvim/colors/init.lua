@@ -3,9 +3,16 @@ local settings = require('kvim.config.settings')
 
 function M:init()
     local scheme_name = "onedark"
-    settings:set("termguicolors", true)
-    vim.g.onedark_terminal_italics = 2
-    settings:cmd("colorscheme", scheme_name)
+
+    if vim.fn.has('termguicolors') then
+        settings:set("termguicolors", true)
+    end
+
+    vim.g.onedark_terminal_italics = 1
+
+    if M:scheme_exists(scheme_name) then
+        settings:cmd("colorscheme", scheme_name)
+    end
 end
 
 function M:scheme_exists(scheme)
