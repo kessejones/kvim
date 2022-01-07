@@ -12,7 +12,7 @@ function M:init()
         variablebuiltinStyle = "italic",
         specialReturn = true,
         specialException = true,
-        transparent = true,
+        transparent = false,
         colors = {},
         overrides = {},
     })
