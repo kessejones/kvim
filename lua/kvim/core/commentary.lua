@@ -12,7 +12,6 @@ function M:init()
     }
 
     keymappings:load(default_mappings)
-
 end
 
 return M

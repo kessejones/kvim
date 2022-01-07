@@ -1,13 +1,14 @@
 
 return {
     { "wbthomason/packer.nvim" },
-
     { 'kessejones/git-blame-line.nvim' },
+
     { 'rebelot/kanagawa.nvim' },
    
     { "elixir-editors/vim-elixir" },
+    { 'mg979/vim-visual-multi' },
+    { 'tpope/vim-fugitive' },
 
-    { "joshdick/onedark.vim" },
     { "ghifarit53/tokyonight-vim" },
     { "mhinz/vim-startify" },
     { "tpope/vim-commentary" },
@@ -25,11 +26,13 @@ return {
     },
 
     { "kien/ctrlp.vim" },
-
-    -- { "glepnir/galaxyline.nvim" },
+    { 
+        "nvim-lualine/lualine.nvim", 
+        requires = { 'kyazdani42/nvim-web-devicons', opt = true }, 
+    },
     { "mhinz/vim-signify" },
     { "jwalton512/vim-blade" },
-    -- { "jiangmiao/auto-pairs" },
+    { "jiangmiao/auto-pairs" },
 
     { "nvim-treesitter/nvim-treesitter", run = {":TSUpdate"} }, 
     { "prettier/vim-prettier", run = { "yarn install"}},

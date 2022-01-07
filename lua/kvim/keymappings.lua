@@ -15,6 +15,7 @@ local default_mappings = {
     insert_mode = {
         ["<C-c>"] = "<ESC>",
         ["<C-s>"] = "<ESC>:w<CR>",
+        ["jk"] = "<ESC>",
     },
     normal_mode = {
         ["<Space>"] = "<NOP>",
@@ -44,20 +45,20 @@ local default_mappings = {
         -- ["<S-d>"] = "<ESC>yyp",
 
         -- Set uppercase
-        ["<S-u>"] = "<ESC>viwUi",
-        ["<S-u>"] = "viwUi<ESC>",
+        -- ["<S-u>"] = "<ESC>viwUi",
+        -- ["<S-u>"] = "viwUi<ESC>",
 
         -- Set lowercase
-        ["<S-l>"] = "<ESC>viwu",
-        ["<S-l>"] = "viwu<ESC>",
+        -- ["<S-l>"] = "<ESC>viwu",
+        -- ["<S-l>"] = "viwu<ESC>",
+        ['<S-l>'] = ':bn<CR>',
+        ['<S-h>'] = ':bp<CR>',
 
         ["<C-h>"] = "<ESC>:%s/",
         ["<Leader>v"] = ":vsplit<CR>",
         ["<Leader>h"] = ":sv<CR>",
 
         ["<ESC>"] = ":noh<CR>",
-
-        ["<C-s>"] = ":w<CR>",
         
         ['<Leader>v'] = ":vsplit<CR>",
         ['<Leader>h'] = ":sv<CR>",
@@ -71,6 +72,8 @@ local default_mappings = {
         ["<"] = "<gv",
         [">"] = ">gv",
         ["<C-c>"] = "<ESC>",
+        ['<C-j>'] = ":m '>+1<CR>gv=gv",
+        ['<C-k>'] = ":m '<-2<CR>gv=gv",
     },
     visual_block_mode = {
         ["<C-c>"] = "<ESC>",
@@ -101,10 +104,6 @@ function M:init()
     vim.cmd[[inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"]]
     vim.cmd[[inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"]]
     vim.cmd[[inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"]]
-
-    -- may be remove this 
-    -- vim.cmd("au VimEnter * silent! !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'")
-    -- vim.cmd("au VimLeave * silent! !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Caps_Lock'")
 end
 
 return M

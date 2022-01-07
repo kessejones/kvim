@@ -29,7 +29,8 @@ local default_settings = {
     scrolloff = 5,
     sidescrolloff = 5,
     guifont = "monospace:h17",
-    cursorline = true,
+    wildmenu = true,
+    incsearch = true,
 }
 
 function M:set(key, value)
@@ -45,6 +46,8 @@ function M:init()
     for key, value in pairs(default_settings) do 
         M:set(key, value)
     end
+
+    vim.cmd[[set path+=**]]
 end
 
 return M
