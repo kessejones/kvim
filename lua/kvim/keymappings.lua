@@ -62,7 +62,9 @@ local default_mappings = {
         
         ['<Leader>v'] = ":vsplit<CR>",
         ['<Leader>h'] = ":sv<CR>",
-        ['<Leader>m'] = ":MaximizerToggle<CR>"
+        ['<Leader>m'] = ":MaximizerToggle<CR>",
+        ['<Leader>gg'] = ":G<CR>",
+        ['<Leader>gc'] = ":G commit<CR>",
     },
     visual_mode = {
         ["<S-u>"] = "<ESC>viwUi",
