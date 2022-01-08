@@ -37,6 +37,7 @@ local default_mappings = {
         -- Save file
         ["<C-s>"] = ":w<CR>",
         ["<Leader>ss"] = ":w<CR>",
+        ["<Leader>sq"] = ":wq<CR>",
         
         -- Quit buffer
         ["<C-q>"] = ":q<CR>",
