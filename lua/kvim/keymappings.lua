@@ -56,6 +56,7 @@ local default_mappings = {
         -- Next/Previous buffer
         ['<S-l>'] = ':bn<CR>',
         ['<S-h>'] = ':bp<CR>',
+        ['<Leader>bq'] = ':bdelete<CR>',
 
         ["<C-h>"] = "<ESC>:%s/",
 
