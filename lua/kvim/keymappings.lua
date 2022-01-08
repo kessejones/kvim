@@ -13,12 +13,16 @@ local mode_adapter = {
 
 local default_mappings = {
     insert_mode = {
-        ["<C-c>"] = "<ESC>",
+        -- Save file
         ["<C-s>"] = "<ESC>:w<CR>",
+        -- ESC helper
+        ["<C-c>"] = "<ESC>",
         ["jk"] = "<ESC>",
     },
     normal_mode = {
         ["<Space>"] = "<NOP>",
+
+        -- Tabs
         ["<C-t>"] = ":tabnew<CR>",
         ["<Leader>1"] = ":tabn 1<CR>",
         ["<Leader>2"] = ":tabn 2<CR>",
@@ -30,50 +34,59 @@ local default_mappings = {
         ["<Leader>8"] = ":tabn 8<CR>",
         ["<Leader>9"] = ":tabn 9<CR>",
 
-        -- Altenate shortcut to save
+        -- Save file
         ["<C-s>"] = ":w<CR>",
+        ["<Leader>ss"] = ":w<CR>",
+        
+        -- Quit buffer
         ["<C-q>"] = ":q<CR>",
+        ['<Leader>q'] = ":q<CR>",
         ["<C-c>"] = "<ESC>",
 
         -- Navigate in windows
-        ["<C-Left>"] = "<C-w>h",
-        ["<C-Down>"] = "<C-w>j",
-        ["<C-Up>"] = "<C-w>k",
-        ["<C-Right>"] = "<C-w>l",
+        ["<Leader>wh"] = "<C-w>h",
+        ["<Leader>wj"] = "<C-w>j",
+        ["<Leader>wk"] = "<C-w>k",
+        ["<Leader>wl"] = "<C-w>l",
 
         -- Duplicate lines
-        -- ["<S-d>"] = "<ESC>yyp",
+        ["<Leader>y"] = "<ESC>yyp",
 
-        -- Set uppercase
-        -- ["<S-u>"] = "<ESC>viwUi",
-        -- ["<S-u>"] = "viwUi<ESC>",
-
-        -- Set lowercase
-        -- ["<S-l>"] = "<ESC>viwu",
-        -- ["<S-l>"] = "viwu<ESC>",
+        -- Next/Previous buffer
         ['<S-l>'] = ':bn<CR>',
         ['<S-h>'] = ':bp<CR>',
 
         ["<C-h>"] = "<ESC>:%s/",
-        ["<Leader>v"] = ":vsplit<CR>",
-        ["<Leader>h"] = ":sv<CR>",
+
+        -- Split window
+        ["<Leader>sv"] = ":vsplit<CR>",
+        ["<Leader>sh"] = ":sv<CR>",
 
         ["<ESC>"] = ":noh<CR>",
-        
-        ['<Leader>v'] = ":vsplit<CR>",
-        ['<Leader>h'] = ":sv<CR>",
+
+
+        --          plugins
+        -- Maximizer
         ['<Leader>m'] = ":MaximizerToggle<CR>",
+        -- Git fugitive
         ['<Leader>gg'] = ":G<CR>",
         ['<Leader>gc'] = ":G commit<CR>",
+        ['<Leader>gs'] = ":G stash<CR>",
+        ['<Leader>gd'] = ":G diff<CR>",
+
     },
     visual_mode = {
         ["<S-u>"] = "<ESC>viwUi",
         ["<S-u>"] = "<ESC>viwUi",
         ["<S-l>"] = "viwu<ESC>",
         ["<S-l>"] = "viwu<ESC>",
+
+        -- Indent
         ["<"] = "<gv",
         [">"] = ">gv",
         ["<C-c>"] = "<ESC>",
+
+        -- Move up/down selected text
         ['<C-j>'] = ":m '>+1<CR>gv=gv",
         ['<C-k>'] = ":m '<-2<CR>gv=gv",
     },
