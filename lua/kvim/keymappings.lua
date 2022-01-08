@@ -75,6 +75,8 @@ local default_mappings = {
         ['<Leader>gc'] = ":G commit<CR>",
         ['<Leader>gs'] = ":G stash<CR>",
         ['<Leader>gd'] = ":G diff<CR>",
+        ['<Leader>gpl'] = ":G pull<CR>",
+        ['<Leader>gps'] = ":G push<CR>",
 
     },
     visual_mode = {
