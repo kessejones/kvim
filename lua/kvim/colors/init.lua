@@ -4,7 +4,7 @@ local settings = require('kvim.config.settings')
 function M:init()
     local scheme_name = "kanagawa"
 
-    if vim.fn.has('termguicolors') then
+    if not vim.fn.has('macunix') and vim.fn.has('termguicolors') then
         settings:set("termguicolors", true)
     end
 
