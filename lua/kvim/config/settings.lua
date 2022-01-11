@@ -31,6 +31,7 @@ local default_settings = {
     guifont = "monospace:h17",
     wildmenu = true,
     incsearch = true,
+    path = vim.o.path..'**',
 }
 
 function M:set(key, value)
@@ -46,8 +47,6 @@ function M:init()
     for key, value in pairs(default_settings) do 
         M:set(key, value)
     end
-
-    vim.cmd[[set path+=**]]
 end
 
 return M
