@@ -24,6 +24,7 @@ local default_mappings = {
 
         -- Tabs
         ["<C-t>"] = ":tabnew<CR>",
+        ["<Leader>tt"] = ":tabnew<CR>",
         ["<Leader>1"] = ":tabn 1<CR>",
         ["<Leader>2"] = ":tabn 2<CR>",
         ["<Leader>3"] = ":tabn 3<CR>",
@@ -38,6 +39,7 @@ local default_mappings = {
         ["<C-s>"] = ":w<CR>",
         ["<Leader>ss"] = ":w<CR>",
         ["<Leader>sq"] = ":wq<CR>",
+        ["<Leader>cc"] = ":close<CR>",
         
         -- Quit buffer
         ["<C-q>"] = ":q<CR>",
@@ -84,18 +86,19 @@ local default_mappings = {
         ["<S-u>"] = "<ESC>viwUi",
         ["<S-l>"] = "viwu<ESC>",
         ["<S-l>"] = "viwu<ESC>",
-
         -- Indent
         ["<"] = "<gv",
         [">"] = ">gv",
         ["<C-c>"] = "<ESC>",
 
+        ["<Leader>cc"] = ":close<CR>",
         -- Move up/down selected text
         ['<C-j>'] = ":m '>+1<CR>gv=gv",
         ['<C-k>'] = ":m '<-2<CR>gv=gv",
     },
     visual_block_mode = {
         ["<C-c>"] = "<ESC>",
+        ["<Leader>cc"] = ":close<CR>",
     }
 }
 
