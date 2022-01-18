@@ -39,7 +39,7 @@ local default_mappings = {
         ["<C-s>"] = ":w<CR>",
         ["<Leader>ss"] = ":w<CR>",
         ["<Leader>sq"] = ":wq<CR>",
-        ["<Leader>cc"] = ":close<CR>",
+        ["<Leader>cc"] = ":bdelete<CR>",
         
         -- Quit buffer
         ["<C-q>"] = ":q<CR>",
