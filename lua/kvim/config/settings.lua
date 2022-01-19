@@ -32,6 +32,7 @@ local default_settings = {
     wildmenu = true,
     incsearch = true,
     path = vim.o.path..'**',
+    conceallevel = 0
 }
 
 function M:set(key, value)
