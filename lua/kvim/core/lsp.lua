@@ -30,6 +30,9 @@ local servers = {
     html = { },
     css = { },
     intelephense = { },
+    elixirls = {
+        cmd = { vim.fn.expand('$HOME') .. "/.local/bin/elixir-ls" }
+    }
 }
 
 function M:init()
