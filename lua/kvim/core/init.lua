@@ -8,6 +8,7 @@ local modules = {
     "kvim.core.treesitter",
     "kvim.core.prittier",
     "kvim.core.lsp",
+    "kvim.core.cmp",
     "kvim.core.ctrlp",
     "kvim.core.phpcsfixer",
     "kvim.core.git-blame-line",

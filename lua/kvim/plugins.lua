@@ -1,5 +1,5 @@
 
-return {
+    return {
     { "wbthomason/packer.nvim" },
     { 'kessejones/git-blame-line.nvim' },
 
@@ -12,10 +12,15 @@ return {
 
     { "mhinz/vim-startify" },
     { "tpope/vim-commentary" },
-    { "prabirshrestha/vim-lsp" },
-    { "mattn/vim-lsp-settings" },
-    { "prabirshrestha/asyncomplete.vim" },
-    { "prabirshrestha/asyncomplete-lsp.vim" },
+
+    { 'onsails/lspkind-nvim' },
+    { 'saadparwaiz1/cmp_luasnip' },
+    { 'neovim/nvim-lspconfig' },
+    { 'hrsh7th/nvim-cmp' },
+    { 'hrsh7th/cmp-path' },
+    { 'hrsh7th/cmp-nvim-lsp' },
+    { 'hrsh7th/cmp-nvim-lua' },
+    { 'hrsh7th/cmp-buffer' },
     {
         "kyazdani42/nvim-tree.lua",
         requires = "kyazdani42/nvim-web-devicons",

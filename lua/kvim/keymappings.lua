@@ -133,9 +133,9 @@ function M:init()
     vim.g.mapleader = ' '
     M:load(default_mappings)
 
-    vim.cmd[[inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"]]
-    vim.cmd[[inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"]]
-    vim.cmd[[inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"]]
+    -- vim.cmd[[inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"]]
+    -- vim.cmd[[inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"]]
+    -- vim.cmd[[inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"]]
 end
 
 return M

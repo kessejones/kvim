@@ -32,9 +32,9 @@ local default_settings = {
     path = vim.o.path..'**',
     conceallevel = 0,
     list = true,
-    updatetime = 300,
     timeoutlen = 300,
     ttyfast = true,
+    completeopt='menu,menuone,noselect',
 }
 
 function M:set(key, value)
