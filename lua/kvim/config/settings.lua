@@ -32,7 +32,8 @@ local default_settings = {
     wildmenu = true,
     incsearch = true,
     path = vim.o.path..'**',
-    conceallevel = 0
+    conceallevel = 0,
+    list = true
 }
 
 function M:set(key, value)
@@ -45,6 +46,8 @@ end
 
 function M:init()
     vim.opt.shortmess:append "c"
+    vim.opt.listchars:append("eol:↴")
+
     for key, value in pairs(default_settings) do 
         M:set(key, value)
     end

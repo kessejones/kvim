@@ -4,7 +4,8 @@ return {
     { 'kessejones/git-blame-line.nvim' },
 
     { 'rebelot/kanagawa.nvim' },
-   
+    { 'lukas-reineke/indent-blankline.nvim' },
+
     { "elixir-editors/vim-elixir" },
     { 'mg979/vim-visual-multi' },
     { 'tpope/vim-fugitive' },
@@ -15,7 +16,6 @@ return {
     { "mattn/vim-lsp-settings" },
     { "prabirshrestha/asyncomplete.vim" },
     { "prabirshrestha/asyncomplete-lsp.vim" },
-    { "Yggdroot/indentLine" },
     {
         "kyazdani42/nvim-tree.lua",
         requires = "kyazdani42/nvim-web-devicons",

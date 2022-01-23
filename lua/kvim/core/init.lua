@@ -3,8 +3,8 @@ local M = {  }
 local modules = {
     "kvim.core.nvimtree",
     "kvim.core.startify",
-    "kvim.core.identline",
     "kvim.core.commentary",
+    "kvim.core.indent-blankline",
     "kvim.core.treesitter",
     "kvim.core.prittier",
     "kvim.core.lsp",

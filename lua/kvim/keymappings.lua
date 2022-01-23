@@ -18,6 +18,9 @@ local default_mappings = {
         -- ESC helper
         ["<C-c>"] = "<ESC>",
         ["jk"] = "<ESC>",
+        ["kj"] = "<ESC>",
+        ['<C-j>'] = "<ESC>:m .+1<CR>==gi",
+        ['<C-k>'] = "<ESC>:m .-2<CR>==gi",
     },
     normal_mode = {
         ["<Space>"] = "<NOP>",
@@ -95,10 +98,14 @@ local default_mappings = {
         -- Move up/down selected text
         ['<C-j>'] = ":m '>+1<CR>gv=gv",
         ['<C-k>'] = ":m '<-2<CR>gv=gv",
+        ["jk"] = "<ESC>",
+        ["kj"] = "<ESC>",
     },
     visual_block_mode = {
         ["<C-c>"] = "<ESC>",
         ["<Leader>cc"] = ":close<CR>",
+        ["jk"] = "<ESC>",
+        ["kj"] = "<ESC>",
     }
 }
 
