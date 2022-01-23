@@ -33,7 +33,9 @@ local default_settings = {
     incsearch = true,
     path = vim.o.path..'**',
     conceallevel = 0,
-    list = true
+    list = true,
+    updatetime = 300,
+    timeoutlen = 300,
 }
 
 function M:set(key, value)
