@@ -1,8 +1,6 @@
 local M = {  }
 
 local default_settings = {
-    ai = true,
-    si = true,
     lazyredraw = true,
     smarttab = true,
     backup = false,
@@ -36,6 +34,7 @@ local default_settings = {
     list = true,
     updatetime = 300,
     timeoutlen = 300,
+    ttyfast = true,
 }
 
 function M:set(key, value)
@@ -50,6 +49,11 @@ function M:init()
     vim.opt.shortmess:append "c"
     vim.opt.listchars:append("eol:↴")
 
+    vim.opt.wildignore:append("**/node_modules/*")
+    vim.opt.wildignore:append("**/vendor/*")
+    vim.opt.wildignore:append("**/.git/*")
+    vim.opt.wildignore:append("**/coverage/*")
+ 
     for key, value in pairs(default_settings) do 
         M:set(key, value)
     end

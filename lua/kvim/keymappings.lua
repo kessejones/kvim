@@ -9,6 +9,7 @@ local mode_adapter = {
     visual_mode = "v",
     visual_block_mode = "x",
     insert_mode = "i",
+    command_mode = "c",
 }
 
 local default_mappings = {
@@ -37,6 +38,7 @@ local default_mappings = {
         ["<Leader>7"] = ":tabn 7<CR>",
         ["<Leader>8"] = ":tabn 8<CR>",
         ["<Leader>9"] = ":tabn 9<CR>",
+        ['<Leader>tc'] = ':tab sb<CR>',
 
         -- Save file
         ["<C-s>"] = ":w<CR>",
@@ -70,7 +72,9 @@ local default_mappings = {
         ["<Leader>sh"] = ":sv<CR>",
 
         ["<ESC>"] = ":noh<CR>",
-
+        ["<Leader>d"] = '"_d',
+        ["x"] = '"_x',
+        ["<C-a>"] = 'gg<S-v>G',
 
         --          plugins
         -- Maximizer
@@ -82,7 +86,6 @@ local default_mappings = {
         ['<Leader>gd'] = ":G diff<CR>",
         ['<Leader>gpl'] = ":G pull<CR>",
         ['<Leader>gps'] = ":G push<CR>",
-
     },
     visual_mode = {
         ["<S-u>"] = "<ESC>viwUi",
@@ -98,15 +101,15 @@ local default_mappings = {
         -- Move up/down selected text
         ['<C-j>'] = ":m '>+1<CR>gv=gv",
         ['<C-k>'] = ":m '<-2<CR>gv=gv",
-        ["jk"] = "<ESC>",
-        ["kj"] = "<ESC>",
+        -- ["jk"] = "<ESC>",
+        -- ["kj"] = "<ESC>",
     },
     visual_block_mode = {
         ["<C-c>"] = "<ESC>",
         ["<Leader>cc"] = ":close<CR>",
-        ["jk"] = "<ESC>",
-        ["kj"] = "<ESC>",
-    }
+        -- ["jk"] = "<ESC>",
+        -- ["kj"] = "<ESC>",
+    },
 }
 
 function M:set_keymaps(mode, key, val)
