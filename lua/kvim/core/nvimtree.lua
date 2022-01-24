@@ -1,4 +1,4 @@
-local M = {}
+local M = {  }
 
 local keymappings = require('kvim.keymappings')
 
@@ -60,7 +60,7 @@ function M:init()
             width = 30,
             -- height of the window, can be either a number (columns) or a string in `%`, for top or bottom side placement
             height = 30,
-            -- Hide the root path of the current folder on top of the tree 
+            -- Hide the root path of the current folder on top of the tree
             hide_root_folder = false,
             -- side of the tree, can be one of 'left' | 'right' | 'top' | 'bottom'
             side = 'left',
@@ -77,10 +77,10 @@ function M:init()
     }
 
     vim.g.nvim_tree_icon_padding = ' '
-    vim.g.nvim_tree_show_icons = { 
-        git = 1, 
-        folders = 1, 
-        files = 1, 
+    vim.g.nvim_tree_show_icons = {
+        git = 1,
+        folders = 1,
+        files = 1,
         folder_arrows = 0
     }
 

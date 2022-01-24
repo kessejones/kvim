@@ -1,5 +1,4 @@
 local utils = require('utils')
-
 local M = {  }
 
 local kvim_header = {
@@ -14,16 +13,15 @@ local kvim_header = {
 local kvim_footer = {"Kesse Jones"}
 
 local kvim_lists = {
-    { 
-        type = 'dir', 
-        header = {'  Projeto: '..vim.fn.getcwd() } 
+    {
+        type = 'dir',
+        header = {'  Projeto: '..vim.fn.getcwd() }
     },
-    { 
-        type = 'files', 
-        header = {'  Arquivos Recentes'} 
+    {
+        type = 'files',
+        header = {'  Arquivos Recentes'}
     }
 }
-
 
 function M:init()
    vim.g.startify_custom_header = utils.center(kvim_header)

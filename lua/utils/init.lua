@@ -7,5 +7,5 @@ function M.center(values)
     return centered_lines
 end
 
-return M 
+return M
 

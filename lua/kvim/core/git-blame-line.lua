@@ -10,7 +10,7 @@ function M:init()
             ["<S-T>"] = "<cmd>:GitBlameLineToggle<CR>"
         }
     }
-    
+
     keymappings:load(mappings)
 end
 

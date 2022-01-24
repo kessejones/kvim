@@ -15,7 +15,7 @@ function M:init()
             ["<C-p>"] = ":CtrlPCommandPallete<CR>"
         }
     }
-    
+
     keymappings:load(default_mappings)
 end
 

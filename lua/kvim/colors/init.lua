@@ -29,7 +29,7 @@ function M:init()
 end
 
 function M:scheme_exists(scheme)
-    local schemes = vim.fn.getcompletion('', 'color') 
+    local schemes = vim.fn.getcompletion('', 'color')
     for _, t in ipairs(schemes) do
         if t == scheme then
             return true

@@ -1,5 +1,4 @@
-
-    return {
+return {
     { "wbthomason/packer.nvim" },
     { 'kessejones/git-blame-line.nvim' },
 
@@ -30,15 +29,15 @@
     },
 
     { "kien/ctrlp.vim" },
-    { 
-        "nvim-lualine/lualine.nvim", 
-        requires = { 'kyazdani42/nvim-web-devicons', opt = true }, 
+    {
+        "nvim-lualine/lualine.nvim",
+        requires = { 'kyazdani42/nvim-web-devicons', opt = true },
     },
     { "mhinz/vim-signify" },
     { "jwalton512/vim-blade" },
     { "jiangmiao/auto-pairs" },
 
-    { "nvim-treesitter/nvim-treesitter", run = {":TSUpdate"} }, 
+    { "nvim-treesitter/nvim-treesitter", run = {":TSUpdate"} },
     { "prettier/vim-prettier", run = { "yarn install"}},
     { "sbdchd/neoformat" },
 

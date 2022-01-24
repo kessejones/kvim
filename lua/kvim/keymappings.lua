@@ -45,7 +45,7 @@ local default_mappings = {
         ["<Leader>ss"] = ":w<CR>",
         ["<Leader>sq"] = ":wq<CR>",
         ["<Leader>cc"] = ":bdelete<CR>",
-        
+
         -- Quit buffer
         ["<C-q>"] = ":q<CR>",
         ['<Leader>q'] = ":q<CR>",
@@ -118,13 +118,13 @@ end
 
 function M:load_mode(mode, mapping)
     mode = mode_adapter[mode] and mode_adapter[mode] or mode
-    for key, value in pairs(mapping) do 
+    for key, value in pairs(mapping) do
         M:set_keymaps(mode, key, value)
-    end 
+    end
 end
 
 function M:load(mappings)
-    for mode, mapping in pairs(mappings) do 
+    for mode, mapping in pairs(mappings) do
         M:load_mode(mode, mapping)
     end
 end
@@ -132,10 +132,6 @@ end
 function M:init()
     vim.g.mapleader = ' '
     M:load(default_mappings)
-
-    -- vim.cmd[[inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"]]
-    -- vim.cmd[[inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"]]
-    -- vim.cmd[[inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"]]
 end
 
 return M

@@ -49,5 +49,5 @@ function M:load(list)
    })
 end
 
-return M 
+return M
 
