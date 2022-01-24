@@ -27,6 +27,8 @@ local servers = {
     },
     tsserver = { },
     rust_analyzer = { },
+    dockerls = { },
+    yamlls = { },
     html = { },
     css = { },
     intelephense = { },
