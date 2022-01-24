@@ -53,6 +53,7 @@ function M:init()
     vim.opt.wildignore:append("**/vendor/*")
     vim.opt.wildignore:append("**/.git/*")
     vim.opt.wildignore:append("**/coverage/*")
+    vim.opt.wildignore:append("**/code_coverage_html/*")
 
     for key, value in pairs(default_settings) do
         M:set(key, value)
