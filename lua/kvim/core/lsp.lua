@@ -42,14 +42,12 @@ function M:init()
         normal_mode = {
             ["K"] = "<cmd>:lua vim.lsp.buf.hover()<CR>",
             ["gd"] = "<cmd>:lua vim.lsp.buf.definition()<CR>",
-            -- ["gs"] = "<cmd>:LspDocumentSymbolSearch<CR>",
-            -- ["gS"] = "<cmd>:LspWorkspaceSymbolSearch<CR>",
-            -- ["gr"] = "<cmd>:LspReferences<CR>",
+            ["gr"] = "<cmd>:lua vim.lsp.buf.references()<CR>",
             ["gi"] = "<cmd>:lua vim.lsp.buf.implementation()<CR>",
-            -- ["gt"] = "<cmd>:LspTypeDefinition<CR>",
             ["<Leader>rn"] = "<cmd>:lua vim.lsp.buf.rename()<CR>",
-            -- ["[g"] = "<cmd>:LspPreviousDiagnostic<CR>",
-            -- ["]g"] = "<cmd>:LspNextDiagnostic<CR>",
+            ["g["] = "<cmd>:lua vim.lsp.diagnostic.goto_prev()<CR>",
+            ["g]"] = "<cmd>:lua vim.lsp.diagnostic.goto_next()<CR>",
+            ["<S-u>"] = "<cmd>:lua vim.lsp.diagnostic.show_line_diagnostics()<CR>",
         }
     }
     keymapping:load(mapping)

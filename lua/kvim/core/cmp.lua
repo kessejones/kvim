@@ -33,7 +33,8 @@ function M:init()
                     fallback()
                 end
             end, { "i", "s" }),
-            ["<c-k>"] = cmp.mapping.complete(),
+            -- NOTE: [aa is used as ctrl-space
+            ["[aa"] = cmp.mapping.complete(),
             ["<c-y>"] = cmp.mapping.confirm({
                 behavior = cmp.ConfirmBehavior.Insert,
                 select = true
