@@ -9,6 +9,7 @@ function M:init()
     vim.g.ctrlp_tabpage_position = 'ac'
     vim.g.ctrlp_open_new_file = 't'
     vim.g.ctrlp_multiple_files = 't'
+    vim.g.ctrlp_dotfiles = true
 
     local default_mappings = {
         normal_mode = {

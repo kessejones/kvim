@@ -5,7 +5,9 @@ return {
     { 'rebelot/kanagawa.nvim' },
     { 'lukas-reineke/indent-blankline.nvim' },
 
+    { 'brendalf/mix-fugitive'},
     { "elixir-editors/vim-elixir" },
+
     { 'mg979/vim-visual-multi' },
     { 'tpope/vim-fugitive' },
 
@@ -20,12 +22,10 @@ return {
     { 'hrsh7th/cmp-nvim-lsp' },
     { 'hrsh7th/cmp-nvim-lua' },
     { 'hrsh7th/cmp-buffer' },
+    { 'hrsh7th/cmp-cmdline'},
     {
         "kyazdani42/nvim-tree.lua",
-        requires = "kyazdani42/nvim-web-devicons",
-        config = function()
-            require'kvim.core.nvimtree':init()
-        end
+        requires = "kyazdani42/nvim-web-devicons"
     },
 
     { "kien/ctrlp.vim" },
@@ -38,7 +38,7 @@ return {
     { "jiangmiao/auto-pairs" },
 
     { "nvim-treesitter/nvim-treesitter", run = {":TSUpdate"} },
-    { "prettier/vim-prettier", run = { "yarn install"}},
+    { "prettier/vim-prettier", run = { "yarn install"} },
     { "sbdchd/neoformat" },
 
     { 'szw/vim-maximizer' },

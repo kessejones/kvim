@@ -16,7 +16,6 @@ local default_settings = {
     smartindent = true,
     title = true,
     swapfile = false,
-    pumheight = 10,
     tabstop = 4,
     hidden = true,
     number = true,

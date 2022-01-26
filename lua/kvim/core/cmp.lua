@@ -35,6 +35,7 @@ function M:init()
             end, { "i", "s" }),
             -- NOTE: [aa is used as ctrl-space
             ["[aa"] = cmp.mapping.complete(),
+            ["<CR>"] = cmp.mapping.confirm(),
             ["<c-y>"] = cmp.mapping.confirm({
                 behavior = cmp.ConfirmBehavior.Insert,
                 select = true
@@ -55,6 +56,23 @@ function M:init()
         experimental = {
             native_menu = false,
             ghost_text = true
+        }
+    })
+
+    cmp.setup.cmdline(':', {
+        sources = cmp.config.sources({
+            { name = 'path' }
+        }, {
+            { name = 'cmdline' }
+        }),
+        formatting = {
+            format = lspkind.cmp_format {
+                with_text = false,
+                menu = {
+                    cmdline= '[cmd]',
+                    path = '[path]',
+                }
+            }
         }
     })
 end

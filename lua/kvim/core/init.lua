@@ -13,6 +13,7 @@ local modules = {
     "kvim.core.phpcsfixer",
     "kvim.core.git-blame-line",
     "kvim.core.lualine",
+    "kvim.core.mix-fugitive",
 }
 
 function M:init()
