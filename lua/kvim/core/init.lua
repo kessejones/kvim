@@ -6,14 +6,13 @@ local modules = {
     "kvim.core.commentary",
     "kvim.core.indent-blankline",
     "kvim.core.treesitter",
-    "kvim.core.prittier",
     "kvim.core.lsp",
     "kvim.core.cmp",
     "kvim.core.ctrlp",
-    "kvim.core.phpcsfixer",
     "kvim.core.git-blame-line",
     "kvim.core.lualine",
     "kvim.core.mix-fugitive",
+    "kvim.core.null-ls",
 }
 
 function M:init()

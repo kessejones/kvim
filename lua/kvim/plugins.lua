@@ -38,12 +38,10 @@ return {
     { "jiangmiao/auto-pairs" },
 
     { "nvim-treesitter/nvim-treesitter", run = {":TSUpdate"} },
-    { "prettier/vim-prettier", run = { "yarn install"} },
-    { "sbdchd/neoformat" },
 
     { 'szw/vim-maximizer' },
     { 'tpope/vim-surround' },
     { 'terryma/vim-multiple-cursors' },
 
-    { "stephpy/vim-php-cs-fixer" },
+    { 'jose-elias-alvarez/null-ls.nvim' },
 }
