@@ -13,6 +13,7 @@ local modules = {
     "kvim.core.lualine",
     "kvim.core.mix-fugitive",
     "kvim.core.null-ls",
+    "kvim.core.gitsigns",
 }
 
 function M:init()
