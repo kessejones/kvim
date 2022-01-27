@@ -10,8 +10,7 @@ return {
     { 'lukas-reineke/indent-blankline.nvim' },
 
     -- elixir/mix
-    -- { 'brendalf/mix-fugitive'},
-    { '/home/kesse/Documentos/Projects/nvim/mix-fugitive' },
+    { 'brendalf/mix-fugitive'},
     { "elixir-editors/vim-elixir" },
 
     -- dashboard
