@@ -10,7 +10,8 @@ return {
     { 'lukas-reineke/indent-blankline.nvim' },
 
     -- elixir/mix
-    { 'brendalf/mix-fugitive'},
+    -- { 'brendalf/mix-fugitive'},
+    { '/home/kesse/Documentos/Projects/nvim/mix-fugitive' },
     { "elixir-editors/vim-elixir" },
 
     -- dashboard
@@ -30,20 +31,24 @@ return {
     -- file tree
     {
         "kyazdani42/nvim-tree.lua",
-        requires = "kyazdani42/nvim-web-devicons"
+        requires = { "kyazdani42/nvim-web-devicons" }
     },
 
     -- formatting/syntax
     { "jiangmiao/auto-pairs" },
     { "nvim-treesitter/nvim-treesitter", run = {":TSUpdate"} },
-    { 'jose-elias-alvarez/null-ls.nvim' },
+    { 'jose-elias-alvarez/null-ls.nvim',
+        requires = { 'nvim-lua/plenary.nvim' }
+    },
     { "tpope/vim-commentary" },
 
     -- fzf
     { "ctrlpvim/ctrlp.vim" },
 
     -- git
-    { "lewis6991/gitsigns.nvim", requires = { 'nvim-lua/plenary.nvim' } },
+    { "lewis6991/gitsigns.nvim",
+        requires = { 'nvim-lua/plenary.nvim' }
+    },
     { 'tpope/vim-fugitive' },
     { 'kessejones/git-blame-line.nvim' },
 

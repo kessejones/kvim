@@ -1,5 +1,6 @@
-local M = {  }
 local settings = require('kvim.config.settings')
+
+local M = {  }
 
 function M:init()
     local scheme_name = "kanagawa"
@@ -8,7 +9,7 @@ function M:init()
         settings:set("termguicolors", true)
     end
 
-    if M:scheme_exists(scheme_name) then
+    if self:scheme_exists(scheme_name) then
         require('kanagawa').setup({
             undercurl = true,
             commentstyle = "italic",
