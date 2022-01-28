@@ -12,8 +12,8 @@ function M.init()
 
     plugin_loader:init()
     plugin_loader:load(plugins)
-    core.init()
 
+    core:init()
     keymappings:init()
     colors:init()
 end

@@ -1,10 +1,11 @@
-local M = {  }
 local keymapping = require('kvim.keymappings')
+local lspconfig = require('lspconfig')
+local cmp_nvim_lsp = require('cmp_nvim_lsp')
 
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local M = {  }
+
 local servers = {
     sumneko_lua = {
-        capabilities = capabilities,
         settings = {
             Lua = {
                 runtime = {
@@ -17,6 +18,7 @@ local servers = {
                     library = {
                         [vim.fn.expand("$VIMRUNTIME/lua")] = true,
                         [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
+                        [vim.fn.expand("$VIMRUNTIME/lua/vim/api")] = true,
 				    },
                 },
                 telemetry = {
@@ -36,9 +38,6 @@ local servers = {
         cmd = { vim.fn.expand('$HOME') .. "/.local/bin/elixir-ls" }
     }
 }
-
-
-
 function M:init()
     local set_format_on_save = function(client)
         if client.resolved_capabilities.document_formatting then
@@ -48,7 +47,7 @@ function M:init()
                     autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
                 augroup END
             ]])
-    end
+        end
     end
 
     local on_attach = function(client)
@@ -74,9 +73,11 @@ function M:init()
         set_format_on_save(client)
     end
 
-    local lspconfig = require('lspconfig')
+    local capabilities = cmp_nvim_lsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
     for server, config in pairs(servers) do
         config['on_attach'] = on_attach
+        config['capabilities'] = capabilities
+
         lspconfig[server].setup(config)
     end
 
