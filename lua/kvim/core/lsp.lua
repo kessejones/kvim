@@ -18,7 +18,7 @@ local servers = {
                     library = {
                         [vim.fn.expand("$VIMRUNTIME/lua")] = true,
                         [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
-                        [vim.fn.expand("$VIMRUNTIME/lua/vim/api")] = true,
+                        [vim.fn.stdpath "config" .. "/lua"] = true,
 				    },
                 },
                 telemetry = {
@@ -39,18 +39,7 @@ local servers = {
     }
 }
 function M:init()
-    local set_format_on_save = function(client)
-        if client.resolved_capabilities.document_formatting then
-            vim.cmd([[
-                augroup LspFormatting
-                    autocmd! * <buffer>
-                    autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
-                augroup END
-            ]])
-        end
-    end
-
-    local on_attach = function(client)
+    local on_attach = function()
         local mapping = {
             normal_mode = {
                 ["K"] = "<cmd>:lua vim.lsp.buf.hover()<CR>",
@@ -69,8 +58,6 @@ function M:init()
         }
 
         keymapping:load(mapping)
-
-        set_format_on_save(client)
     end
 
     local capabilities = cmp_nvim_lsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
