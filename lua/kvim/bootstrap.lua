@@ -13,9 +13,12 @@ function M.init()
     plugin_loader:init()
     plugin_loader:load(plugins)
 
-    core:init()
     keymappings:init()
+
+    if plugin_loader.packer_is_first_start then return end
+
     colors:init()
+    core:init()
 end
 
 return M
