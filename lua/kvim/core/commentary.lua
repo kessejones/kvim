@@ -4,10 +4,12 @@ local M = {  }
 function M:init()
     local default_mappings = {
         normal_mode = {
-            ["<C-_>"] = ":Commentary<CR>"
+            ["<C-_>"] = ":Commentary<CR>",
+            ["<Space>;"] = ":Commentary<CR>",
         },
         visual_mode = {
-            ["<C-_>"] = ":Commentary<CR>"
+            ["<C-_>"] = ":Commentary<CR>",
+            ["<Space>;"] = ":Commentary<CR>",
         }
     }
 
