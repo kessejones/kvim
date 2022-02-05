@@ -17,15 +17,19 @@ local default_mappings = {
     insert_mode = {
         -- Save file
         ["<C-s>"] = "<ESC>:w<CR>",
+
         -- ESC helper
         ["<C-c>"] = "<ESC>",
         ["jk"] = "<ESC>",
-        ["kj"] = "<ESC>",
+
+        -- move line up/down
         ["<C-j>"] = "<ESC>:m .+1<CR>==gi",
         ["<C-k>"] = "<ESC>:m .-2<CR>==gi",
     },
     normal_mode = {
         ["<Space>"] = "<NOP>",
+        ["<ESC>"] = ":noh<CR>",
+        ["<C-c>"] = "<ESC>",
 
         -- Tabs
         ["<C-t>"] = ":tabnew<CR>",
@@ -45,12 +49,10 @@ local default_mappings = {
         ["<C-s>"] = ":w<CR>",
         ["<Leader>ss"] = ":w<CR>",
         ["<Leader>sq"] = ":wq<CR>",
-        ["<Leader>cc"] = ":bdelete<CR>",
 
-        -- Quit buffer
-        ["<C-q>"] = ":q<CR>",
+        -- Close/Quit Buffers
         ["<Leader>q"] = ":q<CR>",
-        ["<C-c>"] = "<ESC>",
+        ["<Leader>cc"] = ":bdelete<CR>",
 
         -- Navigate in windows
         ["<Leader>wh"] = "<C-w>h",
@@ -58,7 +60,7 @@ local default_mappings = {
         ["<Leader>wk"] = "<C-w>k",
         ["<Leader>wl"] = "<C-w>l",
 
-        -- Duplicate lines
+        -- Duplicate current line
         ["<Leader>y"] = "<ESC>yyp",
 
         -- Next/Previous buffer
@@ -66,52 +68,38 @@ local default_mappings = {
         ["<S-h>"] = ":bp<CR>",
         ["<Leader>bq"] = ":bdelete<CR>",
 
+        -- Replace
         ["<C-h>"] = "<ESC>:%s/",
 
         -- Split window
         ["<Leader>sv"] = ":vsplit<CR>",
         ["<Leader>sh"] = ":sv<CR>",
 
-        ["<ESC>"] = ":noh<CR>",
+        -- Delete
         ["<Leader>d"] = '"_d',
         ["x"] = '"_x',
-        ["<C-a>"] = "gg<S-v>G",
 
-        --          plugins
-        -- Maximizer
-        ["<Leader>m"] = ":MaximizerToggle<CR>",
-        -- Git fugitive
-        ["<Leader>gg"] = ":G<CR>",
-        ["<Leader>gc"] = ":G commit<CR>",
-        ["<Leader>gs"] = ":G stash<CR>",
-        ["<Leader>gd"] = ":G diff<CR>",
-        ["<Leader>gpl"] = ":G pull<CR>",
-        ["<Leader>gps"] = ":G push<CR>",
+        -- Select all
+        ["<C-a>"] = "gg<S-v>G",
     },
     visual_mode = {
-        ["<S-u>"] = "<ESC>viwUi",
-        ["<S-u>"] = "<ESC>viwUi",
-        ["<S-l>"] = "viwu<ESC>",
-        ["<S-l>"] = "viwu<ESC>",
         -- Indent
         ["<"] = "<gv",
         [">"] = ">gv",
         ["<C-c>"] = "<ESC>",
 
-        ["<Leader>cc"] = ":close<CR>",
         -- Move up/down selected text
         ["<C-j>"] = ":m '>+1<CR>gv=gv",
         ["<C-k>"] = ":m '<-2<CR>gv=gv",
-        -- ["jk"] = "<ESC>",
-        -- ["kj"] = "<ESC>",
     },
     visual_block_mode = {
+        -- ESC helper
         ["<C-c>"] = "<ESC>",
-        ["<Leader>cc"] = ":close<CR>",
-        -- ["jk"] = "<ESC>",
-        -- ["kj"] = "<ESC>",
     },
-    command_mode = {},
+    command_mode = {
+        -- ESC helper
+        ["<C-c>"] = "<ESC>",
+    },
 }
 
 function M:set_keymaps(mode, key, val)
@@ -121,19 +109,19 @@ end
 function M:load_mode(mode, mapping)
     mode = mode_adapter[mode] and mode_adapter[mode] or mode
     for key, value in pairs(mapping) do
-        M:set_keymaps(mode, key, value)
+        self:set_keymaps(mode, key, value)
     end
 end
 
 function M:load(mappings)
     for mode, mapping in pairs(mappings) do
-        M:load_mode(mode, mapping)
+        self:load_mode(mode, mapping)
     end
 end
 
 function M:init()
     vim.g.mapleader = " "
-    M:load(default_mappings)
+    self:load(default_mappings)
 end
 
 return M
