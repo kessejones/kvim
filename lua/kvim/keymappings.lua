@@ -1,7 +1,8 @@
-local M = {  }
+local M = {}
 
 local generic_opts = {
-    noremap = true, silent = true,
+    noremap = true,
+    silent = true,
 }
 
 local mode_adapter = {
@@ -20,8 +21,8 @@ local default_mappings = {
         ["<C-c>"] = "<ESC>",
         ["jk"] = "<ESC>",
         ["kj"] = "<ESC>",
-        ['<C-j>'] = "<ESC>:m .+1<CR>==gi",
-        ['<C-k>'] = "<ESC>:m .-2<CR>==gi",
+        ["<C-j>"] = "<ESC>:m .+1<CR>==gi",
+        ["<C-k>"] = "<ESC>:m .-2<CR>==gi",
     },
     normal_mode = {
         ["<Space>"] = "<NOP>",
@@ -38,7 +39,7 @@ local default_mappings = {
         ["<Leader>7"] = ":tabn 7<CR>",
         ["<Leader>8"] = ":tabn 8<CR>",
         ["<Leader>9"] = ":tabn 9<CR>",
-        ['<Leader>tc'] = ':tab sb<CR>',
+        ["<Leader>tc"] = ":tab sb<CR>",
 
         -- Save file
         ["<C-s>"] = ":w<CR>",
@@ -48,7 +49,7 @@ local default_mappings = {
 
         -- Quit buffer
         ["<C-q>"] = ":q<CR>",
-        ['<Leader>q'] = ":q<CR>",
+        ["<Leader>q"] = ":q<CR>",
         ["<C-c>"] = "<ESC>",
 
         -- Navigate in windows
@@ -61,9 +62,9 @@ local default_mappings = {
         ["<Leader>y"] = "<ESC>yyp",
 
         -- Next/Previous buffer
-        ['<S-l>'] = ':bn<CR>',
-        ['<S-h>'] = ':bp<CR>',
-        ['<Leader>bq'] = ':bdelete<CR>',
+        ["<S-l>"] = ":bn<CR>",
+        ["<S-h>"] = ":bp<CR>",
+        ["<Leader>bq"] = ":bdelete<CR>",
 
         ["<C-h>"] = "<ESC>:%s/",
 
@@ -74,18 +75,18 @@ local default_mappings = {
         ["<ESC>"] = ":noh<CR>",
         ["<Leader>d"] = '"_d',
         ["x"] = '"_x',
-        ["<C-a>"] = 'gg<S-v>G',
+        ["<C-a>"] = "gg<S-v>G",
 
         --          plugins
         -- Maximizer
-        ['<Leader>m'] = ":MaximizerToggle<CR>",
+        ["<Leader>m"] = ":MaximizerToggle<CR>",
         -- Git fugitive
-        ['<Leader>gg'] = ":G<CR>",
-        ['<Leader>gc'] = ":G commit<CR>",
-        ['<Leader>gs'] = ":G stash<CR>",
-        ['<Leader>gd'] = ":G diff<CR>",
-        ['<Leader>gpl'] = ":G pull<CR>",
-        ['<Leader>gps'] = ":G push<CR>",
+        ["<Leader>gg"] = ":G<CR>",
+        ["<Leader>gc"] = ":G commit<CR>",
+        ["<Leader>gs"] = ":G stash<CR>",
+        ["<Leader>gd"] = ":G diff<CR>",
+        ["<Leader>gpl"] = ":G pull<CR>",
+        ["<Leader>gps"] = ":G push<CR>",
     },
     visual_mode = {
         ["<S-u>"] = "<ESC>viwUi",
@@ -99,8 +100,8 @@ local default_mappings = {
 
         ["<Leader>cc"] = ":close<CR>",
         -- Move up/down selected text
-        ['<C-j>'] = ":m '>+1<CR>gv=gv",
-        ['<C-k>'] = ":m '<-2<CR>gv=gv",
+        ["<C-j>"] = ":m '>+1<CR>gv=gv",
+        ["<C-k>"] = ":m '<-2<CR>gv=gv",
         -- ["jk"] = "<ESC>",
         -- ["kj"] = "<ESC>",
     },
@@ -110,6 +111,7 @@ local default_mappings = {
         -- ["jk"] = "<ESC>",
         -- ["kj"] = "<ESC>",
     },
+    command_mode = {},
 }
 
 function M:set_keymaps(mode, key, val)
@@ -130,9 +132,8 @@ function M:load(mappings)
 end
 
 function M:init()
-    vim.g.mapleader = ' '
+    vim.g.mapleader = " "
     M:load(default_mappings)
 end
 
 return M
-

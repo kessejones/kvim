@@ -1,16 +1,16 @@
-local M = {  }
+local M = {}
 
 local default_settings = {
     lazyredraw = true,
     smarttab = true,
     backup = false,
-    clipboard = 'unnamedplus',
+    clipboard = "unnamedplus",
     hlsearch = true,
     ignorecase = true,
     showtabline = 2,
     mouse = "a",
     autoindent = true,
-    background = 'dark',
+    background = "dark",
     expandtab = true,
     shiftwidth = 4,
     smartindent = true,
@@ -22,18 +22,18 @@ local default_settings = {
     relativenumber = false,
     wrap = true,
     cursorline = true,
-    inccommand = 'split',
+    inccommand = "split",
     scrolloff = 5,
     sidescrolloff = 5,
     guifont = "monospace:h17",
     wildmenu = true,
     incsearch = true,
-    path = vim.o.path..'**',
+    path = vim.o.path .. "**",
     conceallevel = 0,
     list = true,
     timeoutlen = 300,
     ttyfast = true,
-    completeopt='menu,menuone,noselect',
+    completeopt = "menu,menuone,noselect",
 }
 
 function M:set(key, value)
@@ -41,11 +41,11 @@ function M:set(key, value)
 end
 
 function M:cmd(command, argument)
-    vim.cmd(command .. ' ' .. argument)
+    vim.cmd(command .. " " .. argument)
 end
 
 function M:init()
-    vim.opt.shortmess:append "c"
+    vim.opt.shortmess:append("c")
     vim.opt.listchars:append("eol:↴")
 
     vim.opt.wildignore:append("**/node_modules/*")

@@ -1,42 +1,42 @@
-local keymapping = require('kvim.keymappings')
-local lspconfig = require('lspconfig')
-local cmp_nvim_lsp = require('cmp_nvim_lsp')
+local keymapping = require("kvim.keymappings")
+local lspconfig = require("lspconfig")
+local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
-local M = {  }
+local M = {}
 
 local servers = {
     sumneko_lua = {
         settings = {
             Lua = {
                 runtime = {
-                    version = 'LuaJIT',
+                    version = "LuaJIT",
                 },
                 diagnostics = {
-                    globals = { 'vim' }
+                    globals = { "vim" },
                 },
                 workspace = {
                     library = {
                         [vim.fn.expand("$VIMRUNTIME/lua")] = true,
                         [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
-                        [vim.fn.stdpath "config" .. "/lua"] = true,
-				    },
+                        [vim.fn.stdpath("config") .. "/lua"] = true,
+                    },
                 },
                 telemetry = {
-                    enable = false
-                }
-            }
-        }
+                    enable = false,
+                },
+            },
+        },
     },
-    tsserver = { },
-    rust_analyzer = { },
-    dockerls = { },
-    yamlls = { },
-    html = { },
-    cssls = { },
-    intelephense = { },
+    tsserver = {},
+    rust_analyzer = {},
+    dockerls = {},
+    yamlls = {},
+    html = {},
+    cssls = {},
+    intelephense = {},
     elixirls = {
-        cmd = { vim.fn.expand('$HOME') .. "/.local/bin/elixir-ls" }
-    }
+        cmd = { vim.fn.expand("$HOME") .. "/.local/bin/elixir-ls" },
+    },
 }
 function M:init()
     local on_attach = function()
@@ -54,7 +54,7 @@ function M:init()
             },
             visual_mode = {
                 ["<Leader>ff"] = "<cmd>:lua vim.lsp.buf.range_formatting()<CR>",
-            }
+            },
         }
 
         keymapping:load(mapping)
@@ -62,12 +62,11 @@ function M:init()
 
     local capabilities = cmp_nvim_lsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
     for server, config in pairs(servers) do
-        config['on_attach'] = on_attach
-        config['capabilities'] = capabilities
+        config["on_attach"] = on_attach
+        config["capabilities"] = capabilities
 
         lspconfig[server].setup(config)
     end
-
 end
 
 return M

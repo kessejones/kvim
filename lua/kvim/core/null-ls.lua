@@ -1,6 +1,6 @@
-local null_ls = require('null-ls')
+local null_ls = require("null-ls")
 
-local M = {  }
+local M = {}
 
 function M:init()
     local enable_format_on_save = true
@@ -17,15 +17,15 @@ function M:init()
                 ]])
             end
         end,
-        source = {
+        sources = {
             formatting.prettier,
-            formatting.phpcsfixer.with({ extra_args = { '--rules=@PSR12' } }),
+            formatting.phpcsfixer.with({ extra_args = { "--rules=@PSR12" } }),
             formatting.stylua.with({
                 condition = function(utils)
                     return utils.root_has_file({ "stylua.toml", ".stylua.toml" })
                 end,
-            })
-        }
+            }),
+        },
     })
 end
 

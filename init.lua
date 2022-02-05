@@ -1,1 +1,1 @@
-require('kvim.bootstrap').init()
+require("kvim.bootstrap").init()

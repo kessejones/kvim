@@ -1,5 +1,5 @@
-local keymappings = require('kvim.keymappings')
-local M = {  }
+local keymappings = require("kvim.keymappings")
+local M = {}
 
 function M:init()
     local default_mappings = {
@@ -10,7 +10,7 @@ function M:init()
         visual_mode = {
             ["<C-_>"] = ":Commentary<CR>",
             ["<Space>;"] = ":Commentary<CR>",
-        }
+        },
     }
 
     keymappings:load(default_mappings)

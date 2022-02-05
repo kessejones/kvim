@@ -1,16 +1,16 @@
-local settings = require('kvim.config.settings')
+local settings = require("kvim.config.settings")
 
-local M = {  }
+local M = {}
 
 function M:init()
     local scheme_name = "kanagawa"
 
-    if not vim.fn.has('macunix') and vim.fn.has('termguicolors') then
+    if not vim.fn.has("macunix") and vim.fn.has("termguicolors") then
         settings:set("termguicolors", true)
     end
 
     if self:scheme_exists(scheme_name) then
-        require('kanagawa').setup({
+        require("kanagawa").setup({
             undercurl = true,
             commentstyle = "italic",
             functionstyle = "italic",
@@ -25,12 +25,12 @@ function M:init()
             overrides = {},
         })
 
-       settings:cmd("colorscheme", scheme_name)
+        settings:cmd("colorscheme", scheme_name)
     end
 end
 
 function M:scheme_exists(scheme)
-    local schemes = vim.fn.getcompletion('', 'color')
+    local schemes = vim.fn.getcompletion("", "color")
     for _, t in ipairs(schemes) do
         if t == scheme then
             return true
@@ -44,4 +44,3 @@ function M:hi(group, colors)
 end
 
 return M
-
