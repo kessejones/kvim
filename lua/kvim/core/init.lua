@@ -14,6 +14,8 @@ local modules = {
     "kvim.core.mix-fugitive",
     "kvim.core.null-ls",
     "kvim.core.gitsigns",
+    "kvim.core.git-fugitive",
+    "kvim.core.maximizer",
 }
 
 function M:init()
