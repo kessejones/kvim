@@ -39,7 +39,9 @@ local servers = {
     },
 }
 function M:init()
-    local on_attach = function()
+    local on_attach = function(client)
+        client.resolved_capabilities.document_formatting = false
+
         local mapping = {
             normal_mode = {
                 ["K"] = "<cmd>:lua vim.lsp.buf.hover()<CR>",
