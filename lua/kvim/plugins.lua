@@ -57,4 +57,7 @@ return {
     -- cursors
     { "terryma/vim-multiple-cursors" },
     { "mg979/vim-visual-multi" },
+
+    -- terminal
+    { "akinsho/toggleterm.nvim" },
 }

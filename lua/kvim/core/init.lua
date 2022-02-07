@@ -16,6 +16,7 @@ local modules = {
     "kvim.core.gitsigns",
     "kvim.core.git-fugitive",
     "kvim.core.maximizer",
+    "kvim.core.toggleterm",
 }
 
 function M:init()

@@ -11,6 +11,7 @@ local mode_adapter = {
     visual_block_mode = "x",
     insert_mode = "i",
     command_mode = "c",
+    terminal_mode = "t",
 }
 
 local default_mappings = {
