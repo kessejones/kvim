@@ -40,10 +40,19 @@ local servers = {
     clangd = {},
 }
 
+function M:enable_format_on_save(client)
+    if client.resolved_capabilities.document_formatting then
+        vim.cmd([[
+                augroup LspFormatting
+                    autocmd! * <buffer>
+                    autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
+                augroup END
+            ]])
+    end
+end
+
 function M:lsp_config()
     local on_attach = function(client)
-        client.resolved_capabilities.document_formatting = false
-
         local mapping = {
             normal_mode = {
                 ["K"] = "<cmd>:lua vim.lsp.buf.hover()<CR>",
@@ -62,6 +71,7 @@ function M:lsp_config()
         }
 
         keymapping:load(mapping)
+        self:enable_format_on_save(client)
     end
 
     local capabilities = cmp_nvim_lsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
