@@ -40,7 +40,7 @@ return {
     { "tpope/vim-commentary" },
 
     -- fzf
-    { "ctrlpvim/ctrlp.vim" },
+    -- { "ctrlpvim/ctrlp.vim" },
 
     -- git
     { "lewis6991/gitsigns.nvim", requires = { "nvim-lua/plenary.nvim" } },
@@ -60,4 +60,7 @@ return {
 
     -- terminal
     { "akinsho/toggleterm.nvim" },
+
+    { "nvim-telescope/telescope.nvim", requires = { "nvim-lua/plenary.nvim" } },
+    { "ahmedkhalf/project.nvim" },
 }
