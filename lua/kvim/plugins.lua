@@ -18,6 +18,7 @@ return {
 
     -- completion
     { "onsails/lspkind-nvim" },
+    { "L3MON4D3/LuaSnip" },
     { "saadparwaiz1/cmp_luasnip" },
     { "neovim/nvim-lspconfig" },
     { "hrsh7th/nvim-cmp" },
@@ -39,9 +40,6 @@ return {
     { "jose-elias-alvarez/null-ls.nvim", requires = { "nvim-lua/plenary.nvim" } },
     { "tpope/vim-commentary" },
 
-    -- fzf
-    -- { "ctrlpvim/ctrlp.vim" },
-
     -- git
     { "lewis6991/gitsigns.nvim", requires = { "nvim-lua/plenary.nvim" } },
     { "tpope/vim-fugitive" },
@@ -61,6 +59,7 @@ return {
     -- terminal
     { "akinsho/toggleterm.nvim" },
 
+    -- finder
     { "nvim-telescope/telescope.nvim", requires = { "nvim-lua/plenary.nvim" } },
     { "ahmedkhalf/project.nvim" },
 }
