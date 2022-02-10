@@ -28,11 +28,9 @@ local default_settings = {
     guifont = "monospace:h17",
     wildmenu = true,
     incsearch = true,
-    path = vim.o.path .. "**",
     conceallevel = 0,
     list = true,
     timeoutlen = 300,
-    ttyfast = true,
     completeopt = "menu,menuone,noselect",
 }
 
@@ -47,6 +45,7 @@ end
 function M:init()
     vim.opt.shortmess:append("c")
     vim.opt.listchars:append("eol:↴")
+    vim.opt.path:append("**")
 
     vim.opt.wildignore:append("**/node_modules/*")
     vim.opt.wildignore:append("**/vendor/*")
