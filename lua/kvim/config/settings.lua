@@ -31,7 +31,7 @@ local default_settings = {
     conceallevel = 0,
     list = true,
     timeoutlen = 300,
-    completeopt = "menu,menuone,noselect",
+    completeopt = { "menu", "menuone", "noselect" },
 }
 
 function M:set(key, value)

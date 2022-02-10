@@ -35,7 +35,9 @@ function M:init()
             end, { "i", "s" }),
             -- NOTE: [aa is used as ctrl-space
             ["[aa"] = cmp.mapping.complete(),
-            ["<CR>"] = cmp.mapping.confirm(),
+            ["<CR>"] = cmp.mapping.confirm({
+                select = true,
+            }),
             ["<c-y>"] = cmp.mapping.confirm({
                 behavior = cmp.ConfirmBehavior.Insert,
                 select = true,

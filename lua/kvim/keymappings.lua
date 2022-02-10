@@ -33,18 +33,18 @@ local default_mappings = {
         ["<C-c>"] = "<ESC>",
 
         -- Tabs
-        ["<C-t>"] = ":tabnew<CR>",
-        ["<Leader>tt"] = ":tabnew<CR>",
-        ["<Leader>1"] = ":tabn 1<CR>",
-        ["<Leader>2"] = ":tabn 2<CR>",
-        ["<Leader>3"] = ":tabn 3<CR>",
-        ["<Leader>4"] = ":tabn 4<CR>",
-        ["<Leader>5"] = ":tabn 5<CR>",
-        ["<Leader>6"] = ":tabn 6<CR>",
-        ["<Leader>7"] = ":tabn 7<CR>",
-        ["<Leader>8"] = ":tabn 8<CR>",
-        ["<Leader>9"] = ":tabn 9<CR>",
-        ["<Leader>tc"] = ":tab sb<CR>",
+        -- ["<C-t>"] = ":tabnew<CR>",
+        -- ["<Leader>tt"] = ":tabnew<CR>",
+        -- ["<Leader>1"] = ":tabn 1<CR>",
+        -- ["<Leader>2"] = ":tabn 2<CR>",
+        -- ["<Leader>3"] = ":tabn 3<CR>",
+        -- ["<Leader>4"] = ":tabn 4<CR>",
+        -- ["<Leader>5"] = ":tabn 5<CR>",
+        -- ["<Leader>6"] = ":tabn 6<CR>",
+        -- ["<Leader>7"] = ":tabn 7<CR>",
+        -- ["<Leader>8"] = ":tabn 8<CR>",
+        -- ["<Leader>9"] = ":tabn 9<CR>",
+        -- ["<Leader>tc"] = ":tab sb<CR>",
 
         -- Save file
         ["<C-s>"] = ":w<CR>",
@@ -54,6 +54,7 @@ local default_mappings = {
         -- Close/Quit Buffers
         ["<Leader>q"] = ":q<CR>",
         ["<Leader>cc"] = ":bdelete<CR>",
+        ["<Leader>."] = ":bdelete<CR>",
 
         -- Navigate in windows
         ["<Leader>wh"] = "<C-w>h",
