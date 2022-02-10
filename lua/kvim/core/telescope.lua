@@ -25,9 +25,10 @@ function M:init()
 
     keymappings:load({
         normal_mode = {
-            ["<C-p>"] = ":Telescope find_files<CR>",
-            ["<C-r>"] = ":Telescope live_grep<CR>",
-            ["gR"] = ":Telescope lsp_references<CR>",
+            ["<Leader>p"] = ":Telescope find_files<CR>",
+            ["<Leader>fg"] = ":Telescope live_grep<CR>",
+            ["<Leader>fb"] = ":Telescope buffers<CR>",
+            ["<Leader>fr"] = ":Telescope lsp_references<CR>",
         },
     })
 end
