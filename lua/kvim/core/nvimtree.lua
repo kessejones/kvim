@@ -1,17 +1,37 @@
-local M = {}
-
+local nvim_tree = require("nvim-tree")
 local keymappings = require("kvim.keymappings")
 
-function M:init()
-    require("nvim-tree").setup()
+local M = {}
 
-    vim.g.nvim_tree_icon_padding = " "
-    vim.g.nvim_tree_show_icons = {
-        git = 1,
-        folders = 1,
-        files = 1,
-        folder_arrows = 0,
-    }
+function M:init()
+    nvim_tree.setup({
+        update_cwd = true,
+        update_focused_file = {
+            enable = true,
+            update_cwd = true,
+            ignore_list = {},
+        },
+        view = {
+            mappings = {
+                list = {
+                    {
+                        key = ".",
+                        action = "root_dir",
+                        action_cb = function(node)
+                            if not node.absolute_path or node.absolute_path == "" then
+                                return
+                            end
+                            local absolute_path = vim.fn.fnamemodify(node.absolute_path, ":p:h")
+                            nvim_tree.change_dir(absolute_path)
+                        end,
+                    },
+                },
+            },
+        },
+        filters = {
+            custom = { ".git" },
+        },
+    })
 
     keymappings:load({
         normal_mode = {
