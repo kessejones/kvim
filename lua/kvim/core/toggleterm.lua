@@ -4,14 +4,14 @@ local keymappings = require("kvim.keymappings")
 local M = {}
 
 function _G.set_terminal_keymaps()
-    keymappings:load({
+    keymappings.load({
         terminal_mode = {
             ["<esc>"] = [[<C-\><C-n>]],
         },
     })
 end
 
-function M:init()
+function M.init()
     toggleterm.setup({
         size = 20,
         open_mapping = [[<c-\>]],

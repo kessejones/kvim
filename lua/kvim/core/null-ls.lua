@@ -3,12 +3,12 @@ local null_ls = require("null-ls")
 
 local M = {}
 
-function M:init()
+function M.init()
     local formatting = null_ls.builtins.formatting
 
     null_ls.setup({
         on_attach = function(client)
-            lsp:enable_format_on_save(client)
+            lsp.enable_format_on_save(client)
         end,
         sources = {
             formatting.prettier,

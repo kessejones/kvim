@@ -21,10 +21,10 @@ local modules = {
     "kvim.core.barbar",
 }
 
-function M:init()
+function M.init()
     for _, path_module in ipairs(modules) do
         local module = require(path_module)
-        module:init()
+        module.init()
     end
 end
 

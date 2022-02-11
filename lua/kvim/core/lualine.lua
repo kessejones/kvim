@@ -1,6 +1,6 @@
 local M = {}
 
-function M:init()
+function M.init()
     require("lualine").setup({
         options = {
             icons_enabled = true,

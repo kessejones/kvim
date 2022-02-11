@@ -34,15 +34,15 @@ local default_settings = {
     completeopt = { "menu", "menuone", "noselect" },
 }
 
-function M:set(key, value)
+function M.set(key, value)
     vim.opt[key] = value
 end
 
-function M:cmd(command, argument)
+function M.cmd(command, argument)
     vim.cmd(command .. " " .. argument)
 end
 
-function M:init()
+function M.init()
     vim.opt.shortmess:append("c")
     vim.opt.listchars:append("eol:↴")
     vim.opt.path:append("**")
@@ -54,7 +54,7 @@ function M:init()
     vim.opt.wildignore:append("**/code_coverage_html/*")
 
     for key, value in pairs(default_settings) do
-        self:set(key, value)
+        M.set(key, value)
     end
 end
 

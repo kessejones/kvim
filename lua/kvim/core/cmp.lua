@@ -2,7 +2,7 @@ local M = {}
 local cmp = require("cmp")
 local lspkind = require("lspkind")
 
-function M:init()
+function M.init()
     cmp.setup({
         sources = {
             { name = "nvim_lsp" },

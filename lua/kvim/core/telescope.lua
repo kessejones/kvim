@@ -4,7 +4,7 @@ local keymappings = require("kvim.keymappings")
 
 local M = {}
 
-function M:init()
+function M.init()
     telescope.setup({
         defaults = {
             mappings = {
@@ -23,7 +23,7 @@ function M:init()
         },
     })
 
-    keymappings:load({
+    keymappings.load({
         normal_mode = {
             ["<Leader>p"] = ":Telescope find_files<CR>",
             ["<Leader>fg"] = ":Telescope live_grep<CR>",

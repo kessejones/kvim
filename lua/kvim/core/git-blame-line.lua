@@ -2,7 +2,7 @@ local keymappings = require("kvim.keymappings")
 
 local M = {}
 
-function M:init()
+function M.init()
     require("git-blame-line").setup({
         view = {
             enable_cursor_hold = true,
@@ -15,7 +15,7 @@ function M:init()
         },
     }
 
-    keymappings:load(mappings)
+    keymappings.load(mappings)
 end
 
 return M

@@ -3,7 +3,7 @@ local keymappings = require("kvim.keymappings")
 
 local M = {}
 
-function M:init()
+function M.init()
     nvim_tree.setup({
         update_cwd = true,
         update_focused_file = {
@@ -33,7 +33,7 @@ function M:init()
         },
     })
 
-    keymappings:load({
+    keymappings.load({
         normal_mode = {
             ["<C-g>"] = ":NvimTreeToggle<CR>",
         },

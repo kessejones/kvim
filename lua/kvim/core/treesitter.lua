@@ -1,6 +1,6 @@
 local M = {}
 
-function M:init()
+function M.init()
     require("nvim-treesitter.configs").setup({
         highlight = {
             enable = true,

@@ -6,15 +6,13 @@ local M = {
 
 local fn = vim.fn
 
-function M:init(opts)
-    opts = opts or {}
-
+function M.init()
     local compile_path = "~/.config/nvim/plugins/packer_compiled.lua"
     local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
     local root_path = fn.stdpath("data") .. "/site/pack"
 
     if fn.empty(fn.glob(install_path)) > 0 then
-        self.packer_is_first_start = not fn.empty(
+        M.packer_is_first_start = not fn.empty(
             fn.system({ "git", "clone", "https://github.com/wbthomason/packer.nvim", install_path })
         )
     end
@@ -29,23 +27,23 @@ function M:init(opts)
         compile_path = compile_path,
     })
 
-    self.packer_bootstrap = true
-    self.packer = packer
+    M.packer_bootstrap = true
+    M.packer = packer
 end
 
-function M:load(list)
-    if not self.packer_bootstrap then
+function M.load(list)
+    if not M.packer_bootstrap then
         error("Packer not started")
         return
     end
 
-    return self.packer.startup({
+    return M.packer.startup({
         function(use)
             for _, plugin in pairs(list) do
                 use(plugin)
             end
-            if self.packer_is_first_start then
-                self.packer.sync()
+            if M.packer_is_first_start then
+                M.packer.sync()
             end
         end,
         config = {

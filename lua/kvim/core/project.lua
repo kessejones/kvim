@@ -3,7 +3,7 @@ local project = require("project_nvim")
 
 local M = {}
 
-function M:init()
+function M.init()
     project.setup({
         active = true,
         patterns = { ".git", "Makefile", "package.json", "Cargo.toml", "composer.json" },

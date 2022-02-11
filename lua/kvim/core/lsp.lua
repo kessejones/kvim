@@ -40,7 +40,7 @@ local servers = {
     clangd = {},
 }
 
-function M:enable_format_on_save(client)
+function M.enable_format_on_save(client)
     if client.resolved_capabilities.document_formatting then
         vim.cmd([[
                 augroup LspFormatting
@@ -51,30 +51,31 @@ function M:enable_format_on_save(client)
     end
 end
 
-function M:lsp_config()
-    local on_attach = function(client)
-        local mapping = {
-            normal_mode = {
-                ["K"] = "<cmd>:lua vim.lsp.buf.hover()<CR>",
-                ["gd"] = "<cmd>:lua vim.lsp.buf.definition()<CR>",
-                ["gr"] = "<cmd>:lua vim.lsp.buf.references()<CR>",
-                ["gi"] = "<cmd>:lua vim.lsp.buf.implementation()<CR>",
-                ["<Leader>rn"] = "<cmd>:lua vim.lsp.buf.rename()<CR>",
-                ["g["] = "<cmd>:lua vim.diagnostic.goto_prev()<CR>",
-                ["g]"] = "<cmd>:lua vim.diagnostic.goto_next()<CR>",
-                ["<S-u>"] = "<cmd>:lua vim.diagnostic.open_float()<CR>",
-                ["<Leader>ff"] = "<cmd>:lua vim.lsp.buf.formatting()<CR>",
-            },
-            visual_mode = {
-                ["<Leader>ff"] = "<cmd>:lua vim.lsp.buf.range_formatting()<CR>",
-            },
-        }
+function M.lsp_config()
+    local mapping = {
+        normal_mode = {
+            ["K"] = "<cmd>:lua vim.lsp.buf.hover()<CR>",
+            ["gd"] = "<cmd>:lua vim.lsp.buf.definition()<CR>",
+            ["gr"] = "<cmd>:lua vim.lsp.buf.references()<CR>",
+            ["gi"] = "<cmd>:lua vim.lsp.buf.implementation()<CR>",
+            ["<Leader>rn"] = "<cmd>:lua vim.lsp.buf.rename()<CR>",
+            ["g["] = "<cmd>:lua vim.diagnostic.goto_prev()<CR>",
+            ["g]"] = "<cmd>:lua vim.diagnostic.goto_next()<CR>",
+            ["<S-u>"] = "<cmd>:lua vim.diagnostic.open_float()<CR>",
+            ["<Leader>ff"] = "<cmd>:lua vim.lsp.buf.formatting()<CR>",
+        },
+        visual_mode = {
+            ["<Leader>ff"] = "<cmd>:lua vim.lsp.buf.range_formatting()<CR>",
+        },
+    }
 
-        keymapping:load(mapping)
-        self:enable_format_on_save(client)
+    local on_attach = function(client, bufnr)
+        keymapping.load(mapping, bufnr)
+        M.enable_format_on_save(client)
     end
 
     local capabilities = cmp_nvim_lsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
+
     for server, config in pairs(servers) do
         config["on_attach"] = on_attach
         config["capabilities"] = capabilities
@@ -83,7 +84,7 @@ function M:lsp_config()
     end
 end
 
-function M:handlers()
+function M.handlers()
     local signs = {
         { name = "DiagnosticSignError", text = "" },
         { name = "DiagnosticSignWarn", text = "" },
@@ -124,9 +125,9 @@ function M:handlers()
     })
 end
 
-function M:init()
-    self:lsp_config()
-    self:handlers()
+function M.init()
+    M.lsp_config()
+    M.handlers()
 end
 
 return M

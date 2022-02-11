@@ -104,26 +104,30 @@ local default_mappings = {
     },
 }
 
-function M:set_keymaps(mode, key, val)
-    vim.api.nvim_set_keymap(mode, key, val, generic_opts)
+function M.set_keymaps(mode, key, val, bufnr)
+    if not bufnr then
+        vim.api.nvim_set_keymap(mode, key, val, generic_opts)
+    else
+        vim.api.nvim_buf_set_keymap(bufnr, mode, key, val, generic_opts)
+    end
 end
 
-function M:load_mode(mode, mapping)
+function M.load_mode(mode, mapping, bufnr)
     mode = mode_adapter[mode] and mode_adapter[mode] or mode
     for key, value in pairs(mapping) do
-        self:set_keymaps(mode, key, value)
+        M.set_keymaps(mode, key, value, bufnr)
     end
 end
 
-function M:load(mappings)
+function M.load(mappings, bufnr)
     for mode, mapping in pairs(mappings) do
-        self:load_mode(mode, mapping)
+        M.load_mode(mode, mapping, bufnr)
     end
 end
 
-function M:init()
+function M.init()
     vim.g.mapleader = " "
-    self:load(default_mappings)
+    M.load(default_mappings)
 end
 
 return M

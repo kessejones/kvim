@@ -1,6 +1,6 @@
 local M = {}
 
-function M:init()
+function M.init()
     require("mix-fugitive").setup()
 end
 

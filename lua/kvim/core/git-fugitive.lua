@@ -2,8 +2,8 @@ local keymappings = require("kvim.keymappings")
 
 local M = {}
 
-function M:init()
-    keymappings:load({
+function M.init()
+    keymappings.load({
         normal_mode = {
             ["<Leader>gg"] = ":G<CR>",
             ["<Leader>gc"] = ":G commit<CR>",

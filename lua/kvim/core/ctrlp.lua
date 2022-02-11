@@ -1,7 +1,7 @@
 local keymappings = require("kvim.keymappings")
 local M = {}
 
-function M:init()
+function M.init()
     vim.g.ctrlp_working_path_mode = "ra"
     vim.g.ctrlp_by_filename = false
     vim.g.ctrlp_regexp = true
@@ -17,7 +17,7 @@ function M:init()
         },
     }
 
-    keymappings:load(default_mappings)
+    keymappings.load(default_mappings)
 end
 
 return M

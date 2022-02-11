@@ -23,7 +23,7 @@ local kvim_lists = {
     },
 }
 
-function M:init()
+function M.init()
     vim.g.startify_custom_header = utils.center(kvim_header)
     vim.g.startify_custom_footer = utils.center(kvim_footer)
     vim.g.startify_lists = kvim_lists
