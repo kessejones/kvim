@@ -62,7 +62,7 @@ function M:lsp_config()
                 ["<Leader>rn"] = "<cmd>:lua vim.lsp.buf.rename()<CR>",
                 ["g["] = "<cmd>:lua vim.diagnostic.goto_prev()<CR>",
                 ["g]"] = "<cmd>:lua vim.diagnostic.goto_next()<CR>",
-                ["<S-u>"] = "<cmd>:lua vim.diagnostic.show_line_diagnostics()<CR>",
+                ["<S-u>"] = "<cmd>:lua vim.diagnostic.open_float()<CR>",
                 ["<Leader>ff"] = "<cmd>:lua vim.lsp.buf.formatting()<CR>",
             },
             visual_mode = {
