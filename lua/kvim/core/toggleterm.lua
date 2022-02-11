@@ -7,11 +7,18 @@ function _G.set_terminal_keymaps()
     keymappings.load({
         terminal_mode = {
             ["<esc>"] = [[<C-\><C-n>]],
+            ["[bs"] = '<cmd>:ToggleTerm<CR>', -- NOTE: [bs is equal to ctrl+\ (hack for macos)
         },
     })
 end
 
 function M.init()
+    keymappings.load({
+        normal_mode = {
+            ["[bs"] = '<cmd>:ToggleTerm<CR>', -- NOTE: [bs is equal to ctrl+\ (hack for macos)
+        },
+    })
+
     toggleterm.setup({
         size = 20,
         open_mapping = [[<c-\>]],
