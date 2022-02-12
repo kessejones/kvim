@@ -63,8 +63,6 @@ return {
     { "nvim-telescope/telescope.nvim", requires = { "nvim-lua/plenary.nvim" } },
     { "ahmedkhalf/project.nvim" },
 
-    {
-        "romgrk/barbar.nvim",
-        requires = { "kyazdani42/nvim-web-devicons" },
-    },
+    -- buffers/windows and tabs
+    { "akinsho/bufferline.nvim", requires = "kyazdani42/nvim-web-devicons" },
 }

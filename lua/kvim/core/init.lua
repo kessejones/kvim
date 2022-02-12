@@ -18,7 +18,7 @@ local modules = {
     "kvim.core.telescope",
     "kvim.core.toggleterm",
     "kvim.core.treesitter",
-    "kvim.core.barbar",
+    "kvim.core.bufferline",
 }
 
 function M.init()
