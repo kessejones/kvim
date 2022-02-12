@@ -72,6 +72,14 @@ function M.lsp_config()
     local on_attach = function(client, bufnr)
         keymapping.load(mapping, bufnr)
         M.enable_format_on_save(client)
+
+        vim.cmd([[
+            augroup LspDocumentHighlight
+                autocmd! * <buffer>
+                autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+                autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+            augroup END
+        ]])
     end
 
     local capabilities = cmp_nvim_lsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
