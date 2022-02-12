@@ -65,4 +65,5 @@ return {
 
     -- buffers/windows and tabs
     { "akinsho/bufferline.nvim", requires = "kyazdani42/nvim-web-devicons" },
+    { "moll/vim-bbye" },
 }
