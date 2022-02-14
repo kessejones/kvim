@@ -25,7 +25,7 @@ function M.init()
 
     keymappings.load({
         normal_mode = {
-            ["<Leader>p"] = ":Telescope find_files<CR>",
+            ["<Leader>p"] = ":lua require'telescope.builtin'.find_files({ hidden = true })<CR>",
             ["<Leader>fg"] = ":Telescope live_grep<CR>",
             ["<Leader>fb"] = ":Telescope buffers<CR>",
             ["<Leader>fr"] = ":Telescope lsp_references<CR>",
