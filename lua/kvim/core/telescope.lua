@@ -29,8 +29,14 @@ function M.init()
             ["<Leader>fg"] = ":Telescope live_grep<CR>",
             ["<Leader>fb"] = ":Telescope buffers<CR>",
             ["<Leader>fr"] = ":Telescope lsp_references<CR>",
+            ["<Leader>fc"] = ":lua require('kvim.core.telescope').curr_buf()<CR>",
         },
     })
+end
+
+function M.curr_buf()
+    local opts = require('telescope.themes').get_dropdown({ height = 10, previewer = false })
+    require('telescope.builtin').current_buffer_fuzzy_find(opts)
 end
 
 return M
