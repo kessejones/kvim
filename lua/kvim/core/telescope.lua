@@ -27,9 +27,11 @@ function M.init()
         normal_mode = {
             ["<C-p>"] = ":lua require('kvim.core.telescope').find_files()<CR>",
             ["<Leader>p"] = ":lua require('telescope.builtin').find_files()<CR>",
-            ["<Leader>fg"] = ":Telescope live_grep<CR>",
+            ["<Leader>fl"] = ":Telescope live_grep<CR>",
             ["<Leader>fb"] = ":Telescope buffers<CR>",
             ["<Leader>fr"] = ":Telescope lsp_references<CR>",
+            ["<Leader>fs"] = ":Telescope git_stash<CR>",
+            ["<Leader>fg"] = ":Telescope git_commits<CR>",
             ["<Leader>fc"] = ":lua require('kvim.core.telescope').curr_buf()<CR>",
         },
     })
