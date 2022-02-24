@@ -38,6 +38,7 @@ local servers = {
         cmd = { vim.fn.expand("$HOME") .. "/.local/bin/elixir-ls" },
     },
     clangd = {},
+    gopls = {},
 }
 
 function M.enable_format_on_save(client)
