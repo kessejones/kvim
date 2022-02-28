@@ -16,7 +16,7 @@ local modules = {
     "project",
     "startify",
     "telescope",
-    "toggleterm",
+    "floaterm",
     "treesitter",
     "multi-cursor",
     "bufferline",

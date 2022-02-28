@@ -53,11 +53,11 @@ return {
     { "tpope/vim-surround" },
 
     -- cursors
-    { "terryma/vim-multiple-cursors" },
     { "mg979/vim-visual-multi" },
 
     -- terminal
-    { "akinsho/toggleterm.nvim" },
+    -- { "akinsho/toggleterm.nvim" },
+    { "voldikss/vim-floaterm" },
 
     -- finder
     { "nvim-telescope/telescope.nvim", requires = { "nvim-lua/plenary.nvim" } },
