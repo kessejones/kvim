@@ -18,6 +18,7 @@ local modules = {
     "telescope",
     "toggleterm",
     "treesitter",
+    "multi-cursor",
     "bufferline",
 }
 
