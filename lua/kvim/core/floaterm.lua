@@ -7,10 +7,10 @@ function M:init()
             ["[bs"] = '<cmd>:FloatermToggle<CR>', -- NOTE: [bs is equal to ctrl+\ (hack for macos)
         },
         terminal_mode = {
-            ["<C-n>"] = "<C-\\><C-n>:FloatermNew<CR>",
+            ["<C-i>"] = "<C-\\><C-n>:FloatermNew<CR>",
             ["<C-k>"] = "<C-\\><C-n>:FloatermKill<CR>",
-            ["<C-l>"] = "<C-\\><C-n>:FloatermNext<CR>",
-            ["<C-h>"] = "<C-\\><C-n>:FloatermPrev<CR>",
+            ["<C-p>"] = "<C-\\><C-n>:FloatermPrev<CR>",
+            ["<C-n>"] = "<C-\\><C-n>:FloatermNext<CR>",
             ["[bs"] = "<C-\\><C-n>:FloatermHide<CR>",
         },
     })
