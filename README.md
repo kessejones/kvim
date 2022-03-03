@@ -1,13 +1,18 @@
 # KVIM
 
-## Requisitos
-NVIM 0.6 (https://github.com/neovim/neovim/releases/tag/v0.6.0)
+This is my custom configuration and plugins for neovim.
 
-## Instalação
-Execute o comando
+## Requirements
+
+- [NVIM 0.6](https://github.com/neovim/neovim/releases/tag/v0.6.0)
+
+## Installation
+
+- Clone this repository to your config folder
+
 ```shell
-curl -fsSL https://raw.github.com/kessejones/kvim/main/install.sh | bash
+git clone https://github.com/kessejones/kvim.git $HOME/.config/nvim
 ```
-Em seguida abra o nvim e execute `PackerInstall` para instalar os plugins,
-após isso você precisará reiniciar seu nvim para que tudo funcione.
 
+- To synchronize the plugins it is necessary to run `PackerSync`
+- Restart your neovim
