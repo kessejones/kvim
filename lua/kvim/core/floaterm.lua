@@ -1,17 +1,20 @@
 local keymappings = require("kvim.keymappings")
 local M = {}
 
-function M:init()
+function M.init()
+    -- NOTE: \x1f is equal to ctrl+\ (hack for macos)
+    local ctrl_bslash = "\x1f"
+
     keymappings.load({
         normal_mode = {
-            ["[bs"] = '<cmd>:FloatermToggle<CR>', -- NOTE: [bs is equal to ctrl+\ (hack for macos)
+            [ctrl_bslash] = '<cmd>:FloatermToggle<CR>',
         },
         terminal_mode = {
             ["<C-i>"] = "<C-\\><C-n>:FloatermNew<CR>",
             ["<C-k>"] = "<C-\\><C-n>:FloatermKill<CR>",
             ["<C-p>"] = "<C-\\><C-n>:FloatermPrev<CR>",
             ["<C-n>"] = "<C-\\><C-n>:FloatermNext<CR>",
-            ["[bs"] = "<C-\\><C-n>:FloatermHide<CR>",
+            [ctrl_bslash] = "<C-\\><C-n>:FloatermHide<CR>",
         },
     })
 
