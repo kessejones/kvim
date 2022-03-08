@@ -2,18 +2,19 @@ local keymappings = require("kvim.keymappings")
 local M = {}
 
 function M.init()
-    -- NOTE: \x2f is equal to ctrl+/ (hack for macos)
-    local ctrl_slash = "\x2f"
+    local keymap_toggle = "<C-_>"
+    if vim.fn.has('mac') then
+        -- NOTE: ^/ is equal to ctrl+/ (hack for macos)
+        keymap_toggle = "^/"
+    end
+
+    local mappings_common =  {
+        [keymap_toggle] = ":Commentary<CR>",
+    }
 
     local default_mappings = {
-        normal_mode = {
-            ["<C-_>"] = ":Commentary<CR>",
-            [ctrl_slash] = ":Commentary<CR>",
-        },
-        visual_mode = {
-            ["<C-_>"] = ":Commentary<CR>",
-            [ctrl_slash] = ":Commentary<CR>",
-        },
+        normal_mode = mappings_common,
+        visual_mode = mappings_common,
     }
 
     keymappings.load(default_mappings)
