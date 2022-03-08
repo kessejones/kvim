@@ -3,12 +3,12 @@ local M = {}
 
 function M.init()
     local keymap_toggle = "<C-_>"
-    if vim.fn.has('mac') then
+    if vim.fn.has("mac") == 1 then
         -- NOTE: ^/ is equal to ctrl+/ (hack for macos)
         keymap_toggle = "^/"
     end
 
-    local mappings_common =  {
+    local mappings_common = {
         [keymap_toggle] = ":Commentary<CR>",
     }
 

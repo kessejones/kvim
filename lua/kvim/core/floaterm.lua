@@ -3,7 +3,7 @@ local M = {}
 
 function M.init()
     local keymap_toggle = "<C-\\>"
-    if vim.fn.has('mac') then
+    if vim.fn.has("mac") == 1 then
         -- NOTE: ^\ is equal to ctrl+\ (hack for macos)
         keymap_toggle = "^\\"
     end
