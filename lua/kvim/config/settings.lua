@@ -1,9 +1,11 @@
 local M = {}
 
 local default_settings = {
+    encoding = 'utf-8',
     lazyredraw = true,
     smarttab = true,
     backup = false,
+    writebackup = false,
     clipboard = "unnamedplus",
     hlsearch = true,
     ignorecase = true,
