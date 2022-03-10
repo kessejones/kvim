@@ -20,7 +20,6 @@ local default_mappings = {
         ["<C-s>"] = "<ESC>:w<CR>",
 
         -- ESC helper
-        ["<C-c>"] = "<ESC>",
         ["jk"] = "<ESC>",
 
         -- move line up/down
@@ -32,29 +31,9 @@ local default_mappings = {
         ["<ESC>"] = ":noh<CR>",
         ["<C-c>"] = "<ESC>",
 
-        -- Tabs
-        -- ["<C-t>"] = ":tabnew<CR>",
-        -- ["<Leader>tt"] = ":tabnew<CR>",
-        -- ["<Leader>1"] = ":tabn 1<CR>",
-        -- ["<Leader>2"] = ":tabn 2<CR>",
-        -- ["<Leader>3"] = ":tabn 3<CR>",
-        -- ["<Leader>4"] = ":tabn 4<CR>",
-        -- ["<Leader>5"] = ":tabn 5<CR>",
-        -- ["<Leader>6"] = ":tabn 6<CR>",
-        -- ["<Leader>7"] = ":tabn 7<CR>",
-        -- ["<Leader>8"] = ":tabn 8<CR>",
-        -- ["<Leader>9"] = ":tabn 9<CR>",
-        -- ["<Leader>tc"] = ":tab sb<CR>",
-
         -- Save file
-        ["<C-s>"] = ":w<CR>",
         ["<Leader>ss"] = ":w<CR>",
         ["<Leader>sq"] = ":wq<CR>",
-
-        -- Close/Quit Buffers
-        ["<Leader>q"] = ":q<CR>",
-        ["<Leader>cc"] = ":bdelete<CR>",
-        ["<Leader>."] = ":bdelete<CR>",
 
         -- Navigate in windows
         ["<Leader>wh"] = "<C-w>h",
@@ -62,20 +41,26 @@ local default_mappings = {
         ["<Leader>wk"] = "<C-w>k",
         ["<Leader>wl"] = "<C-w>l",
 
+        -- Rotate windows
+        ["<Leader>wr"] = "<C-w>r",
+
+        -- Split window
+        ["<Leader>sv"] = ":vsplit<CR>",
+        ["<Leader>sh"] = ":sv<CR>",
+
         -- Duplicate current line
         ["<Leader>y"] = "<ESC>yyp",
 
         -- Next/Previous buffer
         ["<S-l>"] = ":bn<CR>",
         ["<S-h>"] = ":bp<CR>",
-        ["<Leader>bq"] = ":bdelete<CR>",
+
+        -- Close/Quit Buffers
+        ["<Leader>q"] = ":q<CR>",
+        ["<Leader>."] = ":bdelete<CR>",
 
         -- Replace
         ["<C-h>"] = "<ESC>:%s/",
-
-        -- Split window
-        ["<Leader>sv"] = ":vsplit<CR>",
-        ["<Leader>sh"] = ":sv<CR>",
 
         -- Delete
         ["<Leader>d"] = '"_d',
