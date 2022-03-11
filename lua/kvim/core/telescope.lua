@@ -26,31 +26,42 @@ function M.init()
     keymappings.load({
         normal_mode = {
             ["<C-p>"] = ":lua require('kvim.core.telescope').find_files()<CR>",
-            ["<Leader>p"] = ":lua require('telescope.builtin').find_files()<CR>",
+            ["<Leader>p"] = ":Telescope find_files<CR>",
             ["<Leader>fl"] = ":Telescope live_grep<CR>",
             ["<Leader>fb"] = ":Telescope buffers<CR>",
             ["<Leader>fr"] = ":Telescope lsp_references<CR>",
             ["<Leader>fs"] = ":Telescope git_stash<CR>",
             ["<Leader>fg"] = ":Telescope git_commits<CR>",
             ["<Leader>fc"] = ":lua require('kvim.core.telescope').curr_buf()<CR>",
+            ["<Leader>fa"] = ":lua require('kvim.core.telescope').code_actions()<CR>",
+        },
+        visual_mode = {
+            ["<Leader>fa"] = ":lua require('kvim.core.telescope').code_actions()<CR>",
         },
     })
 end
 
 function M.curr_buf()
-    local opts = require('telescope.themes').get_dropdown({
-        height = 10,
-        previewer = false
-    })
-    require('telescope.builtin').current_buffer_fuzzy_find(opts)
-end
-
-function M.find_files()
-    local opts = require('telescope.themes').get_dropdown({
+    local opts = require("telescope.themes").get_dropdown({
         height = 10,
         previewer = false,
     })
-    require('telescope.builtin').find_files(opts)
+    require("telescope.builtin").current_buffer_fuzzy_find(opts)
+end
+
+function M.find_files()
+    local opts = require("telescope.themes").get_dropdown({
+        height = 10,
+        previewer = false,
+    })
+    require("telescope.builtin").find_files(opts)
+end
+
+function M.code_actions()
+    local opts = require("telescope.themes").get_dropdown({
+        height = 10,
+    })
+    require("telescope.builtin").lsp_code_actions(opts)
 end
 
 return M
