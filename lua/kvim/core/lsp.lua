@@ -57,6 +57,7 @@ function M.lsp_config()
         normal_mode = {
             ["K"] = "<cmd>:lua vim.lsp.buf.hover()<CR>",
             ["gd"] = "<cmd>:lua vim.lsp.buf.definition()<CR>",
+            ["ga"] = "<cmd>:lua vim.lsp.buf.code_action()<CR>",
             ["gr"] = "<cmd>:lua vim.lsp.buf.references()<CR>",
             ["gi"] = "<cmd>:lua vim.lsp.buf.implementation()<CR>",
             ["<Leader>rn"] = "<cmd>:lua vim.lsp.buf.rename()<CR>",
