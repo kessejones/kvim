@@ -7,6 +7,17 @@ local M = {}
 function M.init()
     telescope.setup({
         defaults = {
+            file_ignore_patterns = {
+                "^.git/",
+                "^vendor/",
+                "^node_modules/",
+                "^target/",
+                "^coverage/",
+                "^code_coverage_html/",
+                "^build/",
+                "^Build/",
+                ".DS_Store",
+            },
             mappings = {
                 i = {
                     ["<C-n>"] = actions.cycle_history_next,
@@ -14,11 +25,21 @@ function M.init()
                     ["<C-j>"] = actions.move_selection_next,
                     ["<C-k>"] = actions.move_selection_previous,
                     ["<CR>"] = actions.select_default,
+                    ["<C-h>"] = actions.file_split,
+                    ["<C-v>"] = actions.file_vsplit,
                     ["<C-c>"] = actions.close,
+                    ["<ESC>"] = actions.close,
                 },
                 n = {
                     ["<C-c>"] = actions.close,
+                    ["<ESC>"] = actions.close,
                 },
+            },
+        },
+        pickers = {
+            find_files = {
+                hidden = true,
+                no_ignore = true,
             },
         },
     })
