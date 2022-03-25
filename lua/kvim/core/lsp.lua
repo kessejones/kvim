@@ -1,4 +1,5 @@
 local keymapping = require("kvim.keymappings")
+local utils = require("utils")
 local lspconfig = require("lspconfig")
 local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
@@ -42,6 +43,8 @@ local servers = {
     pyright = {},
 }
 
+local disabled_formatting_on_save = { "tsserver" }
+
 function M.enable_format_on_save(client)
     if client.resolved_capabilities.document_formatting then
         vim.cmd([[
@@ -50,6 +53,22 @@ function M.enable_format_on_save(client)
                     autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
                 augroup END
             ]])
+    end
+end
+
+function M.disable_format_on_save(client)
+    client.resolved_capabilities.document_formatting = false
+end
+
+function M.enable_highlight(client)
+    if client.resolved_capabilities.document_highlight then
+        vim.cmd([[
+            augroup LspDocumentHighlight
+                autocmd! * <buffer>
+                autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+                autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+            augroup END
+        ]])
     end
 end
 
@@ -75,17 +94,13 @@ function M.lsp_config()
     local on_attach = function(client, bufnr)
         keymapping.load(mapping, bufnr)
 
-        M.enable_format_on_save(client)
-
-        if client.resolved_capabilities.document_highlight then
-            vim.cmd([[
-            augroup LspDocumentHighlight
-                autocmd! * <buffer>
-                autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-                autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-            augroup END
-        ]])
+        if utils.contains(disabled_formatting_on_save, client.name) then
+            M.disable_format_on_save(client)
+        else
+            M.enable_format_on_save(client)
         end
+
+        M.enable_highlight(client)
     end
 
     local capabilities = cmp_nvim_lsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
