@@ -39,6 +39,7 @@ local servers = {
     },
     clangd = {},
     gopls = {},
+    pyright = {},
 }
 
 function M.enable_format_on_save(client)
