@@ -1,7 +1,7 @@
 local M = {}
 
 local default_settings = {
-    encoding = 'utf-8',
+    encoding = "utf-8",
     lazyredraw = true,
     smarttab = true,
     backup = false,
@@ -34,6 +34,7 @@ local default_settings = {
     list = true,
     timeoutlen = 300,
     completeopt = { "menu", "menuone", "noselect" },
+    showcmd = false,
 }
 
 function M.set(key, value)
