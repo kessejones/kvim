@@ -8,7 +8,7 @@ function M.init()
         settings.set("termguicolors", true)
     end
 
-    if utils.contains(vim.fn.getcompletion("", "color"), scheme_name) then
+    if utils.contains(vim.fn.getcompletion("", "color"), "kanagawa") then
         require("kanagawa").setup({
             undercurl = true,
             commentStyle = "italic",
