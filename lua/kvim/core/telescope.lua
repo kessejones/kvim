@@ -14,6 +14,7 @@ function M.init()
                 "^target/",
                 "^coverage/",
                 "^code_coverage_html/",
+                "^test/reports/",
                 "^build/",
                 "^Build/",
                 ".DS_Store",
