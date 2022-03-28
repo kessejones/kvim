@@ -1,9 +1,10 @@
 local keymappings = require("kvim.keymappings")
+local git_blame_line = require("git-blame-line")
 
 local M = {}
 
 function M.init()
-    require("git-blame-line").setup({
+    git_blame_line.setup({
         view = {
             enable_cursor_hold = true,
         },

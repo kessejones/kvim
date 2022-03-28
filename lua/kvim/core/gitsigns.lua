@@ -1,9 +1,10 @@
 local keymappings = require("kvim.keymappings")
+local gitsigns = require("gitsigns")
 
 local M = {}
 
 function M.init()
-    require("gitsigns").setup({
+    gitsigns.setup({
         current_line_blame = false,
     })
 

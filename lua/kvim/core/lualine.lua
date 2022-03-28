@@ -1,7 +1,9 @@
+local lualine = require("lualine")
+
 local M = {}
 
 function M.init()
-    require("lualine").setup({
+    lualine.setup({
         options = {
             icons_enabled = true,
             theme = "auto",

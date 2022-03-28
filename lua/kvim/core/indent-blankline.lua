@@ -1,7 +1,9 @@
+local indent_blankline = require("indent_blankline")
+
 local M = {}
 
 function M.init()
-    require("indent_blankline").setup({
+    indent_blankline.setup({
         show_current_context = true,
         show_current_context_start = true,
         bufname_exclude = { "terminal", "startfy", "NvimTree", "ToggleTerm" },

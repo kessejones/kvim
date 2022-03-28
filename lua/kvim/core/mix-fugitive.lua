@@ -1,7 +1,9 @@
+local mix_fugitive = require("mix-fugitive")
+
 local M = {}
 
 function M.init()
-    require("mix-fugitive").setup()
+    mix_fugitive.setup()
 end
 
 return M
