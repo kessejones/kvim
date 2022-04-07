@@ -74,7 +74,10 @@ end
 
 function M.find_files()
     local opts = require("telescope.themes").get_dropdown({
-        height = 10,
+        layout_config = {
+            height = 25,
+            width = 120,
+        },
         previewer = false,
     })
     require("telescope.builtin").find_files(opts)
