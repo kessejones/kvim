@@ -47,12 +47,14 @@ local disabled_formatting_on_save = { "tsserver" }
 
 function M.enable_format_on_save(client)
     if client.resolved_capabilities.document_formatting then
-        vim.cmd([[
-                augroup LspFormatting
-                    autocmd! * <buffer>
-                    autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
-                augroup END
-            ]])
+        local lsp_formatting_group = vim.api.nvim_create_augroup("LspFormatting", {})
+        vim.api.nvim_create_autocmd("BufWritePre", {
+            buffer = 0,
+            group = lsp_formatting_group,
+            callback = function()
+                vim.lsp.buf.formatting_sync()
+            end,
+        })
     end
 end
 
@@ -62,13 +64,21 @@ end
 
 function M.enable_highlight(client)
     if client.resolved_capabilities.document_highlight then
-        vim.cmd([[
-            augroup LspDocumentHighlight
-                autocmd! * <buffer>
-                autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-                autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-            augroup END
-        ]])
+        local lsp_highlight_group = vim.api.nvim_create_augroup("LspDocumentHighlight", {})
+        vim.api.nvim_create_autocmd("CursorHold", {
+            buffer = 0,
+            group = lsp_highlight_group,
+            callback = function()
+                vim.lsp.buf.document_highlight()
+            end,
+        })
+        vim.api.nvim_create_autocmd("CursorMoved", {
+            buffer = 0,
+            group = lsp_highlight_group,
+            callback = function()
+                vim.lsp.buf.clear_references()
+            end,
+        })
     end
 end
 

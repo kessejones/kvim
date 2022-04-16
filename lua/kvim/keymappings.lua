@@ -1,10 +1,5 @@
 local M = {}
 
-local generic_opts = {
-    noremap = true,
-    silent = true,
-}
-
 local mode_adapter = {
     normal_mode = "n",
     visual_mode = "v",
@@ -16,15 +11,8 @@ local mode_adapter = {
 
 local default_mappings = {
     insert_mode = {
-        -- Save file
-        ["<C-s>"] = "<ESC>:w<CR>",
-
         -- ESC helper
         ["jk"] = "<ESC>",
-
-        -- move line up/down
-        ["<C-j>"] = "<ESC>:m .+1<CR>==gi",
-        ["<C-k>"] = "<ESC>:m .-2<CR>==gi",
     },
     normal_mode = {
         ["<Space>"] = "<NOP>",
@@ -58,6 +46,7 @@ local default_mappings = {
         -- Close/Quit Buffers
         ["<Leader>q"] = ":q<CR>",
         ["<Leader>."] = ":bdelete<CR>",
+        ["<Leader>.f"] = ":bdelete!<CR>",
 
         -- Replace
         ["<C-h>"] = "<ESC>:%s/",
@@ -67,13 +56,14 @@ local default_mappings = {
         ["x"] = '"_x',
 
         -- Select all
-        ["<C-a>"] = "gg<S-v>G",
+        ["<Leader>aa"] = "gg<S-v>G",
+        ["<Leader>ay"] = "gg<S-v>Gy",
     },
     visual_mode = {
         -- Indent
         ["<"] = "<gv",
         [">"] = ">gv",
-        ["<C-c>"] = "<ESC>",
+        [",,"] = "<ESC>",
 
         -- Move up/down selected text
         ["<C-j>"] = ":m '>+1<CR>gv=gv",
@@ -81,20 +71,21 @@ local default_mappings = {
     },
     visual_block_mode = {
         -- ESC helper
-        ["<C-c>"] = "<ESC>",
+        [",,"] = "<ESC>",
     },
     command_mode = {
         -- ESC helper
-        ["<C-c>"] = "<ESC>",
+        [",,"] = "<ESC>",
     },
 }
 
 function M.set_keymaps(mode, key, val, bufnr)
-    if not bufnr then
-        vim.api.nvim_set_keymap(mode, key, val, generic_opts)
-    else
-        vim.api.nvim_buf_set_keymap(bufnr, mode, key, val, generic_opts)
-    end
+    local opts = {
+        noremap = true,
+        silent = true,
+        buffer = bufnr,
+    }
+    vim.keymap.set(mode, key, val, opts)
 end
 
 function M.load_mode(mode, mapping, bufnr)

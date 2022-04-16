@@ -41,25 +41,25 @@ function M.init()
             find_files = {
                 hidden = true,
                 no_ignore = true,
-                find_command = { 'rg', '--files' }
+                find_command = { "rg", "--files" },
             },
         },
     })
 
     keymappings.load({
         normal_mode = {
-            ["<C-p>"] = ":lua require('kvim.core.telescope').find_files()<CR>",
+            ["<C-p>"] = M.find_files,
             ["<Leader>p"] = ":Telescope find_files<CR>",
             ["<Leader>fl"] = ":Telescope live_grep<CR>",
             ["<Leader>fb"] = ":Telescope buffers<CR>",
             ["<Leader>fr"] = ":Telescope lsp_references<CR>",
             ["<Leader>fs"] = ":Telescope git_stash<CR>",
             ["<Leader>fg"] = ":Telescope git_commits<CR>",
-            ["<Leader>fc"] = ":lua require('kvim.core.telescope').curr_buf()<CR>",
-            ["<Leader>fa"] = ":lua require('kvim.core.telescope').code_actions()<CR>",
+            ["<Leader>fc"] = M.curr_buf,
+            ["<Leader>fa"] = M.code_actions,
         },
         visual_mode = {
-            ["<Leader>fa"] = ":lua require('kvim.core.telescope').code_actions()<CR>",
+            ["<Leader>fa"] = M.code_actions,
         },
     })
 end

@@ -2,8 +2,17 @@ local M = {}
 
 function M.center(values)
     local fn = vim.fn
-    local longest_line = fn.max(fn.map(fn.copy(values), "strwidth(v:val)"))
-    local centered_lines = fn.map(fn.copy(values), 'repeat(" ", (&columns / 2) - (' .. longest_line .. "/ 2)) . v:val")
+
+    local longest_line = fn.max(fn.map(fn.copy(values), function(_, val)
+        return fn.strwidth(val)
+    end))
+
+    local centered_lines = fn.map(fn.copy(values), function(_, val)
+        local total_spaces = (vim.o.columns / 2) - (longest_line / 2)
+        local spaces = string.rep(" ", total_spaces)
+        return spaces .. val
+    end)
+
     return centered_lines
 end
 

@@ -3,6 +3,22 @@ local cmp = require("cmp")
 local lspkind = require("lspkind")
 
 function M.init()
+    local select_prev_item = cmp.mapping(function(fallback)
+        if cmp.visible() then
+            cmp.select_prev_item()
+        else
+            fallback()
+        end
+    end, { "i", "s" })
+
+    local select_next_item = cmp.mapping(function(fallback)
+        if cmp.visible() then
+            cmp.select_next_item()
+        else
+            fallback()
+        end
+    end, { "i", "s" })
+
     cmp.setup({
         sources = {
             { name = "nvim_lsp" },
@@ -19,20 +35,10 @@ function M.init()
         mapping = {
             ["<C-u>"] = cmp.mapping.scroll_docs(-4),
             ["<C-d>"] = cmp.mapping.scroll_docs(4),
-            ["<Tab>"] = cmp.mapping(function(fallback)
-                if cmp.visible() then
-                    cmp.select_next_item()
-                else
-                    fallback()
-                end
-            end, { "i", "s" }),
-            ["<S-Tab>"] = cmp.mapping(function(fallback)
-                if cmp.visible() then
-                    cmp.select_prev_item()
-                else
-                    fallback()
-                end
-            end, { "i", "s" }),
+            ["<Tab>"] = select_next_item,
+            ["<C-j>"] = select_next_item,
+            ["<S-Tab>"] = select_prev_item,
+            ["<C-k>"] = select_prev_item,
             ["<C-space>"] = cmp.mapping.complete(),
             ["<CR>"] = cmp.mapping.confirm({
                 select = true,

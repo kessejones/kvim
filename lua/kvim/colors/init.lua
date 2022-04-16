@@ -20,7 +20,7 @@ function M.init()
             specialReturn = true,
             specialException = true,
             transparent = false,
-            globalStatus = false,
+            globalStatus = true,
             colors = {},
             overrides = {},
         })
