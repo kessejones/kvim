@@ -1,7 +1,7 @@
 return {
     { "wbthomason/packer.nvim" },
 
-    -- coloscheme/visual plugins
+    -- coloscheme
     { "rebelot/kanagawa.nvim" },
     {
         "nvim-lualine/lualine.nvim",
@@ -35,7 +35,7 @@ return {
     },
 
     -- formatting/syntax
-    { "jiangmiao/auto-pairs" },
+    { "windwp/nvim-autopairs" },
     { "nvim-treesitter/nvim-treesitter", run = { ":TSUpdate" } },
     { "jose-elias-alvarez/null-ls.nvim", requires = { "nvim-lua/plenary.nvim" } },
     { "tpope/vim-commentary" },

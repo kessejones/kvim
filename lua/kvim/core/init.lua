@@ -1,6 +1,7 @@
 local M = {}
 
 local modules = {
+    "nvim-autopairs",
     "cmp",
     "commentary",
     "git-blame-line",
