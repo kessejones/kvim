@@ -9,7 +9,7 @@ function M.init()
         else
             fallback()
         end
-    end, { "i", "s" })
+    end, { "i", "s", "c" })
 
     local select_next_item = cmp.mapping(function(fallback)
         if cmp.visible() then
@@ -17,7 +17,7 @@ function M.init()
         else
             fallback()
         end
-    end, { "i", "s" })
+    end, { "i", "s", "c" })
 
     cmp.setup({
         sources = {
