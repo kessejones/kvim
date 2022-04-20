@@ -47,6 +47,7 @@ local default_mappings = {
         ["<Leader>q"] = ":q<CR>",
         ["<Leader>."] = ":bdelete<CR>",
         ["<Leader>.f"] = ":bdelete!<CR>",
+        ["<Leader>.a"] = ":%bdelete<CR>",
 
         -- Replace
         ["<C-h>"] = "<ESC>:%s/",
