@@ -1,4 +1,5 @@
 local telescope = require("telescope")
+local custom = require("kvim.core.telescope.custom")
 local actions = require("telescope.actions")
 local keymappings = require("kvim.keymappings")
 
@@ -36,6 +37,35 @@ function M.init()
                     ["<ESC>"] = actions.close,
                 },
             },
+            layout_config = {
+                width = 0.95,
+                height = 0.85,
+                prompt_position = "top",
+                horizontal = {
+                    preview_width = function(_, cols, _)
+                        if cols > 200 then
+                            return math.floor(cols * 0.4)
+                        else
+                            return math.floor(cols * 0.6)
+                        end
+                    end,
+                },
+                vertical = {
+                    width = 0.9,
+                    height = 0.95,
+                    preview_height = 0.5,
+                },
+                flex = {
+                    horizontal = {
+                        preview_width = 0.9,
+                    },
+                },
+            },
+            sorting_strategy = "ascending",
+            scroll_strategy = "cycle",
+            color_devicons = true,
+            layout_strategy = "horizontal",
+            selection_caret = " ",
         },
         pickers = {
             find_files = {
@@ -48,46 +78,21 @@ function M.init()
 
     keymappings.load({
         normal_mode = {
-            ["<C-p>"] = M.find_files,
+            ["<C-p>"] = custom.find_files,
             ["<Leader>p"] = ":Telescope find_files<CR>",
             ["<Leader>fl"] = ":Telescope live_grep<CR>",
             ["<Leader>fb"] = ":Telescope buffers<CR>",
-            ["<Leader>fr"] = ":Telescope lsp_references<CR>",
+            ["<Leader>fr"] = custom.lsp_references,
             ["<Leader>fs"] = ":Telescope git_stash<CR>",
             ["<Leader>fg"] = ":Telescope git_commits<CR>",
-            ["<Leader>fc"] = M.curr_buf,
-            ["<Leader>fa"] = M.code_actions,
+            ["<Leader>fc"] = custom.curr_buf,
+            ["<Leader>fa"] = custom.code_actions,
+            ["<Leader>fp"] = ":Telescope commands<CR>",
         },
         visual_mode = {
-            ["<Leader>fa"] = M.code_actions,
+            ["<Leader>fa"] = custom.code_actions,
         },
     })
-end
-
-function M.curr_buf()
-    local opts = require("telescope.themes").get_dropdown({
-        height = 10,
-        previewer = false,
-    })
-    require("telescope.builtin").current_buffer_fuzzy_find(opts)
-end
-
-function M.find_files()
-    local opts = require("telescope.themes").get_dropdown({
-        layout_config = {
-            height = 25,
-            width = 120,
-        },
-        previewer = false,
-    })
-    require("telescope.builtin").find_files(opts)
-end
-
-function M.code_actions()
-    local opts = require("telescope.themes").get_dropdown({
-        height = 10,
-    })
-    require("telescope.builtin").lsp_code_actions(opts)
 end
 
 return M
