@@ -52,7 +52,6 @@ function M.curr_buf()
             height = 25,
             width = 120,
         },
-        winblend = 10,
         border = true,
         previewer = false,
         shorten_path = false,
