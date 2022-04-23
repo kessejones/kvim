@@ -61,6 +61,9 @@ local default_mappings = {
         ["<Leader>ay"] = "gg<S-v>Gy",
     },
     visual_mode = {
+        -- Replace
+        ["<C-h>"] = ":s/",
+
         -- Indent
         ["<"] = "<gv",
         [">"] = ">gv",
