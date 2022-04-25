@@ -1,3 +1,6 @@
+local alpha = require("alpha")
+local startify = require("alpha.themes.startify")
+local keymappings = require("kvim.keymappings")
 local utils = require("utils")
 
 local M = {}
@@ -13,25 +16,79 @@ local kvim_header = {
 
 local kvim_footer = { "Kesse Jones" }
 
-local kvim_lists = {
-    {
-        type = "dir",
-        header = { "  Projeto: " .. vim.fn.getcwd() },
-    },
-    {
-        type = "files",
-        header = { "  Arquivos Recentes" },
-    },
-}
+local function startify_custom()
+    local custom_header = startify.section.header
+    custom_header.val = utils.center(kvim_header)
+    custom_header.opts = { hl = "Title" }
+
+    local custom_footer = startify.section.footer
+    custom_footer.type = "text"
+    custom_footer.val = utils.center(kvim_footer)
+    custom_footer.opts = { hl = "Title" }
+
+    local custom_mru = {
+        type = "group",
+        val = {
+            { type = "padding", val = 1 },
+            { type = "text", val = " Recents", opts = { hl = "Statement" } },
+            { type = "padding", val = 1 },
+            {
+                type = "group",
+                val = function()
+                    return { startify.mru(10) }
+                end,
+            },
+        },
+    }
+
+    local custom_mru_cwd = {
+        type = "group",
+        val = {
+            { type = "padding", val = 1 },
+            {
+                type = "text",
+                val = "  Project: " .. vim.fn.getcwd(),
+                opts = { hl = "Statement", shrink_margin = false },
+            },
+            { type = "padding", val = 1 },
+            {
+                type = "group",
+                val = function()
+                    return { startify.mru(0, vim.fn.getcwd()) }
+                end,
+                opts = { shrink_margin = false },
+            },
+        },
+    }
+
+    local config = {
+        layout = {
+            { type = "padding", val = 1 },
+            custom_header,
+            { type = "padding", val = 2 },
+            custom_mru_cwd,
+            custom_mru,
+            { type = "padding", val = 1 },
+            custom_footer,
+        },
+        opts = {
+            margin = 3,
+            redraw_on_resize = false,
+            setup = function()
+                keymappings.load({
+                    normal_mode = {
+                        ["i"] = "<cmd>ene<CR>",
+                    },
+                }, 0)
+            end,
+        },
+    }
+
+    return config
+end
 
 function M.init()
-    vim.g.startify_custom_header = utils.center(kvim_header)
-    vim.g.startify_custom_footer = utils.center(kvim_footer)
-    vim.g.startify_lists = kvim_lists
-    vim.g.startify_enable_special = false
-    vim.g.startify_session_dir = "~/.config/nvim/session"
-    vim.g.startify_session_autoload = true
-    vim.g.webdevicons_enable_startify = true
+    alpha.setup(startify_custom())
 end
 
 return M

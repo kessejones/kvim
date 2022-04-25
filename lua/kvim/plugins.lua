@@ -14,7 +14,7 @@ return {
     { "elixir-editors/vim-elixir" },
 
     -- dashboard
-    { "mhinz/vim-startify" },
+    { "goolord/alpha-nvim" },
 
     -- completion
     { "onsails/lspkind-nvim" },
