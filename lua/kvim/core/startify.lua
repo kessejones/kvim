@@ -26,6 +26,19 @@ local function startify_custom()
     custom_footer.val = utils.center(kvim_footer)
     custom_footer.opts = { hl = "Title" }
 
+    local ignore_paths = { ".git/", "COMMIT_EDITMSG" }
+    local mru_opts = {
+        ignore = function(path, _)
+            print(path)
+            for _, p in ipairs(ignore_paths) do
+                if string.find(path, p) then
+                    return true
+                end
+            end
+            return false
+        end,
+    }
+
     local custom_mru = {
         type = "group",
         val = {
@@ -35,7 +48,7 @@ local function startify_custom()
             {
                 type = "group",
                 val = function()
-                    return { startify.mru(10) }
+                    return { startify.mru(10, nil, nil, mru_opts) }
                 end,
             },
         },
@@ -54,7 +67,7 @@ local function startify_custom()
             {
                 type = "group",
                 val = function()
-                    return { startify.mru(0, vim.fn.getcwd()) }
+                    return { startify.mru(0, vim.fn.getcwd(), nil, mru_opts) }
                 end,
                 opts = { shrink_margin = false },
             },
