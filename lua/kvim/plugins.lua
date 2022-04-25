@@ -1,6 +1,9 @@
 return {
     { "wbthomason/packer.nvim" },
 
+    -- improve startup
+    { "lewis6991/impatient.nvim" },
+
     -- coloscheme
     { "rebelot/kanagawa.nvim" },
     {

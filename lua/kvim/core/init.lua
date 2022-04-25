@@ -8,6 +8,7 @@ local modules = {
     "git-fugitive",
     "gitsigns",
     "indent-blankline",
+    "impatient",
     "lsp",
     "lualine",
     "maximizer",
