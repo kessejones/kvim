@@ -15,6 +15,7 @@ function M.init()
                 "^target/",
                 "^coverage/",
                 "^code_coverage_html/",
+                "^.phpunit.cache/",
                 "^test/reports/",
                 "^build/",
                 "^Build/",
