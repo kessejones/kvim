@@ -1,48 +1,55 @@
 local M = {
     packer = nil,
     packer_bootstrap = false,
-    packer_is_first_start = false,
+    packer_started = false,
 }
 
 local fn = vim.fn
 
-function M.init()
-    local compile_path = "~/.config/nvim/plugins/packer_compiled.lua"
+local function download_packer()
     local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-    local root_path = fn.stdpath("data") .. "/site/pack"
+    return fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
+end
 
-    if fn.empty(fn.glob(install_path)) > 0 then
-        M.packer_is_first_start = not fn.empty(
-            fn.system({ "git", "clone", "https://github.com/wbthomason/packer.nvim", install_path })
-        )
+local function load_packer()
+    local ok, packer = pcall(require, "packer")
+    if ok then
+        return packer
+    end
+    return nil
+end
+
+function M.init()
+    local packer = load_packer()
+    if not packer then
+        local out = download_packer()
+        vim.cmd("packadd packer.nvim")
+        print(out)
+
+        packer = load_packer()
+        if not packer then
+            return
+        end
+
+        packer.on_complete = function()
+            print("You'll need to restart now")
+        end
+
+        packer.init()
+        M.packer_bootstrap = true
     end
 
-    local packer_ok, packer = pcall(require, "packer")
-    if not packer_ok then
-        return
-    end
-
-    packer.init({
-        package_root = root_path,
-        compile_path = compile_path,
-    })
-
-    M.packer_bootstrap = true
+    M.packer_started = true
     M.packer = packer
 end
 
 function M.load(list)
-    if not M.packer_bootstrap then
-        error("Packer not started")
-        return
-    end
-
     return M.packer.startup({
         function(use)
             for _, plugin in pairs(list) do
                 use(plugin)
             end
-            if M.packer_is_first_start then
+            if M.packer_bootstrap then
                 M.packer.sync()
             end
         end,

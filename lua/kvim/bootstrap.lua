@@ -12,9 +12,13 @@ function M.init()
     keymappings.init()
 
     plugin_loader.init()
-    plugin_loader.load(plugins)
+    if not plugin_loader.packer_started then
+        print("error on start packer")
+        return
+    end
 
-    if plugin_loader.packer_is_first_start then
+    plugin_loader.load(plugins)
+    if plugin_loader.packer_bootstrap then
         return
     end
 
