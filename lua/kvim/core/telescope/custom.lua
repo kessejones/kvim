@@ -1,4 +1,6 @@
 local entry_display = require("telescope.pickers.entry_display")
+local builtin = require("telescope.builtin")
+local themes = require("telescope.themes")
 local utils = require("telescope.utils")
 
 local M = {}
@@ -47,7 +49,7 @@ function M.lsp_references_display(opts)
 end
 
 function M.curr_buf()
-    local opts = require("telescope.themes").get_dropdown({
+    local opts = themes.get_dropdown({
         layout_config = {
             height = 25,
             width = 120,
@@ -56,25 +58,18 @@ function M.curr_buf()
         previewer = false,
         shorten_path = false,
     })
-    require("telescope.builtin").current_buffer_fuzzy_find(opts)
+    builtin.current_buffer_fuzzy_find(opts)
 end
 
 function M.find_files()
-    local opts = require("telescope.themes").get_dropdown({
+    local opts = themes.get_dropdown({
         layout_config = {
             height = 25,
             width = 120,
         },
         previewer = false,
     })
-    require("telescope.builtin").find_files(opts)
-end
-
-function M.code_actions()
-    local opts = require("telescope.themes").get_dropdown({
-        height = 10,
-    })
-    require("telescope.builtin").lsp_code_actions(opts)
+    builtin.find_files(opts)
 end
 
 function M.lsp_references()
@@ -82,7 +77,7 @@ function M.lsp_references()
         sorting_strategy = "ascending",
         entry_maker = M.lsp_references_display(),
     }
-    require("telescope.builtin").lsp_references(opts)
+    builtin.lsp_references(opts)
 end
 
 return M

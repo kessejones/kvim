@@ -81,7 +81,13 @@ function M.init()
                 find_command = { "rg", "--files" },
             },
         },
+        extensions = {
+            ["ui-select"] = {
+                require("telescope.themes").get_dropdown({}),
+            },
+        },
     })
+    telescope.load_extension("ui-select")
 
     keymappings.load({
         normal_mode = {
@@ -93,11 +99,7 @@ function M.init()
             ["<Leader>fs"] = ":Telescope git_stash<CR>",
             ["<Leader>fg"] = ":Telescope git_commits<CR>",
             ["<Leader>fc"] = custom.curr_buf,
-            ["<Leader>fa"] = custom.code_actions,
             ["<Leader>fp"] = ":Telescope commands<CR>",
-        },
-        visual_mode = {
-            ["<Leader>fa"] = custom.code_actions,
         },
     })
 end
