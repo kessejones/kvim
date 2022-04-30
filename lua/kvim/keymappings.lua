@@ -32,9 +32,21 @@ local default_mappings = {
         -- Rotate windows
         ["<Leader>wr"] = "<C-w>r",
 
+        -- Make windows to be basically the same size
+        ["<Leader>r="] = "<C-w>=",
+
+        -- Window sizing
+        ["<Leader>rk"] = "<C-w>5+",
+        ["<Leader>rj"] = "<C-w>5-",
+        ["<Leader>rh"] = "<C-w>5<",
+        ["<Leader>rl"] = "<C-w>5>",
+
         -- Split window
         ["<Leader>sv"] = ":vsplit<CR>",
         ["<Leader>sh"] = ":sv<CR>",
+
+        -- Make the current window the only one on the screen
+        ["<Leader>s="] = ":on<CR>",
 
         -- Duplicate current line
         ["<Leader>y"] = "<ESC>yyp",
