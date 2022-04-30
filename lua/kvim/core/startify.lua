@@ -29,7 +29,6 @@ local function startify_custom()
     local ignore_paths = { ".git/", "COMMIT_EDITMSG" }
     local mru_opts = {
         ignore = function(path, _)
-            print(path)
             for _, p in ipairs(ignore_paths) do
                 if string.find(path, p) then
                     return true
