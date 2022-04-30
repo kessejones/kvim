@@ -23,6 +23,12 @@ function M.init()
             },
             mappings = {
                 i = {
+                    ["<Tab>"] = function(bufnr)
+                        local content = vim.fn.getreg('"', 1)
+                        if vim.api.nvim_buf_get_option(bufnr, "modifiable") then
+                            vim.api.nvim_paste(content, true, -1)
+                        end
+                    end,
                     ["<C-n>"] = actions.cycle_history_next,
                     ["<C-p>"] = actions.cycle_history_prev,
                     ["<C-j>"] = actions.move_selection_next,
