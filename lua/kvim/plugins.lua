@@ -62,6 +62,7 @@ return {
     -- finder
     { "nvim-telescope/telescope.nvim", requires = { "nvim-lua/plenary.nvim" } },
     { "nvim-telescope/telescope-ui-select.nvim" },
+    { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
     { "ahmedkhalf/project.nvim" },
 
     -- buffers/windows and tabs

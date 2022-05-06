@@ -85,9 +85,14 @@ function M.init()
             ["ui-select"] = {
                 require("telescope.themes").get_dropdown({}),
             },
+            fzf = {
+                fuzzy = false,
+            },
         },
     })
+
     telescope.load_extension("ui-select")
+    telescope.load_extension("fzf")
 
     keymappings.load({
         normal_mode = {
