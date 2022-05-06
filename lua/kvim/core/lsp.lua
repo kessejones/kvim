@@ -53,7 +53,9 @@ function M.enable_format_on_save(client, bufnr)
             buffer = bufnr,
             group = "LspFormatting",
             callback = function()
-                vim.lsp.buf.formatting_sync()
+                if vim.g.format_on_save then
+                    vim.lsp.buf.formatting_sync()
+                end
             end,
         })
     end
@@ -85,6 +87,7 @@ function M.enable_highlight(client, bufnr)
 end
 
 function M.lsp_config()
+    vim.g.format_on_save = true
     vim.api.nvim_create_augroup("LspFormatting", { clear = true })
     vim.api.nvim_create_augroup("LspDocumentHighlight", { clear = true })
 
@@ -119,6 +122,15 @@ function M.lsp_config()
             end,
             ["<Leader>ff"] = function()
                 vim.lsp.buf.formatting()
+            end,
+            ["<Leader>fo"] = function()
+                if vim.g.format_on_save then
+                    vim.g.format_on_save = false
+                    print("format_on_save=disabled")
+                else
+                    vim.g.format_on_save = true
+                    print("format_on_save=enabled")
+                end
             end,
         },
         visual_mode = {
