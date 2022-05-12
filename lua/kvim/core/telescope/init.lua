@@ -9,17 +9,17 @@ function M.init()
     telescope.setup({
         defaults = {
             file_ignore_patterns = {
-                "^.git/",
+                "^%.git/",
                 "^vendor/",
                 "^node_modules/",
                 "^target/",
                 "^coverage/",
                 "^code_coverage_html/",
-                "^.phpunit.cache/",
+                "^%.phpunit%.cache/",
                 "^test/reports/",
                 "^build/",
                 "^Build/",
-                ".DS_Store",
+                "%.DS_Store",
             },
             mappings = {
                 i = {
