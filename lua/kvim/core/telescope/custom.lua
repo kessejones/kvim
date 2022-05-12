@@ -5,7 +5,7 @@ local utils = require("telescope.utils")
 
 local M = {}
 
-function M.lsp_references_display(opts)
+local function lsp_references_display(opts)
     opts = opts or {}
 
     local displayer = entry_display.create({
@@ -75,7 +75,7 @@ end
 function M.lsp_references()
     local opts = {
         sorting_strategy = "ascending",
-        entry_maker = M.lsp_references_display(),
+        entry_maker = lsp_references_display(),
     }
     builtin.lsp_references(opts)
 end
