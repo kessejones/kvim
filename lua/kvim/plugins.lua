@@ -72,5 +72,9 @@ return {
     { "akinsho/bufferline.nvim", requires = "kyazdani42/nvim-web-devicons" },
     { "moll/vim-bbye" },
 
+    -- find/replace
+    { "nvim-pack/nvim-spectre" },
+
+    -- .editorconfig
     { "gpanders/editorconfig.nvim" },
 }

@@ -20,6 +20,7 @@ local modules = {
     "floaterm",
     "treesitter",
     "multi-cursor",
+    "spectre",
     "bufferline",
 }
 
