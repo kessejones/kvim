@@ -11,12 +11,8 @@ function M.init()
     if utils.contains(vim.fn.getcompletion("", "color"), "kanagawa") then
         require("kanagawa").setup({
             undercurl = true,
-            commentStyle = "italic",
-            functionStyle = "NONE",
-            keywordStyle = "NONE",
-            statementStyle = "NONE",
-            typeStyle = "NONE",
-            variablebuiltinStyle = "italic",
+            commentStyle = { italic = true },
+            variablebuiltinStyle = { italic = true },
             specialReturn = true,
             specialException = true,
             transparent = false,
