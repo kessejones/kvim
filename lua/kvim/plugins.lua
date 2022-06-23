@@ -45,7 +45,8 @@ return {
 
     -- git
     { "lewis6991/gitsigns.nvim", requires = { "nvim-lua/plenary.nvim" } },
-    { "tpope/vim-fugitive" },
+    -- { "tpope/vim-fugitive" },
+    { "TimUntersberger/neogit" },
     { "kessejones/git-blame-line.nvim" },
 
     -- laravel blade
@@ -77,4 +78,6 @@ return {
 
     -- .editorconfig
     { "gpanders/editorconfig.nvim" },
+
+    { "mattn/emmet-vim" },
 }
