@@ -103,6 +103,7 @@ function M.init()
             ["<Leader>fr"] = custom.lsp_references,
             ["<Leader>fs"] = ":Telescope git_stash<CR>",
             ["<Leader>fg"] = ":Telescope git_commits<CR>",
+            ["<Leader>fn"] = ":Telescope git_branches<CR>",
             ["<Leader>fc"] = custom.curr_buf,
             ["<Leader>fp"] = ":Telescope commands<CR>",
         },
