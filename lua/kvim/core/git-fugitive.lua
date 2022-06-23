@@ -4,7 +4,11 @@ local keymappings = require("kvim.keymappings")
 local M = {}
 
 function M.init()
-    neogit.setup()
+    neogit.setup({
+        integrations = {
+            diffview = true,
+        },
+    })
 
     keymappings.load({
         normal_mode = {
