@@ -10,6 +10,7 @@ function M.init()
 
     local mappings_common = {
         [keymap_toggle] = ":Commentary<CR>",
+        ["<Leader>/"] = ":Commentary<CR>",
     }
 
     local default_mappings = {
