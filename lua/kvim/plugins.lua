@@ -41,7 +41,7 @@ return {
     { "windwp/nvim-autopairs" },
     { "nvim-treesitter/nvim-treesitter", run = { ":TSUpdate" } },
     { "jose-elias-alvarez/null-ls.nvim", requires = { "nvim-lua/plenary.nvim" } },
-    { "tpope/vim-commentary" },
+    { "numToStr/Comment.nvim" },
 
     -- git
     { "lewis6991/gitsigns.nvim", requires = { "nvim-lua/plenary.nvim" } },
