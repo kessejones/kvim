@@ -49,9 +49,6 @@ return {
     { "TimUntersberger/neogit" },
     { "kessejones/git-blame-line.nvim" },
 
-    -- laravel blade
-    { "jwalton512/vim-blade" },
-
     -- utils
     { "szw/vim-maximizer" },
     { "tpope/vim-surround" },
