@@ -21,6 +21,8 @@ function M.init()
                 "^build/",
                 "^Build/",
                 "%.DS_Store",
+                "%.o$",
+                "%.so$",
             },
             mappings = {
                 i = {

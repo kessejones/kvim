@@ -56,16 +56,6 @@ function M.init()
     vim.opt.wildignore:append("**/coverage/*")
     vim.opt.wildignore:append("**/code_coverage_html/*")
 
-    vim.opt.fillchars:append({
-        horiz = "━",
-        horizup = "┻",
-        horizdown = "┳",
-        vert = "┃",
-        vertleft = "┨",
-        vertright = "┣",
-        verthoriz = "╋",
-    })
-
     for key, value in pairs(default_settings) do
         M.set(key, value)
     end
