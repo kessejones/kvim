@@ -1,4 +1,5 @@
 local telescope = require("telescope")
+local builtin = require("telescope.builtin")
 local custom = require("kvim.core.telescope.custom")
 local actions = require("telescope.actions")
 local keymappings = require("kvim.keymappings")
@@ -97,15 +98,15 @@ function M.init()
     keymappings.load({
         normal_mode = {
             ["<C-p>"] = custom.find_files,
-            ["<Leader>p"] = ":Telescope find_files<CR>",
-            ["<Leader>fl"] = ":Telescope live_grep<CR>",
-            ["<Leader>fb"] = ":Telescope buffers<CR>",
+            ["<Leader>p"] = builtin.find_files,
+            ["<Leader>fl"] = builtin.live_grep,
+            ["<Leader>fb"] = builtin.buffers,
             ["<Leader>fr"] = custom.lsp_references,
-            ["<Leader>fs"] = ":Telescope git_stash<CR>",
-            ["<Leader>fg"] = ":Telescope git_commits<CR>",
-            ["<Leader>fn"] = ":Telescope git_branches<CR>",
+            ["<Leader>fs"] = builtin.git_stash,
+            ["<Leader>fg"] = builtin.git_commits,
+            ["<Leader>fn"] = builtin.git_branchs,
             ["<Leader>fc"] = custom.curr_buf,
-            ["<Leader>fp"] = ":Telescope commands<CR>",
+            ["<Leader>fp"] = builtin.commands,
         },
     })
 end

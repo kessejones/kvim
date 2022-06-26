@@ -35,7 +35,7 @@ function M.init()
 
     keymappings.load({
         normal_mode = {
-            ["<C-g>"] = ":NvimTreeToggle<CR>",
+            ["<C-g>"] = nvim_tree.toggle,
         },
     })
 end
