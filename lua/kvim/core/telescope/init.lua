@@ -106,7 +106,7 @@ function M.init()
             ["<Leader>fr"] = custom.lsp_references,
             ["<Leader>fs"] = builtin.git_stash,
             ["<Leader>fg"] = builtin.git_commits,
-            ["<Leader>fn"] = builtin.git_branchs,
+            ["<Leader>fn"] = builtin.git_branches,
             ["<Leader>fc"] = custom.curr_buf,
             ["<Leader>fp"] = builtin.commands,
         },
