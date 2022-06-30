@@ -26,7 +26,7 @@ local function startify_custom()
     custom_footer.val = utils.center(kvim_footer)
     custom_footer.opts = { hl = "Title" }
 
-    local ignore_paths = { ".git/", "COMMIT_EDITMSG" }
+    local ignore_paths = { "%.git/", "COMMIT_EDITMSG" }
     local mru_opts = {
         ignore = function(path, _)
             for _, p in ipairs(ignore_paths) do
