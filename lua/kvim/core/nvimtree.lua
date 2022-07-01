@@ -29,7 +29,7 @@ function M.init()
             },
         },
         filters = {
-            custom = { ".git" },
+            custom = {},
         },
     })
 
