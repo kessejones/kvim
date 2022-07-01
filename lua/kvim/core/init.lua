@@ -5,7 +5,7 @@ local modules = {
     "cmp",
     "comment",
     "git-blame-line",
-    "git-fugitive",
+    "neogit",
     "gitsigns",
     "indent-blankline",
     "lsp",
