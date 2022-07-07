@@ -51,7 +51,7 @@ return {
 
     -- utils
     { "szw/vim-maximizer" },
-    { "tpope/vim-surround" },
+    { "kylechui/nvim-surround" },
 
     -- cursors
     { "mg979/vim-visual-multi" },

@@ -16,6 +16,7 @@ local modules = {
     "nvimtree",
     "project",
     "startify",
+    "surround",
     "telescope",
     "floaterm",
     "treesitter",
