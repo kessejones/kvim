@@ -77,4 +77,9 @@ return {
     { "gpanders/editorconfig.nvim" },
 
     { "mattn/emmet-vim" },
+
+    -- database
+    { "tpope/vim-dadbod" },
+    { "kristijanhusak/vim-dadbod-completion" },
+    { "kristijanhusak/vim-dadbod-ui" },
 }

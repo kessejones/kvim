@@ -23,6 +23,7 @@ local modules = {
     "multi-cursor",
     "spectre",
     "bufferline",
+    "vim-dadbod",
 }
 
 function M.init()
