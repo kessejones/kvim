@@ -82,4 +82,9 @@ return {
     { "tpope/vim-dadbod" },
     { "kristijanhusak/vim-dadbod-completion" },
     { "kristijanhusak/vim-dadbod-ui" },
+
+    -- debug
+    { "mfussenegger/nvim-dap" },
+    { "rcarriga/nvim-dap-ui" },
+    { "theHamsta/nvim-dap-virtual-text" },
 }
