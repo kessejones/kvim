@@ -24,6 +24,7 @@ local modules = {
     "spectre",
     "bufferline",
     "vim-dadbod",
+    "dap",
 }
 
 function M.init()
