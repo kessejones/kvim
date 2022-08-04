@@ -11,7 +11,7 @@ local modules = {
     "lsp",
     "lualine",
     "maximizer",
-    "mix-fugitive",
+    "mix",
     "null-ls",
     "nvimtree",
     "project",
