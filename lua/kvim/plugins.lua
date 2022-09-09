@@ -57,8 +57,7 @@ return {
     { "mg979/vim-visual-multi" },
 
     -- terminal
-    -- { "akinsho/toggleterm.nvim" },
-    { "voldikss/vim-floaterm" },
+    { "kessejones/term.nvim" },
 
     -- finder
     { "nvim-telescope/telescope.nvim", requires = { "nvim-lua/plenary.nvim" } },

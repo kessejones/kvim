@@ -18,13 +18,13 @@ local modules = {
     "startify",
     "surround",
     "telescope",
-    "floaterm",
     "treesitter",
     "multi-cursor",
     "spectre",
     "bufferline",
     "vim-dadbod",
     "dap",
+    "term",
 }
 
 function M.init()
