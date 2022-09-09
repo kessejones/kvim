@@ -25,6 +25,7 @@ local modules = {
     "vim-dadbod",
     "dap",
     "term",
+    "rest",
 }
 
 function M.init()
