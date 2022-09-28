@@ -11,11 +11,12 @@ function M.init()
         -- border_style = "rounded",
     })
 
-    local keymap_toggle = "<C-\\>"
-    if vim.fn.has("mac") == 1 then
-        -- NOTE: ^\ is equal to ctrl+\ (hack for macos)
-        keymap_toggle = "^\\"
-    end
+    local keymap_toggle = "<Leader>\\"
+    -- local keymap_toggle = "<C-\\>"
+    -- if vim.fn.has("mac") == 1 then
+    --     -- NOTE: ^\ is equal to ctrl+\ (hack for macos)
+    --     keymap_toggle = "^\\"
+    -- end
 
     keymappings.load({
         normal_mode = {
