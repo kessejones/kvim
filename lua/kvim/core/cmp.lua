@@ -64,6 +64,10 @@ function M.init()
             native_menu = false,
             ghost_text = true,
         },
+        window = {
+            completion = cmp.config.window.bordered(),
+            documentation = cmp.config.window.bordered(),
+        },
     })
 
     cmp.setup.cmdline(":", {
