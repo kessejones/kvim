@@ -1,59 +1,51 @@
 local popup = require("plenary.popup")
--- local keymappings = require("kvim.keymappings")
 
 local M = {}
 
 function M.input(opts, on_confirm)
     opts = opts or {}
-
     local pos = vim.fn.getpos(".")
-    local buf = vim.api.nvim_create_buf(false, true)
 
-    local columns = vim.o.columns
-    local width = math.ceil(columns * 0.3)
+    local buf = vim.api.nvim_create_buf(false, true)
+    vim.bo[buf].buftype = "prompt"
 
     local win_id = popup.create(buf, {
         line = pos[2] + 3,
         col = pos[3] + 4,
-        minwidth = width,
-        minheight = 1,
+        width = 15,
+        height = 1,
         border = {},
         borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
         padding = {},
         zindex = 10,
+        title = opts.prompt,
     })
 
-    vim.api.nvim_buf_set_lines(buf, 1, 2, {
+    vim.api.nvim_buf_set_lines(buf, 0, -1, false, {
         opts.default or "",
     })
 
-    vim.cmd([[startinsert]])
-
-    vim.keymap.set({ "i", "n" }, "<ESC>", function()
+    local close_window = function()
         vim.api.nvim_win_close(win_id, true)
-        vim.api.nvim_buf_delete(buf, {})
-    end, { buffer = buf })
+        vim.api.nvim_buf_delete(buf, { force = true })
+    end
 
-    vim.keymap.set({ "i", "n" }, "<enter>", function()
-        local value = vim.api.nvim_buf_get_lines(buf, 0, 1, false)
-        if on_confirm and type(on_confirm) == "function" then
-            on_confirm(value[1])
-        end
-        vim.api.nvim_win_close(win_id, true)
-        vim.api.nvim_buf_delete(buf, {})
-    end, { buffer = buf })
+    local on_submit = function(value)
+        close_window()
+
+        on_confirm(value)
+    end
+
+    vim.fn.prompt_setprompt(buf, "")
+    vim.fn.prompt_setcallback(buf, on_submit)
+    vim.fn.prompt_setinterrupt(buf, close_window)
+
+    vim.keymap.set({ "i", "n" }, "<ESC>", close_window, { buffer = buf, silent = true })
+
+    vim.cmd([[startinsert!]])
 end
 
 function M.init()
-    -- keymappings.load({
-    --     normal_mode = {
-    --         ["<leader>h"] = function()
-    --             M.input("teste", function(value)
-    --                 vim.pretty_print(value)
-    --             end)
-    --         end,
-    --     },
-    -- })
     vim.ui.input = M.input
 end
 
