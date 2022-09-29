@@ -26,6 +26,7 @@ local modules = {
     "dap",
     "term",
     "rest",
+    "input",
 }
 
 function M.init()
