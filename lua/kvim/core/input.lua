@@ -9,10 +9,15 @@ function M.input(opts, on_confirm)
     local buf = vim.api.nvim_create_buf(false, true)
     vim.bo[buf].buftype = "prompt"
 
+    local minwidth = 15
+    if opts.default and string.len(opts.default) > 10 then
+        minwidth = math.ceil(string.len(opts.default) * 1.5)
+    end
+
     local win_id = popup.create(buf, {
         line = pos[2] + 3,
         col = pos[3] + 4,
-        width = 15,
+        minwidth = minwidth,
         height = 1,
         border = {},
         borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
