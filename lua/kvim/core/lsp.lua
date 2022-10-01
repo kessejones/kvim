@@ -5,6 +5,34 @@ local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
 local M = {}
 
+local function rename()
+    local params = vim.lsp.util.make_position_params()
+    vim.lsp.buf_request(0, "textDocument/prepareRename", params, function(_, result, event)
+        if result then
+            local r = result.range
+            local text = vim.api.nvim_buf_get_text(
+                event.bufnr,
+                r.start.line,
+                r.start.character,
+                r["end"].line,
+                r["end"].character,
+                {}
+            )
+
+            require("kvim.core.input").rename({
+                prompt = "New Name",
+                default = table.concat(text),
+            }, function(input)
+                if not input or #input == 0 then
+                    return
+                end
+                params.newName = input
+                vim.lsp.buf_request(event.bufnr, "textDocument/rename", params, vim.lsp.handlers["textDocument/rename"])
+            end)
+        end
+    end)
+end
+
 local servers = {
     sumneko_lua = {
         settings = {
@@ -109,7 +137,7 @@ function M.lsp_config()
                 vim.lsp.buf.implementation()
             end,
             ["<Leader>rn"] = function()
-                vim.lsp.buf.rename()
+                rename()
             end,
             ["g["] = function()
                 vim.diagnostic.goto_prev()

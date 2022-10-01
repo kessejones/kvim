@@ -2,25 +2,37 @@ local popup = require("plenary.popup")
 
 local M = {}
 
+local function default(value, default_value)
+    if value then
+        return value
+    end
+    return default_value
+end
+
 function M.input(opts, on_confirm)
     opts = opts or {}
 
-    local line = vim.fn.winline()
-    local col = vim.fn.wincol()
+    local line = 0
+    local col = 0
+    local width = 0
+    local height = 0
+
+    opts.win_opts = opts.win_opts or {}
+
+    width = default(opts.win_opts.width, math.floor(vim.o.columns / 2))
+    height = default(opts.win_opts.height, math.floor(vim.o.lines / 2))
+
+    line = default(opts.win_opts.line, (vim.o.lines - height) / 2)
+    col = default(opts.win_opts.col, (vim.o.columns - width) / 2)
 
     local buf = vim.api.nvim_create_buf(false, true)
     vim.bo[buf].buftype = "prompt"
 
-    local minwidth = 15
-    if opts.default and string.len(opts.default) > 10 then
-        minwidth = math.ceil(string.len(opts.default) * 1.5)
-    end
-
     local win_id = popup.create(buf, {
-        line = line + 3,
+        line = line,
         col = col,
-        minwidth = minwidth,
-        height = 1,
+        minwidth = width,
+        height = height,
         border = {},
         borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
         padding = {},
@@ -52,8 +64,24 @@ function M.input(opts, on_confirm)
     vim.cmd([[startinsert!]])
 end
 
+function M.rename(opts, on_confirm)
+    local width = 15
+    if opts.default and string.len(opts.default) > 10 then
+        width = math.ceil(string.len(opts.default) * 1.5)
+    end
+
+    opts.win_opts = {
+        line = vim.fn.winline() + 3,
+        col = vim.fn.wincol(),
+        width = width,
+        height = 1,
+    }
+    M.input(opts, on_confirm)
+end
+
 function M.init()
     vim.ui.input = M.input
+    vim.ui.rename = M.rename
 end
 
 return M
