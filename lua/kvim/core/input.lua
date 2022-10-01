@@ -4,7 +4,9 @@ local M = {}
 
 function M.input(opts, on_confirm)
     opts = opts or {}
-    local pos = vim.fn.getpos(".")
+
+    local line = vim.fn.winline()
+    local col = vim.fn.wincol()
 
     local buf = vim.api.nvim_create_buf(false, true)
     vim.bo[buf].buftype = "prompt"
@@ -15,8 +17,8 @@ function M.input(opts, on_confirm)
     end
 
     local win_id = popup.create(buf, {
-        line = pos[2] + 3,
-        col = pos[3] + 4,
+        line = line + 3,
+        col = col,
         minwidth = minwidth,
         height = 1,
         border = {},
