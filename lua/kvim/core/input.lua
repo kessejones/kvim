@@ -20,9 +20,9 @@ function M.input(opts, on_confirm)
     opts.win_opts = opts.win_opts or {}
 
     width = default(opts.win_opts.width, math.floor(vim.o.columns / 2))
-    height = default(opts.win_opts.height, math.floor(vim.o.lines / 2))
+    height = default(opts.win_opts.height, 1)
 
-    line = default(opts.win_opts.line, (vim.o.lines - height) / 2)
+    line = default(opts.win_opts.line, (vim.o.lines - height - vim.opt.cmdheight:get()) / 2)
     col = default(opts.win_opts.col, (vim.o.columns - width) / 2)
 
     local buf = vim.api.nvim_create_buf(false, true)
