@@ -28,7 +28,6 @@ function M.init()
 
     vim.api.nvim_set_hl(0, "FloatBorder", {
         background = "#1F1F28",
-        foreground = "#54546D",
     })
 end
 
