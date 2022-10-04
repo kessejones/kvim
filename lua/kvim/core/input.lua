@@ -3,10 +3,10 @@ local popup = require("plenary.popup")
 local M = {}
 
 local function default(value, default_value)
-    if value then
-        return value
+    if value == nil or value == 0 then
+        return default_value
     end
-    return default_value
+    return value
 end
 
 function M.input(opts, on_confirm)
