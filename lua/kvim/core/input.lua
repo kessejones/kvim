@@ -70,9 +70,10 @@ function M.rename(opts, on_confirm)
         width = math.ceil(string.len(opts.default) * 1.5)
     end
 
+    local pos = vim.api.nvim_win_get_position(0)
     opts.win_opts = {
         line = vim.fn.winline() + 3,
-        col = vim.fn.wincol(),
+        col = pos[2] + vim.fn.wincol(),
         width = width,
         height = 1,
     }
