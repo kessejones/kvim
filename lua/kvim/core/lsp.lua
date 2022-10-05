@@ -9,15 +9,18 @@ local function rename()
     local params = vim.lsp.util.make_position_params()
     vim.lsp.buf_request(0, "textDocument/prepareRename", params, function(_, result, event)
         if result then
-            local r = result.range
-            local text = vim.api.nvim_buf_get_text(
-                event.bufnr,
-                r.start.line,
-                r.start.character,
-                r["end"].line,
-                r["end"].character,
-                {}
-            )
+            local r_start
+            local r_end
+            if result.range then
+                r_start = result.range.start
+                r_end = result.range["end"]
+            else
+                r_start = result.start
+                r_end = result["end"]
+            end
+
+            local text =
+                vim.api.nvim_buf_get_text(event.bufnr, r_start.line, r_start.character, r_end.line, r_end.character, {})
 
             require("kvim.core.input").rename({
                 prompt = "New Name",
