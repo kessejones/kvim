@@ -11,6 +11,7 @@ function M.init()
             lsp.enable_format_on_save(client, bufnr)
         end,
         sources = {
+            formatting.phpcsfixer,
             formatting.prettier,
             formatting.stylua.with({
                 condition = function(utils)
