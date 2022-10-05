@@ -11,7 +11,9 @@ function M.init()
             lsp.enable_format_on_save(client, bufnr)
         end,
         sources = {
-            formatting.phpcsfixer,
+            formatting.phpcsfixer.with({
+                args = { "--cache-file=/dev/null", "--no-interaction", "--quiet", "fix", "$FILENAME" },
+            }),
             formatting.prettier,
             formatting.stylua.with({
                 condition = function(utils)
