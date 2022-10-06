@@ -85,27 +85,27 @@ local disabled_formatting_on_save = { "tsserver", "sumneko_lua" }
 function M.enable_format_on_save(client, bufnr)
     bufnr = bufnr or 0
 
-    if client.resolved_capabilities.document_formatting then
+    if client.supports_method("textDocument/formatting") then
         vim.api.nvim_create_autocmd("BufWritePre", {
             buffer = bufnr,
             group = "LspFormatting",
             callback = function()
                 if vim.g.format_on_save then
-                    vim.lsp.buf.formatting_sync()
+                    vim.lsp.buf.format({
+                        filter = function(c)
+                            return not utils.contains(disabled_formatting_on_save, c.name)
+                        end,
+                    })
                 end
             end,
         })
     end
 end
 
-function M.disable_format_on_save(client)
-    client.resolved_capabilities.document_formatting = false
-end
-
 function M.enable_highlight(client, bufnr)
     bufnr = bufnr or 0
 
-    if client.resolved_capabilities.document_highlight then
+    if client.supports_method("textDocument/documentHighlight") then
         vim.api.nvim_create_autocmd("CursorHold", {
             buffer = bufnr,
             group = "LspDocumentHighlight",
@@ -158,21 +158,30 @@ function M.lsp_config()
                 vim.diagnostic.open_float()
             end,
             ["<Leader>ff"] = function()
-                vim.lsp.buf.formatting()
+                vim.lsp.buf.format({
+                    async = true,
+                })
             end,
             ["<Leader>fo"] = function()
                 if vim.g.format_on_save then
                     vim.g.format_on_save = false
-                    print("format_on_save=disabled")
+                    vim.notify("Format on save has been disabled", vim.log.levels.INFO)
                 else
                     vim.g.format_on_save = true
-                    print("format_on_save=enabled")
+                    vim.notify("Format on save has been enabled", vim.log.levels.INFO)
                 end
             end,
         },
         visual_mode = {
             ["<Leader>ff"] = function()
-                vim.lsp.buf.range_formatting()
+                vim.lsp.buf.format({
+                    mode = "v",
+                })
+            end,
+            ["<Leader>ga"] = function()
+                vim.lsp.buf.code_action({
+                    mode = "v",
+                })
             end,
         },
     }
@@ -180,12 +189,7 @@ function M.lsp_config()
     local on_attach = function(client, bufnr)
         keymapping.load(mapping, bufnr)
 
-        if utils.contains(disabled_formatting_on_save, client.name) then
-            M.disable_format_on_save(client)
-        else
-            M.enable_format_on_save(client, bufnr)
-        end
-
+        M.enable_format_on_save(client, bufnr)
         M.enable_highlight(client, bufnr)
     end
 
