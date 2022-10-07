@@ -22,7 +22,7 @@ local function rename()
             local text =
                 vim.api.nvim_buf_get_text(event.bufnr, r_start.line, r_start.character, r_end.line, r_end.character, {})
 
-            require("kvim.core.input").rename({
+            require("kvim.ui.input").rename({
                 prompt = "New Name",
                 default = table.concat(text),
             }, function(input)

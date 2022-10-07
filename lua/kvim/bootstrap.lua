@@ -4,6 +4,7 @@ local plugin_loader = require("kvim.plugin-loader")
 local core = require("kvim.core")
 local keymappings = require("kvim.keymappings")
 local config = require("kvim.config")
+local ui = require("kvim.ui")
 
 local M = {}
 
@@ -24,6 +25,7 @@ function M.init()
 
     colors.init()
     core.init()
+    ui.init()
 end
 
 return M

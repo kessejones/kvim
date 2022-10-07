@@ -84,8 +84,8 @@ function M.select(items, opts, on_choise)
     opts = opts or {}
 
     local skip_lines = 3
-    local width = math.floor(vim.o.columns * 0.3)
-    local height = math.floor(0.3 * (vim.o.lines - skip_lines))
+    local width = math.floor(vim.o.columns * 0.6)
+    local height = math.floor(0.4 * (vim.o.lines - skip_lines))
 
     local col = (vim.o.columns - width) / 2
     local line = ((vim.o.lines - skip_lines - height) / 2)
@@ -98,7 +98,7 @@ function M.select(items, opts, on_choise)
         minheight = height,
         border = {},
         borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
-        padding = { 4, 4, 4, 4 },
+        padding = {},
         zindex = 10,
         title = opts.prompt,
         cursorline = true,
