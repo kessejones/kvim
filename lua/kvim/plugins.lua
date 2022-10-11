@@ -89,4 +89,12 @@ return {
 
     -- rest api
     { "NTBBloodbath/rest.nvim" },
+
+    -- run unit tests
+    {
+        "kessejones/tester.nvim",
+        config = function()
+            require("tester").setup()
+        end,
+    },
 }
