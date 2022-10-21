@@ -5,7 +5,11 @@ return {
     { "lewis6991/impatient.nvim" },
 
     -- coloscheme
-    { "rebelot/kanagawa.nvim" },
+    {
+        "catppuccin/nvim",
+        as = "catppuccin",
+    },
+
     {
         "nvim-lualine/lualine.nvim",
         requires = { "kyazdani42/nvim-web-devicons" },

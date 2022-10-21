@@ -111,8 +111,6 @@ function M.init()
             ["<Leader>fp"] = builtin.commands,
         },
     })
-
-    vim.api.nvim_set_hl(0, "TelescopeBorder", { link = "FloatBorder" })
 end
 
 return M
