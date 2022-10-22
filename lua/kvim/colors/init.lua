@@ -8,10 +8,11 @@ function M.init()
         settings.set("termguicolors", true)
     end
 
-    vim.g.catppuccin_flavour = "macchiato"
-    local colors = require("catppuccin.palettes").get_palette(vim.g.catppuccin_flavour)
+    local flavour = "mocha"
+    local colors = require("catppuccin.palettes").get_palette(flavour)
 
     require("catppuccin").setup({
+        flavour = flavour,
         styles = {
             comments = { "italic" },
             conditionals = { "italic" },
@@ -20,7 +21,7 @@ function M.init()
             keywords = { "italic" },
         },
         custom_highlights = {
-            FloatBorder = { fg = colors.text, bg = colors.base },
+            FloatBorder = { fg = colors.blue, bg = colors.base },
             NormalFloat = { fg = colors.text, bg = colors.base },
             TelescopeBorder = { link = "FloatBorder" },
             IndentBlanklineContextChar = { fg = colors.surface2 },
