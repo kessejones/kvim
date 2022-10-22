@@ -101,4 +101,6 @@ return {
             require("tester").setup()
         end,
     },
+
+    { "uga-rosa/ccc.nvim" },
 }
