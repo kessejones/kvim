@@ -9,18 +9,18 @@ function M.init()
         on_attach = function(bufnr)
             local mappigns = {
                 normal_mode = {
-                    ["<Leader>hs"] = gitsigns.stage_hunk,
-                    ["<Leader>hu"] = gitsigns.undo_stage_hunk,
-                    ["<Leader>hd"] = gitsigns.diffthis,
-                    ["<Leader>hR"] = gitsigns.reset_buffer,
-                    ["<Leader>hb"] = function()
+                    ["<Leader>,s"] = gitsigns.stage_hunk,
+                    ["<Leader>,u"] = gitsigns.undo_stage_hunk,
+                    ["<Leader>,r"] = gitsigns.reset_buffer,
+                    ["<Leader>,d"] = gitsigns.diffthis,
+                    ["<Leader>,b"] = function()
                         gitsigns.blame_line({ full = true })
                     end,
-                    ["<Leader>td"] = gitsigns.toggle_deleted,
+                    ["<Leader>,t"] = gitsigns.toggle_deleted,
                 },
                 visual_mode = {
-                    ["<Leader>hs"] = gitsigns.stage_hunk,
-                    ["<Leader>hr"] = gitsigns.reset_hunk,
+                    ["<Leader>,s"] = gitsigns.stage_hunk,
+                    ["<Leader>,r"] = gitsigns.reset_hunk,
                 },
             }
 
