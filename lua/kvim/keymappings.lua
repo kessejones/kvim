@@ -23,17 +23,22 @@ local default_mappings = {
         ["<Leader>ss"] = ":w<CR>",
         ["<Leader>sq"] = ":wq<CR>",
 
+        -- Make the current window the only one on the screen.
+        ["<Leader>s="] = ":on<CR>",
+        ["<Leader>ww"] = ":on<CR>",
+
         -- Navigate in windows
-        ["<Leader>wh"] = "<C-w>h",
-        ["<Leader>wj"] = "<C-w>j",
-        ["<Leader>wk"] = "<C-w>k",
-        ["<Leader>wl"] = "<C-w>l",
+        ["<Leader>h"] = "<C-w>h",
+        ["<Leader>j"] = "<C-w>j",
+        ["<Leader>k"] = "<C-w>k",
+        ["<Leader>l"] = "<C-w>l",
 
         -- Rotate windows
         ["<Leader>wr"] = "<C-w>r",
 
         -- Make windows to be basically the same size
         ["<Leader>r="] = "<C-w>=",
+        ["<Leader>rr"] = "<C-w>=",
 
         -- Window sizing
         ["<Leader>rk"] = "<C-w>5+",
@@ -45,11 +50,11 @@ local default_mappings = {
         ["<Leader>sv"] = ":vsplit<CR>",
         ["<Leader>sh"] = ":sv<CR>",
 
-        -- Make the current window the only one on the screen
-        ["<Leader>s="] = ":on<CR>",
-
         -- Duplicate current line
         ["<Leader>y"] = "<ESC>yyp",
+
+        -- Switch to v-line mode
+        ["<Leader>v"] = "<S-v>",
 
         -- Next/Previous buffer
         ["<S-l>"] = ":bn<CR>",
@@ -79,20 +84,13 @@ local default_mappings = {
         -- Indent
         ["<"] = "<gv",
         [">"] = ">gv",
-        [",,"] = "<ESC>",
 
         -- Move up/down selected text
         ["<C-j>"] = ":m '>+1<CR>gv=gv",
         ["<C-k>"] = ":m '<-2<CR>gv=gv",
     },
-    visual_block_mode = {
-        -- ESC helper
-        [",,"] = "<ESC>",
-    },
-    command_mode = {
-        -- ESC helper
-        [",,"] = "<ESC>",
-    },
+    visual_block_mode = {},
+    command_mode = {},
 }
 
 function M.set_keymaps(mode, key, val, bufnr)
