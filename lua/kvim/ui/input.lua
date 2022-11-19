@@ -27,14 +27,16 @@ function M.input(opts, on_confirm)
 
     local buf = vim.api.nvim_create_buf(false, true)
     vim.bo[buf].buftype = "prompt"
+    vim.bo[buf].filetype = "KvimInput"
 
     local win_id = popup.create(buf, {
         line = line,
         col = col,
         minwidth = width,
         height = height,
-        border = {},
+        border = true,
         borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+        borderhighlight = "FloatBorder",
         padding = {},
         zindex = 10,
         title = opts.prompt,
@@ -96,8 +98,9 @@ function M.select(items, opts, on_choise)
         col = col,
         minwidth = width,
         minheight = height,
-        border = {},
+        border = true,
         borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+        borderhighlight = "FloatBorder",
         padding = {},
         zindex = 10,
         title = opts.prompt,
