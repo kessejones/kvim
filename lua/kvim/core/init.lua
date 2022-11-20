@@ -1,6 +1,7 @@
 local M = {}
 
 local modules = {
+    "diffview",
     "nvim-autopairs",
     "cmp",
     "comment",
