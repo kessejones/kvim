@@ -35,6 +35,8 @@ local default_settings = {
     timeoutlen = 300,
     completeopt = { "menu", "menuone", "noselect" },
     showcmd = false,
+    undofile = true,
+    undodir = os.getenv("HOME") .. "/.cache/nvim/undodir",
 }
 
 function M.set(key, value)
