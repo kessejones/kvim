@@ -34,8 +34,14 @@ local modules = {
 function M.init()
     local module_base = "kvim.core."
     for _, path_module in ipairs(modules) do
-        local module = require(module_base .. path_module)
-        module.init()
+        local ok, module = pcall(require, module_base .. path_module)
+        if ok then
+            xpcall(module.init, function(err)
+                vim.notify("Could not initialize core module " .. path_module .. ". Error: " .. err)
+            end)
+        else
+            vim.notify("Could not load core module " .. path_module)
+        end
     end
 end
 
