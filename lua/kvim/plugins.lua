@@ -10,34 +10,37 @@ return {
         as = "catppuccin",
     },
 
+    -- custom editor
+    { "goolord/alpha-nvim" },
+    { "lukas-reineke/indent-blankline.nvim" },
+    { "uga-rosa/ccc.nvim" },
     {
         "nvim-lualine/lualine.nvim",
         requires = { "kyazdani42/nvim-web-devicons" },
     },
-    { "lukas-reineke/indent-blankline.nvim" },
 
     -- elixir/mix
     { "brendalf/mix.nvim" },
     { "elixir-editors/vim-elixir" },
 
-    -- dashboard
-    { "goolord/alpha-nvim" },
-
     -- completion/lsp
     { "onsails/lspkind-nvim" },
     { "L3MON4D3/LuaSnip" },
     { "saadparwaiz1/cmp_luasnip" },
-    { "neovim/nvim-lspconfig" },
+    {
+        "neovim/nvim-lspconfig",
+        requires = {
+            -- manage LSP servers
+            "williamboman/mason.nvim",
+            "williamboman/mason-lspconfig.nvim",
+        },
+    },
     { "hrsh7th/nvim-cmp" },
     { "hrsh7th/cmp-path" },
     { "hrsh7th/cmp-nvim-lsp" },
     { "hrsh7th/cmp-nvim-lua" },
     { "hrsh7th/cmp-buffer" },
     { "hrsh7th/cmp-cmdline" },
-
-    -- lsp manage servers
-    { "williamboman/mason.nvim" },
-    { "williamboman/mason-lspconfig.nvim" },
 
     -- file tree
     {
@@ -50,8 +53,9 @@ return {
     { "nvim-treesitter/nvim-treesitter", run = { ":TSUpdate" } },
     { "jose-elias-alvarez/null-ls.nvim", requires = { "nvim-lua/plenary.nvim" } },
     { "numToStr/Comment.nvim" },
+    { "mattn/emmet-vim" },
 
-    -- git
+    -- git integration
     { "lewis6991/gitsigns.nvim", requires = { "nvim-lua/plenary.nvim" } },
     { "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" },
     { "TimUntersberger/neogit" },
@@ -83,8 +87,6 @@ return {
     -- .editorconfig
     { "gpanders/editorconfig.nvim" },
 
-    { "mattn/emmet-vim" },
-
     -- database
     { "tpope/vim-dadbod" },
     { "kristijanhusak/vim-dadbod-completion" },
@@ -105,6 +107,4 @@ return {
             require("tester").setup()
         end,
     },
-
-    { "uga-rosa/ccc.nvim" },
 }

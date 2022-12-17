@@ -25,12 +25,4 @@ function M.contains(list, value)
     return false
 end
 
-function M.is_macos()
-    return vim.fn.has("macunix") == 1
-end
-
-function M.has_termguicolors()
-    return vim.fn.has("termguicolors") == 1
-end
-
 return M

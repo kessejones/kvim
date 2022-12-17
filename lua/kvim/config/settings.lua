@@ -40,6 +40,7 @@ local default_settings = {
     showcmd = false,
     undofile = true,
     undodir = os.getenv("HOME") .. "/.cache/nvim/undodir",
+    termguicolors = true,
 }
 
 function M.set(key, value)

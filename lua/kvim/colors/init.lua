@@ -1,13 +1,6 @@
-local utils = require("utils")
-local settings = require("kvim.config.settings")
-
 local M = {}
 
 function M.init()
-    if not utils.is_macos() and utils.has_termguicolors() then
-        settings.set("termguicolors", true)
-    end
-
     local flavour = "mocha"
     local colors = require("catppuccin.palettes").get_palette(flavour)
 

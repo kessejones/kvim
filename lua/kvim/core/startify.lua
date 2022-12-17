@@ -1,7 +1,7 @@
 local alpha = require("alpha")
 local startify = require("alpha.themes.startify")
 local keymappings = require("kvim.keymappings")
-local utils = require("utils")
+local utils = require("kvim.utils")
 
 local M = {}
 
