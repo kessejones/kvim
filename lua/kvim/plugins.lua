@@ -23,7 +23,7 @@ return {
     -- dashboard
     { "goolord/alpha-nvim" },
 
-    -- completion
+    -- completion/lsp
     { "onsails/lspkind-nvim" },
     { "L3MON4D3/LuaSnip" },
     { "saadparwaiz1/cmp_luasnip" },
@@ -34,6 +34,10 @@ return {
     { "hrsh7th/cmp-nvim-lua" },
     { "hrsh7th/cmp-buffer" },
     { "hrsh7th/cmp-cmdline" },
+
+    -- lsp manage servers
+    { "williamboman/mason.nvim" },
+    { "williamboman/mason-lspconfig.nvim" },
 
     -- file tree
     {

@@ -9,6 +9,7 @@ local modules = {
     "neogit",
     "gitsigns",
     "indent-blankline",
+    "mason",
     "lsp",
     "lualine",
     "maximizer",

@@ -5,6 +5,7 @@ local M = {}
 
 function M.init()
     local formatting = null_ls.builtins.formatting
+    local diagnostics = null_ls.builtins.diagnostics
 
     null_ls.setup({
         on_attach = function(client, bufnr)
@@ -14,12 +15,16 @@ function M.init()
             formatting.phpcsfixer.with({
                 args = { "--cache-file=/dev/null", "--no-interaction", "--quiet", "fix", "$FILENAME" },
             }),
-            formatting.prettier,
+            formatting.prettierd,
             formatting.stylua.with({
                 condition = function(utils)
                     return utils.root_has_file({ "stylua.toml", ".stylua.toml" })
                 end,
             }),
+            diagnostics.phpmd.with({
+                args = { "$FILENAME", "json", "cleancode,codesize,controversial,design,naming,unusedcode" },
+            }),
+            diagnostics.phpstan,
         },
     })
 end
