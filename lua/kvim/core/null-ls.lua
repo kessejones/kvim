@@ -1,4 +1,3 @@
-local lsp = require("kvim.core.lsp")
 local null_ls = require("null-ls")
 
 local M = {}
@@ -9,7 +8,7 @@ function M.init()
 
     null_ls.setup({
         on_attach = function(client, bufnr)
-            lsp.enable_format_on_save(client, bufnr)
+            require("kvim.core.lsp").enable_format_on_save(client, bufnr)
         end,
         sources = {
             formatting.phpcsfixer.with({
@@ -21,6 +20,7 @@ function M.init()
                     return utils.root_has_file({ "stylua.toml", ".stylua.toml" })
                 end,
             }),
+            formatting.alejandra,
             diagnostics.phpmd.with({
                 args = { "$FILENAME", "json", "cleancode,codesize,controversial,design,naming,unusedcode" },
             }),

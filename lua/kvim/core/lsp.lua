@@ -78,6 +78,8 @@ local servers = {
     clangd = {},
     gopls = {},
     pyright = {},
+    csharp_ls = {},
+    nil_ls = {},
 }
 
 local disabled_formatting_on_save = { "tsserver", "sumneko_lua" }

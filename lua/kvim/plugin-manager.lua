@@ -19,10 +19,12 @@ function M.init(opts)
     end
 
     vim.opt.rtp:prepend(lazypath)
+
+    M.load()
 end
 
-function M.load(plugins)
-    require("lazy").setup(plugins or {}, {
+function M.load()
+    require("lazy").setup("kvim.plugins", {
         ui = {
             border = "rounded",
         },
