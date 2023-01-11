@@ -10,7 +10,7 @@ function M.init()
         position = "center",
     })
 
-    local keymap_toggle = "<Leader><CR>"
+    local keymap_toggle = "<Leader>;"
 
     keymappings.load({
         normal_mode = {
