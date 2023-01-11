@@ -4,7 +4,11 @@ local mason_lsp = require("mason-lspconfig")
 local M = {}
 
 function M.init()
-    mason.setup()
+    mason.setup({
+        ui = {
+            border = "rounded",
+        },
+    })
     mason_lsp.setup({
         ensure_installed = {
             "sumneko_lua",

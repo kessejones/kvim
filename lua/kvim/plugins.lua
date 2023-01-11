@@ -1,13 +1,9 @@
 return {
-    { "wbthomason/packer.nvim" },
-
-    -- improve startup
-    { "lewis6991/impatient.nvim" },
-
     -- coloscheme
     {
         "catppuccin/nvim",
-        as = "catppuccin",
+        name = "catppuccin",
+        module = true,
     },
 
     -- custom editor
@@ -16,48 +12,60 @@ return {
     { "uga-rosa/ccc.nvim" },
     {
         "nvim-lualine/lualine.nvim",
-        requires = { "kyazdani42/nvim-web-devicons" },
+        dependencies = { "kyazdani42/nvim-web-devicons" },
     },
 
-    -- elixir/mix
-    { "brendalf/mix.nvim" },
-    { "elixir-editors/vim-elixir" },
+    -- elixir/mi
+    {
+        "brendalf/mix.nvim",
+        lazy = true,
+        ft = { "ex", "exs" },
+        dependencies = {
+            { "elixir-editors/vim-elixir", lazy = true, ft = { "ex", "exs" } },
+        },
+    },
 
     -- completion/lsp
-    { "onsails/lspkind-nvim" },
-    { "L3MON4D3/LuaSnip" },
-    { "saadparwaiz1/cmp_luasnip" },
     {
         "neovim/nvim-lspconfig",
-        requires = {
+        dependencies = {
             -- manage LSP servers
             "williamboman/mason.nvim",
             "williamboman/mason-lspconfig.nvim",
         },
     },
-    { "hrsh7th/nvim-cmp" },
-    { "hrsh7th/cmp-path" },
-    { "hrsh7th/cmp-nvim-lsp" },
-    { "hrsh7th/cmp-nvim-lua" },
-    { "hrsh7th/cmp-buffer" },
-    { "hrsh7th/cmp-cmdline" },
+    {
+        "hrsh7th/nvim-cmp",
+        event = "InsertEnter",
+        dependencies = {
+            "hrsh7th/cmp-path",
+            "hrsh7th/cmp-nvim-lsp",
+            "hrsh7th/cmp-nvim-lua",
+            "hrsh7th/cmp-buffer",
+            "hrsh7th/cmp-cmdline",
+
+            "saadparwaiz1/cmp_luasnip",
+            "onsails/lspkind-nvim",
+            "L3MON4D3/LuaSnip",
+        },
+    },
 
     -- file tree
     {
         "kyazdani42/nvim-tree.lua",
-        requires = { "kyazdani42/nvim-web-devicons" },
+        dependencies = { "kyazdani42/nvim-web-devicons" },
     },
 
     -- formatting/syntax
     { "windwp/nvim-autopairs" },
-    { "nvim-treesitter/nvim-treesitter", run = { ":TSUpdate" } },
-    { "jose-elias-alvarez/null-ls.nvim", requires = { "nvim-lua/plenary.nvim" } },
+    { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+    { "jose-elias-alvarez/null-ls.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
     { "numToStr/Comment.nvim" },
-    { "mattn/emmet-vim" },
+    { "mattn/emmet-vim", lazy = true, ft = { "html" } },
 
     -- git integration
-    { "lewis6991/gitsigns.nvim", requires = { "nvim-lua/plenary.nvim" } },
-    { "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" },
+    { "lewis6991/gitsigns.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
+    { "sindrets/diffview.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
     { "TimUntersberger/neogit" },
     { "kessejones/git-blame-line.nvim" },
 
@@ -72,13 +80,18 @@ return {
     { "kessejones/term.nvim" },
 
     -- finder
-    { "nvim-telescope/telescope.nvim", requires = { "nvim-lua/plenary.nvim" } },
-    { "nvim-telescope/telescope-ui-select.nvim" },
-    { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
-    { "ahmedkhalf/project.nvim" },
+    {
+        "nvim-telescope/telescope.nvim",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-telescope/telescope-ui-select.nvim",
+            "ahmedkhalf/project.nvim",
+            { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+        },
+    },
 
     -- buffers/windows and tabs
-    { "akinsho/bufferline.nvim", requires = "kyazdani42/nvim-web-devicons" },
+    { "akinsho/bufferline.nvim", dependencies = "kyazdani42/nvim-web-devicons" },
     { "moll/vim-bbye" },
 
     -- find/replace
@@ -98,13 +111,13 @@ return {
     { "theHamsta/nvim-dap-virtual-text" },
 
     -- rest api
-    { "NTBBloodbath/rest.nvim" },
+    { "NTBBloodbath/rest.nvim", lazy = true, ft = { "http" } },
 
     -- run unit tests
-    {
-        "kessejones/tester.nvim",
-        config = function()
-            require("tester").setup()
-        end,
-    },
+    -- {
+    --     "kessejones/tester.nvim",
+    --     config = function()
+    --         require("tester").setup()
+    --     end,
+    -- },
 }
