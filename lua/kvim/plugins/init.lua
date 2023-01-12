@@ -4,7 +4,10 @@ return {
     -- utils
     { "szw/vim-maximizer", cmd = "Maximizer" },
     { "kylechui/nvim-surround" },
-    { "windwp/nvim-autopairs" },
+    {
+        "windwp/nvim-autopairs",
+        opts = {},
+    },
     { "moll/vim-bbye" },
 
     -- find/replace
@@ -18,7 +21,7 @@ return {
     },
 
     -- .editorconfig
-    { "gpanders/editorconfig.nvim" },
+    { "gpanders/editorconfig.nvim" }, -- TODO: remove this when update to nvim 0.9
 
     -- database
     {
