@@ -7,5 +7,6 @@ return {
     },
     config = function()
         require("kvim.core.lsp").init()
+        require("kvim.core.mason").init()
     end,
 }
