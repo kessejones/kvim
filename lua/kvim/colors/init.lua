@@ -18,6 +18,7 @@ function M.init()
             NormalFloat = { fg = colors.text, bg = colors.base },
             TelescopeBorder = { link = "FloatBorder" },
             IndentBlanklineContextChar = { fg = colors.surface2 },
+            WinSeparator = { fg = colors.blue },
         },
     })
 
