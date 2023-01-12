@@ -12,7 +12,7 @@ function M.init()
         end,
         sources = {
             formatting.phpcsfixer.with({
-                args = { "--cache-file=/dev/null", "--no-interaction", "--quiet", "fix", "$FILENAME" },
+                args = { "--cache-file=/dev/null", "--no-interaction", "--quiet", "--rules=@PSR12", "fix", "$FILENAME" },
             }),
             formatting.prettierd,
             formatting.stylua.with({
@@ -21,10 +21,22 @@ function M.init()
                 end,
             }),
             formatting.alejandra,
-            diagnostics.phpmd.with({
-                args = { "$FILENAME", "json", "cleancode,codesize,controversial,design,naming,unusedcode" },
+            diagnostics.phpcs.with({
+                args = {
+                    "--standard=PSR1,PSR12",
+                    "--report=json",
+                    "-q",
+                    "-s",
+                    "--runtime-set",
+                    "ignore_warnings_on_exit",
+                    "1",
+                    "--runtime-set",
+                    "ignore_errors_on_exit",
+                    "1",
+                    "--stdin-path=$FILENAME",
+                    "--basepath=",
+                },
             }),
-            diagnostics.phpstan,
         },
     })
 end
