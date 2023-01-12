@@ -2,7 +2,13 @@ return {
     { "mattn/emmet-vim", ft = { "html" } },
 
     -- utils
-    { "szw/vim-maximizer", cmd = "Maximizer" },
+    {
+        "szw/vim-maximizer",
+        cmd = "Maximizer",
+        keys = {
+            { "<Leader>m", ":MaximizerToggle<CR>", desc = "Toggle maximizer" },
+        },
+    },
     { "kylechui/nvim-surround" },
     {
         "windwp/nvim-autopairs",
