@@ -13,6 +13,3 @@ This is my custom configuration and plugins for neovim.
 ```shell
 git clone https://github.com/kessejones/kvim.git $HOME/.config/nvim
 ```
-
-- To synchronize the plugins it is necessary to run `PackerSync`
-- Restart your neovim
