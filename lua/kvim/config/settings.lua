@@ -47,10 +47,6 @@ function M.set(key, value)
     vim.opt[key] = value
 end
 
-function M.cmd(command, argument)
-    vim.cmd(command .. " " .. argument)
-end
-
 function M.init()
     vim.opt.shortmess:append("c")
     vim.opt.listchars:append("eol:↴")
