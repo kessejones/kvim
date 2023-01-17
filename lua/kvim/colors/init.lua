@@ -15,6 +15,7 @@ function M.init()
         },
         custom_highlights = {
             FloatBorder = { fg = colors.blue, bg = colors.base },
+            TermBorder = { link = "FloatBorder" },
             NormalFloat = { fg = colors.text, bg = colors.base },
             TelescopeBorder = { link = "FloatBorder" },
             IndentBlanklineContextChar = { fg = colors.surface2 },
@@ -22,7 +23,7 @@ function M.init()
         },
     })
 
-    vim.api.nvim_command("colorscheme catppuccin")
+    vim.cmd.colorscheme("catppuccin")
 end
 
 return M
