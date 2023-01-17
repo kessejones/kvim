@@ -12,6 +12,9 @@ function M.init()
         },
     })
 
+    local comment_ft = require("Comment.ft")
+    comment_ft.set("http", { "# %s", "# %s" })
+
     keymappings.load({
         visual_mode = {
             [keymap_toggle] = "<Plug>(comment_toggle_linewise_visual)",
