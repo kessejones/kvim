@@ -1,22 +1,8 @@
 local lualine = require("lualine")
-local term = require("term")
 
 local M = {}
 
 function M.init()
-    local term_ext = {
-        sections = {
-            lualine_a = { "mode" },
-            lualine_b = {
-                function()
-                    local status = term.status()
-                    return status.current .. "/" .. status.count
-                end,
-            },
-        },
-        filetypes = { "Term" },
-    }
-
     lualine.setup({
         options = {
             globalstatus = true,
@@ -45,7 +31,7 @@ function M.init()
         },
         tabline = {},
         extensions = {
-            term_ext,
+            require("term._extensions.lualine"),
         },
     })
 end
