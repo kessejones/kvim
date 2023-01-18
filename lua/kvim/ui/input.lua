@@ -63,7 +63,7 @@ function M.input(opts, on_confirm)
 
     vim.keymap.set({ "i", "n" }, "<ESC>", close_window, { buffer = buf, silent = true })
 
-    vim.cmd([[startinsert!]])
+    vim.cmd.startinsert({ bang = true })
 end
 
 function M.rename(opts, on_confirm)
