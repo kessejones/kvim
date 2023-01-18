@@ -39,7 +39,7 @@ function M.init()
             ["<C-j>"] = select_next_item,
             ["<S-Tab>"] = select_prev_item,
             ["<C-k>"] = select_prev_item,
-            ["<C-space>"] = cmp.mapping.complete(),
+            ["<C-f>"] = cmp.mapping.complete(),
             ["<CR>"] = cmp.mapping.confirm({
                 select = true,
             }),
