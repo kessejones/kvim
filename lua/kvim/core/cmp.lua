@@ -26,6 +26,7 @@ function M.init()
             { name = "path" },
             { name = "luasnip" },
             { name = "buffer" },
+            { name = "nvim_lsp_signature_help" },
         },
         snippet = {
             expand = function(args)

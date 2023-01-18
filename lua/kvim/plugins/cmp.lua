@@ -7,6 +7,7 @@ return {
         "hrsh7th/cmp-nvim-lua",
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-cmdline",
+        "hrsh7th/cmp-nvim-lsp-signature-help",
 
         "saadparwaiz1/cmp_luasnip",
         "onsails/lspkind-nvim",
