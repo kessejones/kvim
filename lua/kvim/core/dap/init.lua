@@ -46,15 +46,7 @@ local function setup_adapters()
         end, 100)
     end
 
-    dap.configurations.php = {
-        {
-            type = "php",
-            request = "launch",
-            name = "Listen for xdebug",
-            port = "9000",
-            log = true,
-        },
-    }
+    require("dap.ext.vscode").load_launchjs(nil, { xdebug = { "php" } })
 
     dap.configurations.go = {
         {
@@ -100,9 +92,20 @@ local function setup_keymappings()
             [",e"] = dap.step_over,
             [",r"] = dap.step_out,
             [",t"] = dap.continue,
+            [",s"] = dap.close,
+            [",a"] = dapui.toggle,
 
             [",b"] = dap.toggle_breakpoint,
             [",g"] = dap.repl.open,
+
+            [",v"] = function()
+                dapui.eval()
+            end,
+        },
+        visual_mode = {
+            [",v"] = function()
+                dapui.eval()
+            end,
         },
     })
 
@@ -148,10 +151,13 @@ local function setup_ui()
     vim.api.nvim_create_autocmd("FileType", {
         group = "DapRepl",
         pattern = "dap-repl",
-        callback = function()
+        callback = function(args)
             require("dap.ext.autocompl").attach()
+            vim.bo[args.buf].buflisted = false
         end,
     })
+
+    vim.fn.sign_define("DapBreakpoint", { text = "ﱣ", texthl = "Breakpoint", linehl = "", numhl = "" })
 end
 
 function M.init()

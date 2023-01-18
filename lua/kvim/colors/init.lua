@@ -20,6 +20,7 @@ function M.init()
             TelescopeBorder = { link = "FloatBorder" },
             IndentBlanklineContextChar = { fg = colors.surface2 },
             WinSeparator = { fg = colors.blue },
+            Breakpoint = { fg = colors.red },
         },
     })
 
