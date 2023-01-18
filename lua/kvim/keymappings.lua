@@ -76,6 +76,10 @@ local default_mappings = {
         -- Select all
         ["<Leader>aa"] = "gg<S-v>G",
         ["<Leader>ay"] = "gg<S-v>Gy",
+
+        -- Indent
+        ["<"] = "<<<ESC>",
+        [">"] = ">><ESC>",
     },
     visual_mode = {
         -- Replace
