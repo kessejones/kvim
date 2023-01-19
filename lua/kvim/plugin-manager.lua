@@ -28,6 +28,47 @@ function M.load()
         ui = {
             border = "rounded",
         },
+        change_detection = {
+            enabled = false,
+            notify = false,
+        },
+        install = {},
+        checker = { enabled = false },
+        performance = {
+            rtp = {
+                disabled_plugins = {
+                    "gzip",
+                    "zip",
+                    "zipPlugin",
+                    "tar",
+                    "tarPlugin",
+                    "vimball",
+                    "vimballPlugin",
+                    "matchit",
+                    "matchparen",
+                    "logiPat",
+                    "rrhelper",
+                    "netrw",
+                    "netrwFileHandlers",
+                    "netrwPlugin",
+                    "netrwSettings",
+                    "tutor_mode_plugin",
+                    "getscript",
+                    "getscriptPlugin",
+                    "2html_plugin",
+                    "tohtml",
+                    "tutor",
+                },
+            },
+        },
+    })
+
+    require("kvim.keymappings").load({
+        normal_mode = {
+            ["<Leader><tab>"] = function()
+                require("lazy").home()
+            end,
+        },
     })
 end
 
