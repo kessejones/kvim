@@ -1,6 +1,6 @@
 return {
     "mg979/vim-visual-multi",
-    config = function()
+    init = function()
         require("kvim.core.multi-cursor").init()
     end,
 }
