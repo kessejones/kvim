@@ -1,5 +1,4 @@
 local diffview = require("diffview")
-local keymappings = require("kvim.keymappings")
 
 local M = {}
 
@@ -15,13 +14,6 @@ function M.init()
             file_history_panel = {
                 ["q"] = diffview.close,
             },
-        },
-    })
-
-    keymappings.load({
-        normal_mode = {
-            ["<Leader>gv"] = diffview.open,
-            ["<Leader>gf"] = diffview.file_history,
         },
     })
 end
