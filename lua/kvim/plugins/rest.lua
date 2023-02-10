@@ -10,4 +10,7 @@ return {
             desc = "Rest run",
         },
     },
+    config = function()
+        require("kvim.core.rest").init()
+    end,
 }
