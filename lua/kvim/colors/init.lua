@@ -7,11 +7,11 @@ function M.init()
     require("catppuccin").setup({
         flavour = flavour,
         styles = {
-            comments = { "italic" },
-            conditionals = { "italic" },
-            loops = { "italic" },
-            types = { "italic" },
-            keywords = { "italic" },
+            -- comments = { "italic" },
+            -- conditionals = { "italic" },
+            -- loops = { "italic" },
+            -- types = { "italic" },
+            -- keywords = { "italic" },
         },
         custom_highlights = {
             FloatBorder = { fg = colors.blue, bg = colors.base },
