@@ -19,7 +19,7 @@ local default_settings = {
     expandtab = true,
     shiftwidth = 4,
     smartindent = true,
-    title = true,
+    title = false,
     swapfile = false,
     tabstop = 4,
     hidden = true,
@@ -41,6 +41,8 @@ local default_settings = {
     undofile = true,
     undodir = os.getenv("HOME") .. "/.cache/nvim/undodir",
     termguicolors = true,
+    foldmethod = "indent",
+    foldlevel = 99,
 }
 
 function M.set(key, value)
