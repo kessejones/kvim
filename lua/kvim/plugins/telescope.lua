@@ -3,7 +3,12 @@ return {
     dependencies = {
         "nvim-lua/plenary.nvim",
         "nvim-telescope/telescope-ui-select.nvim",
-        "ahmedkhalf/project.nvim",
+        {
+            "ahmedkhalf/project.nvim",
+            config = function()
+                require("kvim.core.project").init()
+            end,
+        },
         { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
     },
     config = function()
