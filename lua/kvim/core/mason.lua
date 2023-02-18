@@ -11,7 +11,7 @@ function M.init()
     })
     mason_lsp.setup({
         ensure_installed = {
-            "sumneko_lua",
+            "lua_ls",
             "rust_analyzer",
             "phpactor",
             "html",
