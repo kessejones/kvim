@@ -5,7 +5,7 @@ return {
         {
             "<C-g>",
             function()
-                require("nvim-tree").toggle()
+                require("nvim-tree.api").tree.toggle()
             end,
         },
     },
