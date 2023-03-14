@@ -25,4 +25,8 @@ function M.contains(list, value)
     return false
 end
 
+function M.is_linux()
+    return vim.fn.has('linux') == 1
+end
+
 return M
