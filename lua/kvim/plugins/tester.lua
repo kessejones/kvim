@@ -1,5 +1,6 @@
 return {
     "kessejones/tester.nvim",
+    ft = { "php" },
     config = function()
         require("tester").setup()
 

@@ -1,7 +1,10 @@
+local rest = require("rest-nvim")
+local keymappings = require("kvim.keymappings")
+
 local M = {}
 
 function M.init()
-    require("rest-nvim").setup({
+    rest.setup({
         result = {
             formatters = {
                 json = "jq",
@@ -11,12 +14,12 @@ function M.init()
                     end
                     -- stylua: ignore
                     local output = vim.fn.system({
-                      "tidy", "-i", "-q",
-                      "--tidy-mark",      "no",
-                      "--show-body-only", "auto",
-                      "--show-errors",    "0",
-                      "--show-warnings",  "0",
-                      "-",
+                        "tidy", "-i", "-q",
+                        "--tidy-mark", "no",
+                        "--show-body-only", "auto",
+                        "--show-errors", "0",
+                        "--show-warnings", "0",
+                        "-",
                     }, body)
 
                     if output:find('Error: Can\'t open "auto"') then
@@ -26,6 +29,12 @@ function M.init()
                     return output:gsub("\n$", "")
                 end,
             },
+        },
+    })
+
+    keymappings.load({
+        normal_mode = {
+            ["<Leader>n"] = rest.run,
         },
     })
 end

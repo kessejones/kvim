@@ -4,10 +4,12 @@ local keymappings = require("kvim.keymappings")
 local M = {}
 
 function M.init()
+    spectre.setup()
+
     keymappings.load({
         normal_mode = {
-            [",s"] = spectre.open,
-            [",f"] = spectre.open_file_search,
+            [",fs"] = spectre.open,
+            [",ff"] = spectre.open_file_search,
         },
     })
 end

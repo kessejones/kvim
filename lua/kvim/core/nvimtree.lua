@@ -1,5 +1,5 @@
 local nvim_tree = require("nvim-tree")
--- local keymappings = require("kvim.keymappings")
+local keymappings = require("kvim.keymappings")
 
 local M = {}
 
@@ -32,12 +32,12 @@ function M.init()
             custom = {},
         },
     })
-    --
-    -- keymappings.load({
-    --     normal_mode = {
-    --         ["<C-g>"] = nvim_tree.toggle,
-    --     },
-    -- })
+
+    keymappings.load({
+        normal_mode = {
+            ["<C-g>"] = require("nvim-tree.api").tree.toggle,
+        },
+    })
 end
 
 return M

@@ -1,12 +1,7 @@
 return {
     "TimUntersberger/neogit",
     keys = {
-        {
-            "<Leader>gg",
-            function()
-                require("neogit").open({})
-            end,
-        },
+        "<Leader>gg",
     },
     config = function()
         require("kvim.core.neogit").init()

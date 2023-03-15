@@ -3,18 +3,8 @@ return {
     branch = "diffview-integration",
     cmd = "GitBlameLineToggle",
     keys = {
-        {
-            "<S-t>",
-            function()
-                require("git-blame-line").toggle()
-            end,
-        },
-        {
-            "<Leader>gt",
-            function()
-                require("git-blame-line").open_diffview()
-            end,
-        },
+        "<S-t>",
+        "<Leader>gt",
     },
     dependencies = {
         "sindrets/diffview.nvim",

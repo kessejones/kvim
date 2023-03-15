@@ -2,13 +2,7 @@ return {
     "NTBBloodbath/rest.nvim",
     ft = { "http" },
     keys = {
-        {
-            "<Leader>n",
-            function()
-                require("rest-nvim").run()
-            end,
-            desc = "Rest run",
-        },
+        "<Leader>n",
     },
     config = function()
         require("kvim.core.rest").init()

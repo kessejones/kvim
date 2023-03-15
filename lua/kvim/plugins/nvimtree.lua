@@ -2,12 +2,7 @@ return {
     "kyazdani42/nvim-tree.lua",
     dependencies = { "kyazdani42/nvim-web-devicons" },
     keys = {
-        {
-            "<C-g>",
-            function()
-                require("nvim-tree.api").tree.toggle()
-            end,
-        },
+        "<C-g>",
     },
     config = function()
         require("kvim.core.nvimtree").init()
