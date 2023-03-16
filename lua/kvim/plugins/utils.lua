@@ -9,6 +9,7 @@ return {
     { "kylechui/nvim-surround" },
     {
         "windwp/nvim-autopairs",
+        event = { "InsertEnter" },
         opts = {},
     },
     { "moll/vim-bbye" },
