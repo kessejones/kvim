@@ -1,7 +1,7 @@
 return {
     "numToStr/Comment.nvim",
     keys = {
-        "<Leader>/",
+        { "<Leader>/", mode = { "n", "v" } },
     },
     config = function()
         require("kvim.core.comment").init()
