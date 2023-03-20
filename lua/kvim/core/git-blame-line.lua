@@ -8,11 +8,11 @@ function M.init()
 
     keymappings.load({
         normal_mode = {
-            ["S-t"] = function()
-                require("git-blame-line").toggle()
+            ["<S-t>"] = function()
+                git_blame_line.toggle()
             end,
             ["<Leader>gt"] = function()
-                require("git-blame-line").open_diffview()
+                git_blame_line.open_diffview()
             end,
         },
     })

@@ -23,8 +23,6 @@ function M.init()
             ["<Leader>gv"] = function()
                 require("diffview").open()
             end,
-        },
-        {
             ["<Leader>gf"] = function()
                 require("diffview").file_history()
             end,
