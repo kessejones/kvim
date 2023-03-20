@@ -1,6 +1,6 @@
 return {
     "uga-rosa/ccc.nvim",
-    cmd = "CccPick",
+    cmd = { "CccPick", "CccHighlighterToggle", "CccHighlighterEnable", "CccHighlighterDisable" },
     keys = {
         {
             "<Leader>c",
