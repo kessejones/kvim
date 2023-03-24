@@ -3,6 +3,7 @@ return {
     keys = {
         "\\j",
         "\\k",
+        "<C-n>",
     },
     init = function()
         require("kvim.core.multi-cursor").init()
