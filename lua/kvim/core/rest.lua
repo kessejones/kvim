@@ -32,10 +32,17 @@ function M.init()
         },
     })
 
-    keymappings.load({
-        normal_mode = {
-            ["<Leader>n"] = rest.run,
-        },
+    vim.api.nvim_create_augroup("RestGroup", { clear = true })
+    vim.api.nvim_create_autocmd("BufWinEnter", {
+        group = "RestGroup",
+        pattern = { "*.http" },
+        callback = function(args)
+            keymappings.load({
+                normal_mode = {
+                    ["<Leader>n"] = rest.run,
+                },
+            }, args.buf)
+        end,
     })
 end
 
