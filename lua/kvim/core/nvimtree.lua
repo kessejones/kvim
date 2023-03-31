@@ -5,28 +5,21 @@ local M = {}
 
 function M.init()
     nvim_tree.setup({
+        on_attach = "default",
         update_cwd = true,
         update_focused_file = {
             enable = true,
             update_cwd = true,
-            ignore_list = {},
+            ignore_list = { "term" },
         },
         view = {
-            mappings = {
-                list = {
-                    {
-                        key = ".",
-                        action = "root_dir",
-                        action_cb = function(node)
-                            if not node.absolute_path or node.absolute_path == "" then
-                                return
-                            end
-                            local absolute_path = vim.fn.fnamemodify(node.absolute_path, ":p:h")
-                            nvim_tree.change_dir(absolute_path)
-                        end,
-                    },
+            float = {
+                enable = true,
+                open_win_config = {
+                    height = 100,
                 },
             },
+            preserve_window_proportions = true,
         },
         filters = {
             custom = {},
