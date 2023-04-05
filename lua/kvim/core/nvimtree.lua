@@ -1,4 +1,5 @@
 local nvim_tree = require("nvim-tree")
+local events = require("nvim-tree.events")
 local keymappings = require("kvim.keymappings")
 
 local M = {}
@@ -25,6 +26,10 @@ function M.init()
             custom = {},
         },
     })
+
+    events.subscribe(events.Event.FileCreated, function(e)
+        vim.cmd.edit(e.fname)
+    end)
 
     keymappings.load({
         normal_mode = {
