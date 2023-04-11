@@ -17,7 +17,7 @@ function M.init()
             float = {
                 enable = true,
                 open_win_config = {
-                    height = 100,
+                    height = vim.o.lines - 5,
                 },
             },
             preserve_window_proportions = true,
