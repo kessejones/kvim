@@ -8,5 +8,4 @@ return {
     },
     { "kylechui/nvim-surround" },
     { "moll/vim-bbye" },
-    { "gpanders/editorconfig.nvim" }, -- TODO: remove this when update to nvim 0.9
 }
