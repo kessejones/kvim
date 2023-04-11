@@ -12,6 +12,7 @@ function M.init()
                 IndentBlanklineContextChar = { fg = colors.surface2 },
                 WinSeparator = { fg = colors.blue },
                 Breakpoint = { fg = colors.red },
+                IncSearch = { bg = colors.lavender },
             }
         end,
     })
