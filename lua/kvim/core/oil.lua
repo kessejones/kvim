@@ -15,6 +15,7 @@ function M.init()
             ["<C-l>"] = "actions.refresh",
             ["<CR>"] = "actions.select",
             ["g."] = "actions.toggle_hidden",
+            ["<C-r>"] = "actions.open_cwd",
             ["<Leader>t"] = "actions.close",
             ["<Leader>ss"] = {
                 callback = function()
