@@ -1,5 +1,5 @@
 return {
-    "NTBBloodbath/rest.nvim",
+    "rest-nvim/rest.nvim",
     ft = { "http" },
     keys = {
         "<Leader>n",
