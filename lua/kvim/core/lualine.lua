@@ -10,7 +10,9 @@ function M.init()
             theme = "auto",
             component_separators = { left = "", right = "" },
             section_separators = { left = "", right = "" },
-            disabled_filetypes = {},
+            disabled_filetypes = {
+                "alpha",
+            },
             always_divide_middle = true,
         },
         sections = {
@@ -30,9 +32,6 @@ function M.init()
             lualine_z = {},
         },
         tabline = {},
-        extensions = {
-            require("term._extensions.lualine"),
-        },
     })
 end
 
