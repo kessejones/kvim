@@ -51,13 +51,13 @@ function M.init()
         },
         formatting = {
             format = lspkind.cmp_format({
-                with_text = true,
+                mode = "symbol_text",
                 menu = {
-                    buffer = "[buf]",
+                    buffer = "[Buf]",
                     nvim_lsp = "[LSP]",
-                    nvim_lua = "[api]",
-                    path = "[path]",
-                    luasnip = "[snip]",
+                    nvim_lua = "[API]",
+                    path = "[Path]",
+                    luasnip = "[Snip]",
                 },
             }),
         },
@@ -79,10 +79,10 @@ function M.init()
         }),
         formatting = {
             format = lspkind.cmp_format({
-                with_text = false,
+                mode = "symbol",
                 menu = {
-                    cmdline = "[cmd]",
-                    path = "[path]",
+                    path = "[Path]",
+                    cmdline = "[CMD]",
                 },
             }),
         },
