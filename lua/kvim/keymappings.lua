@@ -80,6 +80,38 @@ local default_mappings = {
     },
     visual_block_mode = {},
     command_mode = {},
+    terminal_mode = {
+        ["<ESC><ESC>"] = function()
+            vim.cmd.stopinsert({ bang = true })
+        end,
+        ["<C-w>q"] = function()
+            vim.cmd.wincmd("q")
+        end,
+        ["<C-w>h"] = function()
+            vim.cmd.wincmd("h")
+        end,
+        ["<C-w>l"] = function()
+            vim.cmd.wincmd("l")
+        end,
+        ["<C-w>k"] = function()
+            vim.cmd.wincmd("k")
+        end,
+        ["<C-w>j"] = function()
+            vim.cmd.wincmd("j")
+        end,
+        ["<C-w>H"] = function()
+            vim.cmd.wincmd("H")
+        end,
+        ["<C-w>L"] = function()
+            vim.cmd.wincmd("L")
+        end,
+        ["<C-w>K"] = function()
+            vim.cmd.wincmd("K")
+        end,
+        ["<C-w>J"] = function()
+            vim.cmd.wincmd("J")
+        end,
+    },
 }
 
 function M.set_keymaps(mode, key, val, bufnr)
