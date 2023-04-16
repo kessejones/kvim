@@ -1,6 +1,3 @@
-local augroup = vim.api.nvim_create_augroup
-local autocmd = vim.api.nvim_create_autocmd
-
 local M = {}
 
 local default_settings = {
@@ -63,17 +60,6 @@ function M.init()
     for key, value in pairs(default_settings) do
         M.set(key, value)
     end
-
-    local yank_group = augroup("HighlightYank", {})
-    autocmd("TextYankPost", {
-        group = yank_group,
-        pattern = "*",
-        callback = function()
-            vim.highlight.on_yank({
-                timeout = 90,
-            })
-        end,
-    })
 end
 
 return M
