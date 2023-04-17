@@ -4,22 +4,6 @@ local lspkind = require("lspkind")
 local M = {}
 
 function M.init()
-    local select_prev_item = cmp.mapping(function()
-        if cmp.visible() then
-            cmp.select_prev_item()
-        else
-            cmp.complete()
-        end
-    end, { "i", "s", "c" })
-
-    local select_next_item = cmp.mapping(function()
-        if cmp.visible() then
-            cmp.select_next_item()
-        else
-            cmp.complete()
-        end
-    end, { "i", "s", "c" })
-
     cmp.setup({
         sources = {
             { name = "nvim_lsp" },
@@ -37,10 +21,34 @@ function M.init()
         mapping = {
             ["<C-u>"] = cmp.mapping.scroll_docs(-4),
             ["<C-d>"] = cmp.mapping.scroll_docs(4),
-            ["<Tab>"] = select_next_item,
-            ["<S-Tab>"] = select_prev_item,
-            ["<C-p>"] = select_prev_item,
-            ["<C-n>"] = select_next_item,
+            ["<S-Tab>"] = cmp.mapping(function(callback)
+                if cmp.visible() then
+                    cmp.select_prev_item()
+                else
+                    callback()
+                end
+            end, { "i" }),
+            ["<Tab>"] = cmp.mapping(function(callback)
+                if cmp.visible() then
+                    cmp.select_next_item()
+                else
+                    callback()
+                end
+            end, { "i" }),
+            ["<C-k>"] = cmp.mapping(function()
+                if cmp.visible() then
+                    cmp.select_prev_item()
+                else
+                    cmp.complete()
+                end
+            end, { "i", "c", "s" }),
+            ["<C-j>"] = cmp.mapping(function()
+                if cmp.visible() then
+                    cmp.select_next_item()
+                else
+                    cmp.complete()
+                end
+            end, { "i", "c", "s" }),
             ["<CR>"] = cmp.mapping.confirm({
                 select = true,
             }),
@@ -74,6 +82,7 @@ function M.init()
     })
 
     cmp.setup.cmdline(":", {
+        mapping = cmp.mapping.preset.cmdline(),
         sources = cmp.config.sources({
             { name = "path" },
         }, {
