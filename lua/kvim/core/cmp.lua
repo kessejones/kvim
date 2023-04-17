@@ -1,21 +1,22 @@
-local M = {}
 local cmp = require("cmp")
 local lspkind = require("lspkind")
 
+local M = {}
+
 function M.init()
-    local select_prev_item = cmp.mapping(function(fallback)
+    local select_prev_item = cmp.mapping(function()
         if cmp.visible() then
             cmp.select_prev_item()
         else
-            fallback()
+            cmp.complete()
         end
     end, { "i", "s", "c" })
 
-    local select_next_item = cmp.mapping(function(fallback)
+    local select_next_item = cmp.mapping(function()
         if cmp.visible() then
             cmp.select_next_item()
         else
-            fallback()
+            cmp.complete()
         end
     end, { "i", "s", "c" })
 
@@ -37,15 +38,10 @@ function M.init()
             ["<C-u>"] = cmp.mapping.scroll_docs(-4),
             ["<C-d>"] = cmp.mapping.scroll_docs(4),
             ["<Tab>"] = select_next_item,
-            ["<C-j>"] = select_next_item,
             ["<S-Tab>"] = select_prev_item,
-            ["<C-k>"] = select_prev_item,
-            ["<C-f>"] = cmp.mapping.complete(),
+            ["<C-p>"] = select_prev_item,
+            ["<C-n>"] = select_next_item,
             ["<CR>"] = cmp.mapping.confirm({
-                select = true,
-            }),
-            ["<c-y>"] = cmp.mapping.confirm({
-                behavior = cmp.ConfirmBehavior.Insert,
                 select = true,
             }),
         },
@@ -62,12 +58,18 @@ function M.init()
             }),
         },
         experimental = {
-            native_menu = false,
             ghost_text = true,
         },
         window = {
             completion = cmp.config.window.bordered(),
             documentation = cmp.config.window.bordered(),
+        },
+    })
+
+    cmp.setup.cmdline({ "/", "?" }, {
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = {
+            { name = "buffer" },
         },
     })
 
