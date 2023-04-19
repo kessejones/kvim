@@ -6,10 +6,13 @@ a.nvim_create_autocmd("TermOpen", {
     group = group,
     pattern = "term://*",
     callback = function(args)
-        local win = a.nvim_get_current_win()
-        vim.wo[win].number = false
-        vim.bo[args.buf].filetype = "term"
-        vim.cmd.startinsert({ bang = true })
+        if vim.bo[args.buf].filetype == "" then
+            local win = a.nvim_get_current_win()
+            vim.wo[win].number = false
+            vim.wo[win].relativenumber = false
+            vim.bo[args.buf].filetype = "KVimTerm"
+            vim.cmd.startinsert({ bang = true })
+        end
     end,
 })
 

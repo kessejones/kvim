@@ -11,17 +11,25 @@ function M.init()
     })
 
     local keymap_toggle = "<Leader>;"
-
     keymappings.load({
         normal_mode = {
             [keymap_toggle] = term.toggle,
         },
-        terminal_mode = {
-            [keymap_toggle] = term.toggle,
-            ["<C-n>"] = term.next,
-            ["<C-p>"] = term.prev,
-            ["<C-o>"] = term.new,
-        },
+    })
+
+    vim.api.nvim_create_autocmd("TermOpen", {
+        callback = function(args)
+            if vim.bo[args.buf].filetype == "Term" then
+                keymappings.load({
+                    terminal_mode = {
+                        [keymap_toggle] = term.toggle,
+                        ["<C-n>"] = term.next,
+                        ["<C-p>"] = term.prev,
+                        ["<C-o>"] = term.new,
+                    },
+                }, args.buf)
+            end
+        end,
     })
 end
 
