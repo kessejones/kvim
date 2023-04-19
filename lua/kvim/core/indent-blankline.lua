@@ -8,7 +8,7 @@ function M.init()
         show_current_context_start = true,
         bufname_exclude = { "terminal", "startfy" },
         buftype_exclude = { "help", "startfy", "dashboard", "packer", "fugitive" },
-        filetype_exclude = { "NvimTree", "floaterm", "packer", "Term", "term" },
+        filetype_exclude = { "NvimTree", "floaterm", "packer", "Term", "KVimTerm" },
     })
 end
 
