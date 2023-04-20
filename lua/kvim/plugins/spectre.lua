@@ -2,8 +2,8 @@ return {
     "nvim-pack/nvim-spectre",
     lazy = true,
     keys = {
-        ",fs",
-        ",ff",
+        "<LocalLeader>fs",
+        "<LocalLeader>ff",
     },
     config = function()
         require("kvim.core.spectre").init()

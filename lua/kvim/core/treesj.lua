@@ -10,8 +10,8 @@ function M.init()
 
     keymappings.load({
         normal_mode = {
-            [",ss"] = treesj.split,
-            [",sj"] = treesj.join,
+            ["<LocalLeader>ss"] = treesj.split,
+            ["<LocalLeader>sj"] = treesj.join,
         },
     })
 end

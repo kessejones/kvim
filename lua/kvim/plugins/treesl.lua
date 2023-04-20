@@ -1,10 +1,8 @@
 return {
     "Wansmer/treesj",
     keys = {
-        {
-            ",ss",
-            ",sj",
-        },
+        "<LocalLeader>ss",
+        "<LocalLeader>sj",
     },
     config = function()
         require("kvim.core.treesj").init()

@@ -8,8 +8,8 @@ function M.init()
 
     keymappings.load({
         normal_mode = {
-            [",fs"] = spectre.open,
-            [",ff"] = spectre.open_file_search,
+            ["<LocalLeader>fs"] = spectre.open,
+            ["<LocalLeader>ff"] = spectre.open_file_search,
         },
     })
 end

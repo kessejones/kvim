@@ -87,23 +87,21 @@ end
 local function setup_keymappings()
     keymappings.load({
         normal_mode = {
-            [",q"] = dap.step_back,
-            [",w"] = dap.step_into,
-            [",e"] = dap.step_over,
-            [",r"] = dap.step_out,
-            [",t"] = dap.continue,
-            [",s"] = dap.close,
-            [",a"] = dapui.toggle,
-
-            [",b"] = dap.toggle_breakpoint,
-            [",g"] = dap.repl.open,
-
-            [",v"] = function()
+            ["<LocalLeader>dq"] = dap.step_back,
+            ["<LocalLeader>dw"] = dap.step_into,
+            ["<LocalLeader>de"] = dap.step_over,
+            ["<LocalLeader>dr"] = dap.step_out,
+            ["<LocalLeader>dt"] = dap.continue,
+            ["<LocalLeader>ds"] = dap.close,
+            ["<LocalLeader>da"] = dapui.toggle,
+            ["<LocalLeader>db"] = dap.toggle_breakpoint,
+            ["<LocalLeader>dg"] = dap.repl.open,
+            ["<LocalLeader>dv"] = function()
                 dapui.eval()
             end,
         },
         visual_mode = {
-            [",v"] = function()
+            ["<LocalLeader>dv"] = function()
                 dapui.eval()
             end,
         },

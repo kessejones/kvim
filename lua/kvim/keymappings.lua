@@ -21,26 +21,37 @@ local default_mappings = {
         -- Save file
         ["<Leader>ss"] = ":w<CR>",
         ["<Leader>sq"] = ":wq<CR>",
-        -- Make the current window the only one on the screen.
-        ["<Leader>s="] = ":on<CR>",
-        ["<Leader>ww"] = ":on<CR>",
         -- Navigate in windows
-        ["<Leader>h"] = "<C-w>h",
-        ["<Leader>j"] = "<C-w>j",
-        ["<Leader>k"] = "<C-w>k",
-        ["<Leader>l"] = "<C-w>l",
-        -- Rotate windows
-        ["<Leader>wr"] = "<C-w>r",
-        -- Make windows to be basically the same size
-        ["<Leader>r="] = "<C-w>=",
-        ["<Leader>rr"] = "<C-w>=",
+        ["<Leader>h"] = function()
+            vim.cmd.wincmd("h")
+        end,
+        ["<Leader>l"] = function()
+            vim.cmd.wincmd("l")
+        end,
+        ["<Leader>k"] = function()
+            vim.cmd.wincmd("k")
+        end,
+        ["<Leader>j"] = function()
+            vim.cmd.wincmd("j")
+        end,
         -- Window sizing
-        ["<Leader>rk"] = "<C-w>5+",
-        ["<Leader>rj"] = "<C-w>5-",
-        ["<Leader>rh"] = "<C-w>5<",
-        ["<Leader>rl"] = "<C-w>5>",
+        ["<C-r><C-k>"] = function()
+            vim.cmd.wincmd("5+")
+        end,
+        ["<C-r><C-j>"] = function()
+            vim.cmd.wincmd("5-")
+        end,
+        ["<C-r><C-h>"] = function()
+            vim.cmd.wincmd("5<")
+        end,
+        ["<C-r><C-l>"] = function()
+            vim.cmd.wincmd("5>")
+        end,
+        ["<C-r><C-r>"] = function()
+            vim.cmd.wincmd("=")
+        end,
         -- Split window
-        ["<Leader>sv"] = ":vsplit<CR>",
+        ["<Leader>sv"] = ":vs<CR>",
         ["<Leader>sh"] = ":sv<CR>",
         -- Duplicate current line
         ["<Leader>y"] = "<ESC>yyp",
@@ -49,8 +60,8 @@ local default_mappings = {
         -- Next/Previous buffer
         ["<S-l>"] = ":bn<CR>",
         ["<S-h>"] = ":bp<CR>",
-        ["<C-l>"] = ":tabnext<CR>",
-        ["<C-h>"] = ":tabprev<CR>",
+        ["<C-l>"] = ":tabn<CR>",
+        ["<C-h>"] = ":tabp<CR>",
         -- Close/Quit Buffers
         ["<Leader>q"] = ":q<CR>",
         ["<Leader>."] = ":bdelete<CR>",
@@ -59,11 +70,11 @@ local default_mappings = {
         -- Replace
         ["<Leader>fh"] = "<ESC>:%s/",
         -- Delete
-        ["<Leader>d"] = '"_d',
         ["x"] = '"_x',
         -- Select all
-        ["<Leader>aa"] = "gg<S-v>G",
-        ["<Leader>ay"] = "gg<S-v>Gy",
+        ["<Leader>aa"] = "ggVG",
+        -- Select all and yank
+        ["<Leader>ay"] = "ggVGy",
         -- Indent
         ["<"] = "<<<ESC>",
         [">"] = ">><ESC>",
@@ -138,6 +149,7 @@ end
 
 function M.init()
     vim.g.mapleader = " "
+    vim.g.maplocalleader = ","
     M.load(default_mappings)
 end
 

@@ -74,15 +74,20 @@ function M.init()
         },
     })
 
+    local cmdline_keymappings = cmp.mapping.preset.cmdline({
+        ["<C-p>"] = function() end,
+        ["<C-n>"] = function() end,
+    })
+
     cmp.setup.cmdline({ "/", "?" }, {
-        mapping = cmp.mapping.preset.cmdline(),
+        mapping = cmdline_keymappings,
         sources = {
             { name = "buffer" },
         },
     })
 
     cmp.setup.cmdline(":", {
-        mapping = cmp.mapping.preset.cmdline(),
+        mapping = cmdline_keymappings,
         sources = cmp.config.sources({
             { name = "path" },
         }, {
