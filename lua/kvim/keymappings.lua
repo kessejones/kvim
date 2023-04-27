@@ -35,19 +35,19 @@ local default_mappings = {
             vim.cmd.wincmd("j")
         end,
         -- Window sizing
-        ["<C-r><C-k>"] = function()
+        ["<C-w><C-k>"] = function()
             vim.cmd.wincmd("5+")
         end,
-        ["<C-r><C-j>"] = function()
+        ["<C-w><C-j>"] = function()
             vim.cmd.wincmd("5-")
         end,
-        ["<C-r><C-h>"] = function()
+        ["<C-w><C-h>"] = function()
             vim.cmd.wincmd("5<")
         end,
-        ["<C-r><C-l>"] = function()
+        ["<C-w><C-l>"] = function()
             vim.cmd.wincmd("5>")
         end,
-        ["<C-r><C-r>"] = function()
+        ["<C-w><C-r>"] = function()
             vim.cmd.wincmd("=")
         end,
         -- Split window
