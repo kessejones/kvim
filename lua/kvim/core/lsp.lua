@@ -80,6 +80,7 @@ local servers = {
     pyright = {},
     csharp_ls = {},
     nil_ls = {},
+    emmet_ls = {},
 }
 
 local disabled_formatting_on_save = { "tsserver", "sumneko_lua" }
