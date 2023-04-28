@@ -10,6 +10,7 @@ function M.init()
     telescope.setup({
         defaults = {
             file_ignore_patterns = {
+                "^%Toolchain/",
                 "^%.git/",
                 "^vendor/",
                 "^node_modules/",
