@@ -65,7 +65,6 @@ local servers = {
     yamlls = {},
     html = {},
     cssls = {},
-    -- intelephense = {},
     phpactor = {
         init_options = {
             ["language_server_phpstan.enabled"] = false,
@@ -73,7 +72,7 @@ local servers = {
         },
     },
     elixirls = {
-        cmd = { vim.fn.expand("$HOME") .. "/.local/bin/elixir-ls" },
+        cmd = { "elixir-ls" },
     },
     clangd = {},
     gopls = {},
