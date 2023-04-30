@@ -2,6 +2,8 @@ return {
     "nvim-telescope/telescope.nvim",
     keys = {
         "<C-p>",
+        "gR",
+        "gI",
         "<Leader>p",
         "<Leader>fl",
         "<Leader>fb",
@@ -15,12 +17,6 @@ return {
     dependencies = {
         "nvim-lua/plenary.nvim",
         "nvim-telescope/telescope-ui-select.nvim",
-        {
-            "ahmedkhalf/project.nvim",
-            config = function()
-                require("kvim.core.project").init()
-            end,
-        },
         { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
     },
     config = function()

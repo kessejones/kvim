@@ -33,11 +33,9 @@ local function lsp_references_display(opts)
 
         return {
             valid = true,
-
             value = entry,
             ordinal = ordinal,
             display = make_display,
-
             bufnr = entry.bufnr,
             filename = filename,
             lnum = entry.lnum,
@@ -78,6 +76,17 @@ function M.lsp_references()
         entry_maker = lsp_references_display(),
     }
     builtin.lsp_references(opts)
+end
+
+function M.lsp_implementations()
+    local opts = {
+        layout_config = {
+            height = 25,
+            width = 120,
+        },
+        previewer = false,
+    }
+    builtin.lsp_implementations(opts)
 end
 
 return M

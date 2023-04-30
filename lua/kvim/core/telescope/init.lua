@@ -110,6 +110,8 @@ function M.init()
             ["<Leader>fn"] = builtin.git_branches,
             ["<Leader>fc"] = custom.curr_buf,
             ["<Leader>fp"] = builtin.commands,
+            ["gI"] = custom.lsp_implementations,
+            ["gR"] = custom.lsp_references,
         },
     })
 end

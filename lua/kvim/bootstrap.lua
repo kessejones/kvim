@@ -1,4 +1,3 @@
-local colors = require("kvim.colors")
 local plugin_manager = require("kvim.plugin-manager")
 local keymappings = require("kvim.keymappings")
 local config = require("kvim.config")
