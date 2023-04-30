@@ -1,7 +1,8 @@
 return {
     "stevearc/oil.nvim",
     keys = {
-        "<Leader>t",
+        "<Leader>tt",
+        "<Leader>tg",
     },
     config = function()
         require("kvim.core.oil").init()
