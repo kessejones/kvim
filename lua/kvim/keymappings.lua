@@ -16,11 +16,18 @@ local default_mappings = {
     },
     normal_mode = {
         ["<Space>"] = "<NOP>",
-        ["<ESC>"] = ":noh<CR>",
+        ["<ESC>"] = function()
+            vim.cmd.noh()
+        end,
         ["<C-c>"] = "<ESC>",
         -- Save file
-        ["<Leader>ss"] = ":w<CR>",
-        ["<Leader>sq"] = ":wq<CR>",
+        ["<Leader>ss"] = function()
+            vim.cmd.write()
+        end,
+        ["<Leader>sq"] = function()
+            vim.cmd.write()
+            vim.cmd.quit()
+        end,
         -- Navigate in windows
         ["<Leader>h"] = function()
             vim.cmd.wincmd("h")
@@ -35,38 +42,67 @@ local default_mappings = {
             vim.cmd.wincmd("j")
         end,
         -- Window sizing
-        ["<C-w><C-k>"] = function()
+        ["<C-s><C-k>"] = function()
             vim.cmd.wincmd("5+")
         end,
-        ["<C-w><C-j>"] = function()
+        ["<C-s><C-j>"] = function()
             vim.cmd.wincmd("5-")
         end,
-        ["<C-w><C-h>"] = function()
+        ["<C-s><C-h>"] = function()
             vim.cmd.wincmd("5<")
         end,
-        ["<C-w><C-l>"] = function()
+        ["<C-s><C-l>"] = function()
             vim.cmd.wincmd("5>")
         end,
-        ["<C-w><C-r>"] = function()
+        ["<C-s><C-r>"] = function()
             vim.cmd.wincmd("=")
         end,
         -- Split window
-        ["<Leader>sv"] = ":vs<CR>",
-        ["<Leader>sh"] = ":sv<CR>",
+        ["<Leader>sv"] = function()
+            vim.cmd.split({ mods = { split = "botright" } })
+        end,
+        ["<Leader>sh"] = function()
+            vim.cmd.split({ mods = { vertical = true, split = "topleft" } })
+        end,
         -- Duplicate current line
-        ["<Leader>y"] = "<ESC>yyp",
+        ["<Leader>y"] = function()
+            vim.cmd.yank()
+            vim.cmd.put()
+        end,
         -- Switch to v-line mode
-        ["<Leader>v"] = "<S-v>",
+        ["<Leader>v"] = "<S-V>",
         -- Next/Previous buffer
-        ["<S-l>"] = ":bn<CR>",
-        ["<S-h>"] = ":bp<CR>",
-        ["<C-l>"] = ":tabn<CR>",
-        ["<C-h>"] = ":tabp<CR>",
+        ["<S-l>"] = function()
+            vim.cmd.bnext()
+        end,
+        ["<S-h>"] = function()
+            vim.cmd.bprev()
+        end,
+        ["<C-l>"] = function()
+            vim.cmd.tabnext()
+        end,
+        ["<C-h>"] = function()
+            vim.cmd.tabprev()
+        end,
         -- Close/Quit Buffers
-        ["<Leader>q"] = ":q<CR>",
-        ["<Leader>."] = ":bdelete<CR>",
-        ["<Leader>.f"] = ":bdelete!<CR>",
-        ["<Leader>.a"] = ":%bdelete<CR>",
+        ["<Leader>q"] = function()
+            vim.cmd.quit()
+        end,
+        ["<Leader>."] = function()
+            local bufnr = vim.api.nvim_get_current_buf()
+            if not vim.bo[bufnr].modified then
+                vim.cmd.bnext()
+                vim.cmd.bdelete(bufnr)
+            end
+        end,
+        ["<Leader>.f"] = function()
+            local bufnr = vim.api.nvim_get_current_buf()
+            vim.cmd.bnext()
+            vim.cmd.bdelete({ args = { bufnr }, bang = true })
+        end,
+        ["<Leader>.a"] = function()
+            vim.cmd.bdelete(vim.api.nvim_list_bufs())
+        end,
         -- Replace
         ["<Leader>fh"] = "<ESC>:%s/",
         -- Delete
@@ -121,6 +157,22 @@ local default_mappings = {
         end,
         ["<C-w>J"] = function()
             vim.cmd.wincmd("J")
+        end,
+        -- Window sizing
+        ["<C-s><C-k>"] = function()
+            vim.cmd.wincmd("5+")
+        end,
+        ["<C-s><C-j>"] = function()
+            vim.cmd.wincmd("5-")
+        end,
+        ["<C-s><C-h>"] = function()
+            vim.cmd.wincmd("5<")
+        end,
+        ["<C-s><C-l>"] = function()
+            vim.cmd.wincmd("5>")
+        end,
+        ["<C-s><C-r>"] = function()
+            vim.cmd.wincmd("=")
         end,
     },
 }

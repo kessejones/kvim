@@ -19,6 +19,7 @@ function M.init()
                 "^code_coverage_html/",
                 "^%.phpunit%.cache/",
                 "^test/reports/",
+                "^_build/",
                 "^build/",
                 "^Build/",
                 "%.DS_Store",
