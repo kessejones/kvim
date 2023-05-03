@@ -7,9 +7,9 @@ a.nvim_create_autocmd("TermOpen", {
     pattern = "term://*",
     callback = function(args)
         if vim.bo[args.buf].filetype == "" then
-            local win = a.nvim_get_current_win()
-            vim.wo[win].number = false
-            vim.wo[win].relativenumber = false
+            vim.cmd.setlocal("nonumber")
+            vim.cmd.setlocal("norelativenumber")
+
             vim.bo[args.buf].filetype = "KVimTerm"
             vim.cmd.startinsert({ bang = true })
         end
