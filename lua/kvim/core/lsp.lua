@@ -135,7 +135,7 @@ function M.lsp_config()
             ["K"] = function()
                 vim.lsp.buf.hover()
             end,
-            ["L"] = function()
+            ["gs"] = function()
                 vim.lsp.buf.signature_help()
             end,
             ["gd"] = function()
