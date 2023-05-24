@@ -135,6 +135,9 @@ function M.lsp_config()
             ["K"] = function()
                 vim.lsp.buf.hover()
             end,
+            ["L"] = function()
+                vim.lsp.buf.signature_help()
+            end,
             ["gd"] = function()
                 vim.lsp.buf.definition()
             end,
