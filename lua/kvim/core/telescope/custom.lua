@@ -1,50 +1,7 @@
-local entry_display = require("telescope.pickers.entry_display")
 local builtin = require("telescope.builtin")
 local themes = require("telescope.themes")
-local utils = require("telescope.utils")
 
 local M = {}
-
-local function lsp_references_display(opts)
-    opts = opts or {}
-
-    local displayer = entry_display.create({
-        separator = "",
-        items = {
-            { width = 8 },
-            { remaining = true },
-        },
-    })
-
-    local make_display = function(entry)
-        local filename = utils.transform_path(opts, entry.filename)
-
-        local line_info = { table.concat({ entry.lnum, entry.col }, ":"), "TelescopeResultsLineNr" }
-
-        return displayer({
-            line_info,
-            filename,
-        })
-    end
-
-    return function(entry)
-        local filename = entry.filename or vim.api.nvim_buf_get_name(entry.bufnr)
-        local ordinal = string.format("%d:%d %s", entry.lnum, entry.col, filename)
-
-        return {
-            valid = true,
-            value = entry,
-            ordinal = ordinal,
-            display = make_display,
-            bufnr = entry.bufnr,
-            filename = filename,
-            lnum = entry.lnum,
-            col = entry.col,
-            start = entry.start,
-            finish = entry.finish,
-        }
-    end
-end
 
 function M.curr_buf()
     local opts = themes.get_dropdown({
@@ -71,22 +28,45 @@ function M.find_files()
 end
 
 function M.lsp_references()
-    local opts = {
+    local opts = themes.get_dropdown({
         sorting_strategy = "ascending",
-        entry_maker = lsp_references_display(),
-    }
+        layout_strategy = "vertical",
+        layout_config = {
+            prompt_position = "top",
+            height = 50,
+            width = 170,
+        },
+        show_line = false,
+        results_title = "LSP References",
+    })
     builtin.lsp_references(opts)
 end
 
 function M.lsp_implementations()
-    local opts = {
+    local opts = themes.get_dropdown({
         layout_config = {
-            height = 25,
-            width = 120,
+            prompt_position = "top",
+            height = 50,
+            width = 170,
         },
-        previewer = false,
-    }
+        previewer = true,
+        results_title = "LSP Implementations",
+    })
     builtin.lsp_implementations(opts)
+end
+
+function M.diagnostics()
+    local opts = themes.get_dropdown({
+        sorting_strategy = "ascending",
+        layout_strategy = "vertical",
+        layout_config = {
+            prompt_position = "top",
+            height = 50,
+            width = 170,
+        },
+        results_title = "Diagnostics",
+    })
+    builtin.diagnostics(opts)
 end
 
 return M

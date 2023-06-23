@@ -4,6 +4,7 @@ return {
         "<C-p>",
         "gR",
         "gI",
+        "gk",
         "<Leader>p",
         "<Leader>fl",
         "<Leader>fb",
