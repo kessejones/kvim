@@ -113,6 +113,7 @@ function M.init()
             ["<Leader>fp"] = builtin.commands,
             ["gI"] = custom.lsp_implementations,
             ["gR"] = custom.lsp_references,
+            ["<Leader>z"] = builtin.resume,
         },
     })
 end
