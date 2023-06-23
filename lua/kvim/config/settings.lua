@@ -60,6 +60,10 @@ function M.init()
     for key, value in pairs(default_settings) do
         M.set(key, value)
     end
+
+    vim.g.loaded_perl_provider = 0
+    vim.g.loaded_ruby_provider = 0
+    vim.g.loaded_node_provider = 0
 end
 
 return M
