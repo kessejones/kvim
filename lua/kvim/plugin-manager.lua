@@ -1,6 +1,4 @@
-local M = {
-    first_load = false,
-}
+local M = {}
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 

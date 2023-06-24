@@ -8,7 +8,7 @@ function M.init()
 
     null_ls.setup({
         on_attach = function(client, bufnr)
-            require("kvim.core.lsp").enable_format_on_save(client, bufnr)
+            require("kvim.core.lsp.formatting").init(vim.bo[bufnr].filetype)
         end,
         sources = {
             formatting.phpcsfixer.with({
