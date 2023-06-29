@@ -3,9 +3,10 @@ return {
     dependencies = { "nvim-lua/plenary.nvim" },
     lazy = true,
     keys = {
-        "<Leader>gv",
-        "<Leader>gf",
+        "<Leader>hd",
+        "<Leader>hD",
     },
+    cmd = { "DiffviewOpen" },
     config = function()
         require("kvim.core.diffview").init()
     end,

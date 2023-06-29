@@ -20,11 +20,11 @@ function M.init()
 
     keymappings.load({
         normal_mode = {
-            ["<Leader>gv"] = function()
-                require("diffview").open()
-            end,
-            ["<Leader>gf"] = function()
+            ["<Leader>hd"] = function()
                 require("diffview").file_history()
+            end,
+            ["<Leader>hD"] = function()
+                require("diffview").open()
             end,
         },
     })
