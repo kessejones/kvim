@@ -91,13 +91,11 @@ local default_mappings = {
         ["<Leader>."] = function()
             local bufnr = vim.api.nvim_get_current_buf()
             if not vim.bo[bufnr].modified then
-                vim.cmd.bnext()
                 vim.cmd.bdelete(bufnr)
             end
         end,
         ["<Leader>.f"] = function()
             local bufnr = vim.api.nvim_get_current_buf()
-            vim.cmd.bnext()
             vim.cmd.bdelete({ args = { bufnr }, bang = true })
         end,
         ["<Leader>.a"] = function()
