@@ -4,6 +4,7 @@ local default_settings = {
     encoding = "utf-8",
     lazyredraw = true,
     smarttab = true,
+    smartcase = true,
     backup = false,
     writebackup = false,
     clipboard = "unnamedplus",

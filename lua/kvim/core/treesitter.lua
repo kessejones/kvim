@@ -30,9 +30,6 @@ function M.init()
         indent = {
             enable = true,
         },
-        rainbow = {
-            enable = true,
-        },
     })
 end
 
