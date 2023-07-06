@@ -132,6 +132,7 @@ local function init_servers()
     a.nvim_create_augroup("LspDocumentHighlight", { clear = true })
     local on_attach = function(client, bufnr)
         keymapping.load(mapping, bufnr)
+        vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
 
         require("kvim.core.lsp.formatting").init(vim.bo[bufnr].filetype)
         init_highlight(client, bufnr)
