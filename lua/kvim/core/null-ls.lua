@@ -33,6 +33,7 @@ function M.init()
                     "--runtime-set",
                     "ignore_errors_on_exit",
                     "1",
+                    "--config-set php_version 8120",
                     "--stdin-path=$FILENAME",
                     "--basepath=",
                 },
