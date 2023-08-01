@@ -1,4 +1,6 @@
 local diffview = require("diffview")
+local actions = require("diffview.actions")
+
 local keymappings = require("kvim.keymappings")
 
 local M = {}
@@ -7,13 +9,23 @@ function M.init()
     diffview.setup({
         keymaps = {
             view = {
-                ["q"] = diffview.close,
+                ["q"] = actions.close,
+                ["<C-g>"] = actions.toggle_files,
+                ["[f"] = actions.prev_conflict,
+                ["]f"] = actions.next_conflict,
             },
             file_panel = {
-                ["q"] = diffview.close,
+                ["q"] = actions.close,
+                ["<C-g>"] = actions.toggle_files,
             },
             file_history_panel = {
-                ["q"] = diffview.close,
+                ["q"] = actions.close,
+                ["<C-g>"] = actions.toggle_files,
+            },
+        },
+        view = {
+            merge_tool = {
+                layout = "diff3_mixed",
             },
         },
     })
