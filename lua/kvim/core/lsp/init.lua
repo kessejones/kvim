@@ -65,6 +65,7 @@ local function init_servers()
         pyright = {},
         csharp_ls = {},
         nil_ls = {},
+        nixd = {},
         emmet_ls = {},
     }
 
