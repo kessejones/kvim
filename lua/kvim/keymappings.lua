@@ -112,6 +112,8 @@ local default_mappings = {
         -- Indent
         ["<"] = "<<<ESC>",
         [">"] = ">><ESC>",
+        ["gl"] = "$",
+        ["gh"] = "^",
     },
     visual_mode = {
         -- Replace
