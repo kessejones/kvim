@@ -1,4 +1,4 @@
-local indent_blankline = require("indent_blankline")
+local indent_blankline = require("ibl")
 
 local M = {}
 
