@@ -6,6 +6,7 @@ function M.init()
         custom_highlights = function(colors)
             return {
                 FloatBorder = { fg = colors.blue, bg = colors.base },
+                HarpoonBorder = { fg = colors.blue, bg = colors.base },
                 TermBorder = { link = "FloatBorder" },
                 NormalFloat = { fg = colors.text, bg = colors.base },
                 TelescopeBorder = { link = "FloatBorder" },
