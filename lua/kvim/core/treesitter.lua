@@ -84,6 +84,8 @@ function M.init()
                     ["af"] = "@function.outer",
                     ["if"] = "@function.inner",
                     ["ac"] = "@class.outer",
+                    ["ab"] = "@block.outer",
+                    ["ib"] = "@block.inner",
                     ["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
                     ["as"] = { query = "@scope", query_group = "locals", desc = "Select language scope" },
                 },
