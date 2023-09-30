@@ -47,26 +47,26 @@ function M.init()
                 enable = true,
                 set_jumps = true,
                 goto_next_start = {
-                    ["]m"] = "@function.outer",
+                    ["]f"] = "@function.outer",
                     ["]c"] = "@class.outer",
                     ["]l"] = "@loop.*",
                     ["]s"] = { query = "@scope", query_group = "locals", desc = "Next scope" },
                     ["]z"] = { query = "@fold", query_group = "folds", desc = "Next fold" },
                 },
                 goto_next_end = {
-                    ["]M"] = "@function.outer",
+                    ["]F"] = "@function.outer",
                     ["]C"] = "@class.outer",
                     ["]L"] = "@loop.*",
                     ["]S"] = { query = "@scope", query_group = "locals", desc = "Next scope" },
                 },
                 goto_previous_start = {
-                    ["[m"] = "@function.outer",
+                    ["[f"] = "@function.outer",
                     ["[c"] = "@class.outer",
                     ["[l"] = "@loop.*",
                     ["[s"] = { query = "@scope", query_group = "locals", desc = "Prev scope" },
                 },
                 goto_previous_end = {
-                    ["[M"] = "@function.outer",
+                    ["[F"] = "@function.outer",
                     ["[C"] = "@class.outer",
                 },
 
