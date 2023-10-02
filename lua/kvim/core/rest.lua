@@ -1,4 +1,4 @@
-local rest = require("rest.nvim")
+local rest = require("rest-nvim")
 local keymappings = require("kvim.keymappings")
 
 local M = {}
