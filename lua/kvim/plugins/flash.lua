@@ -1,0 +1,16 @@
+return {
+    "folke/flash.nvim",
+    event = {
+        "VeryLazy",
+    },
+    keys = {
+        "f",
+        "F",
+        "ss",
+        "se",
+        "sa",
+    },
+    config = function()
+        require("kvim.core.flash").init()
+    end,
+}
