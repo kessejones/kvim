@@ -10,10 +10,10 @@ function M.init()
                 TermBorder = { link = "FloatBorder" },
                 NormalFloat = { fg = colors.text, bg = colors.base },
                 TelescopeBorder = { link = "FloatBorder" },
-                IndentBlanklineContextChar = { fg = colors.surface2 },
                 WinSeparator = { fg = colors.blue },
                 Breakpoint = { fg = colors.red },
                 IncSearch = { bg = colors.lavender },
+                IblScope = { fg = colors.overlay1 },
             }
         end,
     })

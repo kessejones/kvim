@@ -4,11 +4,34 @@ local M = {}
 
 function M.init()
     indent_blankline.setup({
-        show_current_context = true,
-        show_current_context_start = true,
-        bufname_exclude = { "terminal", "startfy" },
-        buftype_exclude = { "help", "startfy", "dashboard", "packer", "fugitive" },
-        filetype_exclude = { "NvimTree", "floaterm", "packer", "Term", "KVimTerm" },
+        scope = {
+            enabled = true,
+            show_start = false,
+            show_end = false,
+            include = {
+                node_type = {
+                    ["*"] = { "*" },
+                },
+            },
+        },
+        exclude = {
+            filetypes = {
+                "NeogitStatus",
+                "NvimTree",
+                "floaterm",
+                "packer",
+                "Term",
+                "KVimTerm",
+                "lspinfo",
+                "checkhealth",
+                "help",
+                "man",
+                "gitcommit",
+                "TelescopePrompt",
+                "TelescopeResults",
+                "",
+            },
+        },
     })
 end
 
