@@ -9,6 +9,8 @@ return {
         "ss",
         "se",
         "sa",
+        "st",
+        "sz",
     },
     config = function()
         require("kvim.core.flash").init()
