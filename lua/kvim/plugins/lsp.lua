@@ -3,7 +3,7 @@ return {
     event = { "BufRead" },
     dependencies = {
         {
-            "jose-elias-alvarez/null-ls.nvim",
+            "nvimtools/none-ls.nvim",
             config = function()
                 require("kvim.core.null-ls").init()
             end,
