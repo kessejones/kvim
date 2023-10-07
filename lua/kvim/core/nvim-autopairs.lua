@@ -18,7 +18,7 @@ function M.init()
             after_key = "l",
             cursor_pos_before = true,
             keys = "qwertyuiopzxcvbnmasdfghjkl",
-            manual_position = false,
+            manual_position = true,
             highlight = "Search",
             highlight_grey = "Comment",
         },
