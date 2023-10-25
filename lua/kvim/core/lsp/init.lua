@@ -67,6 +67,42 @@ local function init_servers()
         nil_ls = {},
         nixd = {},
         emmet_ls = {},
+        java_language_server = {
+            cmd = { "java-language-server" },
+            handlers = {
+                ["client/registerCapability"] = function(_, result, ctx)
+                    local log_unsupported = false
+
+                    local function register(reg)
+                        if reg.method == "workspace/didChangeWatchedFiles" then
+                            require("vim.lsp._watchfiles").register(reg, ctx)
+                        else
+                            log_unsupported = true
+                        end
+                    end
+
+                    if result.registrations then
+                        for _, reg in ipairs(result.registrations) do
+                            register(reg)
+                        end
+                    else
+                        register(result)
+                    end
+
+                    if log_unsupported then
+                        local client_id = ctx.client_id
+                        local warning_tpl = "The language server %s triggers a registerCapability "
+                            .. "handler despite dynamicRegistration set to false. "
+                            .. "Report upstream, this warning is harmless"
+                        local client = vim.lsp.get_client_by_id(client_id)
+                        local client_name = client and client.name or string.format("id=%d", client_id)
+                        local warning = string.format(warning_tpl, client_name)
+                        vim.log.warn(warning)
+                    end
+                    return vim.NIL
+                end,
+            },
+        },
     }
 
     local mapping = {
