@@ -12,6 +12,7 @@ function M.init()
             file_ignore_patterns = {
                 "^%Toolchain/",
                 "^%.git/",
+                "^%.idea/",
                 "^vendor/",
                 "^node_modules/",
                 "^target/",
