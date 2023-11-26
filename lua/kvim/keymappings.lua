@@ -9,6 +9,42 @@ local mode_adapter = {
     terminal_mode = "t",
 }
 
+local function move_buffer_to_tab(dir)
+    vim.validate({
+        dir = {
+            dir,
+            function(val)
+                return val == "next" or val == "prev"
+            end,
+        },
+    })
+
+    local bufnr = vim.api.nvim_get_current_buf()
+    local bufname = vim.api.nvim_buf_get_name(bufnr)
+    if bufname:match("^term://") then
+        return
+    end
+
+    if not vim.bo[bufnr].modified then
+        local cur_tabid = vim.api.nvim_get_current_tabpage()
+        vim.cmd.bdelete({ args = { bufnr }, bang = true })
+
+        if dir == "next" then
+            vim.cmd.tabnext()
+        elseif dir == "prev" then
+            vim.cmd.tabprev()
+        else
+            assert(false)
+        end
+
+        if vim.api.nvim_get_current_tabpage() == cur_tabid then
+            vim.cmd.tabnew(bufname)
+        else
+            vim.cmd.edit(bufname)
+        end
+    end
+end
+
 local default_mappings = {
     insert_mode = {
         -- ESC helper
@@ -93,6 +129,12 @@ local default_mappings = {
             if not vim.bo[bufnr].modified then
                 vim.cmd.bdelete(bufnr)
             end
+        end,
+        ["<Leader>xn"] = function()
+            move_buffer_to_tab("next")
+        end,
+        ["<Leader>xp"] = function()
+            move_buffer_to_tab("prev")
         end,
         ["<Leader>.f"] = function()
             local bufnr = vim.api.nvim_get_current_buf()
