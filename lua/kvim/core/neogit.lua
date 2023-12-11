@@ -10,6 +10,22 @@ function M.init()
         integrations = {
             diffview = true,
         },
+
+        mappings = {
+            finder = {
+                ["<cr>"] = "Select",
+                ["<c-c>"] = "Close",
+                ["<esc>"] = "Close",
+                ["<c-n>"] = "Next",
+                ["<c-p>"] = "Previous",
+                ["<c-k>"] = "Previous",
+                ["<c-j>"] = "Next",
+                ["<down>"] = "Next",
+                ["<up>"] = "Previous",
+                ["<tab>"] = "MultiselectToggleNext",
+                ["<s-tab>"] = "MultiselectTogglePrevious",
+            },
+        },
     })
     keymappings.load({
         normal_mode = {
