@@ -67,6 +67,8 @@ local function init_servers()
         nil_ls = {},
         nixd = {},
         emmet_ls = {},
+        ocamllsp = {},
+        nushell = {},
     }
 
     local mapping = {
