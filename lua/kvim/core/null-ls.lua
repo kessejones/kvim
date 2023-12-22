@@ -21,6 +21,7 @@ function M.init()
                 end,
             }),
             formatting.alejandra,
+            formatting.ocamlformat,
             diagnostics.phpcs.with({
                 args = {
                     "--standard=PSR1,PSR12",
