@@ -156,6 +156,7 @@ function M.init()
 
     require("kvim.core.lsp.handlers").init()
     require("kvim.core.lsp.diagnostics").init()
+    require("kvim.core.lsp.formatting").init_config()
 end
 
 return M
