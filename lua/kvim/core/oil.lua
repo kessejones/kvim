@@ -28,6 +28,7 @@ function M.init()
             ["q"] = "actions.close",
             ["<Leader>tg"] = "actions.close",
             ["<Leader>tt"] = "actions.close",
+            ["gp"] = "actions.preview",
             ["gc"] = {
                 callback = function()
                     require("oil").open(find_pattern_root())
@@ -41,7 +42,7 @@ function M.init()
                 end,
             },
         },
-        skip_config_for_simple_edits = true,
+        skip_confirm_for_simple_edits = true,
     })
 
     keymappings.load({
