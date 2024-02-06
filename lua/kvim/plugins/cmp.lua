@@ -8,6 +8,12 @@ return {
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-cmdline",
         "hrsh7th/cmp-nvim-lsp-signature-help",
+        {
+            "zbirenbaum/copilot-cmp",
+            config = function()
+                require("copilot_cmp").setup()
+            end,
+        },
 
         "saadparwaiz1/cmp_luasnip",
         "onsails/lspkind-nvim",

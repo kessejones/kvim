@@ -6,6 +6,7 @@ local M = {}
 function M.init()
     cmp.setup({
         sources = {
+            { name = "copilot" },
             { name = "nvim_lsp" },
             { name = "nvim_lua" },
             { name = "path" },
@@ -105,6 +106,13 @@ function M.init()
     })
 
     cmp.event:on("confirm_done", require("nvim-autopairs.completion.cmp").on_confirm_done())
+    cmp.event:on("menu_opened", function()
+        vim.b.copilot_suggestion_hidden = true
+    end)
+
+    cmp.event:on("menu_closed", function()
+        vim.b.copilot_suggestion_hidden = false
+    end)
 end
 
 return M
