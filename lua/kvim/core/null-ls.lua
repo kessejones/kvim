@@ -7,12 +7,19 @@ function M.init()
     local diagnostics = null_ls.builtins.diagnostics
 
     null_ls.setup({
-        on_attach = function(client, bufnr)
+        on_attach = function(_client, bufnr)
             require("kvim.core.lsp.formatting").init(vim.bo[bufnr].filetype)
         end,
         sources = {
             formatting.phpcsfixer.with({
-                args = { "--cache-file=/dev/null", "--no-interaction", "--quiet", "--rules=@PSR12", "fix", "$FILENAME" },
+                args = {
+                    "--cache-file=/dev/null",
+                    "--no-interaction",
+                    "--quiet",
+                    "--rules=@Symfony,@PSR12",
+                    "fix",
+                    "$FILENAME",
+                },
             }),
             formatting.prettierd,
             formatting.stylua.with({
@@ -24,7 +31,7 @@ function M.init()
             formatting.ocamlformat,
             diagnostics.phpcs.with({
                 args = {
-                    "--standard=PSR1,PSR12",
+                    "--standard=Symfony,PSR12",
                     "--report=json",
                     "-q",
                     "-s",

@@ -13,6 +13,8 @@ function M.init()
             { name = "luasnip" },
             { name = "buffer" },
             { name = "nvim_lsp_signature_help" },
+            { name = "dotenv", option = { load_shell = false } },
+            { name = "dynamic" },
         },
         snippet = {
             expand = function(args)
@@ -63,6 +65,8 @@ function M.init()
                     nvim_lua = "[API]",
                     path = "[Path]",
                     luasnip = "[Snip]",
+                    dotenv = "[Env]",
+                    dynamic = "[Dynamic]",
                 },
             }),
         },
@@ -113,6 +117,64 @@ function M.init()
     cmp.event:on("menu_closed", function()
         vim.b.copilot_suggestion_hidden = false
     end)
+
+    require("cmp_dynamic").register({
+        {
+            label = "today",
+            documentation = function()
+                return {
+                    kind = "markdown",
+                    value = "Insert the date: " .. os.date("%Y-%m-%d"),
+                }
+            end,
+            insertText = function()
+                return os.date("%Y-%m-%d")
+            end,
+            kind = cmp.lsp.CompletionItemKind.Unit,
+        },
+        {
+            label = "now",
+            detail = "Only time",
+            documentation = function()
+                return {
+                    kind = "markdown",
+                    value = "Insert time: " .. os.date("%H:%M:%S"),
+                }
+            end,
+            kind = cmp.lsp.CompletionItemKind.Unit,
+            insertText = function()
+                return os.date("%H:%M:%S")
+            end,
+        },
+        {
+            label = "now",
+            detail = "Date and time",
+            documentation = function()
+                return {
+                    kind = "markdown",
+                    value = "Insert datetime: " .. os.date("%Y-%m-%d %H:%M:%S"),
+                }
+            end,
+            kind = cmp.lsp.CompletionItemKind.Unit,
+            insertText = function()
+                return os.date("%Y-%m-%d %H:%M:%S")
+            end,
+        },
+        {
+            label = "timestamp",
+            detail = "Unix timestamp",
+            documentation = function()
+                return {
+                    kind = "markdown",
+                    value = "Insert the timestamp: " .. os.date("%s"),
+                }
+            end,
+            kind = cmp.lsp.CompletionItemKind.Unit,
+            insertText = function()
+                return os.date("%s")
+            end,
+        },
+    })
 end
 
 return M
