@@ -19,6 +19,9 @@ function M.init()
                     ["<leader>hb"] = function()
                         gitsigns.blame_line({ full = true })
                     end,
+                    ["<C-i>"] = function()
+                        gitsigns.blame_line({ full = true })
+                    end,
                     ["<leader>hg"] = gitsigns.toggle_deleted,
                 },
                 visual_mode = {

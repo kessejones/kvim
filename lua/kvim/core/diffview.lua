@@ -9,17 +9,23 @@ function M.init()
     diffview.setup({
         keymaps = {
             view = {
-                ["q"] = actions.close,
+                ["q"] = function()
+                    diffview.close()
+                end,
                 ["<C-g>"] = actions.toggle_files,
                 ["[f"] = actions.prev_conflict,
                 ["]f"] = actions.next_conflict,
             },
             file_panel = {
-                ["q"] = actions.close,
+                ["q"] = function()
+                    diffview.close()
+                end,
                 ["<C-g>"] = actions.toggle_files,
             },
             file_history_panel = {
-                ["q"] = actions.close,
+                ["q"] = function()
+                    diffview.close()
+                end,
                 ["<C-g>"] = actions.toggle_files,
             },
         },
