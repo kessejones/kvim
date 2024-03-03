@@ -7,6 +7,18 @@ function M.init()
     gitsigns.setup({
         current_line_blame = false,
         numhl = true,
+        preview_config = {
+            border = {
+                "╭",
+                "─",
+                "╮",
+                "│",
+                "╯",
+                "─",
+                "╰",
+                "│",
+            },
+        },
         on_attach = function(bufnr)
             local mappigns = {
                 normal_mode = {
