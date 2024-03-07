@@ -2,9 +2,9 @@ return {
     "nvim-telescope/telescope.nvim",
     keys = {
         "<C-p>",
-        "gR",
+        "gr",
         "gI",
-        "gk",
+        "gu",
         "<Leader>p",
         "<Leader>fl",
         "<Leader>fb",

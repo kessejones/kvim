@@ -92,9 +92,9 @@ local function init_servers()
             ["ga"] = function()
                 vim.lsp.buf.code_action()
             end,
-            ["gr"] = function()
-                vim.lsp.buf.references()
-            end,
+            -- ["gr"] = function()
+            -- vim.lsp.buf.references()
+            -- end,
             ["gi"] = function()
                 vim.lsp.buf.implementation()
             end,

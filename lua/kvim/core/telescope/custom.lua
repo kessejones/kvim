@@ -30,7 +30,7 @@ end
 function M.lsp_references()
     local opts = themes.get_dropdown({
         sorting_strategy = "ascending",
-        layout_strategy = "vertical",
+        layout_strategy = "horizontal",
         layout_config = {
             prompt_position = "top",
             height = 50,
@@ -44,6 +44,8 @@ end
 
 function M.lsp_implementations()
     local opts = themes.get_dropdown({
+        sorting_strategy = "ascending",
+        layout_strategy = "horizontal",
         layout_config = {
             prompt_position = "top",
             height = 50,

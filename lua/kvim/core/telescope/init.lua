@@ -6,6 +6,13 @@ local keymappings = require("kvim.keymappings")
 
 local M = {}
 
+local paste_from_register = function(bufnr)
+    local content = vim.fn.getreg("+", 1)
+    if vim.api.nvim_buf_get_option(bufnr, "modifiable") then
+        vim.api.nvim_paste(content, true, -1)
+    end
+end
+
 function M.init()
     telescope.setup({
         defaults = {
@@ -29,12 +36,8 @@ function M.init()
             },
             mappings = {
                 i = {
-                    ["<Tab>"] = function(bufnr)
-                        local content = vim.fn.getreg('"', 1)
-                        if vim.api.nvim_buf_get_option(bufnr, "modifiable") then
-                            vim.api.nvim_paste(content, true, -1)
-                        end
-                    end,
+                    ["<Tab>"] = paste_from_register,
+                    ["<C-i>"] = paste_from_register,
                     ["<C-n>"] = actions.cycle_history_next,
                     ["<C-p>"] = actions.cycle_history_prev,
                     ["<C-j>"] = actions.move_selection_next,
@@ -113,8 +116,8 @@ function M.init()
             ["<Leader>fc"] = custom.curr_buf,
             ["<Leader>fp"] = builtin.commands,
             ["gI"] = custom.lsp_implementations,
-            ["gR"] = custom.lsp_references,
-            ["gk"] = custom.diagnostics,
+            ["gr"] = custom.lsp_references,
+            ["gu"] = custom.diagnostics,
             ["<Leader>z"] = builtin.resume,
         },
     })
