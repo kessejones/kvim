@@ -31,15 +31,39 @@ function M.init()
 
     keymappings.load({
         normal_mode = {
-            ["<Leader>1"] = ":BufferLineGoToBuffer 1<CR>",
-            ["<Leader>2"] = ":BufferLineGoToBuffer 2<CR>",
-            ["<Leader>3"] = ":BufferLineGoToBuffer 3<CR>",
-            ["<Leader>4"] = ":BufferLineGoToBuffer 4<CR>",
-            ["<Leader>5"] = ":BufferLineGoToBuffer 5<CR>",
-            ["<Leader>6"] = ":BufferLineGoToBuffer 6<CR>",
-            ["<Leader>7"] = ":BufferLineGoToBuffer 7<CR>",
-            ["<Leader>8"] = ":BufferLineGoToBuffer 8<CR>",
-            ["<Leader>9"] = ":BufferLineGoToBuffer 9<CR>",
+            ["<Leader>1"] = function()
+                bufferline.go_to(1)
+            end,
+            ["<Leader>2"] = function()
+                bufferline.go_to(2)
+            end,
+            ["<Leader>3"] = function()
+                bufferline.go_to(3)
+            end,
+            ["<Leader>4"] = function()
+                bufferline.go_to(4)
+            end,
+            ["<Leader>5"] = function()
+                bufferline.go_to(5)
+            end,
+            ["<Leader>6"] = function()
+                bufferline.go_to(6)
+            end,
+            ["<Leader>7"] = function()
+                bufferline.go_to(7)
+            end,
+            ["<Leader>8"] = function()
+                bufferline.go_to(8)
+            end,
+            ["<Leader>9"] = function()
+                bufferline.go_to(9)
+            end,
+            ["gn"] = function()
+                bufferline.move(1)
+            end,
+            ["gp"] = function()
+                bufferline.move(-1)
+            end,
         },
     })
 end
