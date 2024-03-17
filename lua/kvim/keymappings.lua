@@ -107,6 +107,7 @@ local default_mappings = {
         end,
         -- Switch to v-line mode
         ["<Leader>v"] = "<S-V>",
+        ["<Leader>d"] = '"_d',
         -- Next/Previous buffer
         ["<S-l>"] = function()
             vim.cmd.bnext()
@@ -156,10 +157,14 @@ local default_mappings = {
         [">"] = ">><ESC>",
         ["gl"] = "$",
         ["gh"] = "^",
+
+        ["n"] = "nzzzv",
+        ["N"] = "Nzzzv",
     },
     visual_mode = {
         -- Replace
         ["<C-h>"] = ":s/",
+        ["p"] = '"_dP',
         -- Indent
         ["<"] = "<gv",
         [">"] = ">gv",
