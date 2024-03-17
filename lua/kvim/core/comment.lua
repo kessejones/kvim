@@ -16,6 +16,7 @@ function M.init()
     comment_ft.set("http", { "# %s", "# %s" })
     comment_ft.set("mysql", { "-- %s", "-- %s" })
     comment_ft.set("asm", { "# %s", "# %s" })
+    comment_ft.set("hurl", { "# %s", "# %s" })
 
     keymappings.load({
         visual_mode = {

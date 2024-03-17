@@ -33,7 +33,7 @@ function M.init()
     })
 
     vim.api.nvim_create_augroup("RestGroup", { clear = true })
-    vim.api.nvim_create_autocmd("BufWinEnter", {
+    vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
         group = "RestGroup",
         pattern = { "*.http" },
         callback = function(args)
