@@ -76,6 +76,7 @@ local function init_servers()
         emmet_ls = {},
         ocamllsp = {},
         nushell = {},
+        zls = {},
     }
 
     local mapping = {
