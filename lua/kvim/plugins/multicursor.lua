@@ -1,11 +1,12 @@
 return {
-    "mg979/vim-visual-multi",
+    "brenton-leighton/multiple-cursors.nvim",
+    event = "VeryLazy",
     keys = {
-        "\\j",
-        "\\k",
-        "<C-n>",
+        "<C-k>",
+        "<C-j>",
+        "<Leader>l",
     },
-    init = function()
+    config = function()
         require("kvim.core.multi-cursor").init()
     end,
 }
