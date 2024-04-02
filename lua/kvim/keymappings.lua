@@ -9,6 +9,22 @@ local mode_adapter = {
     terminal_mode = "t",
 }
 
+local select_all_mode = setmetatable({
+    enter_select_all = function()
+        local cursor = vim.api.nvim_win_get_cursor(0)
+        vim.api.nvim_buf_set_var(0, "last_cursor", vim.json.encode(cursor))
+        vim.cmd.normal({ bang = true, args = { "ggVG" } })
+    end,
+    exit_select_all = function()
+        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-c>", true, false, true), "n", true)
+        local exists, cursor = pcall(vim.api.nvim_buf_get_var, 0, "last_cursor")
+        if exists and cursor then
+            vim.api.nvim_buf_del_var(0, "last_cursor")
+            vim.api.nvim_win_set_cursor(0, vim.json.decode(cursor))
+        end
+    end,
+}, {})
+
 local function indent(dir, visual)
     visual = visual or false
     local modes = setmetatable({
@@ -191,16 +207,30 @@ local default_mappings = {
             vim.cmd.bdelete({ args = { bufnr }, bang = true })
         end,
         ["<Leader>.a"] = function()
-            vim.cmd.bdelete(vim.api.nvim_list_bufs())
+            local bufs = vim.api.nvim_list_bufs()
+            for _, bufnr in ipairs(bufs) do
+                if not vim.bo[bufnr].modified then
+                    vim.cmd.bdelete(bufnr)
+                else
+                    local name = vim.fs.basename(vim.api.nvim_buf_get_name(bufnr))
+                    vim.print(string.format("Buffer %s is modified, use :bd! to delete it", name))
+                end
+            end
         end,
         -- Replace
         ["<Leader>fh"] = "<ESC>:%s/",
         -- Delete
         ["x"] = '"_x',
         -- Select all
-        ["<Leader>aa"] = "ggVG",
+        ["<Leader>aa"] = function()
+            select_all_mode.enter_select_all()
+        end,
         -- Select all and yank
-        ["<Leader>ay"] = "ggVGy",
+        ["<Leader>ay"] = function()
+            local cursor = vim.api.nvim_win_get_cursor(0)
+            vim.cmd.normal({ bang = true, args = { "ggVGy" } })
+            vim.api.nvim_win_set_cursor(0, cursor)
+        end,
         -- Indent
         ["<"] = function()
             indent("left")
@@ -215,19 +245,19 @@ local default_mappings = {
         ["N"] = "Nzzzv",
     },
     visual_mode = {
+        ["<ESC>"] = function()
+            select_all_mode.exit_select_all()
+        end,
         -- Replace
         ["<C-h>"] = ":s/",
-        ["p"] = '"_dP',
-        -- Indent
-        -- ["<"] = "<gv",
-        -- [">"] = ">gv",
+        ["p"] = '"_dp',
+        ["P"] = '"_dP',
         ["<"] = function()
             indent("left", true)
         end,
         [">"] = function()
             indent("right", true)
         end,
-        -- [">"] = ">gv",
         -- Move up/down selected text
         ["<C-j>"] = ":m '>+1<CR>gv=gv",
         ["<C-k>"] = ":m '<-2<CR>gv=gv",
