@@ -11,7 +11,7 @@ function M.init()
             ["<C-k>"] = mc.add_cursor_up,
             ["<C-s>a"] = mc.add_cursors_to_matches,
             ["<C-s>n"] = mc.add_cursor_and_jump_to_next_match,
-            ["<C-s>N"] = mc.add_cursor_and_jump_to_next_match,
+            ["<C-s>N"] = mc.jump_to_next_match,
             ["<C-s>l"] = mc.lock,
         },
     })
