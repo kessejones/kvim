@@ -33,6 +33,12 @@ function M.init()
                 "%.DS_Store",
                 "%.o$",
                 "%.so$",
+                "%.mp4$",
+                "%.jpg$",
+                "%.jpeg$",
+                "%.png$",
+                "%.webp$",
+                "%.db$",
             },
             mappings = {
                 i = {
