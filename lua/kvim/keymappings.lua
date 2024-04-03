@@ -250,8 +250,7 @@ local default_mappings = {
         end,
         -- Replace
         ["<C-h>"] = ":s/",
-        ["p"] = '"_dp',
-        ["P"] = '"_dP',
+        ["p"] = '"_dP',
         ["<"] = function()
             indent("left", true)
         end,
@@ -262,7 +261,9 @@ local default_mappings = {
         ["<C-j>"] = ":m '>+1<CR>gv=gv",
         ["<C-k>"] = ":m '<-2<CR>gv=gv",
     },
-    visual_block_mode = {},
+    visual_block_mode = {
+        ["p"] = '"_dP',
+    },
     command_mode = {},
     terminal_mode = {
         ["<ESC><ESC>"] = function()
