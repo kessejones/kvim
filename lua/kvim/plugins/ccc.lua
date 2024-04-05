@@ -8,4 +8,7 @@ return {
             desc = "ColorPicker",
         },
     },
+    config = function()
+        require("ccc").setup()
+    end,
 }
