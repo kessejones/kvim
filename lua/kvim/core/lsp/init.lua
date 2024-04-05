@@ -31,6 +31,7 @@ local function init_servers()
                     },
                     diagnostics = {
                         globals = { "vim" },
+                        unusedLocalExclude = { "_*" },
                     },
                     workspace = {
                         library = {
