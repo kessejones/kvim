@@ -3,7 +3,14 @@ local M = {}
 local mc = require("multiple-cursors")
 
 function M.init()
-    mc.setup({})
+    mc.setup({
+        pre_hook = function()
+            require("nvim-autopairs").disable()
+        end,
+        post_hook = function()
+            require("nvim-autopairs").enable()
+        end,
+    })
 
     require("kvim.keymappings").load({
         normal_mode = {
