@@ -28,10 +28,7 @@ function M.init()
                     ["<leader>hu"] = gitsigns.undo_stage_hunk,
                     ["<leader>hR"] = gitsigns.reset_buffer,
                     ["<leader>hp"] = gitsigns.preview_hunk,
-                    ["<leader>hb"] = function()
-                        gitsigns.blame_line({ full = true })
-                    end,
-                    ["<C-i>"] = function()
+                    ["<Leader>hb"] = function()
                         gitsigns.blame_line({ full = true })
                     end,
                     ["<leader>hg"] = gitsigns.toggle_deleted,
