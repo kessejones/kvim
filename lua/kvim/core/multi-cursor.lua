@@ -14,8 +14,8 @@ function M.init()
 
     require("kvim.keymappings").load({
         normal_mode = {
-            ["<C-j>"] = mc.add_cursor_down,
-            ["<C-k>"] = mc.add_cursor_up,
+            ["<C-S-K>"] = mc.add_cursor_up,
+            ["<C-S-J>"] = mc.add_cursor_down,
             ["<C-s>a"] = mc.add_cursors_to_matches,
             ["<C-s>n"] = mc.add_cursor_and_jump_to_next_match,
             ["<C-s>N"] = mc.jump_to_next_match,
