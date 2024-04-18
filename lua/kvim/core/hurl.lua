@@ -10,6 +10,7 @@ function M.init()
         },
         split_position = "left",
         auto_close = false,
+        show_notification = true,
     })
 
     vim.api.nvim_create_augroup("Hurl", { clear = true })
