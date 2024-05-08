@@ -113,7 +113,7 @@ end
 local default_mappings = {
     insert_mode = {
         -- ESC helper
-        ["jk"] = "<ESC>",
+        -- ["jk"] = "<ESC>",
     },
     normal_mode = {
         ["<Space>"] = "<NOP>",

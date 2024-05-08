@@ -6,6 +6,7 @@ return {
         "gI",
         "gu",
         "<Leader>p",
+        "<Leader>/",
         "<Leader>fl",
         "<Leader>fb",
         "<Leader>fr",
