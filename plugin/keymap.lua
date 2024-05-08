@@ -1,13 +1,4 @@
-local M = {}
-
-local mode_adapter = {
-    normal_mode = "n",
-    visual_mode = "v",
-    visual_block_mode = "x",
-    insert_mode = "i",
-    command_mode = "c",
-    terminal_mode = "t",
-}
+local keymap = require("kvim.utils.keymap")
 
 local select_all_mode = setmetatable({
     enter_select_all = function()
@@ -110,11 +101,8 @@ local function move_buffer_to_tab(dir)
     end
 end
 
-local default_mappings = {
-    insert_mode = {
-        -- ESC helper
-        -- ["jk"] = "<ESC>",
-    },
+local keys = {
+    insert_mode = {},
     normal_mode = {
         ["<Space>"] = "<NOP>",
         ["<ESC>"] = function()
@@ -312,32 +300,4 @@ local default_mappings = {
     },
 }
 
-function M.set_keymaps(mode, key, val, bufnr)
-    local opts = {
-        noremap = true,
-        silent = true,
-        buffer = bufnr,
-    }
-    vim.keymap.set(mode, key, val, opts)
-end
-
-function M.load_mode(mode, mapping, bufnr)
-    mode = mode_adapter[mode] and mode_adapter[mode] or mode
-    for key, value in pairs(mapping) do
-        M.set_keymaps(mode, key, value, bufnr)
-    end
-end
-
-function M.load(mappings, bufnr)
-    for mode, mapping in pairs(mappings) do
-        M.load_mode(mode, mapping, bufnr)
-    end
-end
-
-function M.init()
-    vim.g.mapleader = " "
-    vim.g.maplocalleader = ","
-    M.load(default_mappings)
-end
-
-return M
+keymap.load(keys)

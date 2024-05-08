@@ -40,7 +40,7 @@ function M.init()
         })
     end
 
-    require("kvim.keymappings").load({
+    require("kvim.utils.keymap").load({
         normal_mode = {
             ["ss"] = jump_forward,
             ["se"] = jump_backward,

@@ -4,6 +4,6 @@ return {
     lazy = false,
     priority = 1000,
     config = function()
-        require("kvim.colors").init()
+        require("kvim.core.catppuccin").init()
     end,
 }

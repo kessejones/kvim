@@ -1,5 +1,5 @@
 local ccc = require("ccc")
-local keymappings = require("kvim.keymappings")
+local keymappings = require("kvim.utils.keymap")
 
 local M = {}
 

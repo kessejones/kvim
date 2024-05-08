@@ -1,5 +1,5 @@
 local git_blame_line = require("git-blame-line")
-local keymappings = require("kvim.keymappings")
+local keymappings = require("kvim.utils.keymap")
 
 local M = {}
 

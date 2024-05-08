@@ -1,4 +1,4 @@
-local keymapping = require("kvim.keymappings")
+local keymapping = require("kvim.utils.keymap")
 local lspconfig = require("lspconfig")
 local cmp_nvim_lsp = require("cmp_nvim_lsp")
 

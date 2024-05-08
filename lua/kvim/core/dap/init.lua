@@ -1,6 +1,6 @@
 local M = {}
 
-local keymappings = require("kvim.keymappings")
+local keymappings = require("kvim.utils.keymap")
 local dap = require("dap")
 local dapui = require("dapui")
 local dap_virtual_text = require("nvim-dap-virtual-text")

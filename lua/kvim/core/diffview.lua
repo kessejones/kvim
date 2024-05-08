@@ -1,7 +1,7 @@
 local diffview = require("diffview")
 local actions = require("diffview.actions")
 
-local keymappings = require("kvim.keymappings")
+local keymappings = require("kvim.utils.keymap")
 
 local M = {}
 

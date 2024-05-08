@@ -2,7 +2,7 @@ local telescope = require("telescope")
 local builtin = require("telescope.builtin")
 local custom = require("kvim.core.telescope.custom")
 local actions = require("telescope.actions")
-local keymappings = require("kvim.keymappings")
+local keymappings = require("kvim.utils.keymap")
 
 local M = {}
 
@@ -119,8 +119,7 @@ function M.init()
             ["<Leader>fs"] = builtin.git_stash,
             ["<Leader>fg"] = builtin.git_commits,
             ["<Leader>fn"] = builtin.git_branches,
-            ["<Leader>fc"] = custom.curr_buf,
-            ["<Leader>/"] = custom.curr_buf,
+            ["<Leader>f/"] = custom.curr_buf,
             ["<Leader>fp"] = builtin.commands,
             ["gI"] = custom.lsp_implementations,
             ["gr"] = custom.lsp_references,

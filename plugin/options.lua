@@ -1,6 +1,20 @@
-local M = {}
+local function set(key, value)
+    vim.opt[key] = value
+end
 
-local default_settings = {
+local function set_all(values)
+    for key, value in pairs(values) do
+        set(key, value)
+    end
+end
+
+local function append(key, values)
+    for _, value in ipairs(values) do
+        vim.opt[key]:append(value)
+    end
+end
+
+local options = {
     encoding = "utf-8",
     lazyredraw = true,
     smarttab = true,
@@ -28,12 +42,10 @@ local default_settings = {
     inccommand = "nosplit",
     scrolloff = 10,
     sidescrolloff = 5,
-    guifont = "JetBrainsMono Nerd Font:h10",
     wildmenu = true,
     incsearch = true,
     conceallevel = 0,
     list = true,
-    timeoutlen = 300,
     completeopt = { "menu", "menuone", "noselect" },
     showcmd = false,
     undofile = true,
@@ -43,28 +55,20 @@ local default_settings = {
     foldlevel = 99,
 }
 
-function M.set(key, value)
-    vim.opt[key] = value
-end
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_ruby_provider = 0
+vim.g.loaded_node_provider = 0
 
-function M.init()
-    vim.opt.shortmess:append("c")
-    vim.opt.listchars:append("eol:↴")
-    vim.opt.path:append("**")
+append("shortmess", { "c" })
+append("listchars", { "eol:↴" })
+append("path", { "**" })
 
-    vim.opt.wildignore:append("**/node_modules/*")
-    vim.opt.wildignore:append("**/vendor/*")
-    vim.opt.wildignore:append("**/.git/*")
-    vim.opt.wildignore:append("**/coverage/*")
-    vim.opt.wildignore:append("**/code_coverage_html/*")
+append("wildignore", {
+    "**/node_modules/*",
+    "**/vendor/*",
+    "**/.git/*",
+    "**/coverage/*",
+    "**/code_coverage_html/*",
+})
 
-    for key, value in pairs(default_settings) do
-        M.set(key, value)
-    end
-
-    vim.g.loaded_perl_provider = 0
-    vim.g.loaded_ruby_provider = 0
-    vim.g.loaded_node_provider = 0
-end
-
-return M
+set_all(options)

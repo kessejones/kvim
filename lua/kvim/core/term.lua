@@ -1,4 +1,4 @@
-local keymappings = require("kvim.keymappings")
+local keymappings = require("kvim.utils.keymap")
 local term = require("term")
 
 local M = {}

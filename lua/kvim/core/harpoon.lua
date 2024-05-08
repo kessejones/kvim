@@ -28,7 +28,7 @@ function M.init()
         },
     })
 
-    require("kvim.keymappings").load({
+    require("kvim.utils.keymap").load({
         normal_mode = {
             ["tl"] = function()
                 harpoon:list():next()

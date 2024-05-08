@@ -1,6 +1,6 @@
 local spectre = require("spectre")
 local state = require("spectre.state")
-local keymappings = require("kvim.keymappings")
+local keymappings = require("kvim.utils.keymap")
 
 local M = {}
 

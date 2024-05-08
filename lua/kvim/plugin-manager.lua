@@ -58,7 +58,7 @@ function M.load()
         },
     })
 
-    require("kvim.keymappings").load({
+    require("kvim.utils.keymap").load({
         normal_mode = {
             ["<Leader><tab>"] = function()
                 require("lazy").home()

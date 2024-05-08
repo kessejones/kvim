@@ -9,7 +9,7 @@ return {
     config = function()
         require("git-conflict").setup()
 
-        require("kvim.keymappings").load({
+        require("kvim.utils.keymap").load({
             normal_mode = {
                 ["<Leader>gq"] = ":GitConflictListQf<CR>",
             },

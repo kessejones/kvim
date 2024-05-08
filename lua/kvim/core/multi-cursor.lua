@@ -12,7 +12,7 @@ function M.init()
         end,
     })
 
-    require("kvim.keymappings").load({
+    require("kvim.utils.keymap").load({
         normal_mode = {
             ["<C-S-K>"] = mc.add_cursor_up,
             ["<C-S-J>"] = mc.add_cursor_down,
