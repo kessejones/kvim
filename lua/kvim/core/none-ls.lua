@@ -16,7 +16,7 @@ function M.init()
                     "--cache-file=/dev/null",
                     "--no-interaction",
                     "--quiet",
-                    "--rules=@Symfony,@PSR12",
+                    "--rules=@PSR12",
                     "fix",
                     "$FILENAME",
                 },
@@ -31,7 +31,7 @@ function M.init()
             formatting.ocamlformat,
             diagnostics.phpcs.with({
                 args = {
-                    "--standard=Symfony,PSR12",
+                    "--standard=PSR12",
                     "--report=json",
                     "-q",
                     "-s",
