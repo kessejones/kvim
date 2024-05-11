@@ -178,17 +178,17 @@ local keys = {
         ["<Leader>q"] = function()
             vim.cmd.quit()
         end,
-        ["<Leader>."] = function()
-            local bufnr = vim.api.nvim_get_current_buf()
-            if not vim.bo[bufnr].modified then
-                vim.cmd.bdelete(bufnr)
-            end
-        end,
         ["<Leader>xn"] = function()
             move_buffer_to_tab("next")
         end,
         ["<Leader>xp"] = function()
             move_buffer_to_tab("prev")
+        end,
+        ["<Leader>.."] = function()
+            local bufnr = vim.api.nvim_get_current_buf()
+            if not vim.bo[bufnr].modified then
+                vim.cmd.bdelete(bufnr)
+            end
         end,
         ["<Leader>.f"] = function()
             local bufnr = vim.api.nvim_get_current_buf()
