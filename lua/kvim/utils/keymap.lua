@@ -31,4 +31,26 @@ function M.load(mappings, bufnr)
     end
 end
 
+function M.map(mode, key, action, opts)
+    opts = opts or {}
+
+    opts = vim.tbl_extend("force", opts, {
+        silent = true,
+    })
+
+    vim.keymap.set(mode, key, action, opts)
+end
+
+function M.nmap(key, action, opts)
+    M.map("n", key, action, opts)
+end
+
+function M.vmap(key, action, opts)
+    M.map("v", key, action, opts)
+end
+
+function M.tmap(key, action, opts)
+    M.map("t", key, action, opts)
+end
+
 return M

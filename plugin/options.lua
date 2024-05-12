@@ -1,74 +1,43 @@
-local function set(key, value)
-    vim.opt[key] = value
-end
+local opt = vim.opt
 
-local function set_all(values)
-    for key, value in pairs(values) do
-        set(key, value)
-    end
-end
+opt.smartcase = true
+opt.backup = false
+opt.writebackup = false
+opt.clipboard = "unnamedplus"
+opt.showtabline = 2
+opt.mouse = "nv"
+opt.expandtab = true
+opt.shiftwidth = 4
+opt.smartindent = true
+opt.ignorecase = true
+opt.swapfile = false
+opt.tabstop = 4
+opt.number = true
+opt.relativenumber = true
+opt.wrap = true
+opt.cursorline = true
+opt.inccommand = "split"
+opt.scrolloff = 10
+opt.sidescrolloff = 5
+opt.list = true
+opt.completeopt = { "menu", "menuone", "noselect" }
+opt.showcmd = false
+opt.undofile = true
+opt.undodir = vim.env.HOME .. "/.cache/nvim/undodir"
+opt.termguicolors = true
+opt.foldmethod = "indent"
+opt.foldlevel = 99
 
-local function append(key, values)
-    for _, value in ipairs(values) do
-        vim.opt[key]:append(value)
-    end
-end
+opt.shortmess:append("c")
+opt.listchars:append("eol:↴")
+opt.path:append("**")
 
-local options = {
-    encoding = "utf-8",
-    lazyredraw = true,
-    smarttab = true,
-    smartcase = true,
-    backup = false,
-    writebackup = false,
-    clipboard = "unnamedplus",
-    hlsearch = true,
-    ignorecase = true,
-    showtabline = 2,
-    mouse = "nv",
-    autoindent = true,
-    background = "dark",
-    expandtab = true,
-    shiftwidth = 4,
-    smartindent = true,
-    title = false,
-    swapfile = false,
-    tabstop = 4,
-    hidden = true,
-    number = true,
-    relativenumber = true,
-    wrap = true,
-    cursorline = true,
-    inccommand = "nosplit",
-    scrolloff = 10,
-    sidescrolloff = 5,
-    wildmenu = true,
-    incsearch = true,
-    conceallevel = 0,
-    list = true,
-    completeopt = { "menu", "menuone", "noselect" },
-    showcmd = false,
-    undofile = true,
-    undodir = vim.env.HOME .. "/.cache/nvim/undodir",
-    termguicolors = true,
-    foldmethod = "indent",
-    foldlevel = 99,
-}
+opt.wildignore:append("**/node_modules/*")
+opt.wildignore:append("**/vendor/*")
+opt.wildignore:append("**/.git/*")
+opt.wildignore:append("**/coverage/*")
+opt.wildignore:append("**/code_coverage_html/*")
 
 vim.g.loaded_perl_provider = 0
 vim.g.loaded_ruby_provider = 0
 vim.g.loaded_node_provider = 0
-
-append("shortmess", { "c" })
-append("listchars", { "eol:↴" })
-append("path", { "**" })
-
-append("wildignore", {
-    "**/node_modules/*",
-    "**/vendor/*",
-    "**/.git/*",
-    "**/coverage/*",
-    "**/code_coverage_html/*",
-})
-
-set_all(options)

@@ -1,6 +1,8 @@
 local M = {}
 
 function M.init()
+    vim.env.PATH = vim.env.PATH .. ":" .. vim.fn.stdpath("data") .. "/mason/bin"
+
     local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
     if not vim.loop.fs_stat(lazypath) then
         vim.fn.system({
@@ -58,13 +60,9 @@ function M.load()
         },
     })
 
-    require("kvim.utils.keymap").load({
-        normal_mode = {
-            ["<Leader><tab>"] = function()
-                require("lazy").home()
-            end,
-        },
-    })
+    require("kvim.utils.keymap").nmap("<Leader><tab>", function()
+        require("lazy").home()
+    end, { desc = "Open Lazy home" })
 end
 
 return M
