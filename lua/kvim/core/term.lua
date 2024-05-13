@@ -1,4 +1,7 @@
-local keymappings = require("kvim.utils.keymap")
+local keymap = require("kvim.utils.keymap")
+local nmap = keymap.nmap
+local tmap = keymap.tmap
+
 local term = require("term")
 
 local M = {}
@@ -10,24 +13,15 @@ function M.init()
         position = "center",
     })
 
-    local keymap_toggle = "<Leader>;"
-    keymappings.load({
-        normal_mode = {
-            [keymap_toggle] = term.toggle,
-        },
-    })
+    nmap("<Leader>;", term.toggle)
 
     vim.api.nvim_create_autocmd("TermOpen", {
         callback = function(args)
             if vim.bo[args.buf].filetype == "Term" then
-                keymappings.load({
-                    terminal_mode = {
-                        [keymap_toggle] = term.toggle,
-                        ["<C-n>"] = term.next,
-                        ["<C-p>"] = term.prev,
-                        ["<C-o>"] = term.new,
-                    },
-                }, args.buf)
+                tmap("<Leader>;", term.toggle, { desc = "Toggle terminal", buffer = args.buf })
+                tmap("<C-n>", term.next, { desc = "Go to next terminal", buffer = args.buf })
+                tmap("<C-p>", term.prev, { desc = "Go to next terminal", buffer = args.buf })
+                tmap("<C-o>", term.new, { desc = "Open new terminal", buffer = args.buf })
             end
         end,
     })

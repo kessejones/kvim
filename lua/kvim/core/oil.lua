@@ -1,4 +1,4 @@
-local keymappings = require("kvim.utils.keymap")
+local nmap = require("kvim.utils.keymap").nmap
 local util = require("lspconfig.util")
 
 local M = {}
@@ -45,20 +45,17 @@ function M.init()
         skip_confirm_for_simple_edits = true,
     })
 
-    keymappings.load({
-        normal_mode = {
-            ["<Leader>tg"] = function()
-                local pname = vim.fn.expand("%:h")
-                if pname == "" then
-                    pname = find_pattern_root()
-                end
-                require("oil").open(pname)
-            end,
-            ["<Leader>tt"] = function()
-                require("oil").open(find_pattern_root())
-            end,
-        },
-    })
+    nmap("<Leader>tg", function()
+        local pname = vim.fn.expand("%:h")
+        if pname == "" then
+            pname = find_pattern_root()
+        end
+        require("oil").open(pname)
+    end, { desc = "Open oil file explorer (current file dir)" })
+
+    nmap("<Leader>tt", function()
+        require("oil").open(find_pattern_root())
+    end, { desc = "Open oil file explorer (root dir)" })
 end
 
 return M

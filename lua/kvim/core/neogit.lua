@@ -1,5 +1,5 @@
 local neogit = require("neogit")
-local keymappings = require("kvim.utils.keymap")
+local nmap = require("kvim.utils.keymap").nmap
 
 local M = {}
 
@@ -26,13 +26,10 @@ function M.init()
             },
         },
     })
-    keymappings.load({
-        normal_mode = {
-            ["<Leader>gg"] = function()
-                require("neogit").open({})
-            end,
-        },
-    })
+
+    nmap("<Leader>gg", function()
+        require("neogit").open({})
+    end, { desc = "Open neogit" })
 end
 
 return M

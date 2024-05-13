@@ -1,16 +1,12 @@
 local ccc = require("ccc")
-local keymappings = require("kvim.utils.keymap")
+local nmap = require("kvim.utils.keymap").nmap
 
 local M = {}
 
 function M.init()
     ccc.setup({})
 
-    keymappings.load({
-        normal_mode = {
-            ["<Leader>c"] = ":CccPick<CR>",
-        },
-    })
+    nmap("<Leader>c", "<CMD>:CccPick<CR>", { desc = "Open color picker" })
 end
 
 return M

@@ -1,3 +1,5 @@
+local nmap = require("kvim.utils.keymap").nmap
+
 local M = {}
 
 function M.init()
@@ -40,25 +42,14 @@ function M.init()
         })
     end
 
-    require("kvim.utils.keymap").load({
-        normal_mode = {
-            ["ss"] = jump_forward,
-            ["se"] = jump_backward,
-            ["sa"] = function()
-                flash.jump({ continue = true })
-            end,
-            ["st"] = function()
-                flash.treesitter()
-            end,
-        },
-        visual_mode = {
-            ["ss"] = jump_forward,
-            ["se"] = jump_backward,
-            ["sz"] = function()
-                flash.treesitter_search()
-            end,
-        },
-    })
+    nmap("ss", jump_forward, { desc = "Jump forward" })
+    nmap("se", jump_backward, { desc = "Jump backward" })
+    nmap("sa", function()
+        flash.jump({ continue = true })
+    end, { desc = "Jump buffer globaly" })
+    nmap("st", function()
+        flash.treesitter()
+    end, { desc = "Select area by treesitter" })
 end
 
 return M

@@ -1,4 +1,6 @@
-local keymapping = require("kvim.utils.keymap")
+local keymap = require("kvim.utils.keymap")
+local nmap = keymap.nmap
+local vmap = keymap.vmap
 local lspconfig = require("lspconfig")
 local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
@@ -80,70 +82,73 @@ local function init_servers()
         zls = {},
     }
 
-    local mapping = {
-        normal_mode = {
-            ["K"] = function()
-                vim.lsp.buf.hover()
-            end,
-            ["gs"] = function()
-                vim.lsp.buf.signature_help()
-            end,
-            ["gd"] = function()
-                vim.lsp.buf.definition()
-            end,
-            ["ga"] = function()
-                vim.lsp.buf.code_action()
-            end,
-            -- ["gr"] = function()
-            -- vim.lsp.buf.references()
-            -- end,
-            ["gi"] = function()
-                vim.lsp.buf.implementation()
-            end,
-            ["<Leader>rn"] = function()
-                require("kvim.core.lsp.handlers").rename()
-            end,
-            ["g["] = function()
-                vim.diagnostic.goto_prev()
-            end,
-            ["g]"] = function()
-                vim.diagnostic.goto_next()
-            end,
-            ["<S-u>"] = function()
-                vim.diagnostic.open_float()
-            end,
-            ["<Leader>ff"] = function()
-                vim.lsp.buf.format({
-                    async = true,
-                })
-            end,
-            ["<Leader>fo"] = function()
-                if vim.g.auto_format then
-                    vim.g.auto_format = false
-                    vim.notify("Format on save has been disabled", vim.log.levels.INFO)
-                else
-                    vim.g.auto_format = true
-                    vim.notify("Format on save has been enabled", vim.log.levels.INFO)
-                end
-            end,
-        },
-        visual_mode = {
-            ["<Leader>ff"] = function()
-                vim.lsp.buf.format({
-                    mode = "v",
-                })
-            end,
-            ["<Leader>ga"] = function()
-                vim.lsp.buf.code_action({
-                    mode = "v",
-                })
-            end,
-        },
-    }
+    local function map_keys(bufnr)
+        nmap("K", function()
+            vim.lsp.buf.hover()
+        end, { desc = "Display hover information about the symbol ", buffer = bufnr })
+
+        nmap("gs", function()
+            vim.lsp.buf.signature_help()
+        end, { desc = "", buffer = bufnr })
+
+        nmap("gd", function()
+            vim.lsp.buf.definition()
+        end, { desc = "", buffer = bufnr })
+
+        nmap("ga", function()
+            vim.lsp.buf.code_action()
+        end, { desc = "", buffer = bufnr })
+
+        nmap("gi", function()
+            vim.lsp.buf.implementation()
+        end, { desc = "", buffer = bufnr })
+
+        nmap("<Leader>rn", function()
+            require("kvim.core.lsp.handlers").rename()
+        end, { desc = "", buffer = bufnr })
+
+        nmap("g[", function()
+            vim.diagnostic.goto_prev()
+        end, { desc = "", buffer = bufnr })
+
+        nmap("g]", function()
+            vim.diagnostic.goto_next()
+        end, { desc = "", buffer = bufnr })
+
+        nmap("<S-u>", function()
+            vim.diagnostic.open_float()
+        end, { desc = "", buffer = bufnr })
+
+        nmap("<Leader>ff", function()
+            vim.lsp.buf.format({ async = true })
+        end, { desc = "", buffer = bufnr })
+
+        nmap("<Leader>fo", function()
+            if vim.g.auto_format then
+                vim.g.auto_format = false
+                vim.notify("Format on save has been disabled", vim.log.levels.INFO)
+            else
+                vim.g.auto_format = true
+                vim.notify("Format on save has been enabled", vim.log.levels.INFO)
+            end
+        end, { desc = "", buffer = bufnr })
+
+        vmap("<Leader>ff", function()
+            vim.lsp.buf.format({
+                mode = "v",
+            })
+        end, { buffer = bufnr })
+
+        vmap("<Leader>ga", function()
+            vim.lsp.buf.code_action({
+                mode = "v",
+            })
+        end, { buffer = bufnr })
+    end
 
     a.nvim_create_augroup("LspDocumentHighlight", { clear = true })
     local on_attach = function(client, bufnr)
-        keymapping.load(mapping, bufnr)
+        map_keys(bufnr)
         vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
 
         require("kvim.core.lsp.formatting").init(vim.bo[bufnr].filetype)

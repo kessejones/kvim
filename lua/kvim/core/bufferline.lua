@@ -1,5 +1,5 @@
 local bufferline = require("bufferline")
-local keymappings = require("kvim.utils.keymap")
+local nmap = require("kvim.utils.keymap").nmap
 
 local M = {}
 
@@ -29,43 +29,11 @@ function M.init()
         },
     })
 
-    keymappings.load({
-        normal_mode = {
-            ["<Leader>1"] = function()
-                bufferline.go_to(1)
-            end,
-            ["<Leader>2"] = function()
-                bufferline.go_to(2)
-            end,
-            ["<Leader>3"] = function()
-                bufferline.go_to(3)
-            end,
-            ["<Leader>4"] = function()
-                bufferline.go_to(4)
-            end,
-            ["<Leader>5"] = function()
-                bufferline.go_to(5)
-            end,
-            ["<Leader>6"] = function()
-                bufferline.go_to(6)
-            end,
-            ["<Leader>7"] = function()
-                bufferline.go_to(7)
-            end,
-            ["<Leader>8"] = function()
-                bufferline.go_to(8)
-            end,
-            ["<Leader>9"] = function()
-                bufferline.go_to(9)
-            end,
-            ["gn"] = function()
-                bufferline.move(1)
-            end,
-            ["gp"] = function()
-                bufferline.move(-1)
-            end,
-        },
-    })
+    for i = 1, 9, 1 do
+        nmap("<Leader>" .. i, function()
+            bufferline.go_to(tostring(i))
+        end, { desc = "Go to buffer " .. i })
+    end
 end
 
 return M

@@ -2,7 +2,7 @@ local telescope = require("telescope")
 local builtin = require("telescope.builtin")
 local custom = require("kvim.core.telescope.custom")
 local actions = require("telescope.actions")
-local keymappings = require("kvim.utils.keymap")
+local nmap = require("kvim.utils.keymap").nmap
 
 local M = {}
 
@@ -109,24 +109,17 @@ function M.init()
     telescope.load_extension("ui-select")
     telescope.load_extension("fzf")
 
-    keymappings.load({
-        normal_mode = {
-            ["<C-p>"] = custom.find_files,
-            ["<Leader>p"] = builtin.find_files,
-            ["<Leader>fl"] = builtin.live_grep,
-            ["<Leader>fb"] = builtin.buffers,
-            ["<Leader>fr"] = custom.lsp_references,
-            ["<Leader>fs"] = builtin.git_stash,
-            ["<Leader>fg"] = builtin.git_commits,
-            ["<Leader>fn"] = builtin.git_branches,
-            ["<Leader>f/"] = custom.curr_buf,
-            ["<Leader>fp"] = builtin.commands,
-            ["gI"] = custom.lsp_implementations,
-            ["gr"] = custom.lsp_references,
-            ["gu"] = custom.diagnostics,
-            ["<Leader>z"] = builtin.resume,
-        },
-    })
+    nmap("<C-p>", custom.find_files, { desc = "Find files" })
+    nmap("<Leader>p", custom.find_files, { desc = "Find files with preview" })
+    nmap("<Leader>fl", builtin.live_grep, { desc = "Live grep" })
+    nmap("<Leader>fb", builtin.buffers, { desc = "Find Buffers" })
+    nmap("<Leader>fr", custom.lsp_references, { desc = "Find references (LSP)" })
+    nmap("<Leader>f/", custom.curr_buf, { desc = "Find in current buffer" })
+    nmap("<Leader>fp", builtin.commands, { desc = "Find Command" })
+    nmap("gI", custom.lsp_implementations, { desc = "Find implementations" })
+    nmap("gr", custom.lsp_implementations, { desc = "Find references" })
+    nmap("gu", custom.lsp_implementations, { desc = "Find diagnostics" })
+    nmap("<Leader>z", builtin.resume, { desc = "Resume telescope prompt" })
 end
 
 return M

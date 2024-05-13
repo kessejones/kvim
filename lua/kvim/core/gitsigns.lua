@@ -1,4 +1,5 @@
-local keymappings = require("kvim.utils.keymap")
+local nmap = require("kvim.utils.keymap").nmap
+local vmap = require("kvim.utils.keymap").vmap
 local gitsigns = require("gitsigns")
 
 local M = {}
@@ -19,31 +20,17 @@ function M.init()
                 "│",
             },
         },
-        on_attach = function(bufnr)
-            local mappigns = {
-                normal_mode = {
-                    ["<leader>hs"] = gitsigns.stage_hunk,
-                    ["<leader>hr"] = gitsigns.reset_hun,
-                    ["<leader>hS"] = gitsigns.stage_buffer,
-                    ["<leader>hu"] = gitsigns.undo_stage_hunk,
-                    ["<leader>hR"] = gitsigns.reset_buffer,
-                    ["<leader>hp"] = gitsigns.preview_hunk,
-                    ["<Leader>hb"] = function()
-                        gitsigns.blame_line({ full = true })
-                    end,
-                    ["<leader>hg"] = gitsigns.toggle_deleted,
-                },
-                visual_mode = {
-                    ["<leader>hs"] = function()
-                        gitsigns.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
-                    end,
-                    ["<leader>hr"] = function()
-                        gitsigns.reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
-                    end,
-                },
-            }
-
-            keymappings.load(mappigns, bufnr)
+        on_attach = function(_bufnr)
+            nmap("<leader>hs", gitsigns.stage_hunk, { desc = "Stage hunk" })
+            nmap("<leader>hr", gitsigns.reset_hunk, { desc = "Reset hunk" })
+            nmap("<leader>hS", gitsigns.stage_buffer, { desc = "Stage buffer" })
+            nmap("<leader>hu", gitsigns.undo_stage_hunk, { desc = "Undo stage hunk" })
+            nmap("<leader>hR", gitsigns.reset_buffer, { desc = "Reset buffer" })
+            nmap("<leader>hp", gitsigns.preview_hunk, { desc = "Preview hunk" })
+            nmap("<Leader>hb", function()
+                gitsigns.blame_line({ full = true })
+            end, { desc = "Git blame this line" })
+            nmap("<leader>hg", gitsigns.toggle_deleted, { desc = "Toggle deleted lines" })
         end,
     })
 end

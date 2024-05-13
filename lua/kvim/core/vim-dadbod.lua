@@ -1,13 +1,11 @@
-local keymappings = require("kvim.utils.keymap")
+local keymap = require("kvim.utils.keymap")
+local nmap = keymap.nmap
+local vmap = keymap.vmap
 
 local M = {}
 
 function M.init()
-    keymappings.load({
-        normal_mode = {
-            ["<Leader>u"] = ":DBUIToggle<CR>",
-        },
-    })
+    nmap("<Leader>t", ":DBUIToggle<CR>", { desc = "Toggle database UI" })
 
     vim.g.db_ui_execute_on_save = false
 
@@ -16,14 +14,8 @@ function M.init()
         group = "DBUIGroup",
         pattern = { "*.sql" },
         callback = function(args)
-            keymappings.load({
-                normal_mode = {
-                    ["<Leader>n"] = "<Plug>(DBUI_ExecuteQuery)",
-                },
-                visual_mode = {
-                    ["<Leader>n"] = "<Plug>(DBUI_ExecuteQuery)",
-                },
-            }, args.buf)
+            nmap("<Leader>n", "<Plug>(DBUI_ExecuteQuery)", { buffer = args.buf, desc = "Run database query" })
+            vmap("<Leader>n", "<Plug>(DBUI_ExecuteQuery)", { buffer = args.buf, desc = "Run selection database query" })
         end,
     })
 end

@@ -1,4 +1,6 @@
-local keymappings = require("kvim.utils.keymap")
+local keymap = require("kvim.utils.keymap")
+local nmap = keymap.nmap
+local vmap = keymap.vmap
 
 local M = {}
 
@@ -18,14 +20,8 @@ function M.init()
         pattern = { "*.hurl" },
         group = "Hurl",
         callback = function(args)
-            keymappings.load({
-                normal_mode = {
-                    ["<Leader>n"] = "<CMD>HurlRunner<CR>",
-                },
-                visual_mode = {
-                    ["<Leader>n"] = "<CMD>HurlRunnerAt<CR>",
-                },
-            }, args.buf)
+            nmap("<Leader>n", "<CMD>HurlRunner<CR>", { desc = "Run this Hurl file", buffer = args.buf })
+            vmap("<Leader>n", "<CMD>HurlRunnerAt<CR>", { desc = "Run current Hurl selection", buffer = args.buf })
         end,
     })
 end

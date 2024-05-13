@@ -1,7 +1,7 @@
 local diffview = require("diffview")
 local actions = require("diffview.actions")
 
-local keymappings = require("kvim.utils.keymap")
+local nmap = require("kvim.utils.keymap").nmap
 
 local M = {}
 
@@ -36,16 +36,13 @@ function M.init()
         },
     })
 
-    keymappings.load({
-        normal_mode = {
-            ["<Leader>hd"] = function()
-                require("diffview").file_history()
-            end,
-            ["<Leader>hD"] = function()
-                require("diffview").open()
-            end,
-        },
-    })
+    nmap("<Leader>hd", function()
+        require("diffview").file_history()
+    end, { desc = "Open file history" })
+
+    nmap("<Leader>hD", function()
+        require("diffview").open()
+    end, { desc = "Open Diffview" })
 end
 
 return M
