@@ -32,12 +32,15 @@ function M.init()
     nmap("tl", function()
         harpoon:list():next()
     end, { desc = "Next file in harpoon" })
+
     nmap("th", function()
         harpoon:list():prev()
     end, { desc = "Previous file in harpoon" })
+
     nmap("ta", function()
         harpoon:list():append()
     end, { desc = "Add current buffer file to harpoon list" })
+
     nmap("tt", function()
         harpoon.ui:toggle_quick_menu(harpoon:list(), {
             title_pos = "center",
@@ -54,6 +57,7 @@ function M.init()
             },
         })
     end, { desc = "Open harpoon list in quick menu" })
+
     nmap("tp", function()
         toggle_telescope(harpoon:list())
     end, { desc = "Open harpoon list in Telescope" })

@@ -13,7 +13,7 @@ function M.init()
         position = "center",
     })
 
-    nmap("<Leader>;", term.toggle)
+    nmap("<Leader>;", term.toggle, { desc = "Toggle terminal" })
 
     vim.api.nvim_create_autocmd("TermOpen", {
         callback = function(args)

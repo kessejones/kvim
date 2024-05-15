@@ -89,39 +89,39 @@ local function init_servers()
 
         nmap("gs", function()
             vim.lsp.buf.signature_help()
-        end, { desc = "", buffer = bufnr })
+        end, { desc = "Displays signature information about the symbol", buffer = bufnr })
 
         nmap("gd", function()
             vim.lsp.buf.definition()
-        end, { desc = "", buffer = bufnr })
+        end, { desc = "Go to the definition", buffer = bufnr })
 
         nmap("ga", function()
             vim.lsp.buf.code_action()
-        end, { desc = "", buffer = bufnr })
+        end, { desc = "Open code actions", buffer = bufnr })
 
         nmap("gi", function()
             vim.lsp.buf.implementation()
-        end, { desc = "", buffer = bufnr })
+        end, { desc = "Go to implementation", buffer = bufnr })
 
         nmap("<Leader>rn", function()
             require("kvim.core.lsp.handlers").rename()
-        end, { desc = "", buffer = bufnr })
+        end, { desc = "Rename symbol with popup window", buffer = bufnr })
 
         nmap("g[", function()
             vim.diagnostic.goto_prev()
-        end, { desc = "", buffer = bufnr })
+        end, { desc = "Go to previous diagnostics", buffer = bufnr })
 
         nmap("g]", function()
             vim.diagnostic.goto_next()
-        end, { desc = "", buffer = bufnr })
+        end, { desc = "Go to next diagnostics", buffer = bufnr })
 
         nmap("<S-u>", function()
             vim.diagnostic.open_float()
-        end, { desc = "", buffer = bufnr })
+        end, { desc = "Show diagnostic in float window", buffer = bufnr })
 
         nmap("<Leader>ff", function()
             vim.lsp.buf.format({ async = true })
-        end, { desc = "", buffer = bufnr })
+        end, { desc = "Format code", buffer = bufnr })
 
         nmap("<Leader>fo", function()
             if vim.g.auto_format then
@@ -131,19 +131,19 @@ local function init_servers()
                 vim.g.auto_format = true
                 vim.notify("Format on save has been enabled", vim.log.levels.INFO)
             end
-        end, { desc = "", buffer = bufnr })
+        end, { desc = "Toggle format on save", buffer = bufnr })
 
         vmap("<Leader>ff", function()
             vim.lsp.buf.format({
                 mode = "v",
             })
-        end, { buffer = bufnr })
+        end, { desc = "Format code", buffer = bufnr })
 
         vmap("<Leader>ga", function()
             vim.lsp.buf.code_action({
                 mode = "v",
             })
-        end, { buffer = bufnr })
+        end, { desc = "Open code actions", buffer = bufnr })
     end
 
     a.nvim_create_augroup("LspDocumentHighlight", { clear = true })
