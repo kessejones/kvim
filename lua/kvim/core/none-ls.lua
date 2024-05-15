@@ -5,6 +5,7 @@ local M = {}
 function M.init()
     local formatting = null_ls.builtins.formatting
     local diagnostics = null_ls.builtins.diagnostics
+    local code_actions = null_ls.builtins.code_actions
 
     null_ls.setup({
         on_attach = function(_client, bufnr)
@@ -29,6 +30,7 @@ function M.init()
             }),
             formatting.alejandra,
             formatting.ocamlformat,
+            diagnostics.todo_comments,
             diagnostics.phpcs.with({
                 args = {
                     "--standard=PSR12",
@@ -46,6 +48,7 @@ function M.init()
                     "--basepath=",
                 },
             }),
+            code_actions.gitsigns,
         },
     })
 end
