@@ -1,8 +1,7 @@
 return {
     "NeogitOrg/neogit",
-    keys = {
-        "<Leader>gg",
-    },
+    branch = "nightly",
+    keys = { "<Leader>gg" },
     config = function()
         require("kvim.core.neogit").init()
     end,
