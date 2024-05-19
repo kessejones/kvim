@@ -6,11 +6,9 @@ local M = {}
 function M.init()
     bufferline.setup({
         options = {
-            indicator = {
-                style = "",
-            },
+            indicator = { style = "none" },
             diagnostics = "nvim_lsp",
-            diagnostics_indicator = function(count, level, diagnostics_dict, context)
+            diagnostics_indicator = function(count, level, _diagnostics_dict, _context)
                 local icon = level:match("error") and " " or " "
                 return " " .. icon .. count
             end,
@@ -23,9 +21,7 @@ function M.init()
             end,
         },
         highlights = {
-            fill = {
-                bg = "#1a1a24",
-            },
+            fill = { bg = "#1a1a24" },
         },
     })
 
