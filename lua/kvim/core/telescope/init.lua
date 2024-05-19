@@ -8,7 +8,10 @@ local M = {}
 
 local paste_from_register = function(bufnr)
     local content = vim.fn.getreg("+", 1)
-    if vim.api.nvim_buf_get_option(bufnr, "modifiable") then
+    if vim.api.nvim_get_option_value("modifiable", { buf = bufnr }) then
+        if type(content) == "table" then
+            content = table.concat(content, "\n")
+        end
         vim.api.nvim_paste(content, true, -1)
     end
 end
@@ -29,7 +32,9 @@ function M.init()
                 "^test/reports/",
                 "^_build/",
                 "^build/",
+                "^deps/",
                 "^Build/",
+                "^%.elixir_ls/",
                 "%.DS_Store",
                 "%.o$",
                 "%.so$",
@@ -49,6 +54,7 @@ function M.init()
                     ["<C-j>"] = actions.move_selection_next,
                     ["<C-k>"] = actions.move_selection_previous,
                     ["<CR>"] = actions.select_default,
+                    ["<C-e>"] = actions.select_tab,
                     ["<C-h>"] = actions.file_split,
                     ["<C-v>"] = actions.file_vsplit,
                     ["<C-c>"] = actions.close,
