@@ -6,6 +6,7 @@ local M = {}
 function M.init()
     neogit.setup({
         disable_hint = true,
+        auto_show_console = false,
         integrations = {
             diffview = true,
         },

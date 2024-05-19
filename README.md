@@ -4,7 +4,7 @@ This is my custom configuration and plugins for neovim.
 
 ## Requirements
 
-- [NVIM 0.9](https://github.com/neovim/neovim/releases/tag/v0.9.0)
+- [NVIM 0.10](https://github.com/neovim/neovim/releases/tag/v0.10.0)
 
 ## Installation
 
