@@ -128,8 +128,6 @@ function M.init()
     cmp.event:on("menu_closed", function()
         vim.b.copilot_suggestion_hidden = false
     end)
-
-    require("kvim.core.cmp.snippet").init()
 end
 
 return M

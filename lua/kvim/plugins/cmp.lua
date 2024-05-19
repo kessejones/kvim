@@ -15,7 +15,13 @@ return {
             end,
         },
         "saadparwaiz1/cmp_luasnip",
-        "L3MON4D3/LuaSnip",
+        {
+            "L3MON4D3/LuaSnip",
+            build = "make install_jsregexp",
+            config = function()
+                require("kvim.core.luasnip").init()
+            end,
+        },
         "onsails/lspkind-nvim",
     },
     config = function()
