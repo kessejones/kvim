@@ -89,12 +89,14 @@ nmap("<Leader>q", ":q<CR>", { desc = "Close current window" })
 nmap("<Leader>..", function()
     local bufnr = vim.api.nvim_get_current_buf()
     if not vim.bo[bufnr].modified then
+        vim.cmd.bnext()
         vim.cmd.bdelete(bufnr)
     end
 end, { desc = "Delete current buffer" })
 
 nmap("<Leader>.f", function()
     local bufnr = vim.api.nvim_get_current_buf()
+    vim.cmd.bnext()
     vim.cmd.bdelete({ args = { bufnr }, bang = true })
 end, { desc = "Force delete current buffer" })
 
