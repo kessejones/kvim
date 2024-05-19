@@ -120,6 +120,24 @@ function M.init()
         },
     })
 
+    cmp.setup.filetype({ "sql" }, {
+        sources = {
+            { name = "vim-dadbod-completion" },
+            { name = "buffer" },
+            { name = "luasnip" },
+        },
+        formatting = {
+            format = lspkind.cmp_format({
+                mode = "symbol",
+                menu = {
+                    ["vim-dadbod-completion"] = "[Dadbod]",
+                    buffer = "[Buf]",
+                    luasnip = "[Snip]",
+                },
+            }),
+        },
+    })
+
     cmp.event:on("confirm_done", require("nvim-autopairs.completion.cmp").on_confirm_done())
     cmp.event:on("menu_opened", function()
         vim.b.copilot_suggestion_hidden = true
