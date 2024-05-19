@@ -2,14 +2,13 @@ return {
     "kristijanhusak/vim-dadbod-ui",
     cmd = "DBUIToggle",
     keys = {
-        {
-            "<Leader>u",
-            ":DBUIToggle<CR>",
-            desc = "Toggle Dadbod UI",
-        },
+        "<Leader>uu",
     },
     dependencies = {
         "tpope/vim-dadbod",
         "kristijanhusak/vim-dadbod-completion",
     },
+    config = function()
+        require("kvim.core.vim-dadbod").init()
+    end,
 }

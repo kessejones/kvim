@@ -5,14 +5,14 @@ local vmap = keymap.vmap
 local M = {}
 
 function M.init()
-    nmap("<Leader>t", ":DBUIToggle<CR>", { desc = "Toggle database UI" })
+    nmap("<Leader>uu", ":DBUIToggle<CR>", { desc = "Toggle database UI" })
 
-    vim.g.db_ui_execute_on_save = false
+    vim.g.db_ui_execute_on_save = 0
 
     vim.api.nvim_create_augroup("DBUIGroup", { clear = true })
-    vim.api.nvim_create_autocmd("BufWinEnter", {
+    vim.api.nvim_create_autocmd("FileType", {
         group = "DBUIGroup",
-        pattern = { "*.sql" },
+        pattern = { "sql" },
         callback = function(args)
             nmap("<Leader>n", "<Plug>(DBUI_ExecuteQuery)", { buffer = args.buf, desc = "Run database query" })
             vmap("<Leader>n", "<Plug>(DBUI_ExecuteQuery)", { buffer = args.buf, desc = "Run selection database query" })
