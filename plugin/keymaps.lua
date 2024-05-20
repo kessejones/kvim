@@ -133,9 +133,6 @@ end, { desc = "Select all buffer and yank" })
 nmap("gl", "$", { desc = "End of line" })
 nmap("gh", "^", { desc = "Start of line" })
 
-nmap("n", "nzzzv", { desc = "Next result" })
-nmap("N", "Nzzzv", { desc = "Previous result" })
-
 -- ** Visual Mode Keys
 
 vmap("<ESC>", function()

@@ -12,7 +12,7 @@ function M.init()
     vim.api.nvim_create_augroup("DBUIGroup", { clear = true })
     vim.api.nvim_create_autocmd("FileType", {
         group = "DBUIGroup",
-        pattern = { "sql" },
+        pattern = { "sql", "mysql" },
         callback = function(args)
             nmap("<Leader>n", "<Plug>(DBUI_ExecuteQuery)", { buffer = args.buf, desc = "Run database query" })
             vmap("<Leader>n", "<Plug>(DBUI_ExecuteQuery)", { buffer = args.buf, desc = "Run selection database query" })
