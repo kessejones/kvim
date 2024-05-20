@@ -124,5 +124,5 @@ return {
 
     s(".toarray", fmt("public function toArray(): array\n{{\n\treturn [\n\t\t{value}\n\t];\n}}", { value = i(1) })),
     s(".tostring", fmt('public function toString(): string\n{{\n\treturn "{value}";\n}}', { value = i(1) })),
-    s(".new", fmt("public function __construct(): {{\n\t{todo}\n}}", { todo = i(1) })),
+    s(".new", fmt("public function __construct()\n{{\n\t{todo}\n}}", { todo = i(1) })),
 }
