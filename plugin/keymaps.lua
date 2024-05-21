@@ -1,23 +1,9 @@
+local utils = require("kvim.utils")
 local keymap = require("kvim.utils.keymap")
+
 local nmap = keymap.nmap
 local vmap = keymap.vmap
 local tmap = keymap.tmap
-
-local select_all_mode = setmetatable({
-    enter_select_all = function()
-        local cursor = vim.api.nvim_win_get_cursor(0)
-        vim.api.nvim_buf_set_var(0, "last_cursor", vim.json.encode(cursor))
-        vim.cmd.normal({ bang = true, args = { "ggVG" } })
-    end,
-    exit_select_all = function()
-        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-c>", true, false, true), "n", true)
-        local exists, cursor = pcall(vim.api.nvim_buf_get_var, 0, "last_cursor")
-        if exists and cursor then
-            vim.api.nvim_buf_del_var(0, "last_cursor")
-            vim.api.nvim_win_set_cursor(0, vim.json.decode(cursor))
-        end
-    end,
-}, {})
 
 -- ** Normal Mode Keys
 
@@ -89,7 +75,9 @@ nmap("<Leader>q", ":q<CR>", { desc = "Close current window" })
 nmap("<Leader>..", function()
     local bufnr = vim.api.nvim_get_current_buf()
     if not vim.bo[bufnr].modified then
-        vim.cmd.bnext()
+        if not utils.is_window_splitted() then
+            vim.cmd.bnext()
+        end
         vim.cmd.bdelete(bufnr)
     end
 end, { desc = "Delete current buffer" })
@@ -118,11 +106,6 @@ nmap("<Leader>fh", "<ESC>:%s/", { desc = "Substitute prompt" })
 -- Delete
 nmap("x", '"_x', { desc = "Delete character without yank" })
 
--- Select all
-nmap("<Leader>aa", function()
-    select_all_mode.enter_select_all()
-end, { desc = "Select all buffer" })
-
 -- Select all and yank
 nmap("<Leader>ay", function()
     local cursor = vim.api.nvim_win_get_cursor(0)
@@ -134,10 +117,6 @@ nmap("gl", "$", { desc = "End of line" })
 nmap("gh", "^", { desc = "Start of line" })
 
 -- ** Visual Mode Keys
-
-vmap("<ESC>", function()
-    select_all_mode.exit_select_all()
-end, { desc = "Exit select all" })
 
 -- Replace
 vmap("<C-h>", ":s/", { desc = "Substitute prompt" })

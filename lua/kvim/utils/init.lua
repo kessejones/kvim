@@ -26,7 +26,13 @@ function M.contains(list, value)
 end
 
 function M.is_linux()
-    return vim.fn.has('linux') == 1
+    return vim.fn.has("linux") == 1
+end
+
+function M.is_window_splitted()
+    local current_tabpage = vim.api.nvim_get_current_tabpage()
+    local windows = vim.api.nvim_tabpage_list_wins(current_tabpage)
+    return #windows > 1
 end
 
 return M
