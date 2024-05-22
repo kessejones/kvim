@@ -5,6 +5,15 @@ local nmap = keymap.nmap
 local vmap = keymap.vmap
 local tmap = keymap.tmap
 
+-- *** TESTING ***   Save file quickly
+keymap.map({ "i", "n" }, "<C-s>", "<ESC><CMD>:w<CR>", { desc = "Save file quickly" })
+nmap("<C-q>", vim.cmd.quit, { desc = "Quit window" })
+nmap("<C-x>", vim.cmd.bdelete, { desc = "Delete buffer" })
+keymap.map({ "i", "n" }, "<C-z>", function()
+    vim.cmd.write()
+    vim.cmd.quit()
+end, { desc = "Save and quit" })
+
 -- ** Normal Mode Keys
 
 nmap("<Space>", "<NOP>", { desc = "Do anything" })
