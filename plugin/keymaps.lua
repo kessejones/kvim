@@ -22,23 +22,23 @@ nmap("<Leader>sq", function()
 end, { desc = "Save and quit" })
 
 -- Resize window
-nmap("<C-s><C-k>", function()
+nmap("<C-w><C-k>", function()
     vim.cmd.wincmd("5+")
 end)
 
-nmap("<C-s><C-j>", function()
+nmap("<C-w><C-j>", function()
     vim.cmd.wincmd("5-")
 end)
 
-nmap("<C-s><C-h>", function()
+nmap("<C-w><C-h>", function()
     vim.cmd.wincmd("5<")
 end)
 
-nmap("<C-s><C-l>", function()
+nmap("<C-w><C-l>", function()
     vim.cmd.wincmd("5>")
 end)
 
-nmap("<C-s><C-r>", function()
+nmap("<C-w><C-r>", function()
     vim.cmd.wincmd("=")
 end)
 
@@ -169,22 +169,22 @@ tmap("<C-w>J", function()
 end, { desc = "Move to left" })
 
 -- Resize window
-tmap("<C-s><C-k>", function()
+tmap("<C-w><C-k>", function()
     vim.cmd.wincmd("5+")
 end, { desc = "Resize up" })
 
-tmap("<C-s><C-j>", function()
+tmap("<C-w><C-j>", function()
     vim.cmd.wincmd("5-")
 end, { desc = "Resize down" })
 
-tmap("<C-s><C-h>", function()
+tmap("<C-w><C-h>", function()
     vim.cmd.wincmd("5<")
 end, { desc = "Resize left" })
 
-tmap("<C-s><C-l>", function()
+tmap("<C-w><C-l>", function()
     vim.cmd.wincmd("5>")
 end, { desc = "Resize right" })
 
-tmap("<C-s><C-r>", function()
+tmap("<C-w><C-r>", function()
     vim.cmd.wincmd("=")
 end, { desc = "Resize the same size" })
