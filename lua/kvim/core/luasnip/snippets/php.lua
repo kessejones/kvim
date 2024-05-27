@@ -1,12 +1,4 @@
----@param pattern string
----@return string
-local function escape_pattern(pattern)
-    local result = pattern:gsub("([%^%$%(%)%%%.%[%]%*%+%-%?])", "%%%1")
-    if type(result) == "string" then
-        return result
-    end
-    return ""
-end
+local utils = require("kvim.utils")
 
 ---@param str string
 ---@param deli string?
@@ -32,7 +24,7 @@ local function composer_autoloads(dir)
     local composer = vim.json.decode(table.concat(content))
 
     for prefix, src in pairs(composer["autoload"]["psr-4"]) do
-        if dir:match(escape_pattern(src)) then
+        if dir:match(utils.escape_pattern(src)) then
             return {
                 prefix = prefix,
                 src = src,
@@ -47,7 +39,7 @@ local function snip_namespace()
 
     local root = vim.fs.root(0, { "composer.json" })
     local file_path = vim.fs.dirname(filename)
-    local root_escaped = escape_pattern(root .. "/")
+    local root_escaped = utils.escape_pattern(root .. "/")
     local relative_dir = file_path:gsub(root_escaped, "")
 
     if relative_dir == nil or relative_dir == "" then
