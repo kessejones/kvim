@@ -22,6 +22,7 @@ opt.sidescrolloff = 5
 opt.list = true
 opt.completeopt = { "menu", "menuone", "noselect" }
 opt.showcmd = false
+opt.showmode = false
 opt.undofile = true
 opt.undodir = vim.env.HOME .. "/.cache/nvim/undodir"
 opt.termguicolors = true
