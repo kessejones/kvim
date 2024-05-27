@@ -8,6 +8,7 @@ return {
         "<Leader>p",
         "<Leader>fl",
         "<Leader>fb",
+        "<Leader>fd",
         "<Leader>fr",
         "<Leader>fs",
         "<Leader>fg",
