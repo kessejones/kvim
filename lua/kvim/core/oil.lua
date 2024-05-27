@@ -26,6 +26,7 @@ function M.init()
             ["<CR>"] = "actions.select",
             ["g."] = "actions.toggle_hidden",
             ["q"] = "actions.close",
+            ["<C-e>"] = "actions.select_tab",
             ["<Leader>tg"] = "actions.close",
             ["<Leader>tt"] = "actions.close",
             ["gp"] = "actions.preview",
