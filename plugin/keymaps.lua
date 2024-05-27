@@ -12,6 +12,20 @@ nmap("te", vim.cmd.tabedit, { desc = "New tab" })
 
 nmap("<Space>", "<NOP>", { desc = "Do anything" })
 
+nmap("k", function()
+    if vim.v.count == 0 then
+        return "gk"
+    end
+    return "k'"
+end, { expr = true })
+
+nmap("j", function()
+    if vim.v.count == 0 then
+        return "gj"
+    end
+    return "j'"
+end, { expr = true })
+
 nmap("<ESC>", function()
     if vim.opt.hlsearch:get() then
         vim.cmd.nohl()
