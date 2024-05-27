@@ -17,10 +17,10 @@ function M.init()
         },
         sections = {
             lualine_a = { "mode" },
-            lualine_b = { "branch" },
+            lualine_b = { "branch", "diff" },
             lualine_c = { { "filename", file_status = false, path = 0 } },
             lualine_x = { { "diagnostics", source = { "nvim_lsp" } }, "encoding", "filetype" },
-            lualine_y = { "progress" },
+            lualine_y = { "progress", "searchcount" },
             lualine_z = { "location" },
         },
         inactive_sections = {
