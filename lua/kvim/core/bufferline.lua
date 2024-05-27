@@ -6,19 +6,12 @@ local M = {}
 function M.init()
     bufferline.setup({
         options = {
+            mode = "tabs",
             indicator = { style = "none" },
-            diagnostics = "nvim_lsp",
-            diagnostics_indicator = function(count, level, _diagnostics_dict, _context)
-                local icon = level:match("error") and " " or " "
-                return " " .. icon .. count
-            end,
+            always_show_bufferline = false,
             show_close_icon = false,
             show_buffer_close_icons = false,
-            show_tab_indicators = true,
-            enforce_regular_tabs = false,
-            sort_by = function(buff_a, buff_b)
-                return buff_a.id < buff_b.id
-            end,
+            show_tab_indicators = false,
         },
         highlights = {
             fill = { bg = "#1a1a24" },
@@ -30,6 +23,9 @@ function M.init()
             bufferline.go_to(tostring(i))
         end, { desc = "Go to buffer " .. i })
     end
+
+    -- nmap("<S-l>", "<Cmd>BufferLineCycleNext<CR>", { desc = "Next buffer" })
+    -- nmap("<S-h>", "<Cmd>BufferLineCyclePrev<CR>", { desc = "Previous buffer" })
 end
 
 return M

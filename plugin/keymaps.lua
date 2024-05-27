@@ -1,34 +1,24 @@
-local utils = require("kvim.utils")
 local keymap = require("kvim.utils.keymap")
 
 local nmap = keymap.nmap
 local vmap = keymap.vmap
 local tmap = keymap.tmap
 
--- *** TESTING ***   Save file quickly
-keymap.map({ "i", "n" }, "<C-s>", "<ESC><CMD>:w<CR>", { desc = "Save file quickly" })
+nmap("<Leader>w", vim.cmd.write, { desc = "Save file" })
 nmap("<C-q>", vim.cmd.quit, { desc = "Quit window" })
-nmap("<C-x>", vim.cmd.bdelete, { desc = "Delete buffer" })
-keymap.map({ "i", "n" }, "<C-z>", function()
-    vim.cmd.write()
-    vim.cmd.quit()
-end, { desc = "Save and quit" })
+nmap("te", vim.cmd.tabedit, { desc = "New tab" })
 
 -- ** Normal Mode Keys
 
 nmap("<Space>", "<NOP>", { desc = "Do anything" })
+
 nmap("<ESC>", function()
-    vim.cmd.noh()
-end, { desc = "No highlight" })
-
-nmap("<Leader>ss", function()
-    vim.cmd.write()
-end, { desc = "Save file" })
-
-nmap("<Leader>sq", function()
-    vim.cmd.write()
-    vim.cmd.quit()
-end, { desc = "Save and quit" })
+    if vim.opt.hlsearch:get() then
+        vim.cmd.nohl()
+        return ""
+    end
+    return ""
+end, { desc = "No highlight", expr = true })
 
 -- Resize window
 nmap("<C-w><C-k>", function()
@@ -61,53 +51,12 @@ end, { desc = "Duplicate current line" })
 nmap("<Leader>v", "<S-V>", { desc = "Visual line mode" })
 nmap("<Leader>d", '"_d', { desc = "Delete current line without yank" })
 
--- Next/Previous buffer
-nmap("<S-l>", function()
-    vim.cmd.bnext()
-end, { desc = "Next buffer" })
-
-nmap("<S-h>", function()
-    vim.cmd.bprev()
-end, { desc = "Previous buffer" })
-
-nmap("<C-l>", function()
-    vim.cmd.tabnext()
-end, { desc = "Next tab" })
-
-nmap("<C-h>", function()
-    vim.cmd.tabprev()
-end, { desc = "Previous tab" })
+nmap("<C-l>", vim.cmd.tabnext, { desc = "Next tab" })
+nmap("<C-h>", vim.cmd.tabprev, { desc = "Previous tab" })
 
 -- Close/Quit Buffers
 nmap("<Leader>q", ":q<CR>", { desc = "Close current window" })
-
-nmap("<Leader>..", function()
-    local bufnr = vim.api.nvim_get_current_buf()
-    if not vim.bo[bufnr].modified then
-        if not utils.is_window_splitted() then
-            vim.cmd.bnext()
-        end
-        vim.cmd.bdelete(bufnr)
-    end
-end, { desc = "Delete current buffer" })
-
-nmap("<Leader>.f", function()
-    local bufnr = vim.api.nvim_get_current_buf()
-    vim.cmd.bnext()
-    vim.cmd.bdelete({ args = { bufnr }, bang = true })
-end, { desc = "Force delete current buffer" })
-
-nmap("<Leader>.a", function()
-    local bufs = vim.api.nvim_list_bufs()
-    for _, bufnr in ipairs(bufs) do
-        if not vim.bo[bufnr].modified then
-            vim.cmd.bdelete(bufnr)
-        else
-            local name = vim.fs.basename(vim.api.nvim_buf_get_name(bufnr))
-            vim.print(string.format("Buffer %s is modified, use :bd! to delete it", name))
-        end
-    end
-end, { desc = "Delete all listed buffers" })
+nmap("<Leader>x", ":wq<CR>", { desc = "Save and close current window" })
 
 -- Replace
 nmap("<Leader>fh", "<ESC>:%s/", { desc = "Substitute prompt" })
