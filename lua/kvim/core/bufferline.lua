@@ -8,7 +8,7 @@ function M.init()
         options = {
             mode = "tabs",
             indicator = { style = "none" },
-            always_show_bufferline = false,
+            always_show_bufferline = true,
             show_close_icon = false,
             show_buffer_close_icons = false,
             show_tab_indicators = false,
@@ -23,9 +23,6 @@ function M.init()
             bufferline.go_to(tostring(i))
         end, { desc = "Go to buffer " .. i })
     end
-
-    -- nmap("<S-l>", "<Cmd>BufferLineCycleNext<CR>", { desc = "Next buffer" })
-    -- nmap("<S-h>", "<Cmd>BufferLineCyclePrev<CR>", { desc = "Previous buffer" })
 end
 
 return M

@@ -4,13 +4,11 @@ local nmap = keymap.nmap
 local vmap = keymap.vmap
 local tmap = keymap.tmap
 
-nmap("<Leader>w", vim.cmd.write, { desc = "Save file" })
-nmap("<C-q>", vim.cmd.quit, { desc = "Quit window" })
-nmap("te", vim.cmd.tabedit, { desc = "New tab" })
-
 -- ** Normal Mode Keys
 
 nmap("<Space>", "<NOP>", { desc = "Do anything" })
+
+nmap("<Leader>w", vim.cmd.write, { desc = "Save file" })
 
 nmap("k", function()
     if vim.v.count == 0 then
@@ -65,12 +63,18 @@ end, { desc = "Duplicate current line" })
 nmap("<Leader>v", "<S-V>", { desc = "Visual line mode" })
 nmap("<Leader>d", '"_d', { desc = "Delete current line without yank" })
 
+-- Tabs
 nmap("<C-l>", vim.cmd.tabnext, { desc = "Next tab" })
 nmap("<C-h>", vim.cmd.tabprev, { desc = "Previous tab" })
+nmap("<C-S-l>", ":tabmove+1<CR>", { desc = "Move tab next" })
+nmap("<C-S-h>", ":tabmove-1<CR>", { desc = "Move tab prev" })
+nmap("te", vim.cmd.tabedit, { desc = "Tab edit" })
+nmap("to", vim.cmd.tabonly, { desc = "Only tab" })
 
 -- Close/Quit Buffers
 nmap("<Leader>q", ":q<CR>", { desc = "Close current window" })
 nmap("<Leader>x", ":wq<CR>", { desc = "Save and close current window" })
+nmap("<Leader>z", ":qall<CR>", { desc = "Quit all" })
 
 -- Replace
 nmap("<Leader>fh", "<ESC>:%s/", { desc = "Substitute prompt" })

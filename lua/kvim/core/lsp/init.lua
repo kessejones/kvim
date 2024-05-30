@@ -36,11 +36,9 @@ local function init_servers()
                         unusedLocalExclude = { "_*" },
                     },
                     workspace = {
+                        checkThirdParty = false,
                         library = {
-                            vim.fn.expand("$VIMRUNTIME/lua"),
-                            vim.fn.expand("$VIMRUNTIME/lua/vim/lsp"),
-                            vim.fn.stdpath("config") .. "/lua",
-                            vim.fn.stdpath("data") .. "/lazy/",
+                            unpack(vim.api.nvim_get_runtime_file("", true)),
                         },
                     },
                     telemetry = {
@@ -144,6 +142,18 @@ local function init_servers()
                 mode = "v",
             })
         end, { desc = "Open code actions", buffer = bufnr })
+
+        nmap("gI", function()
+            require("kvim.core.telescope.custom").lsp_implementations()
+        end, { desc = "Telescope find implementations", buffer = bufnr })
+
+        nmap("gr", function()
+            require("telescope.builtin").lsp_references()
+        end, { desc = "Telescope find references", buffer = bufnr })
+
+        nmap("gu", function()
+            require("telescope.builtin").diagnostics()
+        end, { desc = "Telescope find diagnostics", buffer = bufnr })
     end
 
     a.nvim_create_augroup("LspDocumentHighlight", { clear = true })
