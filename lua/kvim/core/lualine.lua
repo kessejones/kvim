@@ -1,6 +1,47 @@
 local lualine = require("lualine")
+local colors = require("catppuccin.palettes").get_palette("mocha")
 
 local M = {}
+
+local filename = {
+    "filename",
+    file_status = false,
+    path = 0,
+    color = { bg = colors.mantle, fg = colors.text, gui = "italic" },
+}
+
+local diff = {
+    "diff",
+    color = { bg = colors.mantle, fg = colors.bg, gui = "bold" },
+    symbols = { added = " ", modified = " ", removed = " " },
+
+    diff_color = {
+        added = { fg = colors.green },
+        modified = { fg = colors.yellow },
+        removed = { fg = colors.red },
+    },
+}
+
+local diagnostics = {
+    "diagnostics",
+    sources = { "nvim_lsp", "nvim_workspace_diagnostic" },
+    color = { bg = colors.mantle, fg = colors.text, gui = "bold" },
+}
+
+local filetype = {
+    "filetype",
+    color = { bg = colors.mantle, fg = colors.text, gui = "bold" },
+}
+
+local location = {
+    "location",
+    color = { bg = colors.blue, fg = colors.base, gui = "italic" },
+}
+
+local searchcount = {
+    "searchcount",
+    color = { bg = colors.red, fg = colors.base, gui = "bold" },
+}
 
 function M.init()
     lualine.setup({
@@ -8,8 +49,8 @@ function M.init()
             globalstatus = true,
             icons_enabled = true,
             theme = "auto",
-            component_separators = { left = "", right = "" },
-            section_separators = { left = "", right = "" },
+            component_separators = { left = "", right = "" },
+            section_separators = { left = "", right = "" },
             disabled_filetypes = {
                 "alpha",
             },
@@ -17,17 +58,17 @@ function M.init()
         },
         sections = {
             lualine_a = { "mode" },
-            lualine_b = { "branch", "diff" },
-            lualine_c = { { "filename", file_status = false, path = 0 } },
-            lualine_x = { { "diagnostics", source = { "nvim_lsp" } }, "encoding", "filetype" },
-            lualine_y = { "progress", "searchcount" },
-            lualine_z = { "location" },
+            lualine_b = { "branch", diff },
+            lualine_c = { filename },
+            lualine_x = { searchcount },
+            lualine_y = { diagnostics },
+            lualine_z = { filetype, location },
         },
         inactive_sections = {
             lualine_a = {},
             lualine_b = {},
-            lualine_c = { { "filename", file_status = true, path = 1 } },
-            lualine_x = { "location" },
+            lualine_c = { filename },
+            lualine_x = { location },
             lualine_y = {},
             lualine_z = {},
         },
