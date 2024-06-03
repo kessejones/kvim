@@ -6,18 +6,10 @@ local config_path = string.format("%s/autoformat.json", data_path)
 local formatting_config = {}
 
 local function load_config()
-    -- local Path = require("plenary.path")
-    -- local p = Path:new(config_path)
-    -- if p:exists() then
-    --     formatting_config = vim.json.decode(p:read())
-    -- end
-    --
-    -- local root = vim.fs.root(0, { "composer.json" })
-    -- if root == nil then
-    --     return nil
-    -- end
-    --
     local fd = vim.uv.fs_open(config_path, "r", 438)
+    if not fd then
+        return
+    end
     local stat = vim.uv.fs_fstat(fd)
     if stat == nil or stat.size == 0 then
         return
