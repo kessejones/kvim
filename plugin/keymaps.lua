@@ -70,9 +70,11 @@ nmap("<C-S-l>", ":tabmove+1<CR>", { desc = "Move tab next" })
 nmap("<C-S-h>", ":tabmove-1<CR>", { desc = "Move tab prev" })
 nmap("te", vim.cmd.tabedit, { desc = "Tab edit" })
 nmap("to", vim.cmd.tabonly, { desc = "Only tab" })
+nmap("tq", vim.cmd.tabclose, { desc = "Tab close" })
 
 -- Close/Quit Buffers
 nmap("<Leader>q", ":q<CR>", { desc = "Close current window" })
+nmap("<Leader>Q", ":q!<CR>", { desc = "Close Force current window" })
 nmap("<Leader>x", ":wq<CR>", { desc = "Save and close current window" })
 nmap("<Leader>z", ":qall<CR>", { desc = "Quit all" })
 
