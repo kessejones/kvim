@@ -101,12 +101,6 @@ function M.init()
             include_surrounding_whitespace = true,
         },
     })
-
-    vim.filetype.add({
-        pattern = {
-            [".*%.hurl.*"] = "hurl",
-        },
-    })
 end
 
 return M

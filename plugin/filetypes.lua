@@ -4,4 +4,7 @@ vim.filetype.add({
             return "sql"
         end,
     },
+    pattern = {
+        [".*%.hurl.*"] = "hurl",
+    },
 })
