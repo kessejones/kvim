@@ -33,35 +33,28 @@ nmap("<ESC>", function()
 end, { desc = "No highlight", expr = true })
 
 -- Resize window
-nmap("<C-w><C-k>", function()
+nmap("<C-s>k", function()
     vim.cmd.wincmd("5+")
 end)
 
-nmap("<C-w><C-j>", function()
+nmap("<C-s>j", function()
     vim.cmd.wincmd("5-")
 end)
 
-nmap("<C-w><C-h>", function()
+nmap("<C-s>h", function()
     vim.cmd.wincmd("5<")
 end)
 
-nmap("<C-w><C-l>", function()
+nmap("<C-s>l", function()
     vim.cmd.wincmd("5>")
 end)
 
-nmap("<C-w><C-r>", function()
+nmap("<C-s>r", function()
     vim.cmd.wincmd("=")
 end)
 
 -- Duplicate current line
-nmap("<Leader>y", function()
-    vim.cmd.yank()
-    vim.cmd.put()
-end, { desc = "Duplicate current line" })
-
--- Switch to v-line mode
-nmap("<Leader>v", "<S-V>", { desc = "Visual line mode" })
-nmap("<Leader>d", '"_d', { desc = "Delete current line without yank" })
+nmap("yp", '"zyy"zp', { desc = "Duplicate current line" })
 
 -- Tabs
 nmap("<C-l>", vim.cmd.tabnext, { desc = "Next tab" })
@@ -85,7 +78,7 @@ nmap("<Leader>fh", "<ESC>:%s/", { desc = "Substitute prompt" })
 nmap("x", '"_x', { desc = "Delete character without yank" })
 
 -- Select all and yank
-nmap("<Leader>ay", function()
+nmap("yA", function()
     local cursor = vim.api.nvim_win_get_cursor(0)
     vim.cmd.normal({ bang = true, args = { "ggVGy" } })
     vim.api.nvim_win_set_cursor(0, cursor)
