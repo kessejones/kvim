@@ -1,7 +1,7 @@
 return {
 
     "brenton-leighton/multiple-cursors.nvim",
-    event = "VeryLazy",
+    event = "BufRead",
     keys = {
         "<C-S-K>",
         "<C-S-J>",
