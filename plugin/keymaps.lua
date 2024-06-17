@@ -70,6 +70,9 @@ nmap("te", vim.cmd.tabedit, { desc = "Tab edit" })
 nmap("to", vim.cmd.tabonly, { desc = "Tab only current" })
 nmap("tq", vim.cmd.tabclose, { desc = "Tab close" })
 
+nmap("gK", vim.cmd.cprev, { desc = "Quickfix next" })
+nmap("gJ", vim.cmd.cnext, { desc = "Quickfix prev" })
+
 -- Close/Quit Buffers
 nmap("<Leader>q", ":q<CR>", { desc = "Close current window" })
 nmap("<Leader>Q", ":q!<CR>", { desc = "Close Force current window" })

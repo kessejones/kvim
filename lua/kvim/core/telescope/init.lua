@@ -29,6 +29,7 @@ function M.init()
                 "^code_coverage_html/",
                 "^%.phpunit%.cache/",
                 "^test/reports/",
+                "^tests/report/",
                 "^_build/",
                 "^build/",
                 "^deps/",
@@ -57,6 +58,7 @@ function M.init()
                     ["<C-h>"] = actions.file_split,
                     ["<C-v>"] = actions.file_vsplit,
                     ["<C-c>"] = actions.close,
+                    ["<C-g>"] = actions.toggle_selection,
                     ["<ESC>"] = actions.close,
                 },
                 n = {
