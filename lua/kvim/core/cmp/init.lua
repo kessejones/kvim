@@ -20,39 +20,38 @@ function M.init()
             end,
         },
         mapping = {
-            ["<C-u>"] = cmp.mapping.scroll_docs(-4),
-            ["<C-d>"] = cmp.mapping.scroll_docs(4),
-            ["<S-Tab>"] = cmp.mapping(function(callback)
+            ["<C-u>"] = cmp.mapping(function()
                 if cmp.visible() then
-                    cmp.select_prev_item()
-                else
-                    callback()
+                    cmp.mapping.scroll_docs(-4)
                 end
             end, { "i" }),
-            ["<Tab>"] = cmp.mapping(function(callback)
+            ["<C-d>"] = cmp.mapping(function()
                 if cmp.visible() then
-                    cmp.select_next_item()
-                else
-                    callback()
+                    cmp.mapping.scroll_docs(4)
                 end
             end, { "i" }),
             ["<C-k>"] = cmp.mapping(function()
                 if cmp.visible() then
                     cmp.select_prev_item()
-                else
-                    cmp.complete()
                 end
             end, { "i", "c", "s" }),
             ["<C-j>"] = cmp.mapping(function()
                 if cmp.visible() then
                     cmp.select_next_item()
-                else
-                    cmp.complete()
                 end
             end, { "i", "c", "s" }),
             ["<CR>"] = cmp.mapping.confirm({
-                select = true,
+                select = false,
             }),
+            ["<C-y>"] = cmp.mapping(function()
+                if cmp.visible() then
+                    cmp.confirm({
+                        select = true,
+                    })
+                else
+                    cmp.complete()
+                end
+            end, { "i" }),
         },
         formatting = {
             format = lspkind.cmp_format({
@@ -120,7 +119,7 @@ function M.init()
         },
     })
 
-    cmp.setup.filetype({ "sql" }, {
+    cmp.setup.filetype({ "sql", "mysql" }, {
         sources = {
             { name = "vim-dadbod-completion" },
             { name = "buffer" },
