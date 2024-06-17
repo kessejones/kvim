@@ -56,13 +56,18 @@ end)
 -- Duplicate current line
 nmap("yp", '"zyy"zp', { desc = "Duplicate current line" })
 
+-- Enter in visual mode
+nmap("vv", "V", { desc = "Visual mode linewise" })
+nmap("vl", "v$", { desc = "Visual mode from current position to end of line" })
+nmap("vh", "v^", { desc = "Visual mode from current position to start of line " })
+
 -- Tabs
-nmap("<C-l>", vim.cmd.tabnext, { desc = "Next tab" })
-nmap("<C-h>", vim.cmd.tabprev, { desc = "Previous tab" })
-nmap("<C-S-l>", ":tabmove+1<CR>", { desc = "Move tab next" })
-nmap("<C-S-h>", ":tabmove-1<CR>", { desc = "Move tab prev" })
+nmap("<C-l>", vim.cmd.tabnext, { desc = "Tab next" })
+nmap("<C-h>", vim.cmd.tabprev, { desc = "Tab prev" })
+nmap("<C-S-l>", ":tabmove+1<CR>", { desc = "Tab move prev" })
+nmap("<C-S-h>", ":tabmove-1<CR>", { desc = "Tab move next" })
 nmap("te", vim.cmd.tabedit, { desc = "Tab edit" })
-nmap("to", vim.cmd.tabonly, { desc = "Only tab" })
+nmap("to", vim.cmd.tabonly, { desc = "Tab only current" })
 nmap("tq", vim.cmd.tabclose, { desc = "Tab close" })
 
 -- Close/Quit Buffers
@@ -159,3 +164,7 @@ end, { desc = "Resize right" })
 tmap("<C-w><C-r>", function()
     vim.cmd.wincmd("=")
 end, { desc = "Resize the same size" })
+
+tmap("<C-w>q", function()
+    vim.cmd.wincmd("q")
+end, { desc = "Window close" })
