@@ -58,8 +58,8 @@ nmap("yp", '"zyy"zp', { desc = "Duplicate current line" })
 
 -- Enter in visual mode
 nmap("vv", "V", { desc = "Visual mode linewise" })
-nmap("vl", "v$", { desc = "Visual mode from current position to end of line" })
-nmap("vh", "v^", { desc = "Visual mode from current position to start of line " })
+nmap("vgl", "v$", { desc = "Visual mode from current position to end of line" })
+nmap("vgh", "v^", { desc = "Visual mode from current position to start of line " })
 
 -- Tabs
 nmap("<C-l>", vim.cmd.tabnext, { desc = "Tab next" })
