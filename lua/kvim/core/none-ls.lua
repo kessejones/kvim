@@ -30,7 +30,6 @@ function M.init()
             }),
             formatting.alejandra,
             formatting.ocamlformat,
-            diagnostics.todo_comments,
             diagnostics.phpcs.with({
                 args = {
                     "--standard=PSR12",
