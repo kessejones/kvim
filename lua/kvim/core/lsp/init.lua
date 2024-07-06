@@ -1,6 +1,7 @@
 local keymap = require("kvim.utils.keymap")
 local nmap = keymap.nmap
 local vmap = keymap.vmap
+local imap = keymap.imap
 local lspconfig = require("lspconfig")
 local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
@@ -84,6 +85,10 @@ local function init_servers()
         nmap("K", function()
             vim.lsp.buf.hover()
         end, { desc = "Display hover information about the symbol ", buffer = bufnr })
+
+        imap("<C-g>", function()
+            vim.lsp.buf.signature_help()
+        end, { desc = "Displays signature information about the symbol", buffer = bufnr })
 
         nmap("gs", function()
             vim.lsp.buf.signature_help()

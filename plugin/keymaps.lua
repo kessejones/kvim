@@ -73,6 +73,9 @@ nmap("tq", vim.cmd.tabclose, { desc = "Tab close" })
 nmap("gK", vim.cmd.cprev, { desc = "Quickfix next" })
 nmap("gJ", vim.cmd.cnext, { desc = "Quickfix prev" })
 
+nmap("go", vim.cmd.pop, { desc = "Jump to older entry in tag stack" })
+nmap("gi", vim.cmd.tag, { desc = "JUmp to newer entry in tag stack" })
+
 -- Close/Quit Buffers
 nmap("<Leader>q", ":q<CR>", { desc = "Close current window" })
 nmap("<Leader>Q", ":q!<CR>", { desc = "Close Force current window" })

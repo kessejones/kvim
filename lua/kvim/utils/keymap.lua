@@ -41,6 +41,10 @@ function M.map(mode, key, action, opts)
     vim.keymap.set(mode, key, action, opts)
 end
 
+function M.imap(key, action, opts)
+    M.map("i", key, action, opts)
+end
+
 function M.nmap(key, action, opts)
     M.map("n", key, action, opts)
 end

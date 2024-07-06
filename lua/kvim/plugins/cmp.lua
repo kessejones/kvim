@@ -7,7 +7,6 @@ return {
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-cmdline",
         "SergioRibera/cmp-dotenv",
-        "hrsh7th/cmp-nvim-lsp-signature-help",
         {
             "zbirenbaum/copilot-cmp",
             config = function()
