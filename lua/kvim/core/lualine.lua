@@ -43,6 +43,11 @@ local searchcount = {
     color = { bg = colors.red, fg = colors.base, gui = "bold" },
 }
 
+local selectioncount = {
+    "selectioncount",
+    color = { bg = colors.mauve, fg = colors.base, gui = "bold" },
+}
+
 function M.init()
     lualine.setup({
         options = {
@@ -60,7 +65,7 @@ function M.init()
             lualine_a = { "mode" },
             lualine_b = { "branch", diff },
             lualine_c = { filename },
-            lualine_x = { searchcount },
+            lualine_x = { searchcount, selectioncount },
             lualine_y = { diagnostics },
             lualine_z = { filetype, location },
         },
