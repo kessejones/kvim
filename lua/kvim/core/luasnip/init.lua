@@ -12,6 +12,7 @@ function M.init()
     })
 
     loader.load({ paths = { "./lua/kvim/core/luasnip/snippets" } })
+    ls.filetype_extend("mysql", { "sql" })
 
     map({ "i", "s" }, "<c-n>", function()
         if ls.expand_or_jumpable() then
