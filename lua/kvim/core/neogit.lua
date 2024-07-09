@@ -5,6 +5,7 @@ local M = {}
 
 function M.init()
     neogit.setup({
+        console_timeout = 5000,
         disable_hint = true,
         auto_show_console = false,
         integrations = {
