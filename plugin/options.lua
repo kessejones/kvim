@@ -28,6 +28,7 @@ opt.undodir = vim.env.HOME .. "/.cache/nvim/undodir"
 opt.termguicolors = true
 opt.foldmethod = "indent"
 opt.foldlevel = 99
+opt.cmdheight = 0
 
 opt.shortmess:append("c")
 opt.listchars:append("eol:↴")
