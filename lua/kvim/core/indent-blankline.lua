@@ -5,7 +5,7 @@ local M = {}
 function M.init()
     indent_blankline.setup({
         indent = {
-            tab_char = " ",
+            tab_char = "▎",
         },
         scope = {
             enabled = true,
