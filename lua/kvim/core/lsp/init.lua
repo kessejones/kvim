@@ -78,7 +78,19 @@ local function init_servers()
         emmet_ls = {},
         ocamllsp = {},
         nushell = {},
-        zls = {},
+        zls = function(_server)
+            vim.g.zig_fmt_parse_errors = 0
+            vim.g.zig_fmt_autosave = 0
+            return {
+                settings = {
+                    zls = {
+                        enable_inline_hints = true,
+                        enable_snippets = true,
+                        warn_style = true,
+                    },
+                },
+            }
+        end,
     }
 
     local function map_keys(bufnr)
@@ -172,6 +184,10 @@ local function init_servers()
 
     local capabilities = cmp_nvim_lsp.default_capabilities()
     for server, config in pairs(servers) do
+        if type(config) == "function" then
+            config = config(server)
+        end
+
         config["on_attach"] = on_attach
         config["capabilities"] = capabilities
 
