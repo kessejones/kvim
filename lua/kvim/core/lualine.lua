@@ -5,7 +5,7 @@ local M = {}
 
 local filename = {
     "filename",
-    file_status = false,
+    file_status = true,
     path = 0,
     color = { bg = colors.mantle, fg = colors.text, gui = "italic" },
 }

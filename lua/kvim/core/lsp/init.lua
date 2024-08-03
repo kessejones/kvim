@@ -134,7 +134,7 @@ local function init_servers()
             vim.diagnostic.open_float()
         end, { desc = "Show diagnostic in float window", buffer = bufnr })
 
-        nmap("<Leader>ff", function()
+        nmap("gf", function()
             vim.lsp.buf.format({ async = true })
         end, { desc = "Format code", buffer = bufnr })
 
@@ -148,13 +148,13 @@ local function init_servers()
             end
         end, { desc = "Toggle format on save", buffer = bufnr })
 
-        vmap("<Leader>ff", function()
+        vmap("gf", function()
             vim.lsp.buf.format({
                 mode = "v",
             })
         end, { desc = "Format code", buffer = bufnr })
 
-        vmap("<Leader>ga", function()
+        vmap("ga", function()
             vim.lsp.buf.code_action({
                 mode = "v",
             })
