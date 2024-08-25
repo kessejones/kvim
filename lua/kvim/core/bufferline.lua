@@ -13,32 +13,28 @@ function M.init()
             show_close_icon = false,
             show_buffer_close_icons = false,
             show_tab_indicators = false,
-            show_buffer_icons = false,
+            show_buffer_icons = true,
             truncate_names = false,
             modified_icon = "",
             custom_filter = function(buf_number, _buf_numbers)
-                if not vim.bo[buf_number].buflisted then
-                    return false
-                end
-
-                return true
+                return vim.bo[buf_number].buflisted
             end,
             name_formatter = function(buf)
-                if buf.name == "[No Name]" and #buf.buffers == 1 then
-                    return buf.name
+                local tbl = {}
+                table.insert(tbl, buf.name)
+
+                if #buf.buffers > 1 then
+                    table.insert(tbl, string.format("(%d)", #buf.buffers))
                 end
-
-                local result = {}
+                -- NOTE: custom modification indicator for all buffers in this tabpage
                 for _, bufnr in ipairs(buf.buffers) do
-                    if vim.bo[bufnr].buflisted then
-                        local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(bufnr), ":t")
-
-                        filename = vim.bo[bufnr].modified and filename .. " [+]" or filename
-                        table.insert(result, filename)
+                    if vim.bo[bufnr].modified then
+                        table.insert(tbl, "[+]")
+                        break
                     end
                 end
 
-                return table.concat(result, " | ")
+                return table.concat(tbl, " ")
             end,
         },
         highlights = {
