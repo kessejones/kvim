@@ -1,5 +1,6 @@
 return {
     "akinsho/git-conflict.nvim",
+    event = { "BufReadPre" },
     keys = {
         "<Leader>gq",
     },
