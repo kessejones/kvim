@@ -48,7 +48,7 @@ local function init_servers()
                 },
             },
         },
-        tsserver = {},
+        ts_ls = {},
         rust_analyzer = {},
         dockerls = {},
         yamlls = {},
@@ -91,6 +91,8 @@ local function init_servers()
                 },
             }
         end,
+
+        kulala_ls = {},
     }
 
     local function map_keys(bufnr)
