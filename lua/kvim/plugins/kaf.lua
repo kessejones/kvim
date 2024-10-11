@@ -11,7 +11,7 @@ return {
         nmap("<Leader>ee", telescope.extensions.kaf.clients)
         nmap("<Leader>el", telescope.extensions.kaf.messages)
         nmap("<Leader>ep", function()
-            require("kaf.api").produce({ from_buffer = false })
+            require("kaf.api").produce({ value_from_buffer = true })
         end)
     end,
 }
