@@ -1,6 +1,10 @@
 return {
     "j-hui/fidget.nvim",
     config = function()
-        vim.notify = require("fidget").notify
+        local fidget = require("fidget")
+
+        fidget.setup()
+
+        vim.notify = fidget.notify
     end,
 }
