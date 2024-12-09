@@ -9,11 +9,17 @@ return {
             "chrisgrieser/nvim-various-textobjs",
             config = function()
                 require("various-textobjs").setup({
-                    lookForwardSmall = 5,
-                    lookForwardBig = 15,
-                    useDefaultKeymaps = true,
-                    disabledKeymaps = {},
-                    notifyNotFound = true,
+                    forwardLooking = {
+                        small = 5,
+                        big = 15,
+                    },
+                    notify = {
+                        whenNotFound = true,
+                    },
+                    keymaps = {
+                        useDefaultKeymaps = true,
+                        disabledKeymaps = false,
+                    },
                 })
             end,
         },
