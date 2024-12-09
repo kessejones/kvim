@@ -10,9 +10,14 @@ function M.init()
             "hurl.env",
             ".env",
         },
+        verbose = false,
+        debug = false,
         split_position = "left",
         auto_close = false,
         show_notification = true,
+        mappings = {
+            close = "q",
+        },
     })
 
     vim.api.nvim_create_augroup("Hurl", { clear = true })
