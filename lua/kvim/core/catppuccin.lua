@@ -3,6 +3,21 @@ local M = {}
 function M.init()
     require("catppuccin").setup({
         flavour = "mocha",
+        no_italic = false,
+        styles = {
+            comments = { "italic" },
+            conditionals = {},
+            loops = {},
+            functions = {},
+            keywords = { "italic" },
+            strings = {},
+            variables = {},
+            numbers = {},
+            booleans = { "italic" },
+            properties = {},
+            types = {},
+            operators = {},
+        },
         custom_highlights = function(colors)
             return {
                 FloatBorder = { fg = colors.blue, bg = colors.base },
