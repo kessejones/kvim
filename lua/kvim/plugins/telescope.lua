@@ -5,6 +5,7 @@ return {
         "<C-p>",
         "<Leader>p",
         "<Leader>fl",
+        "<Leader>fe",
         "<Leader>fb",
         "<Leader>fd",
         "<Leader>fr",

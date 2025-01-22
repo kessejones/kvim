@@ -123,6 +123,7 @@ function M.init()
     nmap("<Leader>fl", builtin.live_grep, { desc = "Live grep" })
     nmap("<Leader>fb", builtin.buffers, { desc = "Find Buffers" })
     nmap("<Leader>fd", builtin.diagnostics, { desc = "Find references (LSP)" })
+    nmap("<Leader>fe", builtin.lsp_document_symbols, { desc = "Lsp document symbols" })
     nmap("<Leader>fp", builtin.commands, { desc = "Find Command" })
     nmap("<Leader>fz", builtin.resume, { desc = "Resume telescope prompt" })
 
