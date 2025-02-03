@@ -93,6 +93,7 @@ local function init_servers()
         end,
 
         kulala_ls = {},
+        ruby_lsp = {},
     }
 
     local function map_keys(bufnr)
@@ -163,15 +164,18 @@ local function init_servers()
         end, { desc = "Open code actions", buffer = bufnr })
 
         nmap("gI", function()
-            require("kvim.core.telescope.custom").lsp_implementations()
+            -- require("kvim.core.telescope.custom").lsp_implementations()
+            require("snacks").picker.lsp_implementations()
         end, { desc = "Telescope find implementations", buffer = bufnr })
 
         nmap("gr", function()
-            require("telescope.builtin").lsp_references()
+            -- require("telescope.builtin").lsp_references()
+            require("snacks").picker.lsp_references()
         end, { desc = "Telescope find references", buffer = bufnr })
 
         nmap("gu", function()
-            require("telescope.builtin").diagnostics()
+            -- require("telescope.builtin").diagnostics()
+            require("snacks").picker.diagnostics()
         end, { desc = "Telescope find diagnostics", buffer = bufnr })
     end
 

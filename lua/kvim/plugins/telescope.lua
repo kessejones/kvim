@@ -1,8 +1,9 @@
 return {
     "nvim-telescope/telescope.nvim",
     cmd = { "Telescope" },
+    enabled = false,
     keys = {
-        "<C-p>",
+        -- "<C-p>",
         "<Leader>p",
         "<Leader>fl",
         "<Leader>fe",

@@ -28,7 +28,10 @@ function M.init()
                 WinSeparator = { fg = colors.blue },
                 Breakpoint = { fg = colors.red },
                 IncSearch = { bg = colors.lavender },
-                IblScope = { fg = colors.overlay1 },
+                IblScope = { fg = colors.surface2 },
+                KvimScope = { fg = colors.surface2 },
+                KvimChunk = { fg = colors.overlay0 },
+                KvimIdent = { fg = colors.surface0 },
             }
         end,
     })
