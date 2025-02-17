@@ -10,6 +10,9 @@ nmap("<Space>", "<NOP>", { desc = "Do anything" })
 
 nmap("<Leader>w", vim.cmd.write, { desc = "Save file" })
 
+nmap("<C-u>", "<C-u>zz", { desc = "Scroll window upwards in the buffer" })
+nmap("<C-d>", "<C-d>zz", { desc = "Scroll window downwards in the buffer" })
+
 nmap("k", function()
     if vim.v.count == 0 then
         return "gk"

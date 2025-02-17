@@ -47,6 +47,11 @@ function M.init()
             matcher = {
                 fuzzy = false,
             },
+            layout = {
+                layout = {
+                    backdrop = false,
+                },
+            },
             win = {
                 input = {
                     keys = {
