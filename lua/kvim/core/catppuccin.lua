@@ -31,7 +31,9 @@ function M.init()
                 IblScope = { fg = colors.surface2 },
                 KvimScope = { fg = colors.surface2 },
                 KvimChunk = { fg = colors.overlay0 },
-                KvimIdent = { fg = colors.surface0 },
+                KvimIndent = { fg = colors.surface0 },
+                BlinkCmpMenu = { bg = colors.base },
+                BlinkCmpMenuBorder = { fg = colors.blue, bg = colors.base },
             }
         end,
     })

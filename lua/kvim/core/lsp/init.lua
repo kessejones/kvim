@@ -3,7 +3,6 @@ local nmap = keymap.nmap
 local vmap = keymap.vmap
 local imap = keymap.imap
 local lspconfig = require("lspconfig")
-local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
 local a = vim.api
 
@@ -39,7 +38,8 @@ local function init_servers()
                     workspace = {
                         checkThirdParty = false,
                         library = {
-                            unpack(vim.api.nvim_get_runtime_file("", true)),
+                            vim.env.VIMRUNTIME,
+                            "${3rd}/luv/library",
                         },
                     },
                     telemetry = {
@@ -152,43 +152,35 @@ local function init_servers()
         end, { desc = "Toggle format on save", buffer = bufnr })
 
         vmap("gf", function()
-            vim.lsp.buf.format({
-                mode = "v",
-            })
+            vim.lsp.buf.format({ mode = "v" })
         end, { desc = "Format code", buffer = bufnr })
 
         vmap("ga", function()
-            vim.lsp.buf.code_action({
-                mode = "v",
-            })
+            vim.lsp.buf.code_action({ mode = "v" })
         end, { desc = "Open code actions", buffer = bufnr })
 
         nmap("gI", function()
-            -- require("kvim.core.telescope.custom").lsp_implementations()
             require("snacks").picker.lsp_implementations()
-        end, { desc = "Telescope find implementations", buffer = bufnr })
+        end, { desc = "Fuzzy find implementations", buffer = bufnr })
 
         nmap("gr", function()
-            -- require("telescope.builtin").lsp_references()
             require("snacks").picker.lsp_references()
-        end, { desc = "Telescope find references", buffer = bufnr })
+        end, { desc = "Fuzzy find references", buffer = bufnr })
 
         nmap("gu", function()
-            -- require("telescope.builtin").diagnostics()
             require("snacks").picker.diagnostics()
-        end, { desc = "Telescope find diagnostics", buffer = bufnr })
+        end, { desc = "Fuzzy find diagnostics", buffer = bufnr })
     end
 
     a.nvim_create_augroup("LspDocumentHighlight", { clear = true })
     local on_attach = function(client, bufnr)
         map_keys(bufnr)
-        vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
 
         require("kvim.core.lsp.formatting").init(vim.bo[bufnr].filetype)
         init_highlight(client, bufnr)
     end
 
-    local capabilities = cmp_nvim_lsp.default_capabilities()
+    local capabilities = require("blink.cmp").get_lsp_capabilities(vim.lsp.protocol.make_client_capabilities())
     for server, config in pairs(servers) do
         if type(config) == "function" then
             config = config(server)

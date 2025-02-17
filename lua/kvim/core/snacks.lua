@@ -16,11 +16,12 @@ function M.init()
 
     snacks.setup({
         notifier = { enabled = true },
+        scope = { enabled = true },
         indent = {
             enabled = true,
             indent = {
                 enabled = true,
-                hl = "KvimIdent",
+                hl = "KvimIndent",
             },
             scope = {
                 enabled = false,
@@ -71,8 +72,6 @@ function M.init()
             preset = {
                 header = header,
                 keys = {
-                    -- { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
-                    --      { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
                     {
                         icon = " ",
                         desc = "New Buffer",
@@ -125,9 +124,7 @@ function M.init()
             ignored = true,
             exclude = finder_ignore,
             frecency = true,
-            on_show = function(picker)
-                picker:toggle_preview(false)
-            end,
+            preview = nil,
             layout = {
                 layout = {
                     box = "horizontal",
@@ -165,7 +162,12 @@ function M.init()
     end)
 
     nmap("<Leader>fp", function()
-        snacks.picker.files()
+        snacks.picker.files({
+            hidden = true,
+            ignored = true,
+            exclude = finder_ignore,
+            frecency = true,
+        })
     end)
 
     nmap("<Leader>fl", function()
@@ -190,6 +192,10 @@ function M.init()
 
     nmap("<Leader>fw", function()
         snacks.picker.grep_word()
+    end)
+
+    nmap("<Leader>fr", function()
+        snacks.picker.registers()
     end)
 
     nmap("<Leader>fg", function()
