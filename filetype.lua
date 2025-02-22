@@ -6,6 +6,9 @@ vim.filetype.add({
         http = function()
             return "http"
         end,
+        kes = function()
+            return "kes"
+        end,
     },
     pattern = {
         [".*%.hurl.*"] = "hurl",

@@ -55,8 +55,8 @@ function M.init()
             win = {
                 input = {
                     keys = {
-                        ["<Esc>"] = { "close", mode = "i" },
-                        ["<C-e>"] = { "edit_tab", mode = "i" },
+                        ["<Esc>"] = { "close", mode = { "i", "n" } },
+                        ["<C-e>"] = { "tab", mode = { "n", "i" } },
 
                         ["<S-C-U>"] = { "preview_scroll_up", mode = { "i", "n" } },
                         ["<S-C-D>"] = { "preview_scroll_down", mode = { "i", "n" } },
@@ -132,6 +132,7 @@ function M.init()
             preview = nil,
             layout = {
                 layout = {
+                    backdrop = false,
                     box = "horizontal",
                     width = 0.5,
                     height = 0.5,
