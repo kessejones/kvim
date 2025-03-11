@@ -117,6 +117,34 @@ function M.init()
     local finder_ignore = {
         ".zig-cache",
         "zig-cache",
+        "zig-out",
+        ".git[\\/]*",
+        ".jj[\\/]*",
+        ".vscode[\\/]*",
+        ".idea[\\/]*",
+        "vendor[\\/]*",
+        "node_modules[\\/]*",
+        "target[\\/]*",
+        "coverage[\\/]*",
+        "code_coverage_html[\\/]*",
+        ".phpunit.cache",
+        "test[\\/]reports[\\/]*",
+        "tests[\\/]report[\\/]*",
+        "_build[\\/]*",
+        "build[\\/]*",
+        "Build[\\/]*",
+        "Toolchain",
+        "deps[\\/]*",
+        ".elixir_ls",
+        ".DS_Store",
+        "*.o",
+        "*.so",
+        "*.mp4",
+        "*.jpg",
+        "*.jpeg",
+        "*.png",
+        "*.webp",
+        "*.db",
     }
 
     nmap("<leader>rN", function()
@@ -134,8 +162,8 @@ function M.init()
                 layout = {
                     backdrop = false,
                     box = "horizontal",
-                    width = 0.5,
-                    height = 0.5,
+                    width = 0.8,
+                    height = 0.8,
                     {
                         box = "vertical",
                         border = "rounded",
@@ -153,8 +181,8 @@ function M.init()
             layout = {
                 layout = {
                     box = "horizontal",
-                    width = 0.5,
-                    height = 0.5,
+                    width = 0.8,
+                    height = 0.8,
                     {
                         box = "vertical",
                         border = "rounded",
