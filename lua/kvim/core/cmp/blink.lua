@@ -26,6 +26,12 @@ function M.init()
             nerd_font_variant = "mono",
         },
 
+        fuzzy = {
+            implementation = "prefer_rust_with_warning",
+            use_frecency = true,
+            use_proximity = true,
+        },
+
         completion = {
             accept = { auto_brackets = { enabled = false } },
             ghost_text = {
@@ -37,7 +43,16 @@ function M.init()
                     preselect = false,
                 },
             },
-            menu = { border = "rounded" },
+            menu = {
+                border = "rounded",
+                draw = {
+                    columns = {
+                        { "kind_icon" },
+                        { "label", "label_description", gap = 1 },
+                        { "kind" },
+                    },
+                },
+            },
             documentation = {
                 window = { border = "rounded" },
                 auto_show = true,
