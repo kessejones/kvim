@@ -69,10 +69,10 @@ end
 
 ---@diagnostic disable: undefined-global
 return {
-    s(".ns", fmt("namespace {ns};", { ns = extras.partial(snip_namespace) })),
+    s("@ns", fmt("namespace {ns};", { ns = extras.partial(snip_namespace) })),
 
     s(
-        ".class",
+        "@class",
         fmt("<?php\n\nnamespace {ns};\n\nclass {name}\n{{\n\t{todo}\n}}", {
             ns = extras.partial(snip_namespace),
             name = extras.partial(snip_classname),
@@ -80,16 +80,16 @@ return {
         })
     ),
 
-    s(".class", fmt("class {class}\n{{\n\n}}", { class = extras.partial(snip_classname) })),
+    s("@class", fmt("class {class}\n{{\n\n}}", { class = extras.partial(snip_classname) })),
     s(
-        ".class",
+        "@class",
         fmt(
             "class {name} extends {parent}\n{{\n\n}}",
             { name = extras.partial(snip_classname), parent = i(2, "Parent") }
         )
     ),
     s(
-        ".class",
+        "@class",
         fmt("class {name} extends {parent} implements {interface}\n{{\n\n}}", {
             name = extras.partial(snip_classname),
             parent = i(2, "Parent"),
@@ -98,7 +98,7 @@ return {
     ),
 
     s(
-        ".interface",
+        "@interface",
         fmt(
             "<?php\n\nnamespace {ns};\n\ninterface {name}\n{{\n\n}}",
             { ns = extras.partial(snip_namespace), name = extras.partial(snip_classname) }
@@ -106,7 +106,7 @@ return {
     ),
 
     s(
-        ".enum",
+        "@enum",
         fmt("<?php\n\nnamespace {ns};\n\nenum {name}\n{{\n\tcase {variant};\n}}", {
             ns = extras.partial(snip_namespace),
             name = extras.partial(snip_classname),
@@ -114,7 +114,7 @@ return {
         })
     ),
 
-    s(".toarray", fmt("public function toArray(): array\n{{\n\treturn [\n\t\t{value}\n\t];\n}}", { value = i(1) })),
-    s(".tostring", fmt('public function toString(): string\n{{\n\treturn "{value}";\n}}', { value = i(1) })),
-    s(".new", fmt("public function __construct()\n{{\n\t{todo}\n}}", { todo = i(1) })),
+    s("@toarray", fmt("public function toArray(): array\n{{\n\treturn [\n\t\t{value}\n\t];\n}}", { value = i(1) })),
+    s("@tostring", fmt('public function toString(): string\n{{\n\treturn "{value}";\n}}', { value = i(1) })),
+    s("@new", fmt("public function __construct()\n{{\n\t{todo}\n}}", { todo = i(1) })),
 }
