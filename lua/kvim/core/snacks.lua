@@ -130,6 +130,7 @@ function M.init()
         ".phpunit.cache",
         "test[\\/]reports[\\/]*",
         "tests[\\/]report[\\/]*",
+        "tests[\\/]reports[\\/]*",
         "_build[\\/]*",
         "build[\\/]*",
         "Build[\\/]*",
