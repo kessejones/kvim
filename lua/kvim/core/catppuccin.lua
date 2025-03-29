@@ -20,12 +20,12 @@ function M.init()
         },
         custom_highlights = function(colors)
             return {
-                FloatBorder = { fg = colors.blue, bg = colors.base },
+                FloatBorder = { fg = colors.lavender, bg = colors.base },
                 HarpoonBorder = { fg = colors.blue, bg = colors.base },
                 TermBorder = { link = "FloatBorder" },
                 NormalFloat = { fg = colors.text, bg = colors.base },
                 TelescopeBorder = { link = "FloatBorder" },
-                WinSeparator = { fg = colors.blue },
+                WinSeparator = { fg = colors.lavender },
                 Breakpoint = { fg = colors.red },
                 IncSearch = { bg = colors.lavender },
                 IblScope = { fg = colors.surface2 },
@@ -33,7 +33,7 @@ function M.init()
                 KvimChunk = { fg = colors.overlay0 },
                 KvimIndent = { fg = colors.surface0 },
                 BlinkCmpMenu = { bg = colors.base },
-                BlinkCmpMenuBorder = { fg = colors.blue, bg = colors.base },
+                BlinkCmpMenuBorder = { fg = colors.lavender, bg = colors.base },
             }
         end,
     })

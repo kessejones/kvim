@@ -1,5 +1,6 @@
 local opt = vim.opt
 
+opt.winborder = "rounded"
 opt.smartcase = true
 opt.backup = false
 opt.writebackup = false

@@ -20,6 +20,21 @@ function M.init()
             ["<C-y>"] = { "show", "select_and_accept", "fallback" },
             ["<C-l>"] = { "show_signature", "hide_signature", "fallback" },
         },
+
+        cmdline = {
+            enabled = true,
+            completion = {
+                menu = { auto_show = true },
+            },
+            keymap = {
+                ["<C-c>"] = { "cancel", "fallback" },
+                ["<ESC>"] = { "cancel", "fallback" },
+                ["<C-j>"] = { "select_next", "fallback" },
+                ["<C-k>"] = { "select_prev", "fallback" },
+                ["<C-y>"] = { "show", "select_and_accept", "fallback" },
+            },
+        },
+
         snippets = { preset = "luasnip" },
         appearance = {
             use_nvim_cmp_as_default = true,
@@ -30,6 +45,13 @@ function M.init()
             implementation = "prefer_rust_with_warning",
             use_frecency = true,
             use_proximity = true,
+
+            sorts = {
+                "exact",
+                -- defaults
+                "score",
+                "sort_text",
+            },
         },
 
         completion = {

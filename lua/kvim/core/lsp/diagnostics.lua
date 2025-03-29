@@ -3,9 +3,9 @@ local M = {}
 function M.init()
     local signs = {
         { name = "DiagnosticSignError", text = "" },
-        { name = "DiagnosticSignWarn",  text = "" },
-        { name = "DiagnosticSignHint",  text = "" },
-        { name = "DiagnosticSignInfo",  text = "" },
+        { name = "DiagnosticSignWarn", text = "" },
+        { name = "DiagnosticSignHint", text = "" },
+        { name = "DiagnosticSignInfo", text = "" },
     }
 
     for _, sign in ipairs(signs) do
@@ -14,17 +14,9 @@ function M.init()
 
     local config = {
         virtual_text = true,
-        signs = {
-            active = signs,
-        },
-        update_in_insert = true,
-        underline = true,
-        severity_sort = true,
+        signs = { active = signs },
         float = {
             focusable = false,
-            style = "minimal",
-            border = "rounded",
-            source = "always",
             header = "",
             prefix = "",
         },

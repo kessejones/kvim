@@ -1,5 +1,4 @@
 local nmap = require("kvim.utils.keymap").nmap
-local util = require("lspconfig.util")
 
 local M = {}
 
@@ -12,8 +11,8 @@ local function find_pattern_root()
         "mix.exs",
         "flake.nix",
     }
-    local fname = vim.fn.expand("%:p")
-    return util.root_pattern(patterns)(fname) or vim.fn.getcwd()
+
+    return vim.fs.root(0, patterns)
 end
 
 function M.init()
