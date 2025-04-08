@@ -75,6 +75,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
         local client = vim.lsp.get_client_by_id(args.data.client_id)
         local ft = vim.bo[args.buf].filetype
 
+        ---@diagnostic disable-next-line
+        if client.supports_method(vim.lsp.protocol.Methods.textDocument_foldingRange) then
+            local win = vim.api.nvim_get_current_win()
+            vim.wo[win].foldexpr = "v:lua.vim.lsp.foldexpr()"
+        end
+
         lsp_formatting.init(ft)
         lsp_highlight.init(client, args.buf)
 

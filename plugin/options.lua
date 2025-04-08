@@ -27,9 +27,14 @@ opt.showmode = false
 opt.undofile = true
 opt.undodir = vim.env.HOME .. "/.cache/nvim/undodir"
 opt.termguicolors = true
+opt.cmdheight = 0
+
 opt.foldmethod = "indent"
 opt.foldlevel = 99
-opt.cmdheight = 0
+opt.foldenable = true
+opt.foldtext = ""
+opt.foldcolumn = "0"
+opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 
 opt.shortmess:append("c")
 opt.listchars:append("eol:↴")
