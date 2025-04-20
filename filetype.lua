@@ -12,5 +12,6 @@ vim.filetype.add({
     },
     pattern = {
         [".*%.hurl.*"] = "hurl",
+        [".*/%.config/ghostty/config"] = "ini",
     },
 })
