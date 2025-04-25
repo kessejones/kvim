@@ -1,5 +1,3 @@
-local popup = require("plenary.popup")
-
 local M = {}
 
 local function default(value, default_value)
@@ -22,22 +20,18 @@ function M.input(opts, on_confirm)
     width = default(opts.win_opts.width, math.floor(vim.o.columns / 2))
     height = default(opts.win_opts.height, 1)
 
-    line = default(opts.win_opts.line, (vim.o.lines - height - vim.opt.cmdheight:get()) / 2)
-    col = default(opts.win_opts.col, (vim.o.columns - width) / 2)
-
     local buf = vim.api.nvim_create_buf(false, true)
     vim.bo[buf].buftype = "prompt"
     vim.bo[buf].filetype = "KvimInput"
 
-    local win_id = popup.create(buf, {
-        line = line,
+    local win_id = vim.api.nvim_open_win(buf, true, {
+        relative = "cursor",
+        row = line + 1,
         col = col,
-        minwidth = width,
+        width = width,
         height = height,
-        border = true,
-        borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
-        borderhighlight = "FloatBorder",
-        padding = {},
+        style = "minimal",
+        border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
         zindex = 10,
         title = opts.prompt,
     })
@@ -82,66 +76,8 @@ function M.rename(opts, on_confirm)
     M.input(opts, on_confirm)
 end
 
-function M.select(items, opts, on_choise)
-    opts = opts or {}
-
-    local skip_lines = 3
-    local width = math.floor(vim.o.columns * 0.6)
-    local height = math.floor(0.4 * (vim.o.lines - skip_lines))
-
-    local col = (vim.o.columns - width) / 2
-    local line = ((vim.o.lines - skip_lines - height) / 2)
-
-    local buf = vim.api.nvim_create_buf(false, true)
-    local win_id = popup.create(buf, {
-        line = line,
-        col = col,
-        minwidth = width,
-        minheight = height,
-        border = true,
-        borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
-        borderhighlight = "FloatBorder",
-        padding = {},
-        zindex = 10,
-        title = opts.prompt,
-        cursorline = true,
-    })
-
-    vim.wo[win_id].number = false
-    vim.wo[win_id].relativenumber = false
-    vim.bo[buf].filetype = "KvimSelect"
-
-    local formatted_items = vim.deepcopy(items)
-    if opts.format_item and type(opts.format_item) == "function" then
-        formatted_items = vim.tbl_map(function(item)
-            return opts.format_item(item)
-        end, formatted_items or {})
-    end
-
-    vim.api.nvim_buf_set_lines(buf, 0, -1, false, formatted_items)
-    vim.bo[buf].modifiable = false
-
-    local close_window = function()
-        vim.api.nvim_win_close(win_id, true)
-        vim.api.nvim_buf_delete(buf, { force = true })
-    end
-
-    vim.keymap.set({ "n" }, "<ESC>", close_window, { buffer = buf, silent = true })
-
-    vim.keymap.set({ "n" }, "<CR>", function()
-        local cursor = vim.api.nvim_win_get_cursor(0)
-        local idx = cursor[1]
-
-        close_window()
-        if on_choise and type(on_choise) == "function" then
-            on_choise(items[idx], idx)
-        end
-    end, { buffer = buf, silent = true })
-end
-
 function M.init()
     vim.ui.input = M.input
-    vim.ui.select = M.select
     vim.ui.rename = M.rename
 end
 
