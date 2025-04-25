@@ -44,8 +44,11 @@ function M.init()
         },
         picker = {
             enabled = true,
+            ui_select = true,
             matcher = {
                 fuzzy = false,
+                frecency = true,
+                history_bonus = true,
             },
             layout = {
                 layout = {
@@ -157,8 +160,11 @@ function M.init()
             hidden = true,
             ignored = true,
             exclude = finder_ignore,
-            frecency = true,
             preview = nil,
+            matcher = {
+                sort_empty = true,
+                frecency = true,
+            },
             layout = {
                 layout = {
                     backdrop = false,
