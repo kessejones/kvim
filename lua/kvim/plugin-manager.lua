@@ -24,6 +24,7 @@ function M.load()
     require("lazy").setup("kvim.plugins", {
         ui = {
             border = "rounded",
+            backdrop = 100,
         },
         change_detection = {
             enabled = false,
