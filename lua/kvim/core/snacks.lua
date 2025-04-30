@@ -109,6 +109,9 @@ function M.init()
                     cwd = true,
                     indent = 2,
                     padding = 2,
+                    filter = function(file)
+                        return not file:find("/%.git/")
+                    end,
                 },
                 { icon = " ", title = "Projects", section = "projects", indent = 2, padding = 2 },
                 { section = "keys", padding = 2 },
