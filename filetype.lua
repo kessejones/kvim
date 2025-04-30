@@ -12,6 +12,8 @@ vim.filetype.add({
     },
     pattern = {
         [".*%.hurl.*"] = "hurl",
-        [".*/%.config/ghostty/config"] = "ini",
+        [".*/%.config/ghostty/config"] = "ghostty",
     },
 })
+
+vim.treesitter.language.register("ini", "ghostty")
