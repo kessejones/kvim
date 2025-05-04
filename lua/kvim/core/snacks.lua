@@ -11,8 +11,20 @@ local header = [[
 ╚═╝  ╚═╝    ╚═══╝  ╚═╝╚═╝     ╚═╝
 ]]
 
+local function get_root_dir()
+    local snacks = require("snacks")
+
+    local git_dir = snacks.git.get_root()
+    if not git_dir then
+        return vim.fn.getcwd()
+    end
+    return git_dir
+end
+
 function M.init()
     local snacks = require("snacks")
+
+    local root_dir = get_root_dir()
 
     snacks.setup({
         notifier = { enabled = true },
@@ -110,7 +122,7 @@ function M.init()
                     indent = 2,
                     padding = 2,
                     filter = function(file)
-                        return not file:find("/%.git/")
+                        return not file:find("/%.git/") and file:find(root_dir)
                     end,
                 },
                 { icon = " ", title = "Projects", section = "projects", indent = 2, padding = 2 },
