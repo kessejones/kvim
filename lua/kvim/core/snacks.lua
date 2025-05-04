@@ -106,6 +106,11 @@ function M.init()
                     },
                 },
             },
+            formats = {
+                file = function(item, _ctx)
+                    return { vim.fn.fnamemodify(item.file, ":."), hl = "file" }
+                end,
+            },
             sections = {
                 {
                     section = "header",
@@ -121,11 +126,11 @@ function M.init()
                     cwd = true,
                     indent = 2,
                     padding = 2,
+                    limit = 10,
                     filter = function(file)
                         return not file:find("/%.git/") and file:find(root_dir)
                     end,
                 },
-                { icon = " ", title = "Projects", section = "projects", indent = 2, padding = 2 },
                 { section = "keys", padding = 2 },
                 { section = "startup" },
             },
