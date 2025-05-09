@@ -128,7 +128,16 @@ function M.init()
                     padding = 2,
                     limit = 10,
                     filter = function(file)
-                        return not file:find("/%.git/") and file:find(root_dir)
+                        if file:find("/%.git/") then
+                            return false
+                        end
+
+                        if #file <= #root_dir then
+                            return false
+                        end
+
+                        local dir = file:sub(0, #root_dir)
+                        return dir == root_dir
                     end,
                 },
                 { section = "keys", padding = 2 },
