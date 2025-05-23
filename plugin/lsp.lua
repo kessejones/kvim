@@ -93,6 +93,7 @@ vim.g.auto_format = true
 lsp_diagnostics.init()
 
 vim.lsp.enable({
+    "ols",
     "lua_ls",
     "clangd",
     "cssls",
