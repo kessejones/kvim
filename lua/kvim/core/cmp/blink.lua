@@ -5,7 +5,29 @@ function M.init()
 
     blink.setup({
         sources = {
-            default = { "lsp", "path", "snippets", "buffer" },
+            default = { "lsp", "path", "snippets", "buffer", "copilot" },
+
+            providers = {
+                copilot = {
+                    name = "copilot",
+                    module = "blink-copilot",
+                    opts = {
+                        max_completions = 3,
+                        max_attempts = 4,
+                    },
+                    score_offset = 100,
+                    async = true,
+                    transform_items = function(_, items)
+                        local CompletionItemKind = require("blink.cmp.types").CompletionItemKind
+                        local kind_idx = #CompletionItemKind + 1
+                        CompletionItemKind[kind_idx] = "Copilot"
+                        for _, item in ipairs(items) do
+                            item.kind = kind_idx
+                        end
+                        return items
+                    end,
+                },
+            },
         },
 
         keymap = {
@@ -53,7 +75,6 @@ function M.init()
                 "sort_text",
             },
         },
-
         completion = {
             accept = { auto_brackets = { enabled = false } },
             ghost_text = {

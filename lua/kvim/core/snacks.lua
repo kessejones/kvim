@@ -154,6 +154,7 @@ function M.init()
         ".jj[\\/]*",
         ".vscode[\\/]*",
         ".idea[\\/]*",
+        ".direnv[\\/]*",
         "vendor[\\/]*",
         "node_modules[\\/]*",
         "target[\\/]*",

@@ -48,6 +48,27 @@ local selectioncount = {
     color = { bg = colors.mauve, fg = colors.base, gui = "bold" },
 }
 
+local copilot = {
+    function()
+        local indicator = " "
+        local client = vim.lsp.get_clients({ name = "copilot" })[1]
+        if client == nil then
+            return ""
+        end
+
+        if vim.tbl_isempty(client.requests) then
+            return indicator
+        end
+
+        local spinners = { "⣾", "⣽", "⣻", "⢿", "⡿", "⣟", "⣯", "⣷" }
+        local ms = vim.loop.hrtime() / 1000000
+        local frame = math.floor(ms / 120) % #spinners
+
+        return indicator .. " " .. spinners[frame + 1]
+    end,
+    color = { bg = colors.mauve, fg = colors.base, gui = "bold" },
+}
+
 function M.init()
     lualine.setup({
         options = {
@@ -66,7 +87,7 @@ function M.init()
             lualine_b = { "branch", diff },
             lualine_c = { filename },
             lualine_x = { searchcount, selectioncount },
-            lualine_y = { diagnostics },
+            lualine_y = { copilot, diagnostics },
             lualine_z = { filetype, location },
         },
         inactive_sections = {
