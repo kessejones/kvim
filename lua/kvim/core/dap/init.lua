@@ -15,7 +15,21 @@ local function setup_adapters()
         target = "localhost:1234",
     }
 
+    dap.adapters.php = {
+        type = "executable",
+        command = "php-debug-adapter",
+    }
+
     dap.configurations.go = {}
+
+    dap.configurations.php = {
+        {
+            type = "php",
+            request = "launch",
+            name = "Listen for Xdebug",
+            port = 9009,
+        },
+    }
 
     dap.configurations.zig = {
         {
