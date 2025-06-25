@@ -136,8 +136,17 @@ function M.init()
                             return false
                         end
 
-                        local dir = file:sub(0, #root_dir)
-                        return dir == root_dir
+                        local dirname = vim.fs.dirname(file)
+                        local dir_parts = vim.split(dirname, "/")
+                        local root_parts = vim.split(root_dir, "/")
+
+                        for i, r in ipairs(root_parts) do
+                            if r ~= dir_parts[i] then
+                                return false
+                            end
+                        end
+
+                        return true
                     end,
                 },
                 { section = "keys", padding = 2 },
