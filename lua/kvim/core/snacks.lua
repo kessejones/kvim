@@ -21,6 +21,8 @@ local function get_root_dir()
     return git_dir
 end
 
+local root_parts = vim.split(get_root_dir(), "/")
+
 function M.init()
     local snacks = require("snacks")
 
@@ -136,10 +138,7 @@ function M.init()
                             return false
                         end
 
-                        local dirname = vim.fs.dirname(file)
-                        local dir_parts = vim.split(dirname, "/")
-                        local root_parts = vim.split(root_dir, "/")
-
+                        local dir_parts = vim.split(vim.fs.dirname(file), "/")
                         for i, r in ipairs(root_parts) do
                             if r ~= dir_parts[i] then
                                 return false
@@ -251,7 +250,9 @@ function M.init()
     end)
 
     nmap("<Leader>fl", function()
-        snacks.picker.grep()
+        snacks.picker.grep({
+            need_search = true,
+        })
     end)
 
     nmap("<Leader>fb", function()
@@ -267,7 +268,27 @@ function M.init()
     end)
 
     nmap("<Leader>fs", function()
-        snacks.picker.lsp_symbols()
+        snacks.picker.lsp_symbols({
+            filter = {
+                default = {
+                    "Variable",
+                    "Constant",
+                    "Class",
+                    "Constructor",
+                    "Enum",
+                    "Field",
+                    "Function",
+                    "Interface",
+                    "Method",
+                    "Module",
+                    "Namespace",
+                    "Package",
+                    "Property",
+                    "Struct",
+                    "Trait",
+                },
+            },
+        })
     end)
 
     nmap("<Leader>fw", function()
@@ -280,6 +301,10 @@ function M.init()
 
     nmap("<Leader>fg", function()
         snacks.picker.git_log_file()
+    end)
+
+    nmap("<Leader>fd", function()
+        snacks.picker.diagnostics()
     end)
 
     nmap("<Leader>fe", function()

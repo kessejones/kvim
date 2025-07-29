@@ -110,3 +110,10 @@ vim.lsp.enable({
     "yamlls",
     "zls",
 })
+
+vim.api.nvim_create_user_command("LspRestart", function()
+    local clients = vim.lsp.get_clients({ bufnr = 0 })
+    vim.lsp.stop_client(clients)
+    vim.cmd.update()
+    vim.defer_fn(vim.cmd.edit, 1000)
+end, {})
