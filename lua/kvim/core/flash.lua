@@ -9,6 +9,8 @@ function M.init()
             char = {
                 keys = { "f", "F" },
                 multi_line = false,
+                autohide = true,
+                jump_labels = true,
                 char_actions = function(motion)
                     return {
                         [motion:lower()] = "next",
