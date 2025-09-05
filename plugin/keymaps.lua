@@ -81,11 +81,18 @@ nmap("<Leader>fh", "<ESC>:%s/", { desc = "Substitute prompt" })
 nmap("x", '"_x', { desc = "Delete character without yank" })
 
 -- Select all and yank
-nmap("yA", function()
-    local cursor = vim.api.nvim_win_get_cursor(0)
-    vim.cmd.normal({ bang = true, args = { "ggVGy" } })
-    vim.api.nvim_win_set_cursor(0, cursor)
-end, { desc = "Select all buffer and yank" })
+nmap("yA", "mzggVGy'z:delmarks z<CR>", { desc = "Select all buffer and yank" })
+nmap("<Leader>aa", "mzggVG", { desc = "Select all buffer" })
+
+vmap("<ESC>", function()
+    local bufnr = vim.api.nvim_get_current_buf()
+    for _, data in ipairs(vim.fn.getmarklist(bufnr)) do
+        if data.mark == "'z" then
+            return "<ESC>'z:delmarks z<CR>"
+        end
+    end
+    return "<ESC>"
+end, { desc = "Select all buffer", expr = true })
 
 nmap("gl", "$", { desc = "End of line" })
 nmap("gh", "^", { desc = "Start of line" })
