@@ -6,6 +6,7 @@ local tmap = keymap.tmap
 
 -- ** Normal Mode Keys
 
+nmap("Q", "<NOP>", { desc = "Do anything" })
 nmap("<Space>", "<NOP>", { desc = "Do anything" })
 
 nmap("<Leader>w", vim.cmd.write, { desc = "Save file" })
@@ -13,24 +14,12 @@ nmap("<Leader>w", vim.cmd.write, { desc = "Save file" })
 nmap("<C-u>", "<C-u>zz", { desc = "Scroll window upwards in the buffer" })
 nmap("<C-d>", "<C-d>zz", { desc = "Scroll window downwards in the buffer" })
 
-nmap("k", function()
-    if vim.v.count == 0 then
-        return "gk"
-    end
-    return "k'"
-end, { expr = true })
-
-nmap("j", function()
-    if vim.v.count == 0 then
-        return "gj"
-    end
-    return "j'"
-end, { expr = true })
+nmap("J", "mzJ`z:delmarks z<CR>", { desc = "Join and go back to the cursor" })
+nmap("<Leader>aa", "mzggVGy`z:delmarks z<CR>", { desc = "Select all buffer" })
 
 nmap("<ESC>", function()
     if vim.opt.hlsearch:get() then
         vim.cmd.nohl()
-        return ""
     end
     return ""
 end, { desc = "No highlight", expr = true })

@@ -88,6 +88,7 @@ function M.init()
         statuscolumn = {
             enabled = true,
             refresh = 50,
+            left = { "sign" },
         },
         dashboard = {
             enabled = true,
