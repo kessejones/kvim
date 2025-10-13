@@ -26,6 +26,7 @@ opt.undofile = true
 opt.undodir = vim.env.HOME .. "/.cache/nvim/undodir"
 opt.termguicolors = true
 opt.cmdheight = 0
+opt.scrolloff = 10
 
 opt.foldmethod = "indent"
 opt.foldlevel = 99
