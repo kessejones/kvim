@@ -109,6 +109,7 @@ vim.lsp.enable({
     "ts_ls",
     "yamlls",
     "zls",
+    "copilot_ls",
 })
 
 vim.api.nvim_create_user_command("LspRestart", function()
