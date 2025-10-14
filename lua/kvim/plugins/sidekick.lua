@@ -16,7 +16,7 @@ return {
         {
             "<c-.>",
             function()
-                require("sidekick.cli").toggle()
+                require("sidekick.cli").toggle({ name = "opencode", focus = true })
             end,
             desc = "Sidekick Toggle",
             mode = { "n", "t", "i", "x" },

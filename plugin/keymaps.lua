@@ -107,9 +107,7 @@ vmap("<C-k>", ":m '<-2<CR>gv=gv", { desc = "Move region up" })
 
 -- ** Terminal mode keys
 
-tmap("<ESC><ESC>", function()
-    vim.cmd.stopinsert({ bang = true })
-end, { desc = "Exit terminal mode" })
+tmap("<C-ESC>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
 -- Close terminal window
 tmap("<C-w>q", function()
