@@ -7,6 +7,9 @@ local M = {}
 function M.init()
     kulala.setup({
         default_view = "headers_body",
+        ui = {
+            max_response_size = 65536,
+        },
     })
 
     vim.api.nvim_create_augroup("Kulala", { clear = true })
