@@ -42,8 +42,33 @@ function M.input(opts, on_confirm)
 
     local close_window = function()
         vim.api.nvim_win_close(win_id, true)
-        vim.api.nvim_buf_delete(buf, { force = true })
     end
+
+    vim.api.nvim_create_autocmd("WinLeave", {
+        buffer = buf,
+        callback = function()
+            vim.api.nvim_buf_delete(buf, { force = true })
+        end,
+    })
+
+    vim.api.nvim_create_autocmd("BufLeave", {
+        buffer = buf,
+        callback = function()
+            close_window()
+        end,
+    })
+
+    vim.api.nvim_create_autocmd("TextChangedI", {
+        buffer = buf,
+        callback = function()
+            local text = vim.api.nvim_buf_get_lines(buf, 0, 1, false)[1]
+            vim.cmd("vertical resize " .. #text + 5)
+        end,
+    })
+
+    vim.keymap.set("i", "<C-w>", function()
+        vim.cmd("norm db")
+    end)
 
     local on_submit = function(value)
         close_window()
@@ -54,7 +79,6 @@ function M.input(opts, on_confirm)
     vim.fn.prompt_setprompt(buf, "")
     vim.fn.prompt_setcallback(buf, on_submit)
     vim.fn.prompt_setinterrupt(buf, close_window)
-
     vim.keymap.set({ "i", "n" }, "<ESC>", close_window, { buffer = buf, silent = true })
 
     vim.cmd.startinsert({ bang = true })
@@ -62,8 +86,9 @@ end
 
 function M.rename(opts, on_confirm)
     local width = 15
-    if opts.default and string.len(opts.default) > 10 then
-        width = math.ceil(string.len(opts.default) * 1.5)
+
+    if opts.default then
+        width = math.ceil(string.len(opts.default) + 5)
     end
 
     local pos = vim.api.nvim_win_get_position(0)
