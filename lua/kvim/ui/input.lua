@@ -68,7 +68,7 @@ function M.input(opts, on_confirm)
 
     vim.keymap.set("i", "<C-w>", function()
         vim.cmd("norm db")
-    end)
+    end, { buffer = buf })
 
     local on_submit = function(value)
         close_window()
