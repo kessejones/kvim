@@ -24,7 +24,6 @@ let s:kes_syntax_keywords = {
     \ ,                 "while"
     \ ,                 "using"
     \ ,                 "as"
-    \ ,                 "mod"
     \ ,                ]
     \ , 'kesMacro' :["defer"
     \ ,               "size_of"
@@ -34,8 +33,6 @@ let s:kes_syntax_keywords = {
     \ ,                      "or"
     \ ,                      "is"
     \ ,                     ]
-    \ , 'kesVarDecl' :["var"
-    \ ,                ]
     \ , 'kesType' :["i8"
     \ ,              "i16"
     \ ,              "i32"
@@ -51,6 +48,7 @@ let s:kes_syntax_keywords = {
     \ ,              "cstring"
     \ ,              "void"
     \ ,              "null"
+    \ ,              "any"
     \ ,             ]
     \ , 'kesStructure' :["struct"
     \ ,                   "enum"
@@ -65,6 +63,8 @@ function! s:syntax_keyword(dict)
 endfunction
 
 call s:syntax_keyword(s:kes_syntax_keywords)
+
+syntax match kesMacro2 "#\<\w\+\(,\S*\)\?" display
 
 " Declarations
 syntax match kesFunction /\w\+\s*(/me=e-1,he=e-1
@@ -84,12 +84,14 @@ syntax match kesDecNumber display  "\v<\d%(_?\d)*"
 syntax match kesHexNumber display "\v<0x\x%(_?\x)*"
 syntax match kesOctNumber display "\v<0o\o%(_?\o)*"
 syntax match kesBinNumber display "\v<0b[01]%(_?[01])*"
+syntax match kesFloatNumber display "\<[0-9][0-9_]*\%(\.[0-9][0-9_]*\)\%([eE][+-]\=[0-9_]\+\)\="
 
 syntax region kesString matchgroup=kesStringDelimiter start=+"+ skip=+\\"+ end=+"+ contains=kesEscape
 syntax region kesChar matchgroup=kesCharDelimiter start=+'+ skip=+\\\\\|\\'+ end=+'+ oneline contains=kesEscape
 syntax match kesEscape display contained /\\./
 
-syntax match kesMember /\v<\w*>\.\w@=/ms=s,he=e-1
+syntax keyword kesDiscardValue _
+"syntax match kesMember /\v<\w*>\.\w@=/ms=s,he=e-1
 
 " Comment
 syntax region kesCommentLine start="//" end="$"
@@ -100,10 +102,13 @@ syntax region kesBlock start="{" end="}" transparent fold
 
 " *** Highlights
 
+highlight default link kesDiscardValue Comment
+
 highlight default link kesDecNumber kesNumber
 highlight default link kesHexNumber kesNumber
 highlight default link kesOctNumber kesNumber
 highlight default link kesBinNumber kesNumber
+highlight default link kesFloatNumber kesNumber
 
 highlight default link kesVarDeclAssign kesOperator
 highlight default link kesVarAssign kesOperator
@@ -132,7 +137,9 @@ highlight default link kesOperator Operator
 highlight default link kesOperator Operator
 highlight default link kesExecution Special
 highlight default link kesMacro Macro
+highlight default link kesMacro2 Macro
 highlight default link kesConditional Conditional
+highlight default link kesWordOperator Operator
 
 highlight default link kesStructure Structure
 highlight default link kesFunction Function
