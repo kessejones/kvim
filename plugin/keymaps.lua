@@ -21,7 +21,7 @@ nmap("<ESC>", function()
     if vim.opt.hlsearch:get() then
         vim.cmd.nohl()
     end
-    return ""
+    return "<ESC>"
 end, { desc = "No highlight", expr = true })
 
 -- Resize window

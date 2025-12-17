@@ -27,13 +27,19 @@ local group_focus_cursor = vim.api.nvim_create_augroup("focus_cursor_line", { cl
 vim.api.nvim_create_autocmd({ "WinEnter", "BufEnter" }, {
     group = group_focus_cursor,
     callback = function()
-        vim.opt_local.cursorline = true
+        if vim.b.kvim_cursorline == true then
+            vim.opt_local.cursorline = true
+        end
     end,
 })
 
 vim.api.nvim_create_autocmd({ "WinLeave", "BufLeave" }, {
     group = group_focus_cursor,
     callback = function()
-        vim.opt_local.cursorline = false
+        vim.b.kvim_cursorline = vim.wo.cursorline
+
+        if vim.wo.cursorline then
+            vim.opt_local.cursorline = false
+        end
     end,
 })
