@@ -3,6 +3,7 @@ return {
     keys = {
         "<Leader>tt",
         "<Leader>tg",
+        "<Leader>tr",
     },
     config = function()
         require("kvim.core.oil").init()

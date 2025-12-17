@@ -15,6 +15,10 @@ local function find_pattern_root()
     return vim.fs.root(0, patterns)
 end
 
+local function get_root_dir()
+    return vim.fn.getcwd()
+end
+
 function M.init()
     require("oil").setup({
         columns = {
@@ -55,6 +59,10 @@ function M.init()
 
     nmap("<Leader>tt", function()
         require("oil").open(find_pattern_root())
+    end, { desc = "Open oil file explorer (root dir)" })
+
+    nmap("<Leader>tr", function()
+        require("oil").open(get_root_dir())
     end, { desc = "Open oil file explorer (root dir)" })
 end
 
