@@ -37,6 +37,7 @@ opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 
 opt.shortmess:append("c")
 opt.listchars:append("eol:↴")
+opt.listchars:remove("trail:-")
 opt.path:append("**")
 
 opt.wildignore:append("**/node_modules/*")
