@@ -50,10 +50,18 @@ function M.init()
             },
             keymap = {
                 ["<C-c>"] = { "cancel", "fallback" },
-                ["<ESC>"] = { "cancel", "fallback" },
                 ["<C-j>"] = { "select_next", "fallback" },
                 ["<C-k>"] = { "select_prev", "fallback" },
                 ["<C-y>"] = { "show", "select_and_accept", "fallback" },
+                ["<ESC>"] = {
+                    function(cmp)
+                        if cmp.is_visible() then
+                            cmp.cancel()
+                        else
+                            vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-c>", true, true, true), "n", true)
+                        end
+                    end,
+                },
             },
         },
 
