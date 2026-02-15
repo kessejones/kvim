@@ -1,9 +1,12 @@
+local root_markers = { { "ols.json", "flake.nix" }, ".git" }
+
 ---@type vim.lsp.Config
 return {
     cmd = { "ols" },
     filetypes = { "odin" },
+    root_markers = root_markers,
     root_dir = function(bufnr, cb)
-        local root = vim.fs.root(bufnr, { "ols.json", ".git" })
+        local root = vim.fs.root(bufnr, root_markers)
         if root then
             cb(root)
             return

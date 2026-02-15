@@ -2,8 +2,12 @@ return {
     "saghen/blink.cmp",
     lazy = false,
     version = "*",
-    -- build = 'nix run .#build-plugin',
-    build = "cargo build --release",
+    build = (function()
+        if vim.fn.executable("nixos-version") then
+            return "nix run .#build-plugin"
+        end
+        return "cargo build --release"
+    end)(),
     dependencies = {
         "fang2hou/blink-copilot",
         {
