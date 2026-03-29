@@ -1,4 +1,4 @@
-local treesitter = require("nvim-treesitter.configs")
+local treesitter = require("nvim-treesitter")
 local M = {}
 
 function M.init()

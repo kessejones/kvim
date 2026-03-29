@@ -91,7 +91,7 @@ function M.init()
             left = { "sign" },
         },
         dashboard = {
-            enabled = true,
+            enabled = false,
             preset = {
                 header = header,
                 keys = {
@@ -298,6 +298,16 @@ function M.init()
 
     nmap("<Leader>fr", function()
         snacks.picker.registers()
+    end)
+
+    nmap("<Leader>fj", function()
+        snacks.picker.recent({
+            filter = {
+                paths = {
+                    [get_root_dir()] = true,
+                },
+            },
+        })
     end)
 
     nmap("<Leader>fg", function()

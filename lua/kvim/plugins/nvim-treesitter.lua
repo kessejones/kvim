@@ -1,10 +1,13 @@
 return {
     "nvim-treesitter/nvim-treesitter",
-    event = { "VeryLazy" },
+    branch = "main",
+    lazy = false,
     build = ":TSUpdate",
-    cmd = { "TSUpdate", "TSUpdateSync", "TSInstall" },
     dependencies = {
-        "nvim-treesitter/nvim-treesitter-textobjects",
+        {
+            "nvim-treesitter/nvim-treesitter-textobjects",
+            branch = "main",
+        },
         {
             "chrisgrieser/nvim-various-textobjs",
             config = function()
