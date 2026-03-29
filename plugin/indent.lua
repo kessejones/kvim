@@ -1,6 +1,12 @@
-local keymap = require("kvim.utils.keymap")
-local nmap = keymap.nmap
-local vmap = keymap.vmap
+local function nmap(lhs, rhs, opts)
+    opts = vim.tbl_extend("force", { silent = true }, opts or {})
+    vim.keymap.set("n", lhs, rhs, opts)
+end
+
+local function vmap(lhs, rhs, opts)
+    opts = vim.tbl_extend("force", { silent = true }, opts or {})
+    vim.keymap.set("v", lhs, rhs, opts)
+end
 
 local modes = setmetatable({
     visual = {

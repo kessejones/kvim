@@ -1,8 +1,19 @@
-local keymap = require("kvim.utils.keymap")
+local function map(mode, lhs, rhs, opts)
+    opts = vim.tbl_extend("force", { silent = true }, opts or {})
+    vim.keymap.set(mode, lhs, rhs, opts)
+end
 
-local nmap = keymap.nmap
-local vmap = keymap.vmap
-local tmap = keymap.tmap
+local function nmap(lhs, rhs, opts)
+    map("n", lhs, rhs, opts)
+end
+
+local function vmap(lhs, rhs, opts)
+    map("v", lhs, rhs, opts)
+end
+
+local function tmap(lhs, rhs, opts)
+    map("t", lhs, rhs, opts)
+end
 
 -- ** Normal Mode Keys
 
@@ -73,6 +84,7 @@ nmap("<Leader>q", ":q<CR>", { desc = "Close current window" })
 nmap("<Leader>Q", ":q!<CR>", { desc = "Close Force current window" })
 nmap("<Leader>x", ":wq<CR>", { desc = "Save and close current window" })
 nmap("<Leader>z", ":qall<CR>", { desc = "Quit all" })
+nmap("<Leader>Z", ":restart<CR>", { desc = "Restart" })
 
 -- Replace
 nmap("<Leader>fh", "<ESC>:%s/", { desc = "Substitute prompt" })

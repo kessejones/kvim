@@ -1,10 +1,16 @@
-local keymap = require("kvim.utils.keymap")
 local lsp_highlight = require("kvim.core.lsp.highlight")
 local lsp_formatting = require("kvim.core.lsp.formatting")
 local lsp_diagnostics = require("kvim.core.lsp.diagnostics")
 
-local nmap = keymap.nmap
-local vmap = keymap.vmap
+local function nmap(lhs, rhs, opts)
+    opts = vim.tbl_extend("force", { silent = true }, opts or {})
+    vim.keymap.set("n", lhs, rhs, opts)
+end
+
+local function vmap(lhs, rhs, opts)
+    opts = vim.tbl_extend("force", { silent = true }, opts or {})
+    vim.keymap.set("v", lhs, rhs, opts)
+end
 
 local function lsp_keymaps(bufnr)
     nmap("gd", function()
