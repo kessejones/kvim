@@ -94,6 +94,32 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end,
 })
 
+vim.api.nvim_create_autocmd("LspProgress", {
+    group = vim.api.nvim_create_augroup("kvim_lsp_progress", { clear = true }),
+    callback = function(args)
+        local value = args.data.params.value or {}
+        if not value.kind then
+            return
+        end
+
+        local msg = value.message or "done"
+        local client = vim.lsp.get_client_by_id(args.data.client_id)
+        if not client then
+            return
+        end
+
+        local title = string.format("%s [%s]", value.title, client.name)
+        vim.api.nvim_echo({ { msg } }, false, {
+            id = "lsp",
+            source = "lsp",
+            kind = "progress",
+            title = title,
+            status = value.kind ~= "end" and "running" or "success",
+            percent = value.percent,
+        })
+    end,
+})
+
 vim.g.auto_format = true
 
 lsp_diagnostics.init()
