@@ -4,7 +4,6 @@ opt.winborder = "rounded"
 opt.smartcase = true
 opt.backup = false
 opt.writebackup = false
-opt.clipboard = "unnamedplus"
 opt.showtabline = 2
 opt.mouse = "nv"
 opt.expandtab = true
@@ -19,13 +18,13 @@ opt.wrap = true
 opt.cursorline = true
 opt.inccommand = "split"
 opt.list = true
-opt.completeopt = { "menu", "menuone", "noselect" }
+opt.completeopt = { "menu", "menuone", "noselect", "popup" }
 opt.showcmd = false
 opt.showmode = false
 opt.undofile = true
 opt.undodir = vim.env.HOME .. "/.cache/nvim/undodir"
 opt.termguicolors = true
-opt.cmdheight = 0
+opt.cmdheight = 1
 opt.scrolloff = 10
 
 opt.shortmess:append("c")
