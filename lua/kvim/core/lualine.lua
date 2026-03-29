@@ -1,7 +1,6 @@
 local lualine = require("lualine")
-local colors = require("catppuccin.palettes").get_palette("mocha")
 
-local M = {}
+local colors = require("catppuccin.palettes").get_palette("mocha")
 
 local filename = {
     "filename",
@@ -69,37 +68,33 @@ local copilot = {
     color = { bg = colors.mauve, fg = colors.base, gui = "bold" },
 }
 
-function M.init()
-    lualine.setup({
-        options = {
-            globalstatus = true,
-            icons_enabled = true,
-            theme = "auto",
-            component_separators = { left = "", right = "" },
-            section_separators = { left = "", right = "" },
-            disabled_filetypes = {
-                "alpha",
-            },
-            always_divide_middle = true,
+lualine.setup({
+    options = {
+        globalstatus = true,
+        icons_enabled = true,
+        theme = "auto",
+        component_separators = { left = "", right = "" },
+        section_separators = { left = "", right = "" },
+        disabled_filetypes = {
+            "alpha",
         },
-        sections = {
-            lualine_a = { "mode" },
-            lualine_b = { "branch", diff },
-            lualine_c = { filename },
-            lualine_x = { searchcount, selectioncount },
-            lualine_y = { copilot, diagnostics },
-            lualine_z = { filetype, location },
-        },
-        inactive_sections = {
-            lualine_a = {},
-            lualine_b = {},
-            lualine_c = { filename },
-            lualine_x = { location },
-            lualine_y = {},
-            lualine_z = {},
-        },
-        tabline = {},
-    })
-end
-
-return M
+        always_divide_middle = true,
+    },
+    sections = {
+        lualine_a = { "mode" },
+        lualine_b = { "branch", diff },
+        lualine_c = { filename },
+        lualine_x = { searchcount, selectioncount },
+        lualine_y = { copilot, diagnostics },
+        lualine_z = { filetype, location },
+    },
+    inactive_sections = {
+        lualine_a = {},
+        lualine_b = {},
+        lualine_c = { filename },
+        lualine_x = { location },
+        lualine_y = {},
+        lualine_z = {},
+    },
+    tabline = {},
+})

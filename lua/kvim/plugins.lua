@@ -154,13 +154,17 @@ vim.api.nvim_create_autocmd("PackChanged", {
     callback = pack_hook,
 })
 
+vim.api.nvim_create_user_command("PackUpdate", function()
+    vim.pack.update()
+end, {})
+
 vim.pack.add({
     {
         src = gh("catppuccin/nvim"),
         name = "catppuccin",
         data = {
             init = function()
-                require("kvim.core.catppuccin").init()
+                require("kvim.core.catppuccin")
             end,
         },
     },
@@ -176,7 +180,7 @@ vim.pack.add({
                 vim.cmd.TSUpdate()
             end,
             init = function()
-                require("kvim.core.treesitter").init()
+                require("kvim.core.treesitter")
             end,
         },
     },
@@ -187,7 +191,7 @@ vim.pack.add({
         src = gh("akinsho/bufferline.nvim"),
         data = {
             init = function()
-                require("kvim.core.bufferline").init()
+                require("kvim.core.bufferline")
             end,
         },
     },
@@ -204,7 +208,7 @@ vim.pack.add({
                 return { "cargo", "build", "--release" }
             end)(),
             init = function()
-                require("kvim.core.cmp.blink").init()
+                require("kvim.core.blink")
             end,
         },
     },
@@ -214,7 +218,7 @@ vim.pack.add({
         data = {
             build = { "make", "install_jsregexp" },
             init = function()
-                require("kvim.core.luasnip").init()
+                require("kvim.core.luasnip")
             end,
         },
     },
@@ -222,12 +226,9 @@ vim.pack.add({
     {
         src = gh("stevearc/oil.nvim"),
         data = {
-            keys = {
-                "<Leader>tt",
-                "<Leader>tg",
-            },
+            keys = { "<Leader>tt", "<Leader>tg" },
             init = function()
-                require("kvim.core.oil").init()
+                require("kvim.core.oil")
             end,
         },
     },
@@ -257,7 +258,7 @@ vim.pack.add({
                 "sz",
             },
             init = function()
-                require("kvim.core.flash").init()
+                require("kvim.core.flash")
             end,
         },
     },
@@ -265,23 +266,18 @@ vim.pack.add({
         src = gh("sindrets/diffview.nvim"),
         data = {
             cmds = { "DiffviewOpen" },
-            keys = {
-                "<Leader>hd",
-                "<Leader>hD",
-            },
+            keys = { "<Leader>hd", "<Leader>hD" },
             init = function()
-                require("kvim.core.diffview").init()
+                require("kvim.core.diffview")
             end,
         },
     },
     {
         src = gh("kessejones/git-blame-line.nvim"),
         data = {
-            keys = {
-                "T",
-            },
+            keys = { "T" },
             init = function()
-                require("kvim.core.git-blame-line").init()
+                require("kvim.core.git-blame-line")
             end,
         },
     },
@@ -289,21 +285,18 @@ vim.pack.add({
     {
         src = gh("NeogitOrg/neogit"),
         data = {
-            keys = {
-                "<Leader>gg",
-            },
+            keys = { "<Leader>gg" },
             init = function()
-                require("kvim.core.neogit").init()
+                require("kvim.core.neogit")
             end,
         },
     },
     {
         src = gh("akinsho/git-conflict.nvim"),
         data = {
-            keys = { "<Leader>gq" },
             cmds = { "GitConflictListQf" },
             init = function()
-                require("kvim.core.git-conflict").init()
+                require("git-conflict").setup()
             end,
         },
     },
@@ -311,7 +304,7 @@ vim.pack.add({
         src = gh("lewis6991/gitsigns.nvim"),
         data = {
             init = function()
-                require("kvim.core.gitsigns").init()
+                require("kvim.core.gitsigns")
             end,
         },
     },
@@ -320,8 +313,9 @@ vim.pack.add({
         src = gh("MagicDuck/grug-far.nvim"),
         data = {
             cmds = { "GrugFar" },
+            keys = { "<Leader>/r" },
             init = function()
-                require("kvim.core.grug-far").init()
+                require("kvim.core.grug-far")
             end,
         },
     },
@@ -331,7 +325,7 @@ vim.pack.add({
         data = {
             filetypes = { "http" },
             init = function()
-                require("kvim.core.kulala").init()
+                require("kvim.core.kulala")
             end,
         },
     },
@@ -339,7 +333,7 @@ vim.pack.add({
         src = gh("nvim-lualine/lualine.nvim"),
         data = {
             init = function()
-                require("kvim.core.lualine").init()
+                require("kvim.core.lualine")
             end,
         },
     },
@@ -348,7 +342,7 @@ vim.pack.add({
         data = {
             cmds = { "Mason", "MasonInstall" },
             init = function()
-                require("kvim.core.mason").init()
+                require("kvim.core.mason")
             end,
         },
     },
@@ -366,15 +360,9 @@ vim.pack.add({
     {
         src = gh("brenton-leighton/multiple-cursors.nvim"),
         data = {
-            keys = {
-                "<C-S-K>",
-                "<C-S-J>",
-                "<C-n>l",
-                "<C-n>a",
-                "<C-n>n",
-            },
+            keys = { "<C-S-K>", "<C-S-J>", "<C-n>l", "<C-n>a", "<C-n>n" },
             init = function()
-                require("kvim.core.multi-cursor").init()
+                require("kvim.core.multi-cursor")
             end,
         },
     },
@@ -382,7 +370,7 @@ vim.pack.add({
         src = gh("nvimtools/none-ls.nvim"),
         data = {
             init = function()
-                require("kvim.core.none-ls").init()
+                require("kvim.core.none-ls")
             end,
         },
     },
@@ -391,7 +379,7 @@ vim.pack.add({
         src = gh("windwp/nvim-autopairs"),
         data = {
             init = function()
-                require("kvim.core.nvim-autopairs").init()
+                require("kvim.core.nvim-autopairs")
             end,
         },
     },
@@ -401,7 +389,7 @@ vim.pack.add({
         src = gh("folke/snacks.nvim"),
         data = {
             init = function()
-                require("kvim.core.snacks").init()
+                require("kvim.core.snacks")
             end,
         },
     },
@@ -420,12 +408,8 @@ vim.pack.add({
         data = {
             keys = { "<Leader>;" },
             init = function()
-                require("kvim.core.term").init()
+                require("kvim.core.term")
             end,
         },
     },
 }, { load = load_hook, confirm = false })
-
-vim.api.nvim_create_user_command("PackUpdate", function()
-    vim.pack.update()
-end, {})

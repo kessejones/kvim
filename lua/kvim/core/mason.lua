@@ -1,15 +1,9 @@
 local mason = require("mason")
 
-local M = {}
+vim.env.PATH = vim.env.PATH .. ":" .. vim.fn.stdpath("data") .. "/mason/bin"
 
-function M.init()
-    vim.env.PATH = vim.env.PATH .. ":" .. vim.fn.stdpath("data") .. "/mason/bin"
-
-    mason.setup({
-        ui = {
-            border = "rounded",
-        },
-    })
-end
-
-return M
+mason.setup({
+    ui = {
+        border = "rounded",
+    },
+})

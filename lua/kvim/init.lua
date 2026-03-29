@@ -7,8 +7,5 @@ vim.g.loaded_gzip = 1
 -- NOTE: experimental
 require("vim._core.ui2").enable({ enable = true })
 
--- require("kvim.plugin-manager").init()
--- NOTE: Testing native package manager
 require("kvim.plugins")
-
 require("kvim.ui")

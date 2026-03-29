@@ -20,6 +20,6 @@ return {
         },
     },
     config = function()
-        require("kvim.core.cmp.blink").init()
+        require("lua.kvim.core.blink").init()
     end,
 }
