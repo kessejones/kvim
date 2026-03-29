@@ -28,13 +28,6 @@ opt.termguicolors = true
 opt.cmdheight = 0
 opt.scrolloff = 10
 
-opt.foldmethod = "indent"
-opt.foldlevel = 99
-opt.foldenable = true
-opt.foldtext = ""
-opt.foldcolumn = "0"
-opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-
 opt.shortmess:append("c")
 opt.listchars:append("eol:↴")
 opt.listchars:remove("trail:-")
@@ -45,7 +38,3 @@ opt.wildignore:append("**/vendor/*")
 opt.wildignore:append("**/.git/*")
 opt.wildignore:append("**/coverage/*")
 opt.wildignore:append("**/code_coverage_html/*")
-
-vim.g.loaded_perl_provider = 0
-vim.g.loaded_ruby_provider = 0
-vim.g.loaded_node_provider = 0
