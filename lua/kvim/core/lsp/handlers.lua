@@ -43,17 +43,15 @@ end
 
 function M.rename()
     local bufnr = vim.api.nvim_get_current_buf()
-    local clients = vim.lsp.get_clients({ bufnr = bufnr })
+    local clients = vim.lsp.get_clients({
+        bufnr = bufnr,
+        method = methods.textDocument_prepareRename,
+    })
 
     if clients == nil or #clients == 0 then
-        return
-    end
-
-    ---@diagnostic disable-next-line
-    if clients[1]:supports_method(methods.textDocument_prepareRename) then
-        prepare_rename(bufnr)
-    else
         vim.lsp.buf.rename()
+    else
+        prepare_rename(bufnr)
     end
 end
 

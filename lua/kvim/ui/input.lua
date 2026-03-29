@@ -36,10 +36,6 @@ function M.input(opts, on_confirm)
         title = opts.prompt,
     })
 
-    vim.api.nvim_buf_set_lines(buf, 0, -1, false, {
-        opts.default or "",
-    })
-
     local close_window = function()
         vim.api.nvim_win_close(win_id, true)
     end
@@ -81,6 +77,10 @@ function M.input(opts, on_confirm)
     vim.fn.prompt_setinterrupt(buf, close_window)
     vim.keymap.set({ "i", "n" }, "<ESC>", close_window, { buffer = buf, silent = true })
 
+    vim.api.nvim_buf_set_lines(buf, 0, -1, false, {
+        opts.default or "",
+    })
+
     vim.cmd.startinsert({ bang = true })
 end
 
@@ -98,6 +98,7 @@ function M.rename(opts, on_confirm)
         width = width,
         height = 1,
     }
+
     M.input(opts, on_confirm)
 end
 
