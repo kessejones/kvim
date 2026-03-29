@@ -1,10 +1,10 @@
 local nmap = require("kvim.utils.keymap").nmap
 
-local kulala = require("kulala")
-
 local M = {}
 
 function M.init()
+    local kulala = require("kulala")
+
     kulala.setup({
         default_view = "headers_body",
         ui = {
@@ -13,13 +13,19 @@ function M.init()
     })
 
     vim.api.nvim_create_augroup("Kulala", { clear = true })
-    vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
-        pattern = { "*.http" },
+    vim.api.nvim_create_autocmd({ "FileType" }, {
+        pattern = { "http" },
         group = "Kulala",
         callback = function(args)
             nmap("<Leader>n", kulala.run, { desc = "Run this Hurl file", buffer = args.buf })
         end,
     })
+
+    local bufnr = vim.api.nvim_get_current_buf()
+    -- NOTE: workaround because kulala is loaded on filetype http
+    if vim.bo[bufnr].filetype == "http" then
+        nmap("<Leader>n", kulala.run, { desc = "Run this Hurl file", buffer = bufnr })
+    end
 end
 
 return M

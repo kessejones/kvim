@@ -4,7 +4,11 @@ local nmap = require("kvim.utils.keymap").nmap
 local M = {}
 
 function M.init()
-    git_blame_line.setup()
+    git_blame_line.setup({
+        view = {
+            clear_when_cursor_moves = true,
+        },
+    })
 
     nmap("<S-t>", function()
         git_blame_line.toggle()

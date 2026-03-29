@@ -1,10 +1,14 @@
-local M = {}
+vim.g.loaded_netrwPlugin = 1
+vim.g.loaded_tutor_mode_plugin = 1
+vim.g.loaded_zipPlugin = 1
+vim.g.loaded_tarPlugin = 1
+vim.g.loaded_gzip = 1
 
-function M.init()
-    require("kvim.plugin-manager").init()
-    require("kvim.ui").init()
+-- NOTE: experimental
+require("vim._core.ui2").enable({ enable = true })
 
-    require("vim._core.ui2").enable({ enable = true })
-end
+-- require("kvim.plugin-manager").init()
+-- NOTE: Testing native package manager
+require("kvim.plugins")
 
-return M
+require("kvim.ui")

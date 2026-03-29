@@ -67,6 +67,16 @@ local filetype_format = setmetatable({
             return client.name ~= "lua_ls"
         end)
     end,
+    c = function()
+        autocmd_format(function(client)
+            return client.name ~= "clangd"
+        end)
+    end,
+    nix = function()
+        autocmd_format(function(client)
+            return client.name ~= "nil_ls"
+        end)
+    end,
 }, {
     __index = function()
         return function()

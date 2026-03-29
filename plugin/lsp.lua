@@ -110,4 +110,5 @@ vim.lsp.enable({
     "yamlls",
     "zls",
     "copilot_ls",
+    "jails",
 })

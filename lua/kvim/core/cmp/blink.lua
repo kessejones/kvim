@@ -5,7 +5,8 @@ function M.init()
 
     blink.setup({
         sources = {
-            default = { "lsp", "path", "snippets", "buffer", "copilot" },
+            -- default = { "lsp", "path", "snippets", "buffer", "copilot" },
+            default = { "lsp", "path", "snippets", "buffer" },
 
             providers = {
                 copilot = {
@@ -72,7 +73,7 @@ function M.init()
         },
 
         fuzzy = {
-            implementation = "prefer_rust_with_warning",
+            implementation = "prefer_rust",
             frecency = {
                 enabled = true,
             },
