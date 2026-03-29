@@ -186,6 +186,7 @@ local finder_ignore = {
     "*.png",
     "*.webp",
     "*.db",
+    "*.img",
 }
 
 nmap("<leader>rN", function()
