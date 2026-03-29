@@ -159,6 +159,24 @@ vim.api.nvim_create_user_command("PackUpdate", function()
     vim.pack.update()
 end, {})
 
+local function plugins_complete(_, _line, _)
+    local plugins = vim.tbl_map(function(plugin)
+        return plugin.spec.name
+    end, vim.pack.get())
+
+    return plugins
+end
+
+vim.api.nvim_create_user_command("PackDelete", function(args)
+    if #args.fargs > 0 then
+        vim.pack.del(args.fargs)
+    end
+end, {
+    nargs = "*",
+    range = true,
+    complete = plugins_complete,
+})
+
 vim.pack.add({
     {
         src = gh("catppuccin/nvim"),
@@ -245,7 +263,14 @@ vim.pack.add({
     --     },
     -- },
 
-    gh("j-hui/fidget.nvim"),
+    -- {
+    --     src = gh("j-hui/fidget.nvim"),
+    --     data = {
+    --         init = function()
+    --             require("fidget").setup()
+    --         end,
+    --     },
+    -- },
     {
         src = gh("folke/flash.nvim"),
         data = {
@@ -385,7 +410,15 @@ vim.pack.add({
         },
     },
 
-    gh("stevearc/quicker.nvim"),
+    {
+        src = gh("stevearc/quicker.nvim"),
+        data = {
+            filetypes = { "qf" },
+            init = function()
+                require("quicker").setup()
+            end,
+        },
+    },
     {
         src = gh("folke/snacks.nvim"),
         data = {
