@@ -23,10 +23,12 @@ function M.init()
         "sql",
     }
 
-    require("nvim-treesitter").install(filetypes)
+    local treesitter = require("nvim-treesitter")
+    treesitter.install(filetypes)
 
+    local filetypes_installed = treesitter.get_installed()
     vim.api.nvim_create_autocmd("FileType", {
-        pattern = filetypes,
+        pattern = filetypes_installed,
         callback = function()
             vim.treesitter.start()
 
