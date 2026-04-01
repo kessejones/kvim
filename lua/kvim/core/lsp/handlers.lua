@@ -50,7 +50,7 @@ function M.rename()
     end
 
     ---@diagnostic disable-next-line
-    if clients[1].supports_method(methods.textDocument_prepareRename) then
+    if clients[1]:supports_method(methods.textDocument_prepareRename) then
         prepare_rename(bufnr)
     else
         vim.lsp.buf.rename()

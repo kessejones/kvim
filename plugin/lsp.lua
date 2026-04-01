@@ -76,7 +76,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
         local ft = vim.bo[args.buf].filetype
 
         ---@diagnostic disable-next-line
-        if client.supports_method(vim.lsp.protocol.Methods.textDocument_foldingRange) then
+        if client:supports_method(vim.lsp.protocol.Methods.textDocument_foldingRange) then
             local win = vim.api.nvim_get_current_win()
             vim.wo[win].foldexpr = "v:lua.vim.lsp.foldexpr()"
         end
@@ -111,10 +111,3 @@ vim.lsp.enable({
     "zls",
     "copilot_ls",
 })
-
-vim.api.nvim_create_user_command("LspRestart", function()
-    local clients = vim.lsp.get_clients({ bufnr = 0 })
-    vim.lsp.stop_client(clients)
-    vim.cmd.update()
-    vim.defer_fn(vim.cmd.edit, 1000)
-end, {})

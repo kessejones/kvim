@@ -1,106 +1,40 @@
-local treesitter = require("nvim-treesitter")
 local M = {}
 
 function M.init()
-    treesitter.setup({
-        ensure_installed = {
-            "c",
-            "cpp",
-            "lua",
-            "rust",
-            "php",
-            "typescript",
-            "javascript",
-            "tsx",
-            "http",
-            "hurl",
-            "html",
-            "css",
-            "markdown",
-            "fish",
-            "dockerfile",
-            "json",
-            "yaml",
-            "go",
-            "sql",
-        },
-        sync_install = false,
-        auto_install = true,
-        highlight = {
-            enable = true,
-        },
-        indent = {
-            enable = true,
-        },
-        textobjects = {
-            selection = true,
-            lookahead = true,
-            swap = {
-                enable = true,
-                swap_next = {
-                    [",a"] = "@parameter.inner",
-                },
-                swap_previous = {
-                    [",A"] = "@parameter.inner",
-                },
-            },
+    local filetypes = {
+        "c",
+        "cpp",
+        "odin",
+        "lua",
+        "rust",
+        "php",
+        "typescript",
+        "javascript",
+        "tsx",
+        "http",
+        "html",
+        "css",
+        "markdown",
+        "fish",
+        "dockerfile",
+        "json",
+        "yaml",
+        "go",
+        "sql",
+    }
 
-            move = {
-                enable = true,
-                set_jumps = true,
-                goto_next_start = {
-                    ["]f"] = "@function.outer",
-                    ["]c"] = "@class.outer",
-                    ["]l"] = "@loop.*",
-                    ["]s"] = { query = "@scope", query_group = "locals", desc = "Next scope" },
-                    ["]z"] = { query = "@fold", query_group = "folds", desc = "Next fold" },
-                },
-                goto_next_end = {
-                    ["]F"] = "@function.outer",
-                    ["]C"] = "@class.outer",
-                    ["]L"] = "@loop.*",
-                    ["]S"] = { query = "@scope", query_group = "locals", desc = "Next scope" },
-                },
-                goto_previous_start = {
-                    ["[f"] = "@function.outer",
-                    ["[c"] = "@class.outer",
-                    ["[l"] = "@loop.*",
-                    ["[s"] = { query = "@scope", query_group = "locals", desc = "Prev scope" },
-                },
-                goto_previous_end = {
-                    ["[F"] = "@function.outer",
-                    ["[C"] = "@class.outer",
-                },
+    require("nvim-treesitter").install(filetypes)
 
-                goto_next = {
-                    ["]d"] = "@conditional.outer",
-                },
-                goto_previous = {
-                    ["[d"] = "@conditional.outer",
-                },
-            },
+    vim.api.nvim_create_autocmd("FileType", {
+        pattern = filetypes,
+        callback = function()
+            vim.treesitter.start()
 
-            select = {
-                enable = true,
-                keymaps = {
-                    ["af"] = "@function.outer",
-                    ["if"] = "@function.inner",
-                    ["ac"] = "@class.outer",
-                    ["ab"] = "@block.outer",
-                    ["ib"] = "@block.inner",
-                    ["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
-                    ["as"] = { query = "@scope", query_group = "locals", desc = "Select language scope" },
-                },
+            vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+            vim.wo.foldmethod = "expr"
 
-                selection_modes = {
-                    ["@parameter.outer"] = "v",
-                    ["@function.outer"] = "V",
-                    ["@class.outer"] = "<C-v>",
-                },
-            },
-
-            include_surrounding_whitespace = true,
-        },
+            vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+        end,
     })
 end
 
