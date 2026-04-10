@@ -122,8 +122,9 @@ local function load_hook(plug_data)
         should_load = false
         for _, c in ipairs(cmds) do
             vim.api.nvim_create_user_command(c, function()
-                load_plugin(plug_data)
                 flush()
+
+                load_plugin(plug_data)
 
                 vim.cmd(c)
             end, {})
