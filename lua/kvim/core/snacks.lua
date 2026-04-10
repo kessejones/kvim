@@ -302,7 +302,8 @@ nmap("<Leader>fj", function()
     snacks.picker.recent({
         filter = {
             paths = {
-                [get_root_dir()] = true,
+                [root_dir .. "/.git/"] = false,
+                [root_dir] = true,
             },
         },
     })
