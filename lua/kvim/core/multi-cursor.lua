@@ -24,6 +24,6 @@ nmap("<C-n>n", mc.add_cursor_and_jump_to_next_match, { desc = "Add cursor for ne
 nmap("<C-n>N", mc.jump_to_next_match, { desc = "Jump to next match" })
 nmap("<C-n>l", mc.lock, { desc = "Lock cursors" })
 
-vmap("<C-n>a", mc.add_cursors_to_matches, { desc = "Add cursor to all matches" })
-vmap("<C-n>n", mc.add_cursor_and_jump_to_next_match, { desc = "Add cursor for next match" })
-vmap("<C-n>N", mc.jump_to_next_match, { desc = "Jump to next match" })
+vmap("<C-n>a", mc.add_cursors_to_matches_v, { desc = "Add cursor to all matches" })
+vmap("<C-n>n", mc.add_cursor_and_jump_to_next_match_v, { desc = "Add cursor for next match" })
+vmap("<C-n>N", mc.jump_to_next_match_v, { desc = "Jump to next match" })
