@@ -239,6 +239,23 @@ local find_file = function(local_opts, opts)
         end
     end
 
+    local refresh = function()
+        local query = pick.get_picker_query()
+        local current_dir = query_to_dirname(query)
+        if current_dir == nil or type(current_dir) ~= "string" then
+            return
+        end
+
+        items_cache[current_dir] = get_dir_items(current_dir)
+        local item_dir = fs.dirname(current_dir)
+        while item_dir ~= nil and item_dir ~= "" and item_dir ~= "/" do
+            items_cache[item_dir] = nil
+            item_dir = fs.dirname(item_dir)
+        end
+
+        pick.set_picker_items(items_cache[current_dir].items, { do_match = true })
+    end
+
     local custom_choose = function()
         local current = pick.get_picker_matches().current
         if current then
@@ -267,18 +284,91 @@ local find_file = function(local_opts, opts)
         pick.set_picker_query(query)
     end
 
+    local custom_parent_dir = function()
+        local query = pick.get_picker_query()
+        if #query > 1 and query[#query] == "/" then
+            table.remove(query, #query)
+        end
+
+        local dirname = query_to_dirname(query)
+        if type(dirname) == "string" then
+            pick.set_picker_query(vim.split(fn.fnamemodify(dirname, ":~") .. "/", ""))
+        end
+    end
+
+    local custom_home_dir = function()
+        pick.set_picker_query({ vim.env.HOME .. "/" })
+    end
+
+    local custom_root_dir = function()
+        local cwd = fn.getcwd()
+        pick.set_picker_query(vim.split(fn.fnamemodify(cwd, ":~") .. "/", ""))
+    end
+
+    local custom_make = function()
+        local path = query_to_path(pick.get_picker_query())
+        if type(path) == "boolean" then
+            return
+        end
+
+        if vim.uv.fs_stat(path) then
+            return
+        end
+
+        if vim.endswith(path, "/") then
+            vim.fn.mkdir(path, "p")
+        else
+            local dirname = fs.dirname(path)
+            if not uv.fs_stat(dirname) then
+                vim.fn.mkdir(dirname, "p")
+            end
+
+            local file = io.open(path, "w")
+            if file ~= nil then
+                file:close()
+            end
+        end
+
+        refresh()
+    end
+
+    local function custom_rm()
+        local path = query_to_path(pick.get_picker_query())
+        if type(path) == "boolean" then
+            return
+        end
+
+        local current = pick.get_picker_matches().current
+        if current == nil then
+            return
+        end
+
+        vim.fs.rm(vim.fs.normalize(current.path), { force = true, recursive = true })
+        refresh()
+    end
+
     -- default opts
     opts = vim.tbl_deep_extend("keep", opts or {}, {
         window = { prompt_prefix = " Search: " },
         source = { name = "Find File" },
         mappings = {
+            -- to suppress warnings
             toggle_preview = "",
-            choose = "", -- to suppress overwrite <CR> warning
+            scroll_left = "",
+            scroll_right = "",
+            move_start = "",
+            choose = "",
+
             custom_choose = { char = "<CR>", func = custom_choose },
             custom_tab_complete = { char = "<Tab>", func = custom_tab_complete },
+            dir_up = { char = "<C-.>", func = custom_parent_dir },
+            go_home = { char = "<C-h>", func = custom_home_dir },
+            go_root = { char = "<C-o>", func = custom_root_dir },
+            make = { char = "<C-g>", func = custom_make },
+            rm = { char = "<C-,>", func = custom_rm },
         },
     })
-    -- mandatory opts
+
     opts = vim.tbl_deep_extend("force", opts, {
         options = { use_cache = false },
         source = { items = items, match = match, show = show },
@@ -288,6 +378,7 @@ local find_file = function(local_opts, opts)
 end
 
 pick.registry["find_file"] = find_file
+
 vim.keymap.set("n", "<Leader>ff", function()
     pick.registry.find_file()
 end)

@@ -7,7 +7,7 @@ require("mini.pick").setup({
 
         choose = "<CR>",
         choose_in_split = "<C-s>",
-        choose_in_tabpage = "<C-t>",
+        choose_in_tabpage = "<C-e>",
         choose_in_vsplit = "<C-v>",
         choose_marked = "<M-CR>",
 
@@ -40,3 +40,5 @@ require("mini.pick").setup({
         end,
     },
 })
+
+vim.keymap.set("n", "<Leader>fm", ":Pick files<CR>")

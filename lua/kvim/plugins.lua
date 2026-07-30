@@ -440,7 +440,7 @@ vim.pack.add({
     {
         src = gh("nvim-mini/mini.pick"),
         data = {
-            keys = { "<Leader>ff", "<Leader>f." },
+            keys = { "<Leader>ff", "<Leader>f.", "<Leader>fm" },
             init = function()
                 require("kvim.core.mini")
             end,
