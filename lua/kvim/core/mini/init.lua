@@ -1,5 +1,8 @@
 require("kvim.core.mini.picker")
 
+--- To avoid use mini pick select save current ui select
+local ui_select = vim.ui.select
+
 require("mini.pick").setup({
     mappings = {
         caret_left = "<Left>",
@@ -40,5 +43,8 @@ require("mini.pick").setup({
         end,
     },
 })
+
+--- Restore ui select
+vim.ui.select = ui_select
 
 vim.keymap.set("n", "<Leader>fm", ":Pick files<CR>")

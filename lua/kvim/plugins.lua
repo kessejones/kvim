@@ -245,6 +245,7 @@ vim.pack.add({
     {
         src = gh("stevearc/oil.nvim"),
         data = {
+            cmds = { "Oil" },
             keys = { "<Leader>tt", "<Leader>tg" },
             init = function()
                 require("kvim.core.oil")

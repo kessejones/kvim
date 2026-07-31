@@ -347,9 +347,21 @@ local find_file = function(local_opts, opts)
         refresh()
     end
 
+    local function open_oil()
+        local path = query_to_path(pick.get_picker_query())
+        if type(path) == "boolean" then
+            return
+        end
+
+        vim.schedule(function()
+            vim.cmd("Oil " .. string.format('"%s"', path))
+        end)
+        return true
+    end
+
     -- default opts
     opts = vim.tbl_deep_extend("keep", opts or {}, {
-        window = { prompt_prefix = " Search: " },
+        window = { prompt_prefix = " Path " },
         source = { name = "Find File" },
         mappings = {
             -- to suppress warnings
@@ -366,6 +378,7 @@ local find_file = function(local_opts, opts)
             go_root = { char = "<C-o>", func = custom_root_dir },
             make = { char = "<C-g>", func = custom_make },
             rm = { char = "<C-,>", func = custom_rm },
+            open_oil = { char = "<C-l>", func = open_oil },
         },
     })
 
