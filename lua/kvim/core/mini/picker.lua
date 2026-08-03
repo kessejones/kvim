@@ -370,6 +370,7 @@ local find_file = function(local_opts, opts)
             scroll_right = "",
             move_start = "",
             choose = "",
+            mark = "",
 
             custom_choose = { char = "<CR>", func = custom_choose },
             custom_tab_complete = { char = "<Tab>", func = custom_tab_complete },
@@ -377,7 +378,7 @@ local find_file = function(local_opts, opts)
             go_home = { char = "<C-h>", func = custom_home_dir },
             go_root = { char = "<C-o>", func = custom_root_dir },
             make = { char = "<C-g>", func = custom_make },
-            rm = { char = "<C-,>", func = custom_rm },
+            rm = { char = "<C-x>", func = custom_rm },
             open_oil = { char = "<C-l>", func = open_oil },
         },
     })

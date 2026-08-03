@@ -31,6 +31,17 @@ snacks.setup({
     picker = {
         enabled = true,
         ui_select = true,
+        sources = {
+            select = {
+                layout = {
+                    preview = false,
+                    layout = {
+                        width = 0.5,
+                        height = 0.5,
+                    },
+                },
+            },
+        },
         matcher = {
             fuzzy = false,
             frecency = true,
