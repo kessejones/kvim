@@ -121,13 +121,17 @@ local function load_hook(plug_data)
     if #cmds > 0 then
         should_load = false
         for _, c in ipairs(cmds) do
-            vim.api.nvim_create_user_command(c, function()
+            vim.api.nvim_create_user_command(c, function(args)
                 flush()
 
                 load_plugin(plug_data)
-
-                vim.cmd(c)
-            end, {})
+                vim.schedule(function()
+                    vim.cmd({ cmd = c, args = { args.args } })
+                end)
+            end, {
+                nargs = "*",
+                range = true,
+            })
         end
     end
 
