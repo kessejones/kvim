@@ -12,3 +12,4 @@ vim.g.loaded_python3_provider = 0
 
 require("kvim.plugins")
 require("kvim.ui")
+require("kvim.hl")
